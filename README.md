@@ -1,5 +1,4 @@
 # Demo
-https://erp.oceceli.com/  
 
 superuser@superuser.com  
 secureadmin2021  
@@ -13,8 +12,8 @@ secureadmin2021
 Docker will install mysql, app and nginx automatically.
 
 ```
-git clone https://github.com/oceceli/last-automation.git
-cd last-automation
+git clone https://github.com/hexlabseth/production-control-system.git
+cd production-control-system
 ```
 
 Docker and docker-compose must be installed
