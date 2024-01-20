@@ -147,6 +147,7 @@ return [
     'no_shipments_are_currently_available' => 'No shipments are currently available',
     'there_is_currently_no_production' => 'There is currently no production',
     'see_all'=>'See all',
+    'no'=>'ID',
     'projected_cost'=>'Projected cost',
     'other_wastages_will_come_here'=>'Other wastages will come here',
     'materials_used_in_production'=>'Materials used in production',

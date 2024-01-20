@@ -163,6 +163,7 @@ return [
     'no_shipments_are_currently_available' => 'Şu anda herhangi bir sevk işlemi yapılmıyor',
     'there_is_currently_no_production' => 'Şu anda herhangi bir üretim yapılmıyor',
     'see_all'=>'Tümünü gör',
+    'no'=>'Sıra',
     'projected_cost'=>'Öngörülen maliyet',
     'other_wastages_will_come_here'=>'Diğer fireler buraya gelecek',
     'materials_used_in_production'=>'Materials used in production',

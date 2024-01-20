@@ -10,7 +10,7 @@ use Maatwebsite\Excel\Concerns\WithMapping;
 class ProductsExport extends BaseExport implements FromQuery, WithHeadings, WithMapping
 {
     
-    protected $fileName = 'Ürünler';
+    protected $fileName = 'Products';
 
     public function __construct(Builder $injectedQuery)
     {
@@ -19,7 +19,7 @@ class ProductsExport extends BaseExport implements FromQuery, WithHeadings, With
 
     protected function title() : string
     {
-        return 'Ürün listesi - Çıktı tarihi: ' . now()->format('d.m.Y');
+        return 'Product list - Release date: ' . $this->fileName . now()->format('d.m.Y');
     }
 
 

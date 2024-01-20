@@ -58,7 +58,7 @@
                 </span>
             </div>
             <div>
-                <x-span tooltip="Excel olarak indir">
+                <x-span tooltip="Download as Excel">
                     <i wire:click="exportDispatchOrderDetailed" class="large excel file icon text-ease-green cursor-pointer"></i>
                 </x-span>
             </div>

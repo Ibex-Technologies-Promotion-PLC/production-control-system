@@ -14,16 +14,17 @@ class BaseExport implements ShouldAutoSize, WithStyles, WithProperties, Responsa
     use Exportable;
 
     protected $injectedQuery;
+    protected $fileName = 'null';
 
 
-    public function toPdf($fileName = null)
+    public function toPdf()
     {
-        return $this->download($fileName ?? $this->fileName . '.pdf', \Maatwebsite\Excel\Excel::MPDF);
+        return $this->download($this->fileName . now()->format('d.m.Y') . '.pdf', \Maatwebsite\Excel\Excel::MPDF);
     }
 
-    public function toExcel($fileName = null)
+    public function toExcel()
     {
-        return $this->download($fileName ?? $this->fileName . '.xlsx');
+        return $this->download($this->fileName . now()->format('d.m.Y') . '.xlsx');
     }
 
     public function properties(): array
@@ -31,7 +32,7 @@ class BaseExport implements ShouldAutoSize, WithStyles, WithProperties, Responsa
         return [
             'creator'        => auth()->user()->name,
             'lastModifiedBy' => auth()->user()->name,
-            'title' => method_exists($this, 'title') ? $this->title() : 'Belge',
+            'title' => method_exists($this, 'title') ? $this->title() : 'File',
         ];
     }
 

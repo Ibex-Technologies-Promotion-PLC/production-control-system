@@ -1,9 +1,6 @@
 <?php
 
 return [
-
- 
-
     'accepted' => 'The:attribute should be accepted.',
     'active_url' => 'The :attribute must be a valid URL.',
     'after' => 'The :attribute value must be after :date.',
@@ -121,23 +118,23 @@ return [
          'amount' => 'Amount',
          'lot_no' => 'Lot no',
          'code' => 'Code',
-
+         'type' => 'Type',
+         'total' => 'Total',
+         'status' => 'Status',
          'created_at' => 'Creation Date',
          'updated_at' => 'Updated date',
-
          //products
          'category_id' => 'Category',
          'prd_code' => 'Product code',
          'prd_name' => 'Product name',
          'prd_barcode' => 'Barcode',
          'prd_min_threshold' => 'Critical stock',
-         'prd_shelf_life' => 'Shelf life',
+         'prd_shelf_life' => 'Shelf Life',
          'prd_cost' => 'Price',
          'prd_note' => 'Description',
          'prd_is_active' => 'Active',
          'prd_producible' => 'Producible',
          'product_id' => 'Product',
-
          // companies
          'cmp_name' => 'Company name',
          'cmp_current_code' => 'Current code',
@@ -147,7 +144,6 @@ return [
          'cmp_note' => 'Description',
          'cmp_supplier' => 'Supplier',
          'cmp_customer' => 'Customer',
-
          // addresses
          'adr_name' => 'Address description',
          'adr_country' => 'Country',
@@ -156,7 +152,6 @@ return [
          'adr_body' => 'Address Detail',
          'adr_phone' => 'Contact Number',
          'adr_note' => 'Note',
-
          // dispatchorders
          'address_id' => 'Address',
          'company_id' => 'Company',
@@ -166,11 +161,9 @@ return [
          'do_actual_datetime' => 'Actual date',
          'do_status' => 'Status',
          'do_note' => 'Note',
-
          //salestype
          'st_name' => 'Sales type name',
          'st_abbr' => 'Sales type abbreviation',
-
          'de_license_plate' => 'Vehicle plate',
          'de_driver_name' => 'Driver name',
          'de_driver_phone' => 'Driver phone',
@@ -179,7 +172,6 @@ return [
 
          //categories
          'ctg_name' => 'Category name',
-
          'wo_code' => 'Work order number',
          'wo_lot_no' => 'Lot no',
          'wo_amount' => 'Amount',
@@ -190,7 +182,6 @@ return [
          'wo_started_at' => 'Start time',
          'wo_completed_at' => 'End time',
          'rcp_code' => 'Recipe Code',
-
          //units
          'unit_id' => 'Unit',
 

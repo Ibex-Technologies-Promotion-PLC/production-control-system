@@ -45,7 +45,7 @@ class Form extends Component
     protected function rules()
     {
         return [
-            'category_id' => 'nullable|integer',
+            'category_id' => 'required|integer',
             'prd_code' => 'required|min:1|unique:products,prd_code,' . optional($this->product)->id,
             'prd_barcode' => 'nullable|numeric|unique:products,prd_barcode,' . optional($this->product)->id,
             'prd_name' => 'required|min:1',
@@ -53,7 +53,7 @@ class Form extends Component
             'prd_producible' => 'required|boolean',
             'prd_is_active' => 'sometimes|nullable|boolean',
             'prd_min_threshold' => 'nullable|numeric',
-            'prd_cost' => 'nullable|numeric',
+            'prd_cost' => 'required|numeric',
             'prd_note' => 'nullable',
         ];
     }

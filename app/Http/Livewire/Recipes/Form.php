@@ -49,9 +49,9 @@ class Form extends Component
     ]; 
 
     protected $validationAttributes = [
-        'cards.*.unit_id' => '!!! Birim',
-        'cards.*.amount' => '!!! Miktar',
-        'cards.*.literal' => '!!! Kesin miktar',
+        'cards.*.unit_id' => '!!! Unit',
+        'cards.*.amount' => '!!! Quantity',
+        'cards.*.literal' => '!!!  Exact Quantity',
     ];
 
 

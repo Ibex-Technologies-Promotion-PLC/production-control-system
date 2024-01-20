@@ -27,7 +27,7 @@ abstract class BaseRepository implements BaseRepositoryInterface
     {
         try {
             $data = $this->model->create($array);
-            session()->flash("positive", "Kayıt başarılı!");
+            session()->flash("positive", "Registration Successful!");
             return $data;
         } catch (\Exception $e) {
             echo $e->getMessage();
@@ -53,7 +53,7 @@ abstract class BaseRepository implements BaseRepositoryInterface
     public function update(array $array, int $id)
     {
         if ($data = $this->fetch($id)->update($array)) {
-            session()->flash("positive", 'Güncelleme başarılı!');
+            session()->flash("positive", 'Update successful!');
             return $this->fetch($id);
         }
     }
@@ -61,7 +61,7 @@ abstract class BaseRepository implements BaseRepositoryInterface
     public function delete(int $id)
     {
         if($this->fetch($id)->delete())
-            return response()->json(['message' =>'Başarıyla silindi!'], 202);
+            return response()->json(['message' =>'Successfully deleted!'], 202);
     }
 
 

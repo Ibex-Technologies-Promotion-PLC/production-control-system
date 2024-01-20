@@ -1,17 +1,14 @@
 <div>
-    
     <x-table-toolbar :perPage="$perPage" /> 
-
     <div>
-
         <table class="ui celled sortable table tablet stackable very compact">
             <thead>
                 <tr>
-                    <th>Sıra</th>
+                    <th>{{ __('common.no') }}</th>
                     @foreach ($attributes as $attribute)
                         <th>{{ __('sections/' . Illuminate\Support\Str::plural(strToLower($modelName))  . '.' . $attribute) }}</th>
                     @endforeach
-                    <th>İşlemler</th>
+                    <th>Processes</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,7 +30,7 @@
                             @endif
                         @endif
                     @endforeach
-                    <td><div>Düzenle sil falan</div></td>
+                    <td><div>Edit, delete etc.</div></td>
                 </tr>
                 @endforeach
             </tbody>

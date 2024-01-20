@@ -150,7 +150,7 @@ trait DispatchStates
 
     private function markActualDispatchDate()
     {
-        $this->updateQuietly('do_actual_datetime', now());
+        $this->updateQuietly(['do_actual_datetime'=> now()]);
     }
 
 
@@ -161,7 +161,7 @@ trait DispatchStates
     private function setStatus($state)
     {
         if(in_array($state, self::states()))
-            $this->updateQuietly('do_status', $state);
+            $this->updateQuietly(['do_status'=>$state]);
     }
 
 
@@ -178,10 +178,11 @@ trait DispatchStates
         }
     }
 
-    private function updateQuietly($column, $value)
+    public function updateQuietly(array $attributes = [], array $options = [])
     {
-        $this->$column = $value;
-        $this->saveQuietly();
+        return static::withoutEvents(function () use ($attributes, $options) {
+            return $this->update($attributes, $options);
+        });
     }
 
 

@@ -97,7 +97,7 @@ trait WorkOrderStates
     {
         if($this->isInProgress()) {
             $service->saveProductionResults();
-            $this->updateQuietly('wo_completed_at', now());
+            $this->updateQuietly(['wo_completed_at'=> now()]);
             return $this->setStatus('completed');
         }
     }
@@ -107,7 +107,7 @@ trait WorkOrderStates
 
         if($this->isPrepared()) {
             $this->setStatus('in_progress');
-            $this->updateQuietly('wo_started_at', now());
+            $this->updateQuietly(['wo_started_at'=> now()]);
             return true;
         }
     }
@@ -151,7 +151,7 @@ trait WorkOrderStates
     {
         if($this->isInProgress()) {
             $this->setStatus('prepared');
-            $this->updateQuietly('wo_started_at', null);
+            $this->updateQuietly(['wo_started_at'=> null]);
             return true;
         }
     }
@@ -197,16 +197,17 @@ trait WorkOrderStates
         // if(auth()->user()->cannot($this->permission)) abort(403); // ?? devam
 
         if(in_array($state, self::states())) {
-            $this->updateQuietly('wo_status', $state);
+            $this->updateQuietly(['wo_status'=> $state]);
             return true;
         }
         return false;
     }
 
-    private function updateQuietly($column, $value)
+    public  function updateQuietly(array $attributes = [], array $options = [])
     {
-        $this->$column = $value;
-        $this->saveQuietly();
+        return static::withoutEvents(function () use ($attributes, $options) {
+            return $this->update($attributes, $options);
+        });
     }
 
 

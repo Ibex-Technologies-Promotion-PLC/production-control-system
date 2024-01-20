@@ -80,17 +80,6 @@ class Datatable extends Component implements ExportsContract
     {
         return WorkOrderService::getUniqueWoCodes();
     }
-
-
-
-    // public function exportToExcel()
-    // {
-    //     return (new WorkOrdersExport($this->filteredQuery()))->download("İş emirleri(" . date('d.m.Y') . ').xlsx');
-    // }
-
-    // public function exportToPDF()
-    // {
-    //     return (new WorkOrdersExport($this->filteredQuery()))->download("İş emirleri(" . date('d.m.Y') . ').pdf', \Maatwebsite\Excel\Excel::MPDF);
-    // }
+    
 
 }

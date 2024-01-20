@@ -1,9 +1,6 @@
 <?php
 
 return [
-
- 
-
     'accepted' => ':attribute kabul edilmelidir.',
     'active_url' => ':attribute geçerli bir URL olmalıdır.',
     'after' => ':attribute değeri :date tarihinden sonra olmalıdır.',
@@ -121,7 +118,9 @@ return [
         'amount' => 'Miktar',
         'lot_no' => 'Lot no',
         'code' => 'Kod',
-
+        'type' => 'Tip',
+        'total' => 'Toplam',
+        'status' => 'Durum',
         'created_at' => 'Oluşturma Tarihi',
         'updated_at' => 'Güncelleme tarihi',
 

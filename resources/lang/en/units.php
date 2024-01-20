@@ -7,6 +7,6 @@ return [
     'new_unit_name_short' => 'short',
     'pcs' => 'pcs',
 
-    'header' => 'Create Volume',
+    'header' => 'Create Unit',
     'subheader' => 'Create units of measurement for products',
 ];

@@ -51,8 +51,6 @@ class Product extends Model
         return $this->hasMany(StockMove::class);
     }
     
-    
-    
     public function scopeWithThreshold($query)
     {
         return $query->whereNotNull('prd_min_threshold');
@@ -62,8 +60,6 @@ class Product extends Model
     {
         return $query->has('recipe');
     }
-
-    
 
     public function getIsActiveAttribute($value) 
     {

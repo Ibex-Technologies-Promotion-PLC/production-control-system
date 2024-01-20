@@ -62,9 +62,7 @@ class DispatchOrder extends Model implements CanReserveStocks
     {
         return $this->hasOne(DispatchExtra::class);
     }
-
-
-
+    
     public function scopeApproved($query)
     {
         return $query->where('do_status', 'approved');
