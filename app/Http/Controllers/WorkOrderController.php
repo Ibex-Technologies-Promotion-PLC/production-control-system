@@ -22,7 +22,7 @@ class WorkOrderController extends Controller
      * Validation logic has been set for only 'store' and 'update'. It can be changed or completely deleted as needed
      * There should be a static 'rules()' method that returns an array of validation rules within model class. 
      */
-    public function __construct(WorkOrder   Contract $repository)
+    public function __construct(WorkOrderContract $repository)
     {
         $this->repository = $repository;
         $this->authorization = true;

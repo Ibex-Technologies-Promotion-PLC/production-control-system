@@ -74,7 +74,7 @@ class Product extends Model
     
     public function getBaseUnitAttribute()
     {
-        return $this->units()->where('is_base', true)->first();
+        return $this->units()->where('is_base', 1)->first();
     }
 
     // public function getBaseUnitAttribute() // !! üsttekinde sorun çıkabilir
