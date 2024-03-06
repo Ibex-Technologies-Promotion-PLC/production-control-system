@@ -20,7 +20,7 @@ trait AddressForm
 
 
     protected $rules = [
-        'adr_name' => 'required|max:25',
+        'adr_name' => 'required|max:255',
         'adr_country' => 'required',
         'adr_province' => 'required',
         'adr_district' => 'required',

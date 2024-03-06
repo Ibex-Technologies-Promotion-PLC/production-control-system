@@ -138,8 +138,6 @@ return [
          // companies
          'cmp_name' => 'Company name',
          'cmp_current_code' => 'Current code',
-         'cmp_commercial_title' => 'Commercial Title',
-         'cmp_tax_number' => 'Tax number',
          'cmp_phone' => 'Contact Number',
          'cmp_note' => 'Description',
          'cmp_supplier' => 'Supplier',

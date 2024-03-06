@@ -139,9 +139,6 @@ return [
 
         // companies
         'cmp_name' => 'Firma adı',
-        'cmp_current_code' => 'Cari kod',
-        'cmp_commercial_title' => 'Ticari Ünvan',
-        'cmp_tax_number' => 'Vergi numarası',
         'cmp_phone' => 'İrtibat No',
         'cmp_note' => 'Açıklama',
         'cmp_supplier' => 'Tedarikçi',

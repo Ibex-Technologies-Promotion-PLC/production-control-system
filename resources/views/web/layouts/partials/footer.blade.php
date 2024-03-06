@@ -1,5 +1,9 @@
-<div class="py-3 px-5 flex justify-between items-center text-sm text-gray-500 font-hairline">
-    <div><p>© Tüm hakları saklıdır. </p></div>
-    <i class="red star and crescent icon"></i>
-    <div><p>Diğer legal şeyler</p></div>
+<div class="py-1 px-5 flex justify-center items-center text-sm text-gray-500 font-hairline">
+    <div><p>© All right reserved. </p></div>
+    <strong><a target="_blank" href="https://heremutrading.com/">Heremu Trading PLC</a></strong>
+    
+</div>
+
+<div class="py-1 px-5 flex justify-center items-center text-sm text-gray-500 font-hairline">
+    <div><p>Powered By:<a target="_blank" href="https://hexlabs.tech/">Hexlabs Technologies PLC</a></p></div>
 </div>

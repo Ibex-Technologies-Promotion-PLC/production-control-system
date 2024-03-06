@@ -7,7 +7,7 @@
     </span>
 </x-tbody-item>
 <x-tbody-item class="collapsing">
-    {{ $dispatchOrder->company->cmp_commercial_title }}
+    {{ $dispatchOrder->company->cmp_name }}
     <span class="text-xs text-ease">
         ({{ __('validation.attributes.cmp_current_code')}}: {{ $dispatchOrder->company->cmp_current_code }})
     </span>

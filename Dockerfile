@@ -1,7 +1,6 @@
-FROM php:7.4-fpm
+FROM php:7.3-fpm
 
 LABEL maintainer="oceceli"
-
 # Set working directory
 WORKDIR /var/www/html/
 

@@ -7,18 +7,7 @@
                         <label>{{ __('validation.attributes.cmp_name') }}</label>
                         <span>{{ $selectedCompany->cmp_name }}</span>
                     </x-list-item>
-                    <x-list-item>
-                        <label>{{ __('validation.attributes.cmp_commercial_title') }}</label>
-                        <span>{{ $selectedCompany->cmp_commercial_title }}</span>
-                    </x-list-item>
-                    <x-list-item>
-                        <label>{{ __('validation.attributes.cmp_current_code') }}</label>
-                        <span>{{ $selectedCompany->cmp_current_code }}</span>
-                    </x-list-item>
-                    <x-list-item>
-                        <label>{{ __('validation.attributes.cmp_tax_number') }}</label>
-                        <span>{{ $selectedCompany->cmp_tax_number }}</span>
-                    </x-list-item>
+                    
                     <x-list-item>
                         <label>{{ __('validation.attributes.cmp_phone') }}</label>
                         <span>{{ $selectedCompany->cmp_phone  }}</span>

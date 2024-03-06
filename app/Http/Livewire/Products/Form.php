@@ -61,6 +61,8 @@ class Form extends Component
     public function mount($product = null)
     {
         $this->previous = url()->previous();
+        $this->suggestProdCode();
+        $this->suggestProdBarCode();
         // fill the form fields if edit mode on 
         if($product) {
             $this->setEditMode($product);
@@ -71,6 +73,20 @@ class Form extends Component
     public function updatedCategoryId($id)
     {
         $this->selectedCategory = Category::find($id);
+    }
+
+    public function suggestProdCode()
+    {
+
+        $this->prd_code = 'PROD_'.random_int(100000, 999999);
+
+    }
+
+    public function suggestProdBarCode()
+    {
+
+        $this->prd_barcode = random_int(100000, 999999);
+
     }
 
     

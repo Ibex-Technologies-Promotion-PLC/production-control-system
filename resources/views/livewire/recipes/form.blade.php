@@ -74,7 +74,7 @@
                         </div>
                     </div>
                     @if ($this->producibles->count() <= 0)
-                        <div class="pt-2 font-semibold text-sm">!!! Listede hiç ürün yok, öncelikle <a class="text-red-600" href="{{ route('products.create') }}">buradan</a> başlayın...</div>
+                        <div class="pt-2 font-semibold text-sm">!!! There are no products in the list, please <a class="text-red-600" href="{{ route('products.create') }}">Start Here</a>...</div>
                     @endif
                 </form> 
             </div>

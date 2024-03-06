@@ -71,7 +71,7 @@ class Datatable extends Component implements ExportsContract
 
     public function getCompaniesProperty()
     {
-        return CompanyService::getCustomers(['id', 'cmp_commercial_title']);
+        return CompanyService::getCustomers(['id', 'cmp_name']);
     }
 
     public function getSalesTypesProperty()

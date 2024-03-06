@@ -13,7 +13,7 @@
                         <option value="" selected>{{ __('common.all') }}</option>
                         @foreach ($this->companies as $company)
                             <option value="{{ $company->id }}">
-                                {{ $company->cmp_commercial_title }}
+                                {{ $company->cmp_name }}
                             </option>
                         @endforeach
                     </select>
@@ -81,7 +81,7 @@
                         <x-tbody-item class="collapsing center aligned font-bold">{{ $dispatchOrder->do_number }}</x-tbody-item>
 
                         <x-tbody-item class="collapsing">
-                            {{ $dispatchOrder->company->cmp_commercial_title }}
+                            {{ $dispatchOrder->company->cmp_name }}
                             <span class="text-xs text-ease">
                                 ({{ __('validation.attributes.cmp_current_code')}}: {{ $dispatchOrder->company->cmp_current_code }})
                             </span>

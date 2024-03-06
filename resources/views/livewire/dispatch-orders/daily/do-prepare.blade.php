@@ -8,7 +8,7 @@
                 <div class="flex justify-between border-b border-white text-ease pb-2">
                     <div>
                         <h5 class="">
-                            {{ $dispatchOrder->company->cmp_commercial_title }}
+                            {{ $dispatchOrder->company->cmp_name }}
                         </h5>
                     </div>
                     <div>

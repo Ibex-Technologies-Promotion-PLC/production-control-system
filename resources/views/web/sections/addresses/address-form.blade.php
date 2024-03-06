@@ -19,7 +19,7 @@
                 /> --}}
 
 
-                {{-- <x-dropdown model="adr_district" initnone dataSourceFunction="getCityDistrictProperty" value="id" text="ilce,mahalle,semt,posta_kodu" sId="districts" sClass="search" triggerOnEvent="address_provinceChanged"
+                {{-- <x-dropdown model="adr_district" initnone dataSourceFunction="getCityDistrictProperty" value="id" text="district, postal code" sId="districts" sClass="search" triggerOnEvent="address_provinceChanged"
                     label="validation.attributes.adr_district" placeholder="validation.attributes.adr_district" class="required field"
                 /> --}}
             </x-slot>

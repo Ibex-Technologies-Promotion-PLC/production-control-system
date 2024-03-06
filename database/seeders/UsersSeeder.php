@@ -21,9 +21,9 @@ class UsersSeeder extends Seeder
         
         $su = User::create([
             'name' => 'super admin',
-            'email' => 'superuser@superuser.com',
+            'email' => 'superadmin@gmail.com',
             'email_verified_at' => now(),
-            'password' => Hash::make(env('SU_ADMIN_PASS', 'secureadmin2021')),
+            'password' => Hash::make(env('SU_ADMIN_PASS', '123456789')),
             'remember_token' => Str::random(10),
         ]);
         
@@ -32,9 +32,9 @@ class UsersSeeder extends Seeder
         
         $admin = User::create([
             'name' => 'Admin',
-            'email' => 'admin@admin.com',
+            'email' => 'admin@gmail.com',
             'email_verified_at' => now(),
-            'password' => Hash::make(env('ADMIN_PASS', 'secureadmin2021')),
+            'password' => Hash::make(env('ADMIN_PASS', '123456789')),
             'remember_token' => Str::random(10),
         ]);
         
@@ -46,9 +46,9 @@ class UsersSeeder extends Seeder
 
         User::create([
             'name' => 'unauthorized user',
-            'email' => 'aaa@aaa.com',
+            'email' => 'unauthorized@gmail.com',
             'email_verified_at' => now(),
-            'password' => Hash::make('qwerty123456'),
+            'password' => Hash::make('123456789'),
             'remember_token' => Str::random(10),
         ]);
 

@@ -83,13 +83,10 @@ class ScenarioSeeder extends Seeder
         // müşteri ve adres
         $company1 = Company::create([
             'cmp_name' => 'Loza Cofee',
-            'cmp_commercial_title' => 'Loza Cofee PLC.',
-            'cmp_current_code' => '123456',
             'cmp_supplier' => false,
             'cmp_customer' => true,
             'cmp_note' => 'Dear b2b customer',
             'cmp_phone' => '0123456789',
-            'cmp_tax_number' => '111121111',
         ]);
         $address1 = $company1->addresses()->create([
             'adr_name' => 'Halis Gıda Ana Bayii',
@@ -104,13 +101,10 @@ class ScenarioSeeder extends Seeder
       
         $company2 = Company::create([
             'cmp_name' => 'Büyük Değirmen Un Fabrikası',
-            'cmp_commercial_title' => 'BUYUK DEĞİRMEN URETİM VE TİCARET AŞ.',
-            'cmp_current_code' => '12345678',
             'cmp_supplier' => true,
             'cmp_customer' => false,
             'cmp_note' => 'Bir diğer değerli b2b müşterimiz',
             'cmp_phone' => '0123456789',
-            'cmp_tax_number' => '11141111',
         ]);
         $company2->addresses()->create([
             'adr_name' => 'Büyük Değirmen Kadıköy',
@@ -123,13 +117,10 @@ class ScenarioSeeder extends Seeder
         
         $company3 = Company::create([
             'cmp_name' => 'Yeşilyol Unlu Mamuller',
-            'cmp_commercial_title' => 'YEŞİLYOL UNLU MAMULLER AŞ.',
-            'cmp_current_code' => '1234565',
             'cmp_supplier' => true,
             'cmp_customer' => true,
             'cmp_note' => 'Bir diğer değerli b2b müşterimiz',
             'cmp_phone' => '0123456789',
-            'cmp_tax_number' => '111511111',
         ]);
          $company3->addresses()->create([
             'adr_name' => 'Yeşilyol Unlu Mamuller Ataşehir Şube',

@@ -15,7 +15,7 @@
                 <div class="p-2 flex justify-between hover:bg-gray-100 hover:shadow-md">
                     <div>
                         <i class="{{ $report['status']['icon'] }}"></i>
-                        <span class="font-semibold">{{ $report['dispatchOrder']->company->cmp_commercial_title }}</span>
+                        <span class="font-semibold">{{ $report['dispatchOrder']->company->cmp_name }}</span>
                         <span class="text-xs text-ease">({{ $report['dispatchOrder']->address->adr_name }})</span>
                         <span class="text-sm font-semibold {{ $report['status']['textColor'] }}">{{ $report['status']['explanation'] }}</span>
                     </div>

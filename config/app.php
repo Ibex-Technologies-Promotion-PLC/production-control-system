@@ -106,7 +106,7 @@ return [
     |
     */
 
-    'faker_locale' => 'tr_TR',
+    'faker_locale' => 'en_US',
 
 
     'available_locales' => [

@@ -8,7 +8,7 @@
             </x-list-item>
             <x-list-item>
                 <span>{{ __('common.customer') }}</span>
-                <span>{{ $dispatchOrder->company->cmp_commercial_title }}</span>
+                <span>{{ $dispatchOrder->company->cmp_name }}</span>
             </x-list-item>
             <x-list-item>
                 <span>{{ __('validation.attributes.sales_type_id') }}</span>

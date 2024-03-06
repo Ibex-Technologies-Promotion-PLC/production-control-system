@@ -44,7 +44,7 @@ class Company extends Model
 
     public function setCmpCommercialTitleAttribute($value)
     {
-        $this->attributes['cmp_commercial_title'] = strtoupper($value);
+        $this->attributes['cmp_name'] = strtoupper($value);
     }
 
     public function getCmpCommercialTitleAttribute($value)

@@ -3,7 +3,7 @@
 namespace App\Http\Livewire\WorkOrders;
 
 use App\Common\Facades\Conversions;
-// use App\Models\ReservedStock;
+use \Illuminate\Support\Str;
 use App\Models\Product;
 use App\Models\Unit;
 use App\Models\WorkOrder;
@@ -28,8 +28,6 @@ class Form extends Component
     public $selectedProduct;
 
     public $units = [];
-
-    // public $stockCards = [];
 
     // edit mode
     public $editMode = false;
@@ -56,7 +54,15 @@ class Form extends Component
             $this->setEditMode($workOrder);
         } else {
             $this->wo_datetime = Carbon::tomorrow()->format('d.m.Y');
+            $this->suggestLotCode();
         }
+    }
+
+
+    public function suggestLotCode()
+    {
+
+        $this->wo_lot_no = 'LOT_' . strtoupper(Str::random(6));
     }
 
     public function updatingProductId($id)

@@ -40,7 +40,7 @@ class Form extends Component
             'company_id' => 'required|integer',
             'address_id' => 'required|integer',
             'sales_type_id' => 'required|integer',
-            'do_number' => 'required|numeric|unique:dispatch_orders,do_number,' . optional($this->dispatchOrder)->id,
+            'do_number' => 'required|unique:dispatch_orders,do_number,' . optional($this->dispatchOrder)->id,
             'do_planned_datetime' => 'required|date',
             'do_note' => 'nullable',
         ];
@@ -75,6 +75,7 @@ class Form extends Component
         } else {
             $this->do_planned_datetime = Carbon::today();
             $this->addCard();
+            $this->do_number='SHIP_'.random_int(100000, 999999);
         }
     }
     

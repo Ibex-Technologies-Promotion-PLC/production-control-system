@@ -44,7 +44,7 @@ class DispatchOrderDetailedExport extends BaseExport implements FromQuery, WithH
     {
         $arr = [
             $do->do_number,
-            $do->company->cmp_commercial_title,
+            $do->company->cmp_name,
             $do->address->fullAddress,
             $do->salesType->st_abbr . ' - ' . $do->salesType->st_name,
             $do->do_planned_datetime,

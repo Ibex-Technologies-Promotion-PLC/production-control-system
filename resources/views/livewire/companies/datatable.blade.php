@@ -20,9 +20,6 @@
                     <x-table-row>
                         <x-thead-item>{{ __('common.type') }}</x-thead-item>
                         <x-thead-item sortBy="cmp_name">{{ __('validation.attributes.cmp_name') }}</x-thead-item>
-                        <x-thead-item sortBy="cmp_commercial_title">{{ __('validation.attributes.cmp_commercial_title') }}</x-thead-item>
-                        <x-thead-item sortBy="cmp_current_code">{{ __('validation.attributes.cmp_current_code') }}</x-thead-item>
-                        <x-thead-item sortBy="cmp_tax_number">{{ __('validation.attributes.cmp_tax_number') }}</x-thead-item>
                         <x-thead-item sortBy="cmp_phone">{{ __('validation.attributes.cmp_phone') }}</x-thead-item>
                         {{-- <x-thead-item sortBy="cmp_note">Açıklama</x-thead-item> --}}
                         <x-thead-item>{{ __('addresses.addresses')}}</x-thead-item>
@@ -34,9 +31,6 @@
                         <x-table-row wire:key="{{ $loop->index }}">
                             <x-tbody-item class="collapsing center aligned text-sm">@include('web.sections.companies.index.company-type')</x-tbody-item>
                             <x-tbody-item class="collapsing">{{ $company->cmp_name }}</x-tbody-item>
-                            <x-tbody-item class="collapsing">{{ $company->cmp_commercial_title }}</x-tbody-item>
-                            <x-tbody-item class="collapsing">{{ $company->cmp_current_code }}</x-tbody-item>
-                            <x-tbody-item>{{ $company->cmp_tax_number }}</x-tbody-item>
                             <x-tbody-item>{{ $company->cmp_phone  }}</x-tbody-item>
                             {{-- <x-tbody-item>{{ $company->cmp_note  }}</x-tbody-item> --}}
                             <x-tbody-item class=" flex justify-between items-center">

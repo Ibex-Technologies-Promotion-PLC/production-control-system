@@ -14,13 +14,10 @@
 
                 <x-slot name="left">
                     <x-input defer model="cmp_name" label="validation.attributes.cmp_name" placeholder="validation.attributes.cmp_name"  />
-                    <x-input defer model="cmp_commercial_title" label="validation.attributes.cmp_commercial_title" placeholder="validation.attributes.cmp_commercial_title"  />
-                    <x-input defer model="cmp_current_code" label="validation.attributes.cmp_current_code" placeholder="validation.attributes.cmp_current_code"  />
-                </x-slot>
+                    </x-slot>
 
 
                 <x-slot name="right">
-                    <x-input defer model="cmp_tax_number" label="validation.attributes.cmp_tax_number" placeholder="validation.attributes.cmp_tax_number"  />
                     <x-input defer model="cmp_phone" label="validation.attributes.cmp_phone" placeholder="validation.attributes.cmp_phone"  />
                     <div class="pt-1">
                         <div class="px-2 py-1 border border-dashed">

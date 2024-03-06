@@ -42,7 +42,7 @@ class DispatchOrdersExport extends BaseExport implements FromQuery, WithHeadings
     {
         return [
             $do->do_number, ' ',
-            $do->company->cmp_commercial_title, ' ',
+            $do->company->cmp_name, ' ',
             $do->address->adr_name, ' ',
             // $do->salesType->st_name . ' - ' . $do->salesType->st_abbr, ' ',
             $do->salesType->st_abbr . ' - ' . $do->salesType->st_name, ' ',

@@ -38,6 +38,7 @@
                                     </x-dropdown>
                                     @if ($card['lotNumberAreaType'] === 'input')
                                         <x-input model="cards.{{ $key }}.lot_number" placeholder="{{ __('stockmoves.lot_number') }}" noErrors  />
+                                        
                                     @elseif($card['lotNumberAreaType'] === 'dropdown')
                                         <div class="field pt-1">
                                             <x-select model="cards.{{ $key }}.lot_number" :collection="$lotNumbers" :collectionKey="$key" value="text"  />

@@ -23,7 +23,6 @@ class CreateAddressesTable extends Migration
 
             $table->string('adr_phone')->nullable();
             $table->string('adr_note')->nullable();
-
             $table->string('addressable_type');
             $table->bigInteger('addressable_id');
             

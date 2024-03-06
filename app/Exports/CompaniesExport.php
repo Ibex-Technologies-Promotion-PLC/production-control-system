@@ -30,9 +30,6 @@ class CompaniesExport extends BaseExport implements FromQuery, WithMapping, With
         return [
             __('common.type'), ' ',
             __('validation.attributes.cmp_name'), ' ',
-            __('validation.attributes.cmp_commercial_title'), ' ',
-            __('validation.attributes.cmp_current_code'), ' ',
-            __('validation.attributes.cmp_tax_number'), ' ',
             __('validation.attributes.cmp_phone'), ' ',
             __('validation.attributes.cmp_note'), ' ',
             // __('addresses.addresses'), ' ',
@@ -46,9 +43,6 @@ class CompaniesExport extends BaseExport implements FromQuery, WithMapping, With
         return [
             $company->companyType(), ' ',
             $company->cmp_name, ' ',
-            $company->cmp_commercial_title, ' ',
-            $company->cmp_current_code, ' ',
-            $company->cmp_tax_number, ' ',
             $company->cmp_phone, ' ',
             $company->cmp_note, ' ',
             // $company->addresses, ' ',

@@ -46,8 +46,15 @@
                         <x-dropdown model="product_id" triggerOnEvent="new_work_order_created" dataSourceFunction="getProductsProperty" class="required" sClass="search" sId="selectProduct"
                             value="id" text="prd_code,prd_name" label="{{ __('validation.attributes.product_id') }}" placeholder="{{ __('units.unit') }}" />
                     @endif
-                    <x-input model="wo_lot_no" noErrors label="{{ __('validation.attributes.wo_lot_no') }}" placeholder="{{ __('validation.attributes.wo_lot_no') }}" class="required field" />
-                    
+                    <!-- <x-input model="wo_lot_no" noErrors label="{{ __('validation.attributes.wo_lot_no') }}" placeholder="{{ __('validation.attributes.wo_lot_no') }}" class="required field" /> -->
+                    <x-input action model="wo_lot_no" label="validation.attributes.wo_lot_no" placeholder="validation.attributes.wo_lot_no" class="required mini">
+                                <x-slot name="action">
+                                    <button wire:click.prevent="suggestLotCode" class="ui teal mini right labeled icon button " >
+                                        <i class="icon random"></i>
+                                        {{ __('recipes.suggest_code') }}
+                                    </button>
+                                </x-slot>
+                            </x-input>
                     <x-dropdown iModel="wo_amount" iPlaceholder="{{ __('validation.attributes.wo_amount') }}" label="{{ __('validation.attributes.wo_amount') }}" class="required"
                         model="unit_id" triggerOnEvent="woProductChanged" dataSource="units" sId="workOrderUnits" sClass="basic"
                         value="id" text="name" placeholder="{{ __('units.unit') }}" 

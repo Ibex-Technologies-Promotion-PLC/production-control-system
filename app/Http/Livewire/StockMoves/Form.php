@@ -39,12 +39,12 @@ class Form extends Component
     protected function validationAttributes()
     {
         return [
-            'cards.*.product_id' => 'Ürün',
-            'cards.*.direction' => 'Yön',
-            'cards.*.amount' => 'Miktar',
-            'cards.*.datetime' => 'Tarih',
-            'cards.*.unit_id' => 'Birim',
-            'cards.*.lot_number' => 'Lot numarası',
+            'cards.*.product_id' => 'Product',
+             'cards.*.direction' => 'Direction',
+             'cards.*.amount' => 'Amount',
+             'cards.*.datetime' => 'Date',
+             'cards.*.unit_id' => 'Unit',
+             'cards.*.lot_number' => 'Lot number',
         ];
     }
 
@@ -52,7 +52,7 @@ class Form extends Component
     {
         return [
             'cards.*.product_id' => 'Title is required.',
-            'cards.*.direction' => 'Status not selected', // ?? deney
+             'cards.*.direction' => 'Status not selected', // ?? deney
         ];
     }
 
@@ -74,7 +74,7 @@ class Form extends Component
             'product_id' => null,
             'direction' => 1,
             'amount' => null,
-            'lot_number' => null,
+            'lot_number' => random_int(100000, 999999),
             'datetime' => now(),
             'unit_id' => null,       
             

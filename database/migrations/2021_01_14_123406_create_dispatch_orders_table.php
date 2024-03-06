@@ -15,7 +15,7 @@ class CreateDispatchOrdersTable extends Migration
     {
         Schema::create('dispatch_orders', function (Blueprint $table) {
             $table->id();
-            $table->integer('do_number')->unique();
+            $table->string('do_number')->unique();
             $table->string('do_status')->default('active');
             $table->datetime('do_planned_datetime');
             $table->datetime('do_actual_datetime')->nullable();
