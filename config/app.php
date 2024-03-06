@@ -111,7 +111,7 @@ return [
 
     'available_locales' => [
         'English' => 'en',
-        'Turkish' => 'tr',
+        // 'Turkish' => 'tr',
       ],
 
     /*

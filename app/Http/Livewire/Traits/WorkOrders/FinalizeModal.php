@@ -25,7 +25,7 @@ trait FinalizeModal
     protected $validationAttributes = [
         'unit_id' => 'Birim',
         'production_total' => 'Toplam',
-        'production_waste' => 'Fire',
+        'production_waste' => 'Waste',
     ];
 
     

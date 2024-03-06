@@ -6,9 +6,6 @@ return [
     'search_in_database' => 'Veritabanında ara...',
     'saved_successfully' => 'Başarıyla kaydedildi!',
     'dropdown_placeholder' => 'Lütfen seçiniz...',
-
-    
-
     'date' => 'Tarih',
     'datetime' => 'Tarih',
     'caution' => 'Dikkat',

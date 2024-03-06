@@ -2,10 +2,8 @@
 
 namespace App\Http\Livewire\WorkOrders;
 
-use App\Common\Facades\Conversions;
 use \Illuminate\Support\Str;
 use App\Models\Product;
-use App\Models\Unit;
 use App\Models\WorkOrder;
 use Carbon\Carbon;
 use Livewire\Component;
@@ -54,7 +52,7 @@ class Form extends Component
             $this->setEditMode($workOrder);
         } else {
             $this->wo_datetime = Carbon::tomorrow()->format('d.m.Y');
-            $this->suggestLotCode();
+            $this->fillInputs();
         }
     }
 
@@ -63,6 +61,19 @@ class Form extends Component
     {
 
         $this->wo_lot_no = 'LOT_' . strtoupper(Str::random(6));
+    }
+
+    public function suggestWorkOrderNoCode()
+    {
+
+        $this->wo_code = rand(100000,999999);
+    }
+
+
+    public function suggestChargeNoCode()
+    {
+
+        $this->wo_queue = rand(100000,999999);
     }
 
     public function updatingProductId($id)
@@ -78,6 +89,7 @@ class Form extends Component
 
         $this->unit_id = $this->selectedProduct->baseUnit->id; // !! bununla if else ilişkisine girecek
 
+        $this->fillInputs();
         $this->emit('woProductChanged'); // fill the units
     }
 
@@ -106,8 +118,6 @@ class Form extends Component
         } 
 
     }
-
-
 
     public function openDeleteModal()
     {
@@ -202,6 +212,12 @@ class Form extends Component
             $this->wo_queue = $usualWo->wo_queue + 1;
             $this->wo_code = $usualWo->wo_code;
         }
+    }
+
+    public function fillInputs(){
+        $this->suggestLotCode();
+        $this->suggestWorkOrderNoCode();
+        $this->suggestChargeNoCode();
     }
 
 

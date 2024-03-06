@@ -45,7 +45,7 @@
                         <span class="text-green-700 font-bold">{{ $workOrder->productionResults['net'] }}</span>
                         <span> 
                             {{ strtolower($workOrder->product->baseUnit->name) }} 
-                            <span class="font-bold">{{ $workOrder->product->prd_name }}</span> stoğa eklendi.
+                            <span class="font-bold">{{ $workOrder->product->prd_name }}</span> added to stock.
                         </span>
                     </div>
 

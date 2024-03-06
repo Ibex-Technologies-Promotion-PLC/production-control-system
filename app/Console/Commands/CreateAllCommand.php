@@ -64,7 +64,7 @@ class CreateAllCommand extends Command
         $this->call('make:factory', ['name' => ucfirst($this->argument('name')) . 'Factory', '--model' => ucfirst($this->argument('name'))]);
         $this->call('make:migration',  ['name' => 'create_' . strtolower(Str::plural($this->argument('name'))) . '_table']);
 
-        $this->alert('İşlem tamamlandı, lütfen ilgili migration ve factory dosyalarını düzenleyin...');
+        $this->alert('The process is completed, please edit the relevant migration and factory files...');
     }
 
 
@@ -74,7 +74,7 @@ class CreateAllCommand extends Command
             $answer = ucfirst($this->ask(ucfirst($command) . " adını giriniz"));
             if ($answer != null && !is_numeric($answer)) {
                 $this->call('create:' . $command, ['name' => $answer]);
-            } else $this->warn(ucfirst($command) . " oluşturulmadı..");
+            } else $this->warn(ucfirst($command) . " not created..");
         }
     }
 }

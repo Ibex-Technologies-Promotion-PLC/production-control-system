@@ -151,7 +151,7 @@ class Form extends Component
         $this->address_id = $dispatchOrder->address_id;
         $this->sales_type_id = $dispatchOrder->sales_type_id;
         $this->do_number = $dispatchOrder->do_number;
-        $this->do_planned_datetime = $dispatchOrder->do_planned_datetime;
+        $this->do_planned_datetime = Carbon::parse($dispatchOrder->do_planned_datetime)->format('Y-m-d H:i:s');
         $this->do_note = $dispatchOrder->do_note;
         
         // fill in the address dropdown
