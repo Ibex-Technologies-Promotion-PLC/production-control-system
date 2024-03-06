@@ -1,7 +1,7 @@
 # Demo
 
-superuser@superuser.com  
-secureadmin2021  
+superadmin@gmail.com
+123456789  
 
 # An ERP-like automation system
 
