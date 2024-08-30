@@ -3,11 +3,13 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
+use Spatie\Activitylog\Models\Activity;
 
 class UserCard extends Component
 {
 
     public $user;
+    public $lastActivity;
 
     /**
      * Create a new component instance.
@@ -17,6 +19,10 @@ class UserCard extends Component
     public function __construct($user)
     {
         $this->user = $user;
+        $this->lastActivity = Activity::where('causer_id', $user->id)
+            ->where('causer_type', get_class($user))
+            ->latest()
+            ->first();
     }
 
     /**

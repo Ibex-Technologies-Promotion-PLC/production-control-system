@@ -15,6 +15,9 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use Spatie\Activitylog\Models\Activity;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 class User extends Authenticatable
 {
@@ -27,12 +30,21 @@ class User extends Authenticatable
     use TwoFactorAuthenticatable;
     use HasRoles;
     use ModelHelpers;
-
+    use LogsActivity;
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
+
+    // Implement the required method
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly(['name', 'email']) // Log only specified attributes
+            ->logOnlyDirty() // Log changes only when they are dirty (changed)
+            ->setDescriptionForEvent(fn(string $eventName) => "User has been {$eventName}"); // Custom description for events
+    }
     protected $fillable = [
         'name',
         'email',
@@ -79,7 +91,7 @@ class User extends Authenticatable
 
     public function delete()
     {
-        if($this->isSystemAdmin() || $this->isLastAdmin()) return;
+        if ($this->isSystemAdmin() || $this->isLastAdmin()) return;
 
         $this->roles()->detach();
         return parent::delete();
@@ -106,11 +118,11 @@ class User extends Authenticatable
     {
         return $this->email === 'admin@admin.com';
     }
-    
+
 
     public static function adminCount()
     {
-        return self::whereHas('roles', function(Builder $query) {
+        return self::whereHas('roles', function (Builder $query) {
             return $query->where('name', 'admin');
         })->count();
     }
@@ -120,9 +132,8 @@ class User extends Authenticatable
      */
     public static function allExceptSU()
     {
-        return self::whereDoesntHave('roles', function(Builder $query) {
+        return self::whereDoesntHave('roles', function (Builder $query) {
             return $query->where('name', 'super admin');
         })->get();
     }
-
 }

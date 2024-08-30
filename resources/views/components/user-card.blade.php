@@ -18,28 +18,36 @@
             </div>
             <div>
                 <div class="font-bold">Son giriş:</div>
-                <div class="text-sm text-ease">239847</div>
+                <div class="text-sm text-ease">{{ $user->last_login }}</div>
             </div>
             <div>
-                <div class="font-bold">Yaptığı son işlem</div>
+                <div class="font-bold">Yaptığı son wtf</div>
                 <div class="text-sm">
-                    <span class="text-ease">Üretim sonucu girişi - 23.43.2020 - </span>
-                    <span class="text-ease-red cursor-pointer">{{ __('common.see_all') }}</span>
+                    @if ($lastActivity)
+                        <p>Last activity: {{ $lastActivity->description }} -
+                            {{ $lastActivity->created_at->format('d M Y, h:i A') }}</p>
+                        <span class="text-ease-red cursor-pointer">{{ __('common.see_all') }}</span>
+                    @else
+                        <p>No activities found for this user.</p>
+                    @endif
+
                 </div>
             </div>
         </div>
     </div>
     <div class="bg-smoke-lighter flex">
-        <div wire:click.prevent="openRolesModal({{ $user->id }})" class="w-full py-2 text-center hover:bg-smoke-dark hover:text-white cursor-pointer">
+        <div wire:click.prevent="openRolesModal({{ $user->id }})"
+            class="w-full py-2 text-center hover:bg-smoke-dark hover:text-white cursor-pointer">
             <i class="user icon"></i>
             Tanımlı roller
         </div>
         @if (!$user->isSystemAdmin())
-            <div wire:click.prevent="delete({{ $user->id }})" class="w-full py-2 text-center hover:bg-smoke-dark hover:text-white cursor-pointer">
+            <div wire:click.prevent="delete({{ $user->id }})"
+                class="w-full py-2 text-center hover:bg-smoke-dark hover:text-white cursor-pointer">
                 <i class="red trash icon"></i>
                 Sil
             </div>
         @endif
     </div>
-    
+
 </div>
