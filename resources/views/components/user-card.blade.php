@@ -13,15 +13,15 @@
     <div class="p-2">
         <div class="p-2 border border-dashed hover:border-teal-400 flex flex-col gap-10 shadow-inner bg-gray-50">
             <div class="font-semibold">
-                <div class="font-bold">Mail adresi:</div>
+                <div class="font-bold">{{ __('auth.mail_address') }}:</div>
                 <div class="text-sm text-ease">{{ $user->email }}</div>
             </div>
             <div>
-                <div class="font-bold">Son giriş:</div>
-                <div class="text-sm text-ease">{{ $user->last_login }}</div>
+                <div class="font-bold">{{ __('auth.last_login') }}:</div>
+                <div class="text-sm text-ease">{{ $user->logedinAt()->diffForHumans() }}</div>
             </div>
             <div>
-                <div class="font-bold">Yaptığı son wtf</div>
+                <div class="font-bold">{{ __('auth.last_activity') }}</div>
                 <div class="text-sm">
                     @if ($lastActivity)
                         <p>Last activity: {{ $lastActivity->description }} -
@@ -39,7 +39,7 @@
         <div wire:click.prevent="openRolesModal({{ $user->id }})"
             class="w-full py-2 text-center hover:bg-smoke-dark hover:text-white cursor-pointer">
             <i class="user icon"></i>
-            Tanımlı roller
+            {{ __('roles.define_roles') }}
         </div>
         @if (!$user->isSystemAdmin())
             <div wire:click.prevent="delete({{ $user->id }})"

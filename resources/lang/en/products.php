@@ -23,6 +23,7 @@ return [
         'subheader' => ':product',
     ],
     'edit_product' => 'Edit product',
+    'at_least_needed_amount' => 'Must be at least :amount',
     'category_not_defined' => 'Category is not defined',
     'this_product_cannot_be_manufactured' => 'This product cannot be manufactured',
     'products_with_no_recipes_cannot_be_manufactured' => 'Products without a defined recipe cannot be produced',

@@ -11,5 +11,5 @@ return [
     'total' => 'Available',
     'lot_number' => 'Lot',
     'critical_stock_warning' => 'Critical Stock Warning',
-    'lot_numbers_of_product' => 'Stock information for:product',
+    'lot_numbers_of_product' => 'Stock information for :product',
 ];

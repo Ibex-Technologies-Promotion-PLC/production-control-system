@@ -67,7 +67,7 @@
                     
 
                     <?php if (isset($component)) { $__componentOriginalfc08e47099b658bf3489ee5abf9b40d3b6748e6d = $component; } ?>
-<?php $component = $__env->getContainer()->make(App\View\Components\Dropdown::class, ['model' => 'product_id','label' => 'recipes.recipe_product','sId' => 'selectProduct','sClass' => 'search','collection' => $this->producibles,'value' => 'id','text' => 'prd_code,prd_name']); ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\Dropdown::class, ['model' => $model ?? 'product_id','label' => $label ?? 'recipes.recipe_product','sId' => $sId ?? 'selectProduct','sClass' => $sClass ?? 'search','collection' => $this->producibles ?? [],'value' => $value ?? 'id','text' => $text ?? 'prd_code,prd_name','key' => $key ?? null]); ?>
 <?php $component->withName('dropdown'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>

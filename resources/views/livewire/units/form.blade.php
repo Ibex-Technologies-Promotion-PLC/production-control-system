@@ -29,35 +29,35 @@
                 <div class="relative rounded-t" style="min-height: 60%">
                     {{-- x-data="{'materials' : false}" --}}
 
-                       
-                        <div class="px-2 py-7">
-                            <div class="flex flex-col gap-3">
-                                @if ( ! $cards)
-                                    <div class="ui placeholder segment h-full">
-                                        <div class="ui icon header">
-                                            <i class="weight icon"></i>
-                                            Birim oluşturmak için ekle butonunu kullanın
-                                        </div>
-                                        <div class="text-sm text-center"></div>
+
+                    <div class="px-2 py-7">
+                        <div class="flex flex-col gap-3">
+                            @if (!$cards)
+                                <div class="ui placeholder segment h-full">
+                                    <div class="ui icon header">
+                                        <i class="weight icon"></i>
+                                        Birim oluşturmak için ekle butonunu kullanın
                                     </div>
-                                @else
-                                    @foreach ($cards as $key => $card)
-                                        <div wire:key="{{ $key }}">
-                                            {{-- {{ App\Models\Unit::find($cards[$key]['id'])->id}} --}}
-                                            <div >
-                                                @include('web.sections.units.create.unit-card')
-                                            </div>
+                                    <div class="text-sm text-center"></div>
+                                </div>
+                            @else
+                                @foreach ($cards as $key => $card)
+                                    <div wire:key="{{ $key }}">
+                                        {{-- {{ App\Models\Unit::find($cards[$key]['id'])->id}} --}}
+                                        <div>
+                                            @include('web.sections.units.create.unit-card')
                                         </div>
-                                    @endforeach
-                                @endif
-                            </div>
+                                    </div>
+                                @endforeach
+                            @endif
                         </div>
+                    </div>
                 </div>
 
             </div>
         @endif
     </x-content>
-    <div x-data="{'questionModal': @entangle('questionModal')}" x-cloak>
+    <div x-data="{ 'questionModal': @entangle('questionModal') }" x-cloak>
         <x-custom-modal position="center" active="questionModal">
             <div class="p-5 flex flex-col gap-5">
                 <div class="text-center">
@@ -68,14 +68,13 @@
                     <button wire:click.prevent="modalSaveEdited()" class="ui primary button">Kaydet</button>
                 </div>
             </div>
-        </x-custom-modal>   
+        </x-custom-modal>
     </div>
 
-    <div x-data="{'confirmModal': @entangle('confirmModal')}" x-cloak>
-        <x-confirm active="confirmModal" question="!!! Emin misin?" atConfirm="confirmDelete()" atDeny="denyDelete()" />
+    <div x-data="{ 'confirmModal': @entangle('confirmModal') }" x-cloak>
+        <x-confirm :active="$active ?? 'confirmModal'" :question="$question ?? '!!! Emin misin?'" atConfirm="confirmDelete()" atDeny="denyDelete()" />
     </div>
 
 
-    
+
 </div>
-

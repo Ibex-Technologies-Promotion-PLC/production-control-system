@@ -1,7 +1,7 @@
-<?php 
+<?php
 
 return [
-    'empty' => 'Boş', 
+    'empty' => 'Boş',
     // 'empty_inside' => 'İçini boşalt',
     'search_in_database' => 'Veritabanında ara...',
     'saved_successfully' => 'Başarıyla kaydedildi!',
@@ -53,11 +53,11 @@ return [
 
     'are_you_sure' => 'Emin misiniz?',
     'are_you_sure_you_want_to_delete' => 'Silmek istediğinize emin misiniz?',
-    'smoothly_saved' => ':model sorunsuzca kaydedildi...', 
+    'smoothly_saved' => ':model sorunsuzca kaydedildi...',
     'context_created' => ':model oluşturuldu...',
     'context_deleted' => 'İçerik silindi',
     'smoothly_updated' => ':model sorunsuz bir şekilde güncellendi...',
-    
+
     // 'operation' => 'İşlem',
     'confirm_or_deny' => 'Onay/Ret',
     'inside' => 'İçinde',
@@ -159,9 +159,10 @@ return [
     'stock_entry_has_been_made' => 'stok girişi yapıldı',
     'no_shipments_are_currently_available' => 'Şu anda herhangi bir sevk işlemi yapılmıyor',
     'there_is_currently_no_production' => 'Şu anda herhangi bir üretim yapılmıyor',
-    'see_all'=>'Tümünü gör',
-    'no'=>'Sıra',
-    'projected_cost'=>'Öngörülen maliyet',
-    'other_wastages_will_come_here'=>'Diğer fireler buraya gelecek',
-    'materials_used_in_production'=>'Materials used in production',
+    'see_all' => 'Tümünü gör',
+    'no' => 'Sıra',
+    'projected_cost' => 'Öngörülen maliyet',
+    'other_wastages_will_come_here' => 'Diğer fireler buraya gelecek',
+    'materials_used_in_production' => 'Materials used in production',
+    'balance' => "Bakiye"
 ];

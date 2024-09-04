@@ -66,8 +66,8 @@
                     {{-- <x-dropdown.search model="product_id" label="recipes.recipe_product"
                         :collection="$this->producibles" value="id" text="name,code" id="selectProduct" class="required" sClass="search" /> --}}
 
-                    <x-dropdown model="product_id" label="recipes.recipe_product" sId="selectProduct" sClass="search"
-                        class="required" :collection="$this->producibles" value="id" text="prd_code,prd_name" />
+                    <x-dropdown :model="$model ?? 'product_id'" :label="$label ?? 'recipes.recipe_product'" :sId="$sId ?? 'selectProduct'" :sClass="$sClass ?? 'search'" class="required"
+                        :collection="$this->producibles ?? []" :value="$value ?? 'id'" :text="$text ?? 'prd_code,prd_name'" :key="$key ?? null" />
                     <div class="@if ($this->isLocked()) disabled @endif field">
                         <x-input action model="rcp_code" label="validation.attributes.rcp_code"
                             placeholder="validation.attributes.rcp_code" class="required mini">

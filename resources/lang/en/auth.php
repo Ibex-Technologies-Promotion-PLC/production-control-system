@@ -15,7 +15,9 @@ return [
 
     'failed' => 'These credentials do not match our records.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-    'last_login' => 'Last Login.',
+    'last_login' => 'Last Login',
+    'last_activity' => 'Last Activity',
     'logout' => 'Logout',
+    'mail_address' => "Mail Address"
 
 ];

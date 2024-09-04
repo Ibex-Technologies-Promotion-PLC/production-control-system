@@ -155,15 +155,15 @@
         <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('tools.toaster', [])->html();
-} elseif ($_instance->childHasBeenRendered('4s0h3fr')) {
-    $componentId = $_instance->getRenderedChildComponentId('4s0h3fr');
-    $componentTag = $_instance->getRenderedChildComponentTagName('4s0h3fr');
+} elseif ($_instance->childHasBeenRendered('ziAVRK0')) {
+    $componentId = $_instance->getRenderedChildComponentId('ziAVRK0');
+    $componentTag = $_instance->getRenderedChildComponentTagName('ziAVRK0');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('4s0h3fr');
+    $_instance->preserveRenderedChild('ziAVRK0');
 } else {
     $response = \Livewire\Livewire::mount('tools.toaster', []);
     $html = $response->html();
-    $_instance->logRenderedChild('4s0h3fr', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('ziAVRK0', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>

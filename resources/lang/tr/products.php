@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return [
     'product' => 'Ürün',
@@ -30,7 +30,7 @@ return [
 
     'category_not_defined' => 'Kategori tanımlanmamış',
 
-    // 'at_least_needed_amount' => 'En az :amount olması gerekiyor',
+    'at_least_needed_amount' => 'En az :amount olması gerekiyor',
 
     'this_product_cannot_be_manufactured' => 'Bu ürün üretilemez',
     'products_with_no_recipes_cannot_be_manufactured' => 'Reçete tanımlanmamış ürünler üretilemezler',

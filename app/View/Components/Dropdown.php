@@ -4,6 +4,8 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
+
+
 class Dropdown extends Component
 {
     public $right = null;
@@ -15,7 +17,6 @@ class Dropdown extends Component
     public $iModel;
     public $iType;
     public $iPlaceholder;
-
 
     // select
     public $sId;
@@ -40,7 +41,6 @@ class Dropdown extends Component
 
     public $noErrors;
 
-
     /**
      * Create a new component instance.
      *
@@ -53,12 +53,12 @@ class Dropdown extends Component
         $iType = 'text',
         $iPlaceholder = null,
         $sId = null,
-        $model,
+        $model = null, // Made optional
         $collection = null,
         $dataSource = null,
         $dataSourceFunction = null,
-        $value,
-        $text,
+        $value = null, // Made optional
+        $text = null, // Made optional
         $sClass = null,
         $triggerOn = false,
         $triggerOnEvent = null,
@@ -76,16 +76,10 @@ class Dropdown extends Component
         $this->iModel = $iModel;
         $this->iType = $iType;
 
-        $this->iPlaceholder = $iPlaceholder
-            ? $iPlaceholder
-            : $label;
+        $this->iPlaceholder = $iPlaceholder ?: $label;
 
-        if (! $sId) {
-            $sId = 'uniqueId' . $key; // works if there is only one inputdrop component on the same page, random id didn't work for some reason ??
-        }
-        $this->sId = $sId;
+        $this->sId = $sId ?: 'uniqueId' . $key;
         $this->model = $model;
-        // $this->collection = json_encode($collection);
         $this->collection = $collection;
         $this->dataSource = $dataSource;
         $this->dataSourceFunction = $dataSourceFunction;
@@ -93,14 +87,11 @@ class Dropdown extends Component
         $this->text = $text;
         $this->sClass = $sClass;
 
-
-        $this->triggerOn = $triggerOn; // if set, dataSource should be string. Otherwise it's array.
+        $this->triggerOn = $triggerOn;
         $this->triggerOnEvent = $triggerOnEvent;
         $this->transition = $transition;
         $this->clearable = $clearable;
-        $this->placeholder = $placeholder;
-        if (! $placeholder) $this->placeholder = __('common.dropdown_placeholder');
-
+        $this->placeholder = $placeholder ?: __('common.dropdown_placeholder');
         $this->prefix = $prefix;
 
         $this->basic = $basic;

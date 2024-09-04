@@ -27,8 +27,8 @@ class LogSuccessfulLogin
      */
     public function handle(Login $event)
     {
-        // $event->user->update(['last_login_at => Carbon::now() ]);
-        auth()->user()->update([ 'last_login_at' => Carbon::now() ]);
-        
+        $event->user->update(['last_login_at' => Carbon::now()]);
+        // auth()->user()->update([ 'last_login_at' => Carbon::now() ]);
+
     }
 }

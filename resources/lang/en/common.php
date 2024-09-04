@@ -1,4 +1,4 @@
-<?php 
+<?php
 return [
     'empty' => 'Empty',
     'search_in_database' => 'Search database...',
@@ -52,7 +52,7 @@ return [
     'context_created' => ':model created...',
     'context_deleted' => 'Context deleted',
     'smoothly_updated' => ':model updated smoothly...',
-   
+
     'confirm_or_deny' => 'Approval/Rejection',
     'inside' => 'Inside',
 
@@ -125,7 +125,7 @@ return [
     'all' => 'All',
     'date_range' => 'Date range',
     'tolerance' => 'Tolerance',
-    'suspend' => 'Passify',
+    'suspend' => 'Suspend',
     'stay_here' => 'Stay here',
     'leave' => 'Leave',
     'undo_changes' => 'Undo changes',
@@ -146,9 +146,10 @@ return [
     'stock_entry_has_been_made' => 'stock entry has been made',
     'no_shipments_are_currently_available' => 'No shipments are currently available',
     'there_is_currently_no_production' => 'There is currently no production',
-    'see_all'=>'See all',
-    'no'=>'ID',
-    'projected_cost'=>'Projected cost',
-    'other_wastages_will_come_here'=>'Other wastages will come here',
-    'materials_used_in_production'=>'Materials used in production',
+    'see_all' => 'See all',
+    'no' => 'ID',
+    'projected_cost' => 'Projected cost',
+    'other_wastages_will_come_here' => 'Other wastages will come here',
+    'materials_used_in_production' => 'Materials used in production',
+    'balance' => "Balance"
 ];
