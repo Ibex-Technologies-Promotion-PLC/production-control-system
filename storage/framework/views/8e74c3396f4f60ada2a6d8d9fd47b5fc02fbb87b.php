@@ -4,8 +4,8 @@
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php $component->withAttributes([]); ?>
-        <?php if (isset($component)) { $__componentOriginalce0295373298096193c2baee2164d0dc314888de = $component; } ?>
-<?php $component = $__env->getContainer()->make(App\View\Components\Container::class, []); ?>
+        <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.container','data' => []]); ?>
 <?php $component->withName('container'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
@@ -13,23 +13,23 @@
                 <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('products.datatable', [])->html();
-} elseif ($_instance->childHasBeenRendered('jT3v2wm')) {
-    $componentId = $_instance->getRenderedChildComponentId('jT3v2wm');
-    $componentTag = $_instance->getRenderedChildComponentTagName('jT3v2wm');
+} elseif ($_instance->childHasBeenRendered('xAgrATV')) {
+    $componentId = $_instance->getRenderedChildComponentId('xAgrATV');
+    $componentTag = $_instance->getRenderedChildComponentTagName('xAgrATV');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('jT3v2wm');
+    $_instance->preserveRenderedChild('xAgrATV');
 } else {
     $response = \Livewire\Livewire::mount('products.datatable', []);
     $html = $response->html();
-    $_instance->logRenderedChild('jT3v2wm', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('xAgrATV', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
          <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
-<?php if (isset($__componentOriginalce0295373298096193c2baee2164d0dc314888de)): ?>
-<?php $component = $__componentOriginalce0295373298096193c2baee2164d0dc314888de; ?>
-<?php unset($__componentOriginalce0295373298096193c2baee2164d0dc314888de); ?>
+<?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
+<?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
+<?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
 <?php endif; ?>
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
