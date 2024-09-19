@@ -11,6 +11,7 @@ use App\Models\Recipe;
 use App\Models\Unit;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class ScenarioSeeder extends Seeder
 {
@@ -21,127 +22,87 @@ class ScenarioSeeder extends Seeder
      */
     public function run()
     {
-        // categories
-        $ajax = $this->cCategory('Ajax Soap');
-        $yariMamul = $this->cCategory('Semi products');
-        $raw_materials = $this->cCategory("Raw materials");
+        DB::transaction(function () {
+            // categories
+            $ajax = $this->cCategory('Ajax Soap');
+            $yariMamul = $this->cCategory('Semi products');
+            $raw_materials = $this->cCategory("Raw materials");
 
-        // products
-        $ajax_blu = $this->cProduct($ajax->id, 'kg', 'Blue Ajax', 'ajax_blu', '8697521976558', true);
-        $ajax_wt = $this->cProduct($ajax->id, 'kg', 'White Ajax', 'ajax_wt', '8699155674821', true);
+            // products
+            $ajax_blu = $this->cProduct($ajax->id, 'kg', 'Blue Ajax', 'ajax_blu', '8697521976558', true);
+            $ajax_wt = $this->cProduct($ajax->id, 'kg', 'White Ajax', 'ajax_wt', '8699155674821', true);
 
+            // Semi products
+            $wine_1 = $this->cProduct($yariMamul->id, 'Litre', 'Wine', 'wine_1', null, true);
+            $dough_1 = $this->cProduct($yariMamul->id, 'Kilogram', 'Dough', 'dough_1', null, true);
 
-        // Semi products
-        $wine_1 = $this->cProduct($yariMamul->id, 'Litre', 'Wine', 'wine_1', null, true);
-        $dough_1 = $this->cProduct($yariMamul->id, 'Kilogram', 'Dough', 'dough_1', null, true);
+            // Content
+            $ca_1 = $this->cProduct($raw_materials->id, 'Kilogram', 'Carbon', 'ca');
+            $hi_1 = $this->cProduct($raw_materials->id, 'Kilogram', 'Hydrogen', 'hi');
+            $ox_1 = $this->cProduct($raw_materials->id, 'Litre', 'Oxygen', 'ox');
 
-        // içerik  **********************
-        $ca_1 = $this->cProduct($raw_materials->id, 'Kilogram', 'Carbon', 'ca');
-        $hi_1 = $this->cProduct($raw_materials->id, 'Kilogram', 'Hidrogn', 'hi');
-        $ox_1 = $this->cProduct($raw_materials->id, 'Litre', 'Oxygen', 'ox');
+            // Create units with null checks
+            $this->createUnit($wine_1, 'Litre', 'l', 1000);
+            $this->createUnit($dough_1, 'Kilogram', 'kg', 1000);
+            $this->createUnit($ca_1, 'Kilogram', 'kg', 1000);
+            $this->createUnit($hi_1, 'Kilogram', 'kg', 1000);
+            $this->createUnit($ox_1, 'Litre', 'l', 1000);
 
+            // recipes
+            $this->cRecipe($ajax_blu->id, 'rct_ajax_blu', [
+                $wine_1->id => ['amount' => '43', 'unit_id' => $wine_1->units()->first()->id ?? null, 'literal' => true],
+                $dough_1->id => ['amount' => '87', 'unit_id' => $dough_1->units()->first()->id ?? null, 'literal' => true],
+                $ca_1->id => ['amount' => '98', 'unit_id' => $ca_1->units()->first()->id ?? null, 'literal' => true],
+                $hi_1->id => ['amount' => '21', 'unit_id' => $hi_1->units()->first()->id ?? null, 'literal' => true],
+                $ox_1->id => ['amount' => '23', 'unit_id' => $ox_1->units()->first()->id ?? null, 'literal' => true],
+            ]);
 
+            $this->cRecipe($ajax_wt->id, 'rct_ajax_wt', [
+                $wine_1->id => ['amount' => '800', 'unit_id' => $wine_1->units()->first()->id ?? null, 'literal' => true],
+                $dough_1->id => ['amount' => '200', 'unit_id' => $dough_1->units()->first()->id ?? null, 'literal' => true],
+                $ca_1->id => ['amount' => '320', 'unit_id' => $ca_1->units()->first()->id ?? null, 'literal' => true],
+                $hi_1->id => ['amount' => '200', 'unit_id' => $hi_1->units()->first()->id ?? null, 'literal' => true],
+                $ox_1->id => ['amount' => '23', 'unit_id' => $ox_1->units()->first()->id ?? null, 'literal' => true],
+            ]);
 
+            WorkOrder::factory()->count(10)->create();
+            StockMove::factory()->count(5)->create();
 
-        // extra units *****************************************************
-        // $this->cUnit($ajax_blu->id, 'kutu', 'kt', 1, false, $ajax_blu->baseUnit->id);
-
-        $wine_1_lt = $this->cUnit($wine_1->id, 'Litre', 'l', 1000, false, $wine_1->baseUnit->id);
-        $dough_1_grm = $this->cUnit($dough_1->id, 'Kilogram', 'kg', 1000, false, $dough_1->baseUnit->id);
-        $ca_1_grm = $this->cUnit($ca_1->id, 'Kilogram', 'kg', 1000, false, $ca_1->baseUnit->id);
-        $hi_1_grm = $this->cUnit($hi_1->id, 'Kilogram', 'kg', 1000, false, $hi_1->baseUnit->id);
-        $ox_1_grm = $this->cUnit($ox_1->id, 'Litre', 'l', 1000, false, $ox_1->baseUnit->id);
-
-
-
-        // recipes ***********************************************************
-        $this->cRecipe($ajax_blu->id, 'rct_ajax_blu', [
-            $wine_1->id => ['amount' => '43', 'unit_id' => $wine_1_lt->id, 'literal' => true],
-            $dough_1->id => ['amount' => '87', 'unit_id' => $dough_1_grm->id, 'literal' => true],
-            $ca_1->id => ['amount' => '98', 'unit_id' => $ca_1_grm->id, 'literal' => true],
-            $hi_1->id => ['amount' => '21', 'unit_id' => $hi_1_grm->id, 'literal' => true],
-            $ox_1->id => ['amount' => '23', 'unit_id' => $ox_1_grm->id, 'literal' => true],
-        ]);
-
-        $this->cRecipe($ajax_wt->id, 'rct_ajax_wt', [
-            $wine_1->id => ['amount' => '800', 'unit_id' => $wine_1_lt->id, 'literal' => true],
-            $dough_1->id => ['amount' => '200', 'unit_id' => $dough_1_grm->id, 'literal' => true],
-            $ca_1->id => ['amount' => '320', 'unit_id' => $ca_1_grm->id, 'literal' => true],
-            $hi_1->id => ['amount' => '200', 'unit_id' => $hi_1_grm->id, 'literal' => true],
-            $ox_1->id => ['amount' => '23', 'unit_id' => $ox_1_grm->id, 'literal' => true],
-        ]);
-
-
-
-        WorkOrder::factory()->count(10)->create();
-        StockMove::factory()->count(5)->create();
-        StockMove::factory()->count(5)->create();
-        StockMove::factory()->count(5)->create();
-        StockMove::factory()->count(5)->create();
-
-
-        // müşteri ve adres
-        $company1 = Company::create([
-            'cmp_name' => '2 Brothers',
-            'cmp_supplier' => false,
-            'cmp_customer' => true,
-            'cmp_note' => 'Dear b2b customer',
-            'cmp_phone' => '0123456789',
-        ]);
-        $address1 = $company1->addresses()->create([
-            'adr_name' => 'Halis Gıda Ana Bayii',
-            'adr_country' => 'Türkiye',
-            'adr_province' => 'İstanbul',
-            'adr_district' => 'Beykoz',
-            'adr_body' => 'Çukurca Mah. Keskin Cad 23A/2',
-            'adr_phone' => '02468101214',
-            'adr_note' => 'Keskin caddesi üzeri büyük Cami karşısı',
-        ]);
-
-
-        $company2 = Company::create([
-            'cmp_name' => 'Büyük Değirmen Un Fabrikası',
-            'cmp_supplier' => true,
-            'cmp_customer' => false,
-            'cmp_note' => 'Bir diğer değerli b2b müşterimiz',
-            'cmp_phone' => '0123456789',
-        ]);
-        $company2->addresses()->create([
-            'adr_name' => 'Büyük Değirmen Kadıköy',
-            'adr_country' => 'Türkiye',
-            'adr_province' => 'İstanbul',
-            'adr_district' => 'Kadıköy',
-            'adr_body' => 'Kurşunlu Mah. 2. Bulvar 12. Cd. 45',
-            'adr_phone' => '0135791133345',
-        ]);
-
-        $company3 = Company::create([
-            'cmp_name' => 'Yeşilyol Unlu Mamuller',
-            'cmp_supplier' => true,
-            'cmp_customer' => true,
-            'cmp_note' => 'Bir diğer değerli b2b müşterimiz',
-            'cmp_phone' => '0123456789',
-        ]);
-        $company3->addresses()->create([
-            'adr_name' => 'Yeşilyol Unlu Mamuller Ataşehir Şube',
-            'adr_country' => 'Türkiye',
-            'adr_province' => 'İstanbul',
-            'adr_district' => 'Ataşehir',
-            'adr_body' => 'Kestane Mah. Yağmur Cad. Yıldırım Sk. 53S/7',
-            'adr_phone' => '013579112343',
-        ]);
-        $company3->addresses()->create([
-            'adr_name' => 'Yeşilyol Unlu Mamuller Fatih Şube',
-            'adr_country' => 'Türkiye',
-            'adr_province' => 'İstanbul',
-            'adr_district' => 'Fatih',
-            'adr_body' => 'Güllü Mah. Yağmur Cad. 66/1',
-            'adr_phone' => '013579112344',
-        ]);
+            // Companies and addresses
+            $this->createCompanyWithAddress('2 Brothers', 'Dear b2b customer', '0123456789', 'Halis Gıda Ana Bayii', 'Türkiye', 'İstanbul', 'Beykoz', 'Çukurca Mah. Keskin Cad 23A/2', '02468101214', 'Keskin caddesi üzeri büyük Cami karşısı');
+            $this->createCompanyWithAddress('Büyük Değirmen Un Fabrikası', 'Bir diğer değerli b2b müşterimiz', '0123456789', 'Büyük Değirmen Kadıköy', 'Türkiye', 'İstanbul', 'Kadıköy', 'Kurşunlu Mah. 2. Bulvar 12. Cd. 45', '0135791133345');
+            $this->createCompanyWithAddress('Yeşilyol Unlu Mamuller', 'Bir diğer değerli b2b müşterimiz', '0123456789', 'Yeşilyol Unlu Mamuller Ataşehir Şube', 'Türkiye', 'İstanbul', 'Ataşehir', 'Kestane Mah. Yağmur Cad. Yıldırım Sk. 53S/7', '013579112343');
+            $this->createCompanyWithAddress('Yeşilyol Unlu Mamuller', 'Bir diğer değerli b2b müşterimiz', '0123456789', 'Yeşilyol Unlu Mamuller Fatih Şube', 'Türkiye', 'İstanbul', 'Fatih', 'Güllü Mah. Yağmur Cad. 66/1', '013579112344');
+        });
     }
 
+    private function createUnit($product, $name, $abbreviation, $factor)
+    {
+        if ($product->baseUnit) {
+            return $this->cUnit($product->id, $name, $abbreviation, $factor, false, $product->baseUnit->id);
+        }
+        return $this->cUnit($product->id, $name, $abbreviation, $factor, false);
+    }
 
+    private function createCompanyWithAddress($name, $note, $phone, $addressName, $country, $province, $district, $body, $adrPhone)
+    {
+        $company = Company::create([
+            'cmp_name' => $name,
+            'cmp_supplier' => false,
+            'cmp_customer' => true,
+            'cmp_note' => $note,
+            'cmp_phone' => $phone,
+        ]);
 
+        $company->addresses()->create([
+            'adr_name' => $addressName,
+            'adr_country' => $country,
+            'adr_province' => $province,
+            'adr_district' => $district,
+            'adr_body' => $body,
+            'adr_phone' => $adrPhone,
+        ]);
+    }
 
     private function cProduct($categoryId, $unitName, $prd_name, $prd_code, $prd_barcode = null, $prd_producible = false)
     {
@@ -159,7 +120,6 @@ class ScenarioSeeder extends Seeder
             'abbreviation' => Str::lower($unitName),
             'operator' => true,
             'factor' => 1,
-            // 'parent_id' => null,
             'is_base' => true,
         ]);
         return $product;
