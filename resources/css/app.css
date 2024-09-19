@@ -1,72 +1,7 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-[x-cloak=""] { display: none; }
-
-@layer components {
-    .btn-blue {
-      @apply py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg hover:bg-red-300 shadow-md;
-    }
-}
-
-@layer components {
-  .text-ease {
-    @apply text-gray-500 hover:text-gray-800 font-semibold ease-in-out duration-200 cursor-default;
-  }
-  .text-ease-red {
-    @apply text-red-400 hover:text-red-600 font-semibold ease-in-out duration-200 cursor-default;
-  }
-  .text-ease-green {
-    @apply text-green-400 hover:text-green-600 font-semibold ease-in-out duration-200 cursor-default;
-  }
-  .text-ease-pointer {
-    @apply  text-gray-500 hover:text-gray-800 font-semibold ease-in-out duration-200 cursor-pointer;
-  }
-  .red {
-    @apply text-red-500 hover:text-red-800;
-  }
-  .input-borderless {
-    @apply font-bold px-2 bg-transparent hover:bg-orange-100 focus:bg-orange-200 focus:outline-none rounded-md;
-  }
-
-  .pin {
-    @apply top-0 right-0 left-0 bottom-0;
-  }
-
-  .white-area {
-    @apply bg-white p-4 shadow-md border rounded;
-  }
-
-  .responsive-grid-2 {
-    @apply grid md:grid-cols-2 gap-2;
-  }
-  
-  .responsive-grid-3-4 {
-    @apply grid md:grid-cols-3 lg:grid-cols-4 gap-2;
-  }
-
-  .ease {
-    @apply duration-200 ease-in-out;
-  }
-
-  .crud-buttons {
-    @apply flex gap-2 justify-center px-1 rounded-sm border border-dashed hover:border-teal-500 ease;
-  }
-
-  .basic-select {
-    @apply focus:outline-none border p-1 rounded max-w-full w-full;
-  }
-
-}
-
-@layer utilities {
-  @variants responsive {
-    .h-30-rem {
-      height: 30rem;
-    }
-    .w-min-30-rem {
-      min-width: 30rem;
-    }
-  }
+[x-cloak] {
+    display: none;
 }

@@ -29,7 +29,7 @@ class Input extends Component
      *
      * @return void
      */
-    public function __construct($model, $placeholder, $label = null, $type = 'text', $action = null, $innerLabel = null, $noErrors = false, $defer = false, $iClass = null)
+    public function __construct($model=null, $placeholder, $label = null, $type = 'text', $action = null, $innerLabel = null, $noErrors = false, $defer = false, $iClass = null)
     {
         $this->model = $model;
         $this->placeholder = $placeholder;
