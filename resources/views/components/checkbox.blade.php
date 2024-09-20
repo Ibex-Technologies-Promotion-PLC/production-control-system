@@ -1,14 +1,1 @@
-<div {{ $attributes }}>
-    {{-- <div class="ui checkbox {{ $type }}"> --}}
-        <input type="checkbox" wire:model="{{ $model }}" >
-        <label>{{ $label }}</label>
-        {{-- <input type="checkbox" class="hidden" wire:model="{{ $model }}" > --}}
-    {{-- </div> --}}
-    @error($model)
-        <p class="text-red-500 py-2">{{ucfirst($message)}}</p>
-    @enderror
-</div>
-
-{{-- <script>
-    $('.ui .checkbox').checkbox();
-</script> --}}
+<input type="checkbox" {!! $attributes->merge(['class' => 'rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800']) !!}>
