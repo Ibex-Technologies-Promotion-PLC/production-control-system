@@ -1,48 +1,39 @@
+@props(['align' => 'right', 'width' => '48', 'contentClasses' => 'py-1 bg-white dark:bg-gray-700', 'dropdownClasses' => ''])
 
-<div class="field">
-    <div {{ $attributes->merge(['class' => 'field']) }} >
+@php
+$alignmentClasses = match ($align) {
+    'left' => 'ltr:origin-top-left rtl:origin-top-right start-0',
+    'top' => 'origin-top',
+    'none', 'false' => '',
+    default => 'ltr:origin-top-right rtl:origin-top-left end-0',
+};
 
-        
-        <label>{{ __($label)}}</label>
-       
-    
-        @if ($iModel)
-        <div class="ui right labeled input" wire:loading.class="disabler">
-            <input type="{{ $iType }}" step="any" placeholder="{{ $iPlaceholder }}" wire:model.debounce.500ms="{{ $iModel }}">
-            <div wire:ignore class="{{ $sClass }} ui @if( ! $basic) label scrolling @endif dropdown" id="{{ $sId }}"> 
-                <input type="hidden" name="{{ $model }}" wire:model.lazy="{{ $model }}">            
-                <div class="text default">{{ $placeholder }}</div>
-                <i class="dropdown icon"></i>
-                <div class="menu">
-                    {{-- options handling by javascript --}}
-                </div>
-            </div>
-        </div>
-        @else
-        <div class="{{ $sClass }} ui @if( ! $basic) selection scrolling @endif dropdown" id="{{ $sId }}" wire:ignore wire:loading.class="double loading disabled" wire:target="{{ $triggerOn }}, {{ $triggerOnEvent }}"> 
-            <input type="hidden" name="{{ $model }}" wire:model.lazy="{{ $model }}">            
-            <div class="text default">{{ $placeholder }}</div>
-            <i class="dropdown icon"></i>
-            <div class="menu">
-                {{-- options handling by javascript --}}
-            </div>
-        </div>
-        @endif
+$width = match ($width) {
+    '48' => 'w-48',
+    '60' => 'w-60',
+    default => 'w-48',
+};
+@endphp
+
+<div class="relative" x-data="{ open: false }" @click.away="open = false" @close.stop="open = false">
+    <div @click="open = ! open">
+        {{ $trigger }}
     </div>
 
-    <div>{{ $right }}</div>
-
-
-
-    {{-- @if (!$noErrors) 
-        @error($iModel)
-            <span class="text-red-500">{{ucfirst($message)}}</span>
-        @enderror
-        @error($model)
-            <span class="text-red-500">{{ucfirst($message)}}</span>
-        @enderror
-    @endif --}}
-
+    <div x-show="open"
+            x-transition:enter="transition ease-out duration-200"
+            x-transition:enter-start="transform opacity-0 scale-95"
+            x-transition:enter-end="transform opacity-100 scale-100"
+            x-transition:leave="transition ease-in duration-75"
+            x-transition:leave-start="transform opacity-100 scale-100"
+            x-transition:leave-end="transform opacity-0 scale-95"
+            class="absolute z-50 mt-2 {{ $width }} rounded-md shadow-lg {{ $alignmentClasses }} {{ $dropdownClasses }}"
+            style="display: none;"
+            @click="open = false">
+        <div class="rounded-md ring-1 ring-black ring-opacity-5 {{ $contentClasses }}">
+            {{ $content }}
+        </div>
+    </div>
 </div>
 
 {{-- @push('scripts') --}}
