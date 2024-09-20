@@ -40,6 +40,7 @@ class Dropdown extends Component
     public $initnone;
 
     public $noErrors;
+    public $trigger;
 
     /**
      * Create a new component instance.
@@ -68,7 +69,9 @@ class Dropdown extends Component
         $prefix = null,
         $basic = false,
         $initnone = false,
-        $noErrors = false
+        $noErrors = false,
+        $trigger = null // Add this to the constructor parameters
+
     ) {
         $this->label = $label;
         $this->key = $key;

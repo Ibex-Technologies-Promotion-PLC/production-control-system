@@ -8,13 +8,16 @@
 <?php $attributes = $attributes->except(\App\View\Components\AppLayout::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
-    <?php
+    <div>
+        
+        
+            <?php
 $__split = function ($name, $params = []) {
     return [$name, $params];
 };
-[$__name, $__params] = $__split('dashboard.dashboard', []);
+[$__name, $__params] = $__split('work-orders.form', []);
 
-$__html = app('livewire')->mount($__name, $__params, 'lw-2464479465-0', $__slots ?? [], get_defined_vars());
+$__html = app('livewire')->mount($__name, $__params, 'lw-2568709111-0', $__slots ?? [], get_defined_vars());
 
 echo $__html;
 
@@ -24,6 +27,8 @@ unset($__params);
 unset($__split);
 if (isset($__slots)) unset($__slots);
 ?>
+        
+    </div>
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal9ac128a9029c0e4701924bd2d73d7f54)): ?>
@@ -33,5 +38,4 @@ if (isset($__slots)) unset($__slots);
 <?php if (isset($__componentOriginal9ac128a9029c0e4701924bd2d73d7f54)): ?>
 <?php $component = $__componentOriginal9ac128a9029c0e4701924bd2d73d7f54; ?>
 <?php unset($__componentOriginal9ac128a9029c0e4701924bd2d73d7f54); ?>
-<?php endif; ?>
-<?php /**PATH /var/www/html/resources/views/dashboard.blade.php ENDPATH**/ ?>
+<?php endif; ?><?php /**PATH /var/www/html/resources/views/web/sections/workorders/create/index.blade.php ENDPATH**/ ?>
