@@ -38,7 +38,7 @@
 
 </div>
 
-
+<?php $__env->startPush('scripts'); ?>
 <script>
     $(document).ready(function() {
         var values = [];
@@ -138,11 +138,12 @@
         }
     });
 </script>
-
+<?php $__env->stopPush(); ?>
 
 <style>
     .disabler {
         pointer-events: none;
     }
 </style>
+
 <?php /**PATH /var/www/html/resources/views/components/dropdown.blade.php ENDPATH**/ ?>

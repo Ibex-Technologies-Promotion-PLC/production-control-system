@@ -9,7 +9,7 @@
                 <x-input noErrors model="prd_code" label="{{ __('validation.attributes.prd_code') }}" placeholder="PROD_***" class="required field" />
                 <x-input action model="prd_barcode" label="validation.attributes.prd_barcode" placeholder="validation.attributes.prd_barcode" class="required mini">
                     <x-slot name="action">
-                        <button wire:click.prevent="suggestProdBarCode" class="ui teal mini right labeled icon button">
+                        <button wire:click.prevent="suggestProdBarCode" type="button" class="ui teal mini right labeled icon button">
                             <i class="icon random"></i>
                             {{ __('recipes.suggest_code') }}
                         </button>

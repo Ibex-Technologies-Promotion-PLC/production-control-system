@@ -12,7 +12,7 @@ use Livewire\Component;
 class Form extends Component
 {
     use CategoriesFormTrait;
-    
+
     public $previous;
 
     /**
@@ -39,7 +39,7 @@ class Form extends Component
     public $unit_id; // unit tablosuna yazılacak static
 
     // public $categories;
- 
+
     protected $listeners = ['categoryUpdated'];
 
     protected function rules()
@@ -64,7 +64,7 @@ class Form extends Component
         $this->suggestProdCode();
         $this->suggestProdBarCode();
         // fill the form fields if edit mode on 
-        if($product) {
+        if ($product) {
             $this->setEditMode($product);
         }
     }
@@ -78,38 +78,37 @@ class Form extends Component
     public function suggestProdCode()
     {
 
-        $this->prd_code = 'PROD_'.random_int(100000, 999999);
-
+        $this->prd_code = 'PROD_' . random_int(100000, 999999);
     }
 
     public function suggestProdBarCode()
     {
 
         $this->prd_barcode = random_int(100000, 999999);
-
     }
 
-    
+
     public function categoryUpdated($categoryId = null)
     {
-        if($categoryId) {
+        if ($categoryId) {
             $this->category_id = $categoryId;
         } else {
             $this->category_id = null;
         }
     }
 
-    
+
     public function getCategoriesProperty()
     {
-        return Category::all()->toArray();
+        $category =  Category::all()->toArray();
+        return $category;
     }
 
 
-    
+
     public function getUnitsProperty()
     {
-        if($this->editMode && $this->product) {
+        if ($this->editMode && $this->product) {
             return $this->product->units->toArray(); // ? birim düzenleme ile ilgili bir şeyler düşünmem lazım...
         } else {
             return Conversions::units;
@@ -121,13 +120,13 @@ class Form extends Component
     {
         $data = $this->validate();
 
-        if($this->editMode) {
+        if ($this->editMode) {
             $this->product->update($data);
             $this->createUnit($this->product->id, $this->unit_id); // ?? bu ne
             session()->flash('success', __('products.code_product_updated', ['code' => $this->product->prd_code]));
         } else {
             $product = Product::create($data);
-            $this->createUnit($product->id, $this->unit_id); 
+            $this->createUnit($product->id, $this->unit_id);
             $this->reset();
             session()->flash('success', __('products.product_created'));
         }
@@ -156,16 +155,13 @@ class Form extends Component
         $this->prd_cost = $product->prd_cost;
         $this->prd_note = $product->prd_note;
         $this->unit_id = optional($product->unit)->id;
-        $this->prd_is_active = (boolean)$product->prd_is_active;
-        $this->prd_producible = (boolean)$product->prd_producible;
+        $this->prd_is_active = (bool)$product->prd_is_active;
+        $this->prd_producible = (bool)$product->prd_producible;
     }
 
-    
+
     public function render()
     {
         return view('livewire.products.form');
     }
-
-
 }
-

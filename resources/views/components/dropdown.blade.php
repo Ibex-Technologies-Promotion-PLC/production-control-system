@@ -45,7 +45,7 @@
 
 </div>
 
-{{-- @push('scripts') --}}
+@push('scripts')
 <script>
     $(document).ready(function() {
         var values = [];
@@ -145,10 +145,11 @@
         }
     });
 </script>
-{{-- @endpush --}}
+@endpush
 
 <style>
     .disabler {
         pointer-events: none;
     }
 </style>
+

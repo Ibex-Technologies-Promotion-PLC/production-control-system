@@ -152,12 +152,12 @@ class Form extends Component
     {
         // Return if ingredient is already in card
         if($this->isInCard($ingredient['id'])) {
-            return $this->emit('toast', __('common.already_exist'), __('recipes.this_ingredient_already_added'));
+            return $this->dispatch('toast', __('common.already_exist'), __('recipes.this_ingredient_already_added'));
         } 
 
         // Return if ingredient is $selectedProduct
         if($ingredient['id'] == $this->selectedProduct->id) {
-            return $this->emit('toast', __('common.somethings_wrong'), __('recipes.a_product_cannot_have_itself_as_a_ingredient'), 'warning');
+            return $this->dispatch('toast', __('common.somethings_wrong'), __('recipes.a_product_cannot_have_itself_as_a_ingredient'), 'warning');
         }
 
         $ingredient = Product::find($ingredient['id']);
@@ -180,18 +180,18 @@ class Form extends Component
     public function removeRecipe()
     {
         if($this->selectedProduct->recipe->delete()) {
-            $this->emit('toast', '', __('common.context_deleted'), 'success');
+            $this->dispatch('toast', '', __('common.context_deleted'), 'success');
             $this->reset();
         } else {
-            $this->emit('toast', __('common.error.title'), __('common.unable_to_delete'), 'warning');
+            $this->dispatch('toast', __('common.error.title'), __('common.unable_to_delete'), 'warning');
         }
 
         // $result = $this->selectedProduct->recipe->delete();
 
         // if($result['type'] == 'error') {
-        //     $this->emit('toast', __('common.error.title'), $result['message'], 'warning');
+        //     $this->dispatch('toast', __('common.error.title'), $result['message'], 'warning');
         // } else {
-        //     $this->emit('toast', '', $result['message'], 'success');
+        //     $this->dispatch('toast', '', $result['message'], 'success');
         //     $this->reset();
         // }
 
@@ -449,9 +449,9 @@ class Form extends Component
         try {
             $recipe->ingredients()->sync(array_combine($IDs, $pivot));
         } catch (\Throwable $th) {
-            $this->emit('toast', 'common.error.title', 'recipes.an_error_occurred_while_adding_ingredients', 'error');
+            $this->dispatch('toast', 'common.error.title', 'recipes.an_error_occurred_while_adding_ingredients', 'error');
         }
-        $this->emit('toast', 'common.saved.title', 'common.saved.changes', 'success');
+        $this->dispatch('toast', 'common.saved.title', 'common.saved.changes', 'success');
     }
 
 

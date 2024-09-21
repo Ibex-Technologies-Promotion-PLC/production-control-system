@@ -83,7 +83,7 @@
 <?php endif; ?>
 <?php $component->withAttributes(['class' => 'required mini']); ?>
                      <?php $__env->slot('action', null, []); ?> 
-                        <button wire:click.prevent="suggestProdBarCode" class="ui teal mini right labeled icon button">
+                        <button wire:click.prevent="suggestProdBarCode" type="button" class="ui teal mini right labeled icon button">
                             <i class="icon random"></i>
                             <?php echo e(__('recipes.suggest_code')); ?>
 
