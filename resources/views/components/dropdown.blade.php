@@ -44,7 +44,6 @@
     @endif --}}
 
 </div>
-
 @push('scripts')
 <script>
     $(document).ready(function() {
@@ -152,4 +151,3 @@
         pointer-events: none;
     }
 </style>
-

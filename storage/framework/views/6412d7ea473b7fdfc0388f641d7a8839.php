@@ -37,7 +37,6 @@
     
 
 </div>
-
 <?php $__env->startPush('scripts'); ?>
 <script>
     $(document).ready(function() {
@@ -145,5 +144,4 @@
         pointer-events: none;
     }
 </style>
-
 <?php /**PATH /var/www/html/resources/views/components/dropdown.blade.php ENDPATH**/ ?>
