@@ -33,72 +33,88 @@
     <div><?php echo e($right); ?></div>
 
 
-
-    
-
 </div>
-<?php $__env->startPush('scripts'); ?>
+    <?php
+        $__scriptKey = '3969487814-0';
+        ob_start();
+    ?>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         var values = [];
         var sId = '#<?php echo e($sId); ?>';
 
         // Populate the options initially
         <!--[if BLOCK]><![endif]--><?php if(! $initnone): ?>
-            fetchValues();
+
+        fetchValues();
         <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
 
-        /**
-         * If an event specified, populate the select with new options
-         */
+        // If an event is specified, populate the select with new options
         <!--[if BLOCK]><![endif]--><?php if($triggerOnEvent): ?>
-            livewire.on('<?php echo e($triggerOnEvent); ?>', function() {
-                console.log("<?php echo e($triggerOnEvent); ?> event triggered for <?php echo e($sId); ?>!");
-                values = []; // Empty values before update
-                fetchValues();
-            });
+        livewire.on('<?php echo e($triggerOnEvent); ?>', function () {
+            console.log("<?php echo e($triggerOnEvent); ?> event triggered for <?php echo e($sId); ?>!");
+            values = []; // Empty values before update
+            fetchValues();
+        });
         <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
 
-        /**
-         * Populate select options on any DOM update. class or id
-         */
+        // Populate select options on any DOM update
         <!--[if BLOCK]><![endif]--><?php if($triggerOn): ?>
-            $("<?php echo e($triggerOn); ?>").on('change', function() {
-                values = []; // Empty values before update
-                fetchValues();
-            });
+        $("<?php echo e($triggerOn); ?>").on('change', function () {
+            values = []; // Empty values before update
+            fetchValues();
+        });
         <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
 
         function fetchValues() {
-            <!--[if BLOCK]><![endif]--><?php if($collection): ?>
-                var data = <?php echo json_encode($collection, 15, 512) ?>;
-                setValues(data);
-            <?php elseif($dataSource): ?>
-                let data = window.Livewire.find('<?php echo e($_instance->getId()); ?>').get('<?php echo e($dataSource); ?>');
-                setValues(data);
-            <?php else: ?> 
-                window.Livewire.find('<?php echo e($_instance->getId()); ?>').call('<?php echo e($dataSourceFunction); ?>').then(data => {
-                    console.log('<?php echo e($dataSourceFunction); ?> function populating the ' + sId + ' dropdown');
-                    setValues(data);
-                });
-            <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
+
+    <!--[if BLOCK]><![endif]--><?php if($collection): ?>
+        // Check if collection exists and is an array
+        if (Array.isArray(<?php echo json_encode($collection, 15, 512) ?>)) {
+            var data = <?php echo json_encode($collection, 15, 512) ?>;
+
+            setValues(data);
+        } else {
+            console.error('Collection is not defined or is not an array.');
         }
+    <?php elseif($dataSource): ?>
+        // Check if data source exists
+        let data = window.Livewire.find('<?php echo e($_instance->getId()); ?>').get('<?php echo e($dataSource); ?>');
+        if (data) {
+            setValues(data);
+        } else {
+            console.error('Data source is not defined or returned null.');
+        }
+    <?php else: ?>
+        // If no collection or data source, call the function to get data
+        window.Livewire.find('<?php echo e($_instance->getId()); ?>').call('<?php echo e($dataSourceFunction); ?>').then(data => {
+            if (data) {
+                console.log('<?php echo e($dataSourceFunction); ?> function populating the ' + sId + ' dropdown');
+                setValues(data);
+            } else {
+                console.error('<?php echo e($dataSourceFunction); ?> did not return any data.');
+            }
+        }).catch(error => {
+            console.error('Error calling dataSourceFunction:', error);
+        });
+    <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
+}
 
         function setValues(data) {
             console.log(data);
-            if(data != null) {
+            if (data != null) {
                 data.forEach(item => {
                     let text = "<?php echo e($text); ?>";
                     let textToShowUser = [];
 
                     // Split the text for display
                     text = text.split(',');
-                    text.forEach(function(txt) {
+                    text.forEach(function (txt) {
                         textToShowUser.push(item[txt]);
                     });
 
                     <!--[if BLOCK]><![endif]--><?php if($prefix): ?>
-                        textToShowUser.unshift("<?php echo e($prefix); ?>");
+                    textToShowUser.unshift("<?php echo e($prefix); ?>");
                     <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
 
                     values.push({
@@ -137,7 +153,12 @@
         }
     });
 </script>
-<?php $__env->stopPush(); ?>
+    <?php
+        $__output = ob_get_clean();
+
+        \Livewire\store($this)->push('scripts', $__output, $__scriptKey)
+    ?>
+
 
 <style>
     .disabler {

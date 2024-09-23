@@ -33,79 +33,85 @@
     <div>{{ $right }}</div>
 
 
-
-    {{-- @if (!$noErrors) 
-        @error($iModel)
-            <span class="text-red-500">{{ucfirst($message)}}</span>
-        @enderror
-        @error($model)
-            <span class="text-red-500">{{ucfirst($message)}}</span>
-        @enderror
-    @endif --}}
-
 </div>
-@push('scripts')
+@script
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         var values = [];
         var sId = '#{{ $sId }}';
 
         // Populate the options initially
-        @if(! $initnone)
-            fetchValues();
+        @if (! $initnone)
+
+        fetchValues();
         @endif
 
-        /**
-         * If an event specified, populate the select with new options
-         */
+        // If an event is specified, populate the select with new options
         @if ($triggerOnEvent)
-            livewire.on('{{ $triggerOnEvent }}', function() {
-                console.log("{{ $triggerOnEvent }} event triggered for {{ $sId }}!");
-                values = []; // Empty values before update
-                fetchValues();
-            });
+        livewire.on('{{ $triggerOnEvent }}', function () {
+            console.log("{{ $triggerOnEvent }} event triggered for {{ $sId }}!");
+            values = []; // Empty values before update
+            fetchValues();
+        });
         @endif
 
-        /**
-         * Populate select options on any DOM update. class or id
-         */
+        // Populate select options on any DOM update
         @if ($triggerOn)
-            $("{{ $triggerOn }}").on('change', function() {
-                values = []; // Empty values before update
-                fetchValues();
-            });
+        $("{{ $triggerOn }}").on('change', function () {
+            values = []; // Empty values before update
+            fetchValues();
+        });
         @endif
 
         function fetchValues() {
-            @if($collection)
-                var data = @json($collection);
-                setValues(data);
-            @elseif($dataSource)
-                let data = @this.get('{{ $dataSource }}');
-                setValues(data);
-            @else 
-                @this.call('{{ $dataSourceFunction }}').then(data => {
-                    console.log('{{ $dataSourceFunction }} function populating the ' + sId + ' dropdown');
-                    setValues(data);
-                });
-            @endif
+
+    @if ($collection)
+        // Check if collection exists and is an array
+        if (Array.isArray(@json($collection))) {
+            var data = @json($collection);
+
+            setValues(data);
+        } else {
+            console.error('Collection is not defined or is not an array.');
         }
+    @elseif ($dataSource)
+        // Check if data source exists
+        let data = @this.get('{{ $dataSource }}');
+        if (data) {
+            setValues(data);
+        } else {
+            console.error('Data source is not defined or returned null.');
+        }
+    @else
+        // If no collection or data source, call the function to get data
+        @this.call('{{ $dataSourceFunction }}').then(data => {
+            if (data) {
+                console.log('{{ $dataSourceFunction }} function populating the ' + sId + ' dropdown');
+                setValues(data);
+            } else {
+                console.error('{{ $dataSourceFunction }} did not return any data.');
+            }
+        }).catch(error => {
+            console.error('Error calling dataSourceFunction:', error);
+        });
+    @endif
+}
 
         function setValues(data) {
             console.log(data);
-            if(data != null) {
+            if (data != null) {
                 data.forEach(item => {
                     let text = "{{ $text }}";
                     let textToShowUser = [];
 
                     // Split the text for display
                     text = text.split(',');
-                    text.forEach(function(txt) {
+                    text.forEach(function (txt) {
                         textToShowUser.push(item[txt]);
                     });
 
-                    @if($prefix)
-                        textToShowUser.unshift("{{ $prefix }}");
+                    @if ($prefix)
+                    textToShowUser.unshift("{{ $prefix }}");
                     @endif
 
                     values.push({
@@ -144,7 +150,8 @@
         }
     });
 </script>
-@endpush
+@endscript
+
 
 <style>
     .disabler {

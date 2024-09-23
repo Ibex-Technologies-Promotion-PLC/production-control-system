@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use Illuminate\Support\Facades\Log;
 use Illuminate\View\Component;
 
 
@@ -86,6 +87,9 @@ class Dropdown extends Component
         $this->collection = $collection;
         $this->dataSource = $dataSource;
         $this->dataSourceFunction = $dataSourceFunction;
+        Log::info($dataSourceFunction);
+        Log::info($collection);
+
         $this->value = $value;
         $this->text = $text;
         $this->sClass = $sClass;
