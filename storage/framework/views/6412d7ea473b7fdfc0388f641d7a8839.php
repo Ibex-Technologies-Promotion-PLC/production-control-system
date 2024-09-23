@@ -41,6 +41,8 @@
 <script>
     $(document).ready(function () {
         var values = [];
+        var value = [];
+
         var sId = '#<?php echo e($sId); ?>';
 
         // Populate the options initially
@@ -69,6 +71,7 @@
         function fetchValues() {
 
     <!--[if BLOCK]><![endif]--><?php if($collection): ?>
+    console.log('collection')
         // Check if collection exists and is an array
         if (Array.isArray(<?php echo json_encode($collection, 15, 512) ?>)) {
             var data = <?php echo json_encode($collection, 15, 512) ?>;
@@ -78,6 +81,8 @@
             console.error('Collection is not defined or is not an array.');
         }
     <?php elseif($dataSource): ?>
+    console.log('collection1')
+
         // Check if data source exists
         let data = window.Livewire.find('<?php echo e($_instance->getId()); ?>').get('<?php echo e($dataSource); ?>');
         if (data) {
@@ -88,6 +93,7 @@
     <?php else: ?>
         // If no collection or data source, call the function to get data
         window.Livewire.find('<?php echo e($_instance->getId()); ?>').call('<?php echo e($dataSourceFunction); ?>').then(data => {
+            console.log('here is me ',data)
             if (data) {
                 console.log('<?php echo e($dataSourceFunction); ?> function populating the ' + sId + ' dropdown');
                 setValues(data);
@@ -98,23 +104,49 @@
             console.error('Error calling dataSourceFunction:', error);
         });
     <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
+    
+    if (typeof '<?php echo e($dataSourceFunction); ?>' !== 'undefined' && '<?php echo e($dataSourceFunction); ?>'.trim() !== '') {
+    window.Livewire.find('<?php echo e($_instance->getId()); ?>').call('<?php echo e($dataSourceFunction); ?>').then(data => {
+        console.log('Received data:', data);
+        if (data) {
+            setValues(data);
+        } else {
+            console.error('No data returned.');
+        }
+    }).catch(error => {
+        console.error('Error calling dataSourceFunction:', error);
+    });
+} else {
+    console.error('dataSourceFunction is not defined or is empty.');
+}
+
+           
+     
+    
 }
 
         function setValues(data) {
-            console.log(data);
+            console.log(data,'in the set');
             if (data != null) {
                 data.forEach(item => {
                     let text = "<?php echo e($text); ?>";
+                    let textArray = [];
                     let textToShowUser = [];
 
                     // Split the text for display
                     text = text.split(',');
+
                     text.forEach(function (txt) {
                         textToShowUser.push(item[txt]);
+                        textArray.push(item['ctg_name'])
+                        // console.log(textArray,'here it is')
+
                     });
 
                     <!--[if BLOCK]><![endif]--><?php if($prefix): ?>
                     textToShowUser.unshift("<?php echo e($prefix); ?>");
+                    textArray.unshift("<?php echo e($prefix); ?>");
+
                     <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
 
                     values.push({
@@ -122,8 +154,15 @@
                         value: item.<?php echo e($value); ?>,
                         selected: window.Livewire.find('<?php echo e($_instance->getId()); ?>').get('<?php echo e($model); ?>') == item.<?php echo e($value); ?>,
                     });
+                    value.push({
+                        name: textArray.join(' - '),
+                        value: item.<?php echo e($value); ?>,
+                        selected: window.Livewire.find('<?php echo e($_instance->getId()); ?>').get('<?php echo e($model); ?>') == item.<?php echo e($value); ?>,
+                    });
                 });
                 populate(values);
+                populates(value);
+
             } else {
                 console.log('%c' + sId + ' data source is incorrect!', 'font-size: 10px; color: red;');
             }
@@ -136,6 +175,29 @@
                 ignoreDiacritics: true,
                 sortSelect: true,
                 placeholder: '<?php echo e(__($placeholder)); ?>',
+                transition: '<?php echo e($transition); ?>',
+                ignoreCase: false,
+                match: 'text', // Search within text
+                forceSelection: false, // Allow deselection
+                clearable: "<?php echo e($clearable); ?>",
+                fullTextSearch: 'exact',
+                message: {
+                    addResult: '<b>{term}</b> ekle',
+                    count: '{count} adet seçildi',
+                    maxSelections: 'En fazla {maxCount} seçilebilir',
+                    noResults: '<?php echo e(__('common.no_results')); ?>',
+                },
+            });
+            console.log('%c' + sId + ' population completed!', 'font-size: 10px; color: green;');
+        }
+        function populates(values = null) {
+            console.log('valeus donw there faya',values)
+            $("#categories").dropdown({
+                values: values, // {name: test, value: 1} format
+                preserveHTML: false,
+                ignoreDiacritics: true,
+                sortSelect: true,
+                placeholder: 'category',
                 transition: '<?php echo e($transition); ?>',
                 ignoreCase: false,
                 match: 'text', // Search within text

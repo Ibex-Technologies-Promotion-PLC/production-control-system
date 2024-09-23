@@ -17,7 +17,7 @@
                 </x-input>
 
                 <div x-data="{categoryModal: @entangle('categoryModal')}" class="equal width fields">
-                    <x-dropdown model="category_id" dataSourceFunction="getCategoriesProperty" value="id" text="ctg_name" sId="categories" sClass="search" triggerOnEvent="categoryUpdated" label="{{ __('modelnames.category') }}" placeholder="{{ __('categories.select_a_category') }}" transition="slide down">
+                    <x-dropdown model="category_id" text="ctg_name"  dataSourceFunction="getCategoriesProperty" value="id" text="ctg_name" sId="categories" sClass="search" triggerOnEvent="categoryUpdated" label="{{ __('modelnames.category') }}" placeholder="{{ __('categories.select_a_category') }}" transition="slide down">
                         <x-slot name="right">
                             <div class="pt-1 flex gap-2 justify-end items-center" id="BUTTONS">
                                 @if ($selectedCategory)
@@ -48,7 +48,7 @@
 
 
             <x-slot name="right">
-                <x-dropdown model="unit_id" :collection="$this->units" value="id" text="name" sId="units" label="units.unit" placeholder="units.unit" transition="slide down" class="required field" />
+                <x-dropdown model="unit_id" :collection="$this->units" value="id"  sId="units" label="units.unit" placeholder="units.unit" transition="slide down" class="required field" />
                 <x-input noErrors model="prd_shelf_life" label="{{ __('validation.attributes.prd_shelf_life') }}" placeholder="{{ __('validation.attributes.prd_shelf_life') }}" class="required field" />
                 <x-input noErrors model="prd_min_threshold" label="{{ __('validation.attributes.prd_min_threshold') }}" placeholder="{{ __('validation.attributes.prd_min_threshold') }}" class="field" />
                 <x-input noErrors model="prd_cost" label="{{ __('validation.attributes.prd_cost') }}" placeholder="{{ __('validation.attributes.prd_cost') }}" class="field" />

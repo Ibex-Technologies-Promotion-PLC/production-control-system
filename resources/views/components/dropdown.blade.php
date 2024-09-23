@@ -38,6 +38,8 @@
 <script>
     $(document).ready(function () {
         var values = [];
+        var value = [];
+
         var sId = '#{{ $sId }}';
 
         // Populate the options initially
@@ -66,6 +68,7 @@
         function fetchValues() {
 
     @if ($collection)
+    console.log('collection')
         // Check if collection exists and is an array
         if (Array.isArray(@json($collection))) {
             var data = @json($collection);
@@ -75,6 +78,8 @@
             console.error('Collection is not defined or is not an array.');
         }
     @elseif ($dataSource)
+    console.log('collection1')
+
         // Check if data source exists
         let data = @this.get('{{ $dataSource }}');
         if (data) {
@@ -85,6 +90,7 @@
     @else
         // If no collection or data source, call the function to get data
         @this.call('{{ $dataSourceFunction }}').then(data => {
+            console.log('here is me ',data)
             if (data) {
                 console.log('{{ $dataSourceFunction }} function populating the ' + sId + ' dropdown');
                 setValues(data);
@@ -95,23 +101,49 @@
             console.error('Error calling dataSourceFunction:', error);
         });
     @endif
+    
+    if (typeof '{{ $dataSourceFunction }}' !== 'undefined' && '{{ $dataSourceFunction }}'.trim() !== '') {
+    @this.call('{{ $dataSourceFunction }}').then(data => {
+        console.log('Received data:', data);
+        if (data) {
+            setValues(data);
+        } else {
+            console.error('No data returned.');
+        }
+    }).catch(error => {
+        console.error('Error calling dataSourceFunction:', error);
+    });
+} else {
+    console.error('dataSourceFunction is not defined or is empty.');
+}
+
+           
+     
+    
 }
 
         function setValues(data) {
-            console.log(data);
+            console.log(data,'in the set');
             if (data != null) {
                 data.forEach(item => {
                     let text = "{{ $text }}";
+                    let textArray = [];
                     let textToShowUser = [];
 
                     // Split the text for display
                     text = text.split(',');
+
                     text.forEach(function (txt) {
                         textToShowUser.push(item[txt]);
+                        textArray.push(item['ctg_name'])
+                        // console.log(textArray,'here it is')
+
                     });
 
                     @if ($prefix)
                     textToShowUser.unshift("{{ $prefix }}");
+                    textArray.unshift("{{ $prefix }}");
+
                     @endif
 
                     values.push({
@@ -119,8 +151,15 @@
                         value: item.{{ $value }},
                         selected: @this.get('{{ $model }}') == item.{{ $value }},
                     });
+                    value.push({
+                        name: textArray.join(' - '),
+                        value: item.{{ $value }},
+                        selected: @this.get('{{ $model }}') == item.{{ $value }},
+                    });
                 });
                 populate(values);
+                populates(value);
+
             } else {
                 console.log('%c' + sId + ' data source is incorrect!', 'font-size: 10px; color: red;');
             }
@@ -133,6 +172,29 @@
                 ignoreDiacritics: true,
                 sortSelect: true,
                 placeholder: '{{ __($placeholder) }}',
+                transition: '{{ $transition }}',
+                ignoreCase: false,
+                match: 'text', // Search within text
+                forceSelection: false, // Allow deselection
+                clearable: "{{ $clearable }}",
+                fullTextSearch: 'exact',
+                message: {
+                    addResult: '<b>{term}</b> ekle',
+                    count: '{count} adet seçildi',
+                    maxSelections: 'En fazla {maxCount} seçilebilir',
+                    noResults: '{{ __('common.no_results') }}',
+                },
+            });
+            console.log('%c' + sId + ' population completed!', 'font-size: 10px; color: green;');
+        }
+        function populates(values = null) {
+            console.log('valeus donw there faya',values)
+            $("#categories").dropdown({
+                values: values, // {name: test, value: 1} format
+                preserveHTML: false,
+                ignoreDiacritics: true,
+                sortSelect: true,
+                placeholder: 'category',
                 transition: '{{ $transition }}',
                 ignoreCase: false,
                 match: 'text', // Search within text

@@ -35,6 +35,7 @@ class Form extends Component
     public $prd_note;
     public $prd_is_active = true;
     public $prd_producible = false;
+    public $categories;
 
     public $unit_id; // unit tablosuna yazılacak static
 
@@ -63,6 +64,7 @@ class Form extends Component
         $this->previous = url()->previous();
         $this->suggestProdCode();
         $this->suggestProdBarCode();
+        $this->categories = $this->getCategoriesProperty();
         // fill the form fields if edit mode on 
         if ($product) {
             $this->setEditMode($product);
@@ -100,8 +102,8 @@ class Form extends Component
 
     public function getCategoriesProperty()
     {
-        $category =  Category::all()->toArray();
-        return $category;
+
+        return Category::all()->toArray();
     }
 
 
