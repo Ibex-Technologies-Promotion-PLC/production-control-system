@@ -2,8 +2,7 @@
 
 namespace App\View\Components;
 
-use Illuminate\Container\Attributes\Log;
-use Illuminate\Support\Facades\Log as FacadesLog;
+use Illuminate\Support\Facades\Log;
 use Illuminate\View\Component;
 
 
@@ -85,6 +84,7 @@ class Dropdown extends Component
 
         $this->sId = $sId ?: 'uniqueId' . $key;
         $this->model = $model;
+        Log::warning('Unexpected model state:', ['model' => $this->model]);
         $this->collection = $collection;
         $this->dataSource = $dataSource;
         $this->dataSourceFunction = $dataSourceFunction ?: 'getCategoriesProperty';
@@ -98,7 +98,6 @@ class Dropdown extends Component
         $this->clearable = $clearable;
         $this->placeholder = $placeholder ?: __('common.dropdown_placeholder');
         $this->prefix = $prefix;
-           FacadesLog::info($this->sId);
         $this->basic = $basic;
         $this->initnone = $initnone;
         $this->noErrors = $noErrors;

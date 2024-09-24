@@ -10,7 +10,8 @@
         <div class="ui right labeled input" wire:loading.class="disabler">
             <input type="{{ $iType }}" step="any" placeholder="{{ $iPlaceholder }}" wire:model.debounce.500ms="{{ $iModel }}">
             <div wire:ignore class="{{ $sClass }} ui @if( ! $basic) label scrolling @endif dropdown" id="{{ $sId }}"> 
-                <input type="hidden" name="{{ $model }}" wire:model.lazy="{{ $model }}">            
+                <input type="hidden" name="{{ $model }}" wire:model.lazy="{{ $model }}"> 
+                    
                 <div class="text default">{{ $placeholder }}</div>
                 <i class="dropdown icon"></i>
                 <div class="menu">
@@ -37,6 +38,7 @@
 @script
 <script>
     $(document).ready(function () {
+
         var values = [];
         var value = [];
 
@@ -90,7 +92,6 @@
     @else
         // If no collection or data source, call the function to get data
         @this.call('{{ $dataSourceFunction }}').then(data => {
-            console.log('here is me ',data)
             if (data) {
                 console.log('{{ $dataSourceFunction }} function populating the ' + sId + ' dropdown');
                 setValues(data);
@@ -104,7 +105,6 @@
     
     if (typeof '{{ $dataSourceFunction }}' !== 'undefined' && '{{ $dataSourceFunction }}'.trim() !== '') {
     @this.call('{{ $dataSourceFunction }}').then(data => {
-        console.log('Received data:', data);
         if (data) {
             setValues(data);
         } else {
@@ -123,9 +123,10 @@
 }
 
         function setValues(data) {
-            console.log(data,'in the set');
             if (data != null) {
                 data.forEach(item => {
+                    console.log("{{$model}}",'model is here')
+
                     let text = "{{ $text }}";
                     let textArray = [];
                     let textToShowUser = [];
@@ -133,12 +134,12 @@
                     // Split the text for display
                     text = text.split(',');
 
+
                     text.forEach(function (txt) {
                         textToShowUser.push(item[txt]);
                         textArray.push(item['ctg_name'])
-                        // console.log(textArray,'here it is')
 
-                    });
+                    });                    
 
                     @if ($prefix)
                     textToShowUser.unshift("{{ $prefix }}");
@@ -157,8 +158,10 @@
                         selected: @this.get('{{ $model }}') == item.{{ $value }},
                     });
                 });
-                populate(values);
-                populates(value);
+                let filteredValues = values.filter(item => item.name !== '');
+                let filteredValue = value.filter(item => item.name !== '');
+                populate(filteredValues);
+                populates(filteredValue);
 
             } else {
                 console.log('%c' + sId + ' data source is incorrect!', 'font-size: 10px; color: red;');
@@ -188,7 +191,6 @@
             console.log('%c' + sId + ' population completed!', 'font-size: 10px; color: green;');
         }
         function populates(values = null) {
-            console.log('valeus donw there faya',values)
             $("#categories").dropdown({
                 values: values, // {name: test, value: 1} format
                 preserveHTML: false,

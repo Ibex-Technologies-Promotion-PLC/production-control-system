@@ -10,7 +10,8 @@
         <div class="ui right labeled input" wire:loading.class="disabler">
             <input type="<?php echo e($iType); ?>" step="any" placeholder="<?php echo e($iPlaceholder); ?>" wire:model.debounce.500ms="<?php echo e($iModel); ?>">
             <div wire:ignore class="<?php echo e($sClass); ?> ui <?php if( ! $basic): ?> label scrolling <?php endif; ?> dropdown" id="<?php echo e($sId); ?>"> 
-                <input type="hidden" name="<?php echo e($model); ?>" wire:model.lazy="<?php echo e($model); ?>">            
+                <input type="hidden" name="<?php echo e($model); ?>" wire:model.lazy="<?php echo e($model); ?>"> 
+                    
                 <div class="text default"><?php echo e($placeholder); ?></div>
                 <i class="dropdown icon"></i>
                 <div class="menu">
@@ -40,6 +41,7 @@
     ?>
 <script>
     $(document).ready(function () {
+
         var values = [];
         var value = [];
 
@@ -93,7 +95,6 @@
     <?php else: ?>
         // If no collection or data source, call the function to get data
         window.Livewire.find('<?php echo e($_instance->getId()); ?>').call('<?php echo e($dataSourceFunction); ?>').then(data => {
-            console.log('here is me ',data)
             if (data) {
                 console.log('<?php echo e($dataSourceFunction); ?> function populating the ' + sId + ' dropdown');
                 setValues(data);
@@ -107,7 +108,6 @@
     
     if (typeof '<?php echo e($dataSourceFunction); ?>' !== 'undefined' && '<?php echo e($dataSourceFunction); ?>'.trim() !== '') {
     window.Livewire.find('<?php echo e($_instance->getId()); ?>').call('<?php echo e($dataSourceFunction); ?>').then(data => {
-        console.log('Received data:', data);
         if (data) {
             setValues(data);
         } else {
@@ -126,9 +126,10 @@
 }
 
         function setValues(data) {
-            console.log(data,'in the set');
             if (data != null) {
                 data.forEach(item => {
+                    console.log("<?php echo e($model); ?>",'model is here')
+
                     let text = "<?php echo e($text); ?>";
                     let textArray = [];
                     let textToShowUser = [];
@@ -136,12 +137,12 @@
                     // Split the text for display
                     text = text.split(',');
 
+
                     text.forEach(function (txt) {
                         textToShowUser.push(item[txt]);
                         textArray.push(item['ctg_name'])
-                        // console.log(textArray,'here it is')
 
-                    });
+                    });                    
 
                     <!--[if BLOCK]><![endif]--><?php if($prefix): ?>
                     textToShowUser.unshift("<?php echo e($prefix); ?>");
@@ -160,8 +161,10 @@
                         selected: window.Livewire.find('<?php echo e($_instance->getId()); ?>').get('<?php echo e($model); ?>') == item.<?php echo e($value); ?>,
                     });
                 });
-                populate(values);
-                populates(value);
+                let filteredValues = values.filter(item => item.name !== '');
+                let filteredValue = value.filter(item => item.name !== '');
+                populate(filteredValues);
+                populates(filteredValue);
 
             } else {
                 console.log('%c' + sId + ' data source is incorrect!', 'font-size: 10px; color: red;');
@@ -191,7 +194,6 @@
             console.log('%c' + sId + ' population completed!', 'font-size: 10px; color: green;');
         }
         function populates(values = null) {
-            console.log('valeus donw there faya',values)
             $("#categories").dropdown({
                 values: values, // {name: test, value: 1} format
                 preserveHTML: false,

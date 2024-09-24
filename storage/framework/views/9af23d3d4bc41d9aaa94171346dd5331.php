@@ -207,7 +207,7 @@
              <?php $__env->slot('right', null, []); ?> 
                 <?php if (isset($component)) { $__componentOriginal4a0aa0dbff261054ba83150e9d676aae = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal4a0aa0dbff261054ba83150e9d676aae = $attributes; } ?>
-<?php $component = App\View\Components\Dropdown::resolve(['model' => 'unit_id','collection' => $this->units,'value' => 'id','sId' => 'units','label' => 'units.unit','placeholder' => 'units.unit','transition' => 'slide down'] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component = App\View\Components\Dropdown::resolve(['model' => 'unit_id','text' => 'name','collection' => $this->units,'value' => 'id','sId' => 'units','label' => 'units.unit','placeholder' => 'units.unit','transition' => 'slide down'] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('dropdown'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>

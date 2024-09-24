@@ -6,6 +6,7 @@ use App\Common\Units\Conversions;
 use App\Http\Livewire\Traits\Categories\CategoriesFormTrait;
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 
 
@@ -120,6 +121,9 @@ class Form extends Component
 
     public function submit()
     {
+        $dataBeforeValidation = $this->all(); // Retrieves all data from the Livewire component.
+    
+        Log::info('Data before validation: ', $dataBeforeValidation);
         $data = $this->validate();
 
         if ($this->editMode) {
