@@ -19,5 +19,28 @@ module.exports = {
         },
     },
 
+<<<<<<< HEAD
     plugins: [forms, typography],
 };
+=======
+    variants: {
+        opacity: ['responsive', 'hover', 'focus', 'disabled'],
+        borderWidth: ['responsive', 'last', 'hover', 'focus'],
+
+        // extend: {
+        //     // scale: ['focus-within'],
+        //     borderWidth: ['last'],
+        // },
+    },
+    
+
+    plugins: [require('@tailwindcss/ui')],
+
+    experimental: 'all',
+
+    future: {
+        removeDeprecatedGapUtilities: true,
+        purgeLayersByDefault: false,
+    },
+};
+>>>>>>> origin/main
