@@ -31,10 +31,10 @@ trait CategoriesFormTrait
 
         if($this->ctgEditMode && $this->selectedCategory) {
             if($this->selectedCategory->update($ctgData))
-                $this->emit('categoryUpdated', $this->selectedCategory->id);
+                $this->dispatch('categoryUpdated', $this->selectedCategory->id);
         } else {
             $category = Category::create($ctgData);
-            $this->emit('categoryUpdated', $category->id);
+            $this->dispatch('categoryUpdated', $category->id);
 
             $this->selectedCategory = $category;
         }

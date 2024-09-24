@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use Illuminate\Support\Facades\Log;
 use Illuminate\View\Component;
 
 
@@ -57,7 +58,7 @@ class Dropdown extends Component
         $model = null, // Made optional
         $collection = null,
         $dataSource = null,
-        $dataSourceFunction = null,
+        $dataSourceFunction = "getCategoriesProperty",
         $value = null, // Made optional
         $text = null, // Made optional
         $sClass = null,
@@ -83,9 +84,10 @@ class Dropdown extends Component
 
         $this->sId = $sId ?: 'uniqueId' . $key;
         $this->model = $model;
+        Log::warning('Unexpected model state:', ['model' => $this->model]);
         $this->collection = $collection;
         $this->dataSource = $dataSource;
-        $this->dataSourceFunction = $dataSourceFunction;
+        $this->dataSourceFunction = $dataSourceFunction ?: 'getCategoriesProperty';
         $this->value = $value;
         $this->text = $text;
         $this->sClass = $sClass;
@@ -96,7 +98,6 @@ class Dropdown extends Component
         $this->clearable = $clearable;
         $this->placeholder = $placeholder ?: __('common.dropdown_placeholder');
         $this->prefix = $prefix;
-
         $this->basic = $basic;
         $this->initnone = $initnone;
         $this->noErrors = $noErrors;

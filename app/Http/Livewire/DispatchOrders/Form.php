@@ -87,7 +87,7 @@ class Form extends Component
         $this->selectedCompany = Company::findOrFail($id);
         $this->companyAddresses = $this->selectedCompany->addresses->toArray();
 
-        $this->emit('do_company_selected');
+        $this->emi('do_company_selected');
     }
 
  
