@@ -11,17 +11,17 @@
     },
     "devDependencies": {
         "@tailwindcss/ui": "^0.5.0",
-        "autoprefixer": "^9.8.6",
+        "axios": "^0.21.1",
         "cross-env": "^7.0.3",
         "laravel-mix": "^5.0.9",
-        "postcss": "^7.0.39",
+        "lodash": "^4.17.19",
         "postcss-import": "^12.0.1",
         "resolve-url-loader": "^3.1.2",
         "tailwindcss": "^1.9.6",
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "axios": "^1.7.7",
+        "@tailwindcss/forms": "^0.5.9",
         "fomantic-ui-css": "^2.8.7"
     }
 }

@@ -1,3 +1,26 @@
-@props(['disabled' => false])
+<div {{ $attributes->merge(['class' => 'field']) }}>
+    <label>{{ ucfirst(__($label)) }}</label>
+    @if ($action)
+        <div class="ui action input flex-1 {{ $iClass }}">
+            <input @if($defer) wire:model.defer="{{ $model }}" @else wire:model.lazy="{{ $model }}" @endif type="{{ $type }}" placeholder="{{ ucfirst(__($placeholder)) }}">
+            {{ $action }}
+        </div>
+    @elseif($innerLabel)
+        <div class="ui right labeled input flex-1 {{ $iClass }}">
+            <input @if($defer) wire:model.defer="{{ $model }}" @else wire:model.lazy="{{ $model }}" @endif type="{{ $type }}" placeholder="{{ ucfirst(__($placeholder)) }}">
+            <div class="ui basic label">
+                {{ $innerLabel }}
+            </div>
+        </div>
+    @else
+        <input @if($defer) wire:model.defer="{{ $model }}" @else wire:model.lazy="{{ $model }}" @endif type="{{ $type }}" placeholder="{{ ucfirst(__($placeholder)) }}">
+    @endif
 
-<input {{ $disabled ? 'disabled' : '' }} {!! $attributes->merge(['class' => 'border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm']) !!}>
+
+    @if (!$noErrors)
+        @error($model)
+        <p class="text-red-500 py-2">{{ucfirst($message)}}</p>
+        @enderror
+    @endif
+
+</div>

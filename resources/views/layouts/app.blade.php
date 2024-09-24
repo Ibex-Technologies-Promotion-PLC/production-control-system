@@ -1,45 +1,104 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
 
-        <!-- Styles -->
-        @livewireStyles
-    </head>
-    <body class="font-sans antialiased">
-        <x-banner />
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/semantic.min.css') }}">
+    @stack('styles')
 
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-            @livewire('navigation-menu')
 
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white dark:bg-gray-800 shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
+
+
+    @livewireStyles
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/semantic.min.js') }}"></script>
+
+    {{-- Datatable .. --}}
+
+    {{-- // Copied -------------------------------------  --}}
+    <script>
+        function copy(id, message = 'Copied') {
+            var text = document.getElementById(id).innerHTML
+            var input = document.createElement('textarea');
+            input.innerHTML = text;
+            document.body.appendChild(input);
+            input.select();
+            var result = document.execCommand('copy');
+            document.body.removeChild(input);
+            alert(message);
+        }
+    </script>
+    {{-- // --------------------------------------------- --}}
+
+
+</head>
+
+<body class="font-sans antialiased">
+    <div class="min-h-screen bg-blue-50 overflow-y-hidden">
+        <!-- Page Heading -->
+        {{-- @livewire('navigation-dropdown') --}}
+
+        <div class="flex" x-data="{sidebar: false}">
+
+            <template id="SIDEBAR" x-if="!sidebar" x-cloak>
+                <div class="bg-white relative">
+                    <x-layouts.partials.sidebar />
+                </div>
+            </template>
+
+
+            <div class="flex-1 h-screen flex flex-col">
+
+                <div id="TOPBAR" class="border-b md:border-b-0">
+                    <x-layouts.partials.topbar />
+                </div>
+
+                <div class="px-6 hidden md:block leading-loose border-b shadow bg-gray-50">
+                    <x-breadcrumb />
+                </div>
+
+                <!-- Page Content -->
+                <div class="overflow-x-hidden flex flex-col flex-1">
+
+                    <div class="flex-1 border-b">
+                        <x-info-area />
+                        {{ $slot }}
                     </div>
-                </header>
-            @endif
+                    <div id="FOOTER" class="bg-white">
+                        <x-layouts.partials.footer />
+                    </div>
+                </div>
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+            </div>
+
         </div>
 
-        @stack('modals')
 
-        @livewireScripts
-    </body>
+
+    </div>
+
+    @stack('modals')
+    @stack('scripts')
+
+    @livewireScripts
+
+    <livewire:tools.toaster />
+    {{-- <livewire:tools.modal /> --}}
+
+
+
+</body>
+
 </html>
