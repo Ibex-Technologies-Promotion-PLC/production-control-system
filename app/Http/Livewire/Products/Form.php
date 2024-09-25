@@ -123,7 +123,6 @@ class Form extends Component
     {
         $dataBeforeValidation = $this->all(); // Retrieves all data from the Livewire component.
     
-        Log::info('Data before validation: ', $dataBeforeValidation);
         $data = $this->validate();
 
         if ($this->editMode) {

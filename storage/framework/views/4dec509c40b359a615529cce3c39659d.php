@@ -22,9 +22,5 @@
 
         </div>
     </body>
-<<<<<<< HEAD
 </html>
 <?php /**PATH /var/www/html/resources/views/layouts/guest.blade.php ENDPATH**/ ?>
-=======
-</html><?php /**PATH /var/www/html/resources/views/layouts/guest.blade.php ENDPATH**/ ?>
->>>>>>> origin/main

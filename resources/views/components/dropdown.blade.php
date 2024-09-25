@@ -1,12 +1,6 @@
-@props(['align' => 'right', 'width' => '48', 'contentClasses' => 'py-1 bg-white dark:bg-gray-700', 'dropdownClasses' => ''])
 
-@php
-$alignmentClasses = match ($align) {
-    'left' => 'ltr:origin-top-left rtl:origin-top-right start-0',
-    'top' => 'origin-top',
-    'none', 'false' => '',
-    default => 'ltr:origin-top-right rtl:origin-top-left end-0',
-};
+<div class="field">
+    <div {{ $attributes->merge(['class' => 'field']) }} >
 
         
         <label>{{ __($label)}}</label>
@@ -16,8 +10,7 @@ $alignmentClasses = match ($align) {
         <div class="ui right labeled input" wire:loading.class="disabler">
             <input type="{{ $iType }}" step="any" placeholder="{{ $iPlaceholder }}" wire:model.debounce.500ms="{{ $iModel }}">
             <div wire:ignore class="{{ $sClass }} ui @if( ! $basic) label scrolling @endif dropdown" id="{{ $sId }}"> 
-                <input type="hidden" name="{{ $model }}" wire:model.lazy="{{ $model }}"> 
-                    
+                <input type="hidden" name="{{ $model }}" wire:model.lazy="{{ $model }}">            
                 <div class="text default">{{ $placeholder }}</div>
                 <i class="dropdown icon"></i>
                 <div class="menu">
@@ -31,13 +24,13 @@ $alignmentClasses = match ($align) {
             <div class="text default">{{ $placeholder }}</div>
             <i class="dropdown icon"></i>
             <div class="menu">
-                {{-- options handling by javascript --}}
             </div>
         </div>
         @endif
     </div>
 
     <div>{{ $right }}</div>
+
 
 
 </div>
@@ -50,20 +43,25 @@ $alignmentClasses = match ($align) {
 
         var sId = '#{{ $sId }}';
 
-        // Populate the options initially
-        @if (! $initnone)
+        var initnone = @json($initnone);  
+        console.log(initnone,'init none')
+        if (!initnone){
+            fetchValues();
 
-        fetchValues();
-        @endif
+        }
 
         // If an event is specified, populate the select with new options
-        @if ($triggerOnEvent)
-        livewire.on('{{ $triggerOnEvent }}', function () {
+        var triggerOnEvent = @json($triggerOnEvent);  
+        console.log(triggerOnEvent,"event triggered")
+
+        if (triggerOnEvent){
+            Livewire.on( triggerOnEvent , function () {
             console.log("{{ $triggerOnEvent }} event triggered for {{ $sId }}!");
             values = []; // Empty values before update
             fetchValues();
         });
-        @endif
+        }
+       
 
         // Populate select options on any DOM update
         @if ($triggerOn)
@@ -108,24 +106,7 @@ $alignmentClasses = match ($align) {
             console.error('Error calling dataSourceFunction:', error);
         });
     @endif
-    
-    if (typeof '{{ $dataSourceFunction }}' !== 'undefined' && '{{ $dataSourceFunction }}'.trim() !== '') {
-    @this.call('{{ $dataSourceFunction }}').then(data => {
-        if (data) {
-            setValues(data);
-        } else {
-            console.error('No data returned.');
-        }
-    }).catch(error => {
-        console.error('Error calling dataSourceFunction:', error);
-    });
-} else {
-    console.error('dataSourceFunction is not defined or is empty.');
-}
-
-           
-     
-    
+       
 }
 
         function setValues(data) {

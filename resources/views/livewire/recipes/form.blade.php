@@ -1,28 +1,4 @@
 <div>
-    {{-- {{ print_r($backupCards) }}
-    {{ $backupCode }}
-    <br>
-
-    @if ($selectedProduct)
-        şu anki {{ $selectedProduct->prd_code }}
-    @endif
-
-    <br>
-
-    @if ($this->isCardsExists())
-        card var!
-    @endif
-
-    <br>
-
-    @if ($this->isBackupExists())
-        backup var!
-    @endif
-
-    <br>
-    @if ($oldProductId)
-    önceki {{ \App\Models\Product::find($oldProductId)->prd_code }}
-    @endif --}}
 
     <x-error-area></x-error-area>
     <x-content theme="orange">
@@ -63,9 +39,7 @@
         <div class="p-6 shadow-md">
             <form class="ui mini form">
                 <div class="equal width fields">
-                    {{-- <x-dropdown.search model="product_id" label="recipes.recipe_product"
-                        :collection="$this->producibles" value="id" text="name,code" id="selectProduct" class="required" sClass="search" /> --}}
-
+                  
                     <x-dropdown :model="$model ?? 'product_id'" :label="$label ?? 'recipes.recipe_product'" :sId="$sId ?? 'selectProduct'" :sClass="$sClass ?? 'search'" class="required"
                         :collection="$this->producibles ?? []" :value="$value ?? 'id'" :text="$text ?? 'prd_code,prd_name'" :key="$key ?? null" />
                     <div class="@if ($this->isLocked()) disabled @endif field">
@@ -108,12 +82,7 @@
                                 <div wire:key="wire_card{{ $key }}"
                                     class="relative flex border shadow rounded-lg bg-white border-blue-100 hover:border-blue-300">
 
-                                    {{-- <div class="px-4 rounded-l-lg bg-green-300">
-                                            <i class="inverted box icon"></i>
-                                        </div> --}}
-
-                                    {{-- image field --}}
-
+                               
 
                                     <div
                                         class="flex flex-col justify-center items-center w-3/12 md:w-16 rounded-l-lg shadow-md">

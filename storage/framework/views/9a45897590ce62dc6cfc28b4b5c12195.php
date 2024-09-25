@@ -14,7 +14,7 @@ $__split = function ($name, $params = []) {
 };
 [$__name, $__params] = $__split('dashboard.dashboard', []);
 
-$__html = app('livewire')->mount($__name, $__params, 'lw-2464479465-0', $__slots ?? [], get_defined_vars());
+$__html = app('livewire')->mount($__name, $__params, 'lw-2881818052-0', $__slots ?? [], get_defined_vars());
 
 echo $__html;
 
@@ -34,4 +34,4 @@ if (isset($__slots)) unset($__slots);
 <?php $component = $__componentOriginal9ac128a9029c0e4701924bd2d73d7f54; ?>
 <?php unset($__componentOriginal9ac128a9029c0e4701924bd2d73d7f54); ?>
 <?php endif; ?>
-<?php /**PATH /var/www/html/resources/views/dashboard.blade.php ENDPATH**/ ?>
+<?php /**PATH /var/www/html/resources/views/web/sections/dashboard/index.blade.php ENDPATH**/ ?>

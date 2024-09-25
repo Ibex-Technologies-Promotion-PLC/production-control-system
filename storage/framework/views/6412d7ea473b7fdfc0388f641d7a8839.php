@@ -10,8 +10,7 @@
         <div class="ui right labeled input" wire:loading.class="disabler">
             <input type="<?php echo e($iType); ?>" step="any" placeholder="<?php echo e($iPlaceholder); ?>" wire:model.debounce.500ms="<?php echo e($iModel); ?>">
             <div wire:ignore class="<?php echo e($sClass); ?> ui <?php if( ! $basic): ?> label scrolling <?php endif; ?> dropdown" id="<?php echo e($sId); ?>"> 
-                <input type="hidden" name="<?php echo e($model); ?>" wire:model.lazy="<?php echo e($model); ?>"> 
-                    
+                <input type="hidden" name="<?php echo e($model); ?>" wire:model.lazy="<?php echo e($model); ?>">            
                 <div class="text default"><?php echo e($placeholder); ?></div>
                 <i class="dropdown icon"></i>
                 <div class="menu">
@@ -25,13 +24,13 @@
             <div class="text default"><?php echo e($placeholder); ?></div>
             <i class="dropdown icon"></i>
             <div class="menu">
-                
             </div>
         </div>
         <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
     </div>
 
     <div><?php echo e($right); ?></div>
+
 
 
 </div>
@@ -47,20 +46,25 @@
 
         var sId = '#<?php echo e($sId); ?>';
 
-        // Populate the options initially
-        <!--[if BLOCK]><![endif]--><?php if(! $initnone): ?>
+        var initnone = <?php echo json_encode($initnone, 15, 512) ?>;  
+        console.log(initnone,'init none')
+        if (!initnone){
+            fetchValues();
 
-        fetchValues();
-        <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
+        }
 
         // If an event is specified, populate the select with new options
-        <!--[if BLOCK]><![endif]--><?php if($triggerOnEvent): ?>
-        livewire.on('<?php echo e($triggerOnEvent); ?>', function () {
+        var triggerOnEvent = <?php echo json_encode($triggerOnEvent, 15, 512) ?>;  
+        console.log(triggerOnEvent,"event triggered")
+
+        if (triggerOnEvent){
+            Livewire.on( triggerOnEvent , function () {
             console.log("<?php echo e($triggerOnEvent); ?> event triggered for <?php echo e($sId); ?>!");
             values = []; // Empty values before update
             fetchValues();
         });
-        <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
+        }
+       
 
         // Populate select options on any DOM update
         <!--[if BLOCK]><![endif]--><?php if($triggerOn): ?>
@@ -105,24 +109,7 @@
             console.error('Error calling dataSourceFunction:', error);
         });
     <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
-    
-    if (typeof '<?php echo e($dataSourceFunction); ?>' !== 'undefined' && '<?php echo e($dataSourceFunction); ?>'.trim() !== '') {
-    window.Livewire.find('<?php echo e($_instance->getId()); ?>').call('<?php echo e($dataSourceFunction); ?>').then(data => {
-        if (data) {
-            setValues(data);
-        } else {
-            console.error('No data returned.');
-        }
-    }).catch(error => {
-        console.error('Error calling dataSourceFunction:', error);
-    });
-} else {
-    console.error('dataSourceFunction is not defined or is empty.');
-}
-
-           
-     
-    
+       
 }
 
         function setValues(data) {
@@ -228,5 +215,4 @@
     .disabler {
         pointer-events: none;
     }
-</style>
-<?php /**PATH /var/www/html/resources/views/components/dropdown.blade.php ENDPATH**/ ?>
+</style><?php /**PATH /var/www/html/resources/views/components/dropdown.blade.php ENDPATH**/ ?>

@@ -5,7 +5,9 @@ namespace App\Http\Livewire\WorkOrders;
 use \Illuminate\Support\Str;
 use App\Models\Product;
 use App\Models\WorkOrder;
+use App\View\Components\Dropdown;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 
 class Form extends Component
@@ -54,6 +56,8 @@ class Form extends Component
             $this->wo_datetime = Carbon::tomorrow()->format('d.m.Y');
             $this->fillInputs();
         }
+    
+
     }
 
 
@@ -90,7 +94,7 @@ class Form extends Component
         $this->unit_id = $this->selectedProduct->baseUnit->id; // !! bununla if else ilişkisine girecek
 
         $this->fillInputs();
-        $this->emit('woProductChanged'); // fill the units
+        $this->dispatch('woProductChanged'); // fill the units
     }
 
     
