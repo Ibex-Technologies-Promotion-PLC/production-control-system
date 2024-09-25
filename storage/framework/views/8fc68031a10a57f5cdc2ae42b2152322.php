@@ -2,10 +2,10 @@
 
   <div class="flex-1">
       <h4 class="ui horizontal left aligned divider header">
-        <!--[if BLOCK]><![endif]--><?php if($header || $icon): ?>
-            <!--[if BLOCK]><![endif]--><?php if($icon): ?>
+        <?php if($header || $icon): ?>
+            <?php if($icon): ?>
                 <i class="<?php echo e($icon); ?> icon"></i>
-            <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
+            <?php endif; ?>
             <div class="content">
                 <?php echo e(__($header)); ?>
 
@@ -14,11 +14,11 @@
         <?php else: ?>
             <?php echo e($customHeader); ?>
 
-        <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
+        <?php endif; ?>
       </h4>
   </div>
 
-  <!--[if BLOCK]><![endif]--><?php if($buttons): ?>
+  <?php if($buttons): ?>
       <div class="pl-4 flex">
           <div class="shadow rounded-md">
               
@@ -27,6 +27,6 @@
               
           </div>
       </div>
-  <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
+  <?php endif; ?>
   
 </div><?php /**PATH /var/www/html/resources/views/components/page-header.blade.php ENDPATH**/ ?>

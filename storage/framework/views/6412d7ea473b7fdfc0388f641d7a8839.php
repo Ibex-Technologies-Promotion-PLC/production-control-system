@@ -20,7 +20,8 @@
         </div>
         <?php else: ?>
         <div class="<?php echo e($sClass); ?> ui <?php if( ! $basic): ?> selection scrolling <?php endif; ?> dropdown" id="<?php echo e($sId); ?>" wire:ignore wire:loading.class="double loading disabled" wire:target="<?php echo e($triggerOn); ?>, <?php echo e($triggerOnEvent); ?>"> 
-            <input type="hidden" name="<?php echo e($model); ?>" wire:model.lazy="<?php echo e($model); ?>">            
+        <input type="hidden" value="1" name="<?php echo e($model); ?>" wire:model.lazy="category_id">
+           
             <div class="text default"><?php echo e($placeholder); ?></div>
             <i class="dropdown icon"></i>
             <div class="menu">
@@ -109,14 +110,29 @@
             console.error('Error calling dataSourceFunction:', error);
         });
     <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
-    
+    if (typeof '<?php echo e($dataSourceFunction); ?>' !== 'undefined' && '<?php echo e($dataSourceFunction); ?>'.trim() !== '') {
+    window.Livewire.find('<?php echo e($_instance->getId()); ?>').call('<?php echo e($dataSourceFunction); ?>').then(data => {
+        if (data) {
+            setValues(data);
+        } else {
+            console.error('No data returned.');
+        }
+    }).catch(error => {
+        console.error('Error calling dataSourceFunction:', error);
+    });
+} else {
+    console.error('dataSourceFunction is not defined or is empty.');
+}
+
+           
        
 }
 
         function setValues(data) {
             if (data != null) {
                 data.forEach(item => {
-                    console.log("<?php echo e($model); ?>",'model is here')
+                    const model = <?php echo json_encode($model, 15, 512) ?>;
+                    console.log(model,'model is here')
 
                     let text = "<?php echo e($text); ?>";
                     let textArray = [];

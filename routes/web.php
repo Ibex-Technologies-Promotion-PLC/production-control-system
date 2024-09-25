@@ -41,8 +41,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('/roles', 'RoleController');
 
     Route::get('/users', 'UserController@index')->name('users.index');
-    
-    Route::get('/', 'DashboardController@index')->name('dashboard');
+    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+
 
 });
 
@@ -52,7 +52,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
+    Route::get('/', function () {
         return view('dashboard');
     })->name('dashboard');
 });

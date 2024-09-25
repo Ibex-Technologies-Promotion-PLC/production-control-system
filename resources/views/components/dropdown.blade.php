@@ -20,7 +20,8 @@
         </div>
         @else
         <div class="{{ $sClass }} ui @if( ! $basic) selection scrolling @endif dropdown" id="{{ $sId }}" wire:ignore wire:loading.class="double loading disabled" wire:target="{{ $triggerOn }}, {{ $triggerOnEvent }}"> 
-            <input type="hidden" name="{{ $model }}" wire:model.lazy="{{ $model }}">            
+        <input type="hidden" value="1" name="{{$model }}" wire:model.lazy="category_id">
+           
             <div class="text default">{{ $placeholder }}</div>
             <i class="dropdown icon"></i>
             <div class="menu">
@@ -106,14 +107,29 @@
             console.error('Error calling dataSourceFunction:', error);
         });
     @endif
-    
+    if (typeof '{{ $dataSourceFunction }}' !== 'undefined' && '{{ $dataSourceFunction }}'.trim() !== '') {
+    @this.call('{{ $dataSourceFunction }}').then(data => {
+        if (data) {
+            setValues(data);
+        } else {
+            console.error('No data returned.');
+        }
+    }).catch(error => {
+        console.error('Error calling dataSourceFunction:', error);
+    });
+} else {
+    console.error('dataSourceFunction is not defined or is empty.');
+}
+
+           
        
 }
 
         function setValues(data) {
             if (data != null) {
                 data.forEach(item => {
-                    console.log("{{$model}}",'model is here')
+                    const model = @json($model);
+                    console.log(model,'model is here')
 
                     let text = "{{ $text }}";
                     let textArray = [];

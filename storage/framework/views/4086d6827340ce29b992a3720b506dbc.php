@@ -16,7 +16,7 @@
                         <?php echo e($slot); ?>
 
                 </div>
-                <!--[if BLOCK]><![endif]--><?php if($buttons): ?>
+                <?php if($buttons): ?>
                         <?php if (isset($component)) { $__componentOriginalaec4e6c11b019d144a9ab2982f3b684f = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalaec4e6c11b019d144a9ab2982f3b684f = $attributes; } ?>
 <?php $component = App\View\Components\FormButtons::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
@@ -37,15 +37,15 @@
 <?php $component = $__componentOriginalaec4e6c11b019d144a9ab2982f3b684f; ?>
 <?php unset($__componentOriginalaec4e6c11b019d144a9ab2982f3b684f); ?>
 <?php endif; ?>
-                <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
+                <?php endif; ?>
         </div>
 
-        <!--[if BLOCK]><![endif]--><?php if($bottom): ?>
+        <?php if($bottom): ?>
                 <div class="mt-3">
                         <?php echo e($bottom); ?>
 
                 </div>
-        <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
+        <?php endif; ?>
 
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
