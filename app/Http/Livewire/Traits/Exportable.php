@@ -31,7 +31,7 @@ trait Exportable
 
     private function informQueryEmpty()
     {
-        return $this->emit('toast', '', __('common.no_results'), 'error');
+        return $this->dispatch('toast', '', __('common.no_results'), 'error');
     }
     
 }

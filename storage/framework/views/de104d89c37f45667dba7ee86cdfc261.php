@@ -274,23 +274,7 @@
 <?php unset($__componentOriginal786b6632e4e03cdf0a10e8880993f28a); ?>
 <?php endif; ?>
                  <?php $__env->endSlot(); ?>
-                    <?php
-        $__scriptKey = '288593167-0';
-        ob_start();
-    ?>
-                <script>
-                    Livewire.on("woProductChanged", function() {
-                        console.log("event triggered for");
-                        values = []; // Empty values before update
-                        // fetchValues();
-                    });
-                </script>
-                    <?php
-        $__output = ob_get_clean();
-
-        \Livewire\store($this)->push('scripts', $__output, $__scriptKey)
-    ?>
-
+    
 
                  <?php $__env->slot('right', null, []); ?> 
                     <!--[if BLOCK]><![endif]--><?php if($this->productSelected()): ?>

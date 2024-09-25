@@ -75,7 +75,7 @@ trait SpecifyProducts
             $index = strtok($location, '.');
             $product = $this->getProductsProperty()->find($id);
             $this->cards[$index]['units'] = $product->units;
-            $this->emit('sp_product_selected'.$index);
+            $this->dispatch('sp_product_selected'.$index);
             
             // set base unit as default unit, also user will be able to change unit in dropdown
             $this->cards[$index]['unit_id'] = $product->baseUnit->id;

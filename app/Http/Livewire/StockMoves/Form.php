@@ -139,7 +139,7 @@ class Form extends Component
             $this->lotNumbers[$index] = $this->lotNumbers($id);
 
             $this->cards[$index]['unit_id'] = $this->selectedProduct->baseUnit->id;
-            $this->emit('sm_product_selected'.$index);
+            $this->dispatch('sm_product_selected'.$index);
         }
     }
 
@@ -159,7 +159,7 @@ class Form extends Component
                          ->setApproved(true)
                          ->save();
         }
-        $this->emit('toast', __('common.saved.title'), __('common.saved.standard'), 'success');
+        $this->dispatch('toast', __('common.saved.title'), __('common.saved.standard'), 'success');
         $this->reset();
     }
 

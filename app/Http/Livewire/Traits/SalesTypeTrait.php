@@ -36,7 +36,7 @@ trait SalesTypeTrait
     public function stDelete($salesTypeId)
     {
         SalesType::findAndDelete($salesTypeId);
-        $this->emit('st_updated');
+        $this->dispatch('st_updated');
     }
 
 
@@ -46,13 +46,13 @@ trait SalesTypeTrait
 
         if($this->stEditMode) {
             $this->salesType->update($data);
-            $this->emit('st_updated', $this->salesType->id);
+            $this->dispatch('st_updated', $this->salesType->id);
         } else {
             $salesType = SalesType::create($data);
-            $this->emit('st_updated', $salesType->id);
+            $this->dispatch('st_updated', $salesType->id);
         }
         
-        $this->emit('toast', '', __('common.saved.saved_successfully'), 'success');
+        $this->dispatch('toast', '', __('common.saved.saved_successfully'), 'success');
         $this->reset('st_name', 'st_abbr', 'stEditMode', 'salesType');
     }
 

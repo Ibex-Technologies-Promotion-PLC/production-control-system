@@ -82,16 +82,7 @@
                     <x-input noErrors model="wo_queue" label="{{ __('validation.attributes.wo_queue') }}"
                         placeholder="{{ __('validation.attributes.wo_queue') }}" class="required field" />
                 </x-slot>
-                @script
-                <script>
-                    Livewire.on("woProductChanged", function() {
-                        console.log("event triggered for");
-                        values = []; // Empty values before update
-                        // fetchValues();
-                    });
-                </script>
-                @endscript
-
+    
 
                 <x-slot name="right">
                     @if ($this->productSelected())

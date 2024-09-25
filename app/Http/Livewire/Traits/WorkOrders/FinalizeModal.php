@@ -68,10 +68,10 @@ trait FinalizeModal
 
         $completeService = new WorkOrderCompleteService($this->finalizeWorkOrder, $this->unit_id, $this->production_total, $this->production_waste);
         if( $completeService->efficiencyIsNotAcceptable()) 
-            return $this->emit('toast', 'workorders.efficiency_limits_exceeded', __('workorders.efficiency_limits_exceeded_for_this_production', ['efficiency' => $this->finalizeWorkOrder->product->recipe->tolerance_factor]), 'error');
+            return $this->dispatch('toast', 'workorders.efficiency_limits_exceeded', __('workorders.efficiency_limits_exceeded_for_this_production', ['efficiency' => $this->finalizeWorkOrder->product->recipe->tolerance_factor]), 'error');
 
         if($this->finalizeWorkOrder->complete($completeService))
-            $this->emit('toast', __('workorders.production_is_completed'), __('workorders.reserved_sources_deducted_from_stocks_and_product_added_to_stock', ['product' => $this->finalizeWorkOrder->product->prd_name]), 'success');
+            $this->dispatch('toast', __('workorders.production_is_completed'), __('workorders.reserved_sources_deducted_from_stocks_and_product_added_to_stock', ['product' => $this->finalizeWorkOrder->product->prd_name]), 'success');
 
         $this->refreshTable();
     }

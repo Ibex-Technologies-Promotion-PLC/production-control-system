@@ -113,11 +113,11 @@ class Form extends Component
             $workOrder = $this->workOrder->update($data);
             // $workOrder->reservedStocks()->delete();
             
-            $this->emit('toast', '', __('common.saved.changes'), 'success');
+            $this->dispatch('toast', '', __('common.saved.changes'), 'success');
         } else {
             $workOrder = WorkOrder::create($data);
-            $this->emit('toast', '', __('workorders.workorder_saved_successfully'), 'success');
-            $this->emit('new_work_order_created');
+            $this->dispatch('toast', '', __('workorders.workorder_saved_successfully'), 'success');
+            $this->dispatch('new_work_order_created');
             $this->reset();
         } 
 
@@ -167,7 +167,7 @@ class Form extends Component
     public function suspend()
     {
         if($this->editMode && $this->workOrder->suspend())  {
-            $this->emit('toast', '', __('workorders.wo_suspended'), 'info');
+            $this->dispatch('toast', '', __('workorders.wo_suspended'), 'info');
         }
     }
 
@@ -175,7 +175,7 @@ class Form extends Component
     {
         if($this->editMode) {
             $this->workOrder->unsuspend();
-            $this->emit('toast', '', __('workorders.wo_unsuspended'), 'success');
+            $this->dispatch('toast', '', __('workorders.wo_unsuspended'), 'success');
         }
     }
 

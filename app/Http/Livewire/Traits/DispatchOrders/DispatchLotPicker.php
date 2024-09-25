@@ -116,7 +116,7 @@ trait DispatchLotPicker
         // don't let selected lot numbers to be same in all rows
         if(in_array($lotNumber, array_column($this->siblings($index), 'lot_number'))) {
             $this->rows[$index]['lot_number'] = null;
-            $this->emit('toast', '', __('dispatchorders.this_lot_selected_already'), 'error');
+            $this->dispatch('toast', '', __('dispatchorders.this_lot_selected_already'), 'error');
         }
         
         $this->updatedReservedAmount($index);
