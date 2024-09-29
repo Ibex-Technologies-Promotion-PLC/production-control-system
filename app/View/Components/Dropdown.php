@@ -58,7 +58,7 @@ class Dropdown extends Component
         $model = null, // Made optional
         $collection = null,
         $dataSource = null,
-        $dataSourceFunction = "getCategoriesProperty",
+        $dataSourceFunction = null,
         $value = null, // Made optional
         $text = null, // Made optional
         $sClass = null,
@@ -84,10 +84,9 @@ class Dropdown extends Component
 
         $this->sId = $sId ?: 'uniqueId' . $key;
         $this->model = $model;
-        Log::warning('Unexpected model state:', ['model' => $this->model]);
         $this->collection = $collection;
         $this->dataSource = $dataSource;
-        $this->dataSourceFunction = $dataSourceFunction ?: 'getCategoriesProperty';
+        $this->dataSourceFunction = $dataSourceFunction;
         $this->value = $value;
         $this->text = $text;
         $this->sClass = $sClass;
@@ -101,6 +100,7 @@ class Dropdown extends Component
         $this->basic = $basic;
         $this->initnone = $initnone;
         $this->noErrors = $noErrors;
+        Log::warning('', ['text' => $this->text]);
     }
 
     /**
