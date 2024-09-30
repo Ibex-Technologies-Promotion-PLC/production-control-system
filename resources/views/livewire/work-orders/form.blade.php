@@ -57,7 +57,7 @@
                         label="{{ __('validation.attributes.product_id') }}" placeholder="{{ __('units.unit') }}" />
                     @else
                     <x-dropdown model="product_id" triggerOnEvent="new_work_order_created"
-                        dataSourceFunction="getProductsProperty" class="required" sClass="search"
+                        dataSourceFunction="getProductsProperty" class="required" sClass="search" 
                         sId="selectProduct" value="id" text="prd_code,prd_name"
                         label="{{ __('validation.attributes.product_id') }}" placeholder="{{ __('units.unit') }}" />
                     @endif

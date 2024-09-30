@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Services\Product\ProductService;
 use Illuminate\Support\Facades\Log;
 use Illuminate\View\Component;
 
@@ -70,6 +71,7 @@ class Dropdown extends Component
         $prefix = null,
         $basic = false,
         $initnone = false,
+        
         $noErrors = false,
         $trigger = null // Add this to the constructor parameters
 
@@ -111,5 +113,9 @@ class Dropdown extends Component
     public function render()
     {
         return view('components.dropdown');
+    }
+    public function getProductsProperty()
+    {
+        return ProductService::getProducibleOnes();
     }
 }
