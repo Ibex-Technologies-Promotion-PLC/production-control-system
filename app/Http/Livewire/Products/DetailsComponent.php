@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Products;
 
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 
 class DetailsComponent extends Component
@@ -13,10 +14,11 @@ class DetailsComponent extends Component
     protected $queryString = ['currentTab'];
 
 
-    public function __construct($product, $tab = null)
+    public function __construct($product = null, $tab = null)
     {
         $this->product = $product;
         if($tab) $this->currentTab = $tab;
+        Log::info('product in construct '.$this->product);
     }
 
     private function setTab($tab)

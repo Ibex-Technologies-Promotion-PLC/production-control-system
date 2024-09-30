@@ -6,6 +6,7 @@ use App\Contracts\ExportsContract;
 use App\Http\Livewire\SmartTable;
 use App\Http\Livewire\Traits\Exportable;
 use App\Models\Product;
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 
 class Datatable extends Component implements ExportsContract
@@ -33,6 +34,7 @@ class Datatable extends Component implements ExportsContract
     {
         $this->detailsModal = true;
         $this->selectedProduct = Product::find($productId);
+        Log::info('selected product'. $this->selectedProduct );
     }
 
 
