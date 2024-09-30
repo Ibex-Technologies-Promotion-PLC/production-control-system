@@ -33,7 +33,7 @@ class WoPrepare extends Component
     {
         if($this->workOrder->isPreparing() && $this->isRowReady($index)) {
             if($this->workOrder->reservationsFor($this->ingredientCards[$index]['ingredient']['id'])->delete()) {
-                $this->emit('toast', '', __('common.context_deleted'), 'info');
+                $this->dispatch('toast', '', __('common.context_deleted'), 'info');
                 $this->workOrder->activate();
             }
         }

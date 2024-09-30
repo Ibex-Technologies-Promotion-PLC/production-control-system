@@ -121,10 +121,12 @@ class Form extends Component
 
     public function submit()
     {
-        $dataBeforeValidation = $this->all(); // Retrieves all data from the Livewire component.
+
     
-        Log::info('Data before validation: ', $dataBeforeValidation);
         $data = $this->validate();
+        Log::info('after  is here',context: ['category id'=>$this->category_id]);
+
+
 
         if ($this->editMode) {
             $this->product->update($data);

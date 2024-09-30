@@ -1,227 +1,133 @@
-
 <div class="field">
-    <div <?php echo e($attributes->merge(['class' => 'field'])); ?> >
-
-        
+    <div <?php echo e($attributes->merge(['class' => 'field'])); ?>>
         <label><?php echo e(__($label)); ?></label>
-       
-    
+
         <!--[if BLOCK]><![endif]--><?php if($iModel): ?>
-        <div class="ui right labeled input" wire:loading.class="disabler">
-            <input type="<?php echo e($iType); ?>" step="any" placeholder="<?php echo e($iPlaceholder); ?>" wire:model.debounce.500ms="<?php echo e($iModel); ?>">
-            <div wire:ignore class="<?php echo e($sClass); ?> ui <?php if( ! $basic): ?> label scrolling <?php endif; ?> dropdown" id="<?php echo e($sId); ?>"> 
-                <input type="hidden" name="<?php echo e($model); ?>" wire:model.lazy="<?php echo e($model); ?>"> 
-                    
+        <div x-data="dropdownComponent(<?php echo e(json_encode($collection ?? [])); ?>, '<?php echo e($model); ?>', '<?php echo e($text); ?>', '<?php echo e($dataSourceFunction); ?>', '<?php echo e($placeholder); ?>')" 
+        class="ui right labeled input" wire:loading.class="disabler            <input type="<?php echo e($iType); ?>" step="any" placeholder="<?php echo e($iPlaceholder); ?>" wire:model.debounce.500ms="<?php echo e($iModel); ?>">
+            <div wire:ignore class="<?php echo e($sClass); ?> ui <?php if( ! $basic): ?> label scrolling <?php endif; ?> dropdown" id="<?php echo e($sId); ?>">
+                <input type="hidden" name="<?php echo e($model); ?>" wire:model.lazy="<?php echo e($model); ?>">
                 <div class="text default"><?php echo e($placeholder); ?></div>
                 <i class="dropdown icon"></i>
-                <div class="menu">
-                    
-                </div>
+                <div class="menu"></div>
             </div>
         </div>
         <?php else: ?>
-        <div class="<?php echo e($sClass); ?> ui <?php if( ! $basic): ?> selection scrolling <?php endif; ?> dropdown" id="<?php echo e($sId); ?>" wire:ignore wire:loading.class="double loading disabled" wire:target="<?php echo e($triggerOn); ?>, <?php echo e($triggerOnEvent); ?>"> 
-            <input type="hidden" name="<?php echo e($model); ?>" wire:model.lazy="<?php echo e($model); ?>">            
+        <div x-data="dropdownComponent(<?php echo e(json_encode($collection ?? [])); ?>, '<?php echo e($model); ?>', '<?php echo e($text); ?>', '<?php echo e($dataSourceFunction); ?>', '<?php echo e($placeholder); ?>')" 
+        wire:ignore 
+             class="<?php echo e($sClass); ?> ui <?php if( ! $basic): ?> selection scrolling <?php endif; ?> dropdown" 
+             id="<?php echo e($sId); ?>" 
+             wire:loading.class="double loading disabled" 
+             wire:target="<?php echo e($triggerOn); ?>, <?php echo e($triggerOnEvent); ?>">
+            <input type="hidden" name="<?php echo e($model); ?>" wire:model.lazy="<?php echo e($model); ?>">
             <div class="text default"><?php echo e($placeholder); ?></div>
             <i class="dropdown icon"></i>
-            <div class="menu">
-                
-            </div>
+            <div class="menu"></div>
         </div>
         <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
     </div>
-
     <div><?php echo e($right); ?></div>
-
-
 </div>
-    <?php
-        $__scriptKey = '3969487814-0';
-        ob_start();
-    ?>
+
 <script>
-    $(document).ready(function () {
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('dropdownComponent', (initialData = [], modelName, text, dataSourceFunction, placeholder) => ({
+            values: [],
+            selectedValue: null,
+            currentPlaceholder: placeholder,
+            text: text,
+            dataSourceFunction: dataSourceFunction,
 
-        var values = [];
-        var value = [];
+            init() {
+                // Debug the placeholder and text
+                console.log('Initial Text Fields:', this.text);
 
-        var sId = '#<?php echo e($sId); ?>';
+                if (initialData.length > 0) {
+                    this.populate(initialData);
+                } else {
+                    this.fetchValues();
+                }
 
-        // Populate the options initially
-        <!--[if BLOCK]><![endif]--><?php if(! $initnone): ?>
-
-        fetchValues();
-        <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
-
-        // If an event is specified, populate the select with new options
-        <!--[if BLOCK]><![endif]--><?php if($triggerOnEvent): ?>
-        livewire.on('<?php echo e($triggerOnEvent); ?>', function () {
-            console.log("<?php echo e($triggerOnEvent); ?> event triggered for <?php echo e($sId); ?>!");
-            values = []; // Empty values before update
-            fetchValues();
-        });
-        <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
-
-        // Populate select options on any DOM update
-        <!--[if BLOCK]><![endif]--><?php if($triggerOn): ?>
-        $("<?php echo e($triggerOn); ?>").on('change', function () {
-            values = []; // Empty values before update
-            fetchValues();
-        });
-        <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
-
-        function fetchValues() {
-
-    <!--[if BLOCK]><![endif]--><?php if($collection): ?>
-    console.log('collection')
-        // Check if collection exists and is an array
-        if (Array.isArray(<?php echo json_encode($collection, 15, 512) ?>)) {
-            var data = <?php echo json_encode($collection, 15, 512) ?>;
-
-            setValues(data);
-        } else {
-            console.error('Collection is not defined or is not an array.');
-        }
-    <?php elseif($dataSource): ?>
-    console.log('collection1')
-
-        // Check if data source exists
-        let data = window.Livewire.find('<?php echo e($_instance->getId()); ?>').get('<?php echo e($dataSource); ?>');
-        if (data) {
-            setValues(data);
-        } else {
-            console.error('Data source is not defined or returned null.');
-        }
-    <?php else: ?>
-        // If no collection or data source, call the function to get data
-        window.Livewire.find('<?php echo e($_instance->getId()); ?>').call('<?php echo e($dataSourceFunction); ?>').then(data => {
-            if (data) {
-                console.log('<?php echo e($dataSourceFunction); ?> function populating the ' + sId + ' dropdown');
-                setValues(data);
-            } else {
-                console.error('<?php echo e($dataSourceFunction); ?> did not return any data.');
-            }
-        }).catch(error => {
-            console.error('Error calling dataSourceFunction:', error);
-        });
-    <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
-    
-    if (typeof '<?php echo e($dataSourceFunction); ?>' !== 'undefined' && '<?php echo e($dataSourceFunction); ?>'.trim() !== '') {
-    window.Livewire.find('<?php echo e($_instance->getId()); ?>').call('<?php echo e($dataSourceFunction); ?>').then(data => {
-        if (data) {
-            setValues(data);
-        } else {
-            console.error('No data returned.');
-        }
-    }).catch(error => {
-        console.error('Error calling dataSourceFunction:', error);
-    });
-} else {
-    console.error('dataSourceFunction is not defined or is empty.');
-}
-
-           
-     
-    
-}
-
-        function setValues(data) {
-            if (data != null) {
-                data.forEach(item => {
-                    console.log("<?php echo e($model); ?>",'model is here')
-
-                    let text = "<?php echo e($text); ?>";
-                    let textArray = [];
-                    let textToShowUser = [];
-
-                    // Split the text for display
-                    text = text.split(',');
-
-
-                    text.forEach(function (txt) {
-                        textToShowUser.push(item[txt]);
-                        textArray.push(item['ctg_name'])
-
-                    });                    
-
-                    <!--[if BLOCK]><![endif]--><?php if($prefix): ?>
-                    textToShowUser.unshift("<?php echo e($prefix); ?>");
-                    textArray.unshift("<?php echo e($prefix); ?>");
-
-                    <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
-
-                    values.push({
-                        name: textToShowUser.join(' - '),
-                        value: item.<?php echo e($value); ?>,
-                        selected: window.Livewire.find('<?php echo e($_instance->getId()); ?>').get('<?php echo e($model); ?>') == item.<?php echo e($value); ?>,
-                    });
-                    value.push({
-                        name: textArray.join(' - '),
-                        value: item.<?php echo e($value); ?>,
-                        selected: window.Livewire.find('<?php echo e($_instance->getId()); ?>').get('<?php echo e($model); ?>') == item.<?php echo e($value); ?>,
-                    });
+                // Listen for Livewire events to refresh the dropdown options
+                Livewire.on('woProductChanged', () => {
+                    this.fetchValues();
                 });
-                let filteredValues = values.filter(item => item.name !== '');
-                let filteredValue = value.filter(item => item.name !== '');
-                populate(filteredValues);
-                populates(filteredValue);
 
-            } else {
-                console.log('%c' + sId + ' data source is incorrect!', 'font-size: 10px; color: red;');
+            },
+
+          
+            fetchValues() {
+                if (this.dataSourceFunction && this.dataSourceFunction !== '') {
+                    console.log('Fetching data using function:', this.dataSourceFunction);
+
+                    this.$wire.call(this.dataSourceFunction).then(data => {
+                        console.log('Data fetched:', data);
+                        this.populate(data);
+                    }).catch(error => {
+                        console.error('Error fetching data:', error);
+                    });
+                } else {
+                    console.warn('No data source function provided.');
+                }
+            },
+
+            populate(data) {
+                const textProperty = this.text;
+                const valueProperty = 'id';
+
+                const textFields = textProperty.split(',').map(field => field.trim());
+
+                this.values = data.map(item => {
+                    let displayText = textFields.map(field => item[field] ?? '').join(' - ');
+
+                    console.log('Item text:', displayText);
+
+                    return {
+                        name: displayText,
+                        value: item[valueProperty],
+                        selected: this.$wire.get(modelName) == item[valueProperty],
+                    };
+                });
+
+                this.$nextTick(() => {
+                    this.initializeDropdown();
+                });
+            },
+
+            initializeDropdown() {
+                const _this = this;
+
+                $(this.$el).dropdown({
+                    values: this.values,
+                    placeholder: this.currentPlaceholder, // Use dynamic placeholder
+                    transition: 'slide',
+                    clearable: "",
+                    fullTextSearch: 'exact',
+                    forceSelection: false,
+                    onChange: (value, text, $choice) => {
+                        console.log('Dropdown changed:', { value, text });
+                        // Update Livewire model when the user selects an item
+                        _this.$wire.set(modelName, value);
+
+                        // Debug: Ensure the selected value is updated
+                        _this.selectedValue = value;
+                    },
+                    message: {
+                        addResult: '<b>{term}</b> common.add_result',
+                        count: '{count} common.selected_count',
+                        maxSelections: 'common.max_selections',
+                        noResults: 'No results found...',
+                    },
+                });
             }
-        }
-
-        function populate(values = null) {
-            $(sId).dropdown({
-                values: values, // {name: test, value: 1} format
-                preserveHTML: false,
-                ignoreDiacritics: true,
-                sortSelect: true,
-                placeholder: '<?php echo e(__($placeholder)); ?>',
-                transition: '<?php echo e($transition); ?>',
-                ignoreCase: false,
-                match: 'text', // Search within text
-                forceSelection: false, // Allow deselection
-                clearable: "<?php echo e($clearable); ?>",
-                fullTextSearch: 'exact',
-                message: {
-                    addResult: '<b>{term}</b> ekle',
-                    count: '{count} adet seçildi',
-                    maxSelections: 'En fazla {maxCount} seçilebilir',
-                    noResults: '<?php echo e(__('common.no_results')); ?>',
-                },
-            });
-            console.log('%c' + sId + ' population completed!', 'font-size: 10px; color: green;');
-        }
-        function populates(values = null) {
-            $("#categories").dropdown({
-                values: values, // {name: test, value: 1} format
-                preserveHTML: false,
-                ignoreDiacritics: true,
-                sortSelect: true,
-                placeholder: 'category',
-                transition: '<?php echo e($transition); ?>',
-                ignoreCase: false,
-                match: 'text', // Search within text
-                forceSelection: false, // Allow deselection
-                clearable: "<?php echo e($clearable); ?>",
-                fullTextSearch: 'exact',
-                message: {
-                    addResult: '<b>{term}</b> ekle',
-                    count: '{count} adet seçildi',
-                    maxSelections: 'En fazla {maxCount} seçilebilir',
-                    noResults: '<?php echo e(__('common.no_results')); ?>',
-                },
-            });
-            console.log('%c' + sId + ' population completed!', 'font-size: 10px; color: green;');
-        }
+        }));
     });
 </script>
-    <?php
-        $__output = ob_get_clean();
 
-        \Livewire\store($this)->push('scripts', $__output, $__scriptKey)
-    ?>
+
+
+
+
 
 
 <style>

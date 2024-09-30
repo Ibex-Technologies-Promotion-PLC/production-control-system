@@ -67,7 +67,7 @@ trait CategoriesFormTrait
     {
         if($this->selectedCategory) {
             $this->selectedCategory->delete();
-            $this->emit('categoryUpdated');
+            $this->dispatch('categoryUpdated');
             $this->selectedCategory = null;
         }
     }

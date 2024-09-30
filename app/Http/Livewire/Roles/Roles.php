@@ -68,7 +68,7 @@ class Roles extends Component
 
         $this->closeNewRoleModal();
 
-        $this->emit('toast', '', __('common.saved.saved_successfully'), 'success');
+        $this->dispatch('toast', '', __('common.saved.saved_successfully'), 'success');
     }
 
     public function submitPermissions()

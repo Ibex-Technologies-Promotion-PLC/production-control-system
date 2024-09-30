@@ -42,7 +42,7 @@ trait AddressForm
 
         $model->addresses()->create($this->validate());
 
-        $this->emit('toast','', __('addresses.address_added'), 'success');
+        $this->dispatch('toast','', __('addresses.address_added'), 'success');
         $this->reset();
     }
 
@@ -50,7 +50,7 @@ trait AddressForm
     // public function updatingAdrCountry() 
     // {
     //     $this->resetAfterCountry();
-    //     $this->emit('address_countryChanged');
+    //     $this->dispatch('address_countryChanged');
     //     $this->updatedAdrProvince();
     // }
 

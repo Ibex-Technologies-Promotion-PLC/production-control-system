@@ -1,226 +1,133 @@
-@props(['align' => 'right', 'width' => '48', 'contentClasses' => 'py-1 bg-white dark:bg-gray-700', 'dropdownClasses' => ''])
+<div class="field">
+    <div {{ $attributes->merge(['class' => 'field']) }}>
+        <label>{{ __($label) }}</label>
 
-@php
-$alignmentClasses = match ($align) {
-    'left' => 'ltr:origin-top-left rtl:origin-top-right start-0',
-    'top' => 'origin-top',
-    'none', 'false' => '',
-    default => 'ltr:origin-top-right rtl:origin-top-left end-0',
-};
-
-        
-        <label>{{ __($label)}}</label>
-       
-    
         @if ($iModel)
-        <div class="ui right labeled input" wire:loading.class="disabler">
-            <input type="{{ $iType }}" step="any" placeholder="{{ $iPlaceholder }}" wire:model.debounce.500ms="{{ $iModel }}">
-            <div wire:ignore class="{{ $sClass }} ui @if( ! $basic) label scrolling @endif dropdown" id="{{ $sId }}"> 
-                <input type="hidden" name="{{ $model }}" wire:model.lazy="{{ $model }}"> 
-                    
+        <div x-data="dropdownComponent({{ json_encode($collection ?? []) }}, '{{ $model }}', '{{ $text }}', '{{ $dataSourceFunction }}', '{{ $placeholder }}')" 
+        class="ui right labeled input" wire:loading.class="disabler            <input type="{{ $iType }}" step="any" placeholder="{{ $iPlaceholder }}" wire:model.debounce.500ms="{{ $iModel }}">
+            <div wire:ignore class="{{ $sClass }} ui @if( ! $basic) label scrolling @endif dropdown" id="{{ $sId }}">
+                <input type="hidden" name="{{ $model }}" wire:model.lazy="{{ $model }}">
                 <div class="text default">{{ $placeholder }}</div>
                 <i class="dropdown icon"></i>
-                <div class="menu">
-                    {{-- options handling by javascript --}}
-                </div>
+                <div class="menu"></div>
             </div>
         </div>
         @else
-        <div class="{{ $sClass }} ui @if( ! $basic) selection scrolling @endif dropdown" id="{{ $sId }}" wire:ignore wire:loading.class="double loading disabled" wire:target="{{ $triggerOn }}, {{ $triggerOnEvent }}"> 
-            <input type="hidden" name="{{ $model }}" wire:model.lazy="{{ $model }}">            
+        <div x-data="dropdownComponent({{ json_encode($collection ?? []) }}, '{{ $model }}', '{{ $text }}', '{{ $dataSourceFunction }}', '{{ $placeholder }}')" 
+        wire:ignore 
+             class="{{ $sClass }} ui @if( ! $basic) selection scrolling @endif dropdown" 
+             id="{{ $sId }}" 
+             wire:loading.class="double loading disabled" 
+             wire:target="{{ $triggerOn }}, {{ $triggerOnEvent }}">
+            <input type="hidden" name="{{ $model }}" wire:model.lazy="{{ $model }}">
             <div class="text default">{{ $placeholder }}</div>
             <i class="dropdown icon"></i>
-            <div class="menu">
-                {{-- options handling by javascript --}}
-            </div>
+            <div class="menu"></div>
         </div>
         @endif
     </div>
-
     <div>{{ $right }}</div>
-
-
 </div>
-@script
+
 <script>
-    $(document).ready(function () {
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('dropdownComponent', (initialData = [], modelName, text, dataSourceFunction, placeholder) => ({
+            values: [],
+            selectedValue: null,
+            currentPlaceholder: placeholder,
+            text: text,
+            dataSourceFunction: dataSourceFunction,
 
-        var values = [];
-        var value = [];
+            init() {
+                // Debug the placeholder and text
+                console.log('Initial Text Fields:', this.text);
 
-        var sId = '#{{ $sId }}';
+                if (initialData.length > 0) {
+                    this.populate(initialData);
+                } else {
+                    this.fetchValues();
+                }
 
-        // Populate the options initially
-        @if (! $initnone)
-
-        fetchValues();
-        @endif
-
-        // If an event is specified, populate the select with new options
-        @if ($triggerOnEvent)
-        livewire.on('{{ $triggerOnEvent }}', function () {
-            console.log("{{ $triggerOnEvent }} event triggered for {{ $sId }}!");
-            values = []; // Empty values before update
-            fetchValues();
-        });
-        @endif
-
-        // Populate select options on any DOM update
-        @if ($triggerOn)
-        $("{{ $triggerOn }}").on('change', function () {
-            values = []; // Empty values before update
-            fetchValues();
-        });
-        @endif
-
-        function fetchValues() {
-
-    @if ($collection)
-    console.log('collection')
-        // Check if collection exists and is an array
-        if (Array.isArray(@json($collection))) {
-            var data = @json($collection);
-
-            setValues(data);
-        } else {
-            console.error('Collection is not defined or is not an array.');
-        }
-    @elseif ($dataSource)
-    console.log('collection1')
-
-        // Check if data source exists
-        let data = @this.get('{{ $dataSource }}');
-        if (data) {
-            setValues(data);
-        } else {
-            console.error('Data source is not defined or returned null.');
-        }
-    @else
-        // If no collection or data source, call the function to get data
-        @this.call('{{ $dataSourceFunction }}').then(data => {
-            if (data) {
-                console.log('{{ $dataSourceFunction }} function populating the ' + sId + ' dropdown');
-                setValues(data);
-            } else {
-                console.error('{{ $dataSourceFunction }} did not return any data.');
-            }
-        }).catch(error => {
-            console.error('Error calling dataSourceFunction:', error);
-        });
-    @endif
-    
-    if (typeof '{{ $dataSourceFunction }}' !== 'undefined' && '{{ $dataSourceFunction }}'.trim() !== '') {
-    @this.call('{{ $dataSourceFunction }}').then(data => {
-        if (data) {
-            setValues(data);
-        } else {
-            console.error('No data returned.');
-        }
-    }).catch(error => {
-        console.error('Error calling dataSourceFunction:', error);
-    });
-} else {
-    console.error('dataSourceFunction is not defined or is empty.');
-}
-
-           
-     
-    
-}
-
-        function setValues(data) {
-            if (data != null) {
-                data.forEach(item => {
-                    console.log("{{$model}}",'model is here')
-
-                    let text = "{{ $text }}";
-                    let textArray = [];
-                    let textToShowUser = [];
-
-                    // Split the text for display
-                    text = text.split(',');
-
-
-                    text.forEach(function (txt) {
-                        textToShowUser.push(item[txt]);
-                        textArray.push(item['ctg_name'])
-
-                    });                    
-
-                    @if ($prefix)
-                    textToShowUser.unshift("{{ $prefix }}");
-                    textArray.unshift("{{ $prefix }}");
-
-                    @endif
-
-                    values.push({
-                        name: textToShowUser.join(' - '),
-                        value: item.{{ $value }},
-                        selected: @this.get('{{ $model }}') == item.{{ $value }},
-                    });
-                    value.push({
-                        name: textArray.join(' - '),
-                        value: item.{{ $value }},
-                        selected: @this.get('{{ $model }}') == item.{{ $value }},
-                    });
+                // Listen for Livewire events to refresh the dropdown options
+                Livewire.on('woProductChanged', () => {
+                    this.fetchValues();
                 });
-                let filteredValues = values.filter(item => item.name !== '');
-                let filteredValue = value.filter(item => item.name !== '');
-                populate(filteredValues);
-                populates(filteredValue);
 
-            } else {
-                console.log('%c' + sId + ' data source is incorrect!', 'font-size: 10px; color: red;');
+            },
+
+          
+            fetchValues() {
+                if (this.dataSourceFunction && this.dataSourceFunction !== '') {
+                    console.log('Fetching data using function:', this.dataSourceFunction);
+
+                    this.$wire.call(this.dataSourceFunction).then(data => {
+                        console.log('Data fetched:', data);
+                        this.populate(data);
+                    }).catch(error => {
+                        console.error('Error fetching data:', error);
+                    });
+                } else {
+                    console.warn('No data source function provided.');
+                }
+            },
+
+            populate(data) {
+                const textProperty = this.text;
+                const valueProperty = 'id';
+
+                const textFields = textProperty.split(',').map(field => field.trim());
+
+                this.values = data.map(item => {
+                    let displayText = textFields.map(field => item[field] ?? '').join(' - ');
+
+                    console.log('Item text:', displayText);
+
+                    return {
+                        name: displayText,
+                        value: item[valueProperty],
+                        selected: this.$wire.get(modelName) == item[valueProperty],
+                    };
+                });
+
+                this.$nextTick(() => {
+                    this.initializeDropdown();
+                });
+            },
+
+            initializeDropdown() {
+                const _this = this;
+
+                $(this.$el).dropdown({
+                    values: this.values,
+                    placeholder: this.currentPlaceholder, // Use dynamic placeholder
+                    transition: 'slide',
+                    clearable: "",
+                    fullTextSearch: 'exact',
+                    forceSelection: false,
+                    onChange: (value, text, $choice) => {
+                        console.log('Dropdown changed:', { value, text });
+                        // Update Livewire model when the user selects an item
+                        _this.$wire.set(modelName, value);
+
+                        // Debug: Ensure the selected value is updated
+                        _this.selectedValue = value;
+                    },
+                    message: {
+                        addResult: '<b>{term}</b> common.add_result',
+                        count: '{count} common.selected_count',
+                        maxSelections: 'common.max_selections',
+                        noResults: 'No results found...',
+                    },
+                });
             }
-        }
-
-        function populate(values = null) {
-            $(sId).dropdown({
-                values: values, // {name: test, value: 1} format
-                preserveHTML: false,
-                ignoreDiacritics: true,
-                sortSelect: true,
-                placeholder: '{{ __($placeholder) }}',
-                transition: '{{ $transition }}',
-                ignoreCase: false,
-                match: 'text', // Search within text
-                forceSelection: false, // Allow deselection
-                clearable: "{{ $clearable }}",
-                fullTextSearch: 'exact',
-                message: {
-                    addResult: '<b>{term}</b> ekle',
-                    count: '{count} adet seçildi',
-                    maxSelections: 'En fazla {maxCount} seçilebilir',
-                    noResults: '{{ __('common.no_results') }}',
-                },
-            });
-            console.log('%c' + sId + ' population completed!', 'font-size: 10px; color: green;');
-        }
-        function populates(values = null) {
-            $("#categories").dropdown({
-                values: values, // {name: test, value: 1} format
-                preserveHTML: false,
-                ignoreDiacritics: true,
-                sortSelect: true,
-                placeholder: 'category',
-                transition: '{{ $transition }}',
-                ignoreCase: false,
-                match: 'text', // Search within text
-                forceSelection: false, // Allow deselection
-                clearable: "{{ $clearable }}",
-                fullTextSearch: 'exact',
-                message: {
-                    addResult: '<b>{term}</b> ekle',
-                    count: '{count} adet seçildi',
-                    maxSelections: 'En fazla {maxCount} seçilebilir',
-                    noResults: '{{ __('common.no_results') }}',
-                },
-            });
-            console.log('%c' + sId + ' population completed!', 'font-size: 10px; color: green;');
-        }
+        }));
     });
 </script>
-@endscript
+
+
+
+
+
 
 
 <style>

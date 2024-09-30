@@ -71,10 +71,10 @@ class Datatable extends Component implements ExportsContract
     {
         $result = $this->model::findAndDelete($id);
         if (is_array($result) && $result['type'] == 'error') {
-            $this->emit('toast', __('common.error.title'), $result['message'], 'warning');
+            $this->dispatch('toast', __('common.error.title'), $result['message'], 'warning');
         }
         // else {
-        //     $this->emit('toast', '', $result['message'], 'success');
+        //     $this->dispatch('toast', '', $result['message'], 'success');
         //     $this->reset();
         // }
     }

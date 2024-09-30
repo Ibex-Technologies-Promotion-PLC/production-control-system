@@ -166,18 +166,18 @@ class Form extends Component
             $unit = $this->selectedProduct->units->find($this->cards[$key]['id']);
             if($unit->delete()) {
                 unset($this->cards[$key]);
-                $this->emit('toast', '', __('common.context_deleted'), 'success');
+                $this->dispatch('toast', '', __('common.context_deleted'), 'success');
             } else {
                 $this->lockCard($key);
-                $this->emit('toast', '', __('common.unable_to_delete'), 'warning');
+                $this->dispatch('toast', '', __('common.unable_to_delete'), 'warning');
             }
 
             // if($result['type'] == 'success') {
-            //     $this->emit('toast', __('common.delete'), $result['message'], 'success');
+            //     $this->dispatch('toast', __('common.delete'), $result['message'], 'success');
             //     unset($this->cards[$key]);
             // } else {
             //     $this->lockCard($key);
-            //     $this->emit('toast', __('common.unable_to_delete'), $result['message'], 'warning');
+            //     $this->dispatch('toast', __('common.unable_to_delete'), $result['message'], 'warning');
             // }
         } else {
             unset($this->cards[$key]);
@@ -315,13 +315,13 @@ class Form extends Component
             // update unless unit is not base 
             if(!$unit->isBase()) $unit->update($data);
 
-            $this->emit('toast', 'güncellendi', 'başarılı falan', 'success');
+            $this->dispatch('toast', 'güncellendi', 'başarılı falan', 'success');
             
         } 
         // if no ID inside card create a new unit for selected product 
         else {
             $unit = Unit::create(array_merge($data, ['product_id' => $this->product_id]));
-            $this->emit('toast', 'common.saved.title', __('common.context_created', ['model' => __('modelnames.unit')]), 'success');
+            $this->dispatch('toast', 'common.saved.title', __('common.context_created', ['model' => __('modelnames.unit')]), 'success');
         }
 
         // swap editable card with newly added unit entry 
@@ -352,7 +352,7 @@ class Form extends Component
         // assist user to correct mistakes 
         if($validator->fails()) {
             $this->questionModal = false;
-            $this->emit('toast', '', $validator->errors()->first(), 'warning'); // show errors 
+            $this->dispatch('toast', '', $validator->errors()->first(), 'warning'); // show errors 
         }
 
         // return validated data 

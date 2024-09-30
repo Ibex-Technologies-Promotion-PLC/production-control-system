@@ -1,5 +1,4 @@
 <div>
-    
 
     <?php if (isset($component)) { $__componentOriginalee4f9a7e1bb5c89e66cd8c078ce61a55 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalee4f9a7e1bb5c89e66cd8c078ce61a55 = $attributes; } ?>
@@ -84,8 +83,7 @@
         <div class="p-6 shadow-md">
             <form class="ui mini form">
                 <div class="equal width fields">
-                    
-
+                  
                     <?php if (isset($component)) { $__componentOriginal4a0aa0dbff261054ba83150e9d676aae = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal4a0aa0dbff261054ba83150e9d676aae = $attributes; } ?>
 <?php $component = App\View\Components\Dropdown::resolve(['model' => $model ?? 'product_id','label' => $label ?? 'recipes.recipe_product','sId' => $sId ?? 'selectProduct','sClass' => $sClass ?? 'search','collection' => $this->producibles ?? [],'value' => $value ?? 'id','text' => $text ?? 'prd_code,prd_name','key' => $key ?? null] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
@@ -164,10 +162,7 @@
                                 <div wire:key="wire_card<?php echo e($key); ?>"
                                     class="relative flex border shadow rounded-lg bg-white border-blue-100 hover:border-blue-300">
 
-                                    
-
-                                    
-
+                               
 
                                     <div
                                         class="flex flex-col justify-center items-center w-3/12 md:w-16 rounded-l-lg shadow-md">

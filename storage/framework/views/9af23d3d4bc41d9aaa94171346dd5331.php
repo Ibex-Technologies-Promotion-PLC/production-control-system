@@ -83,7 +83,7 @@
 <?php endif; ?>
 <?php $component->withAttributes(['class' => 'required mini']); ?>
                      <?php $__env->slot('action', null, []); ?> 
-                        <button wire:click.prevent="suggestProdBarCode" type="button" class="ui teal mini right labeled icon button">
+                        <button wire:click.prevent="suggestProdBarCode" class="ui teal mini right labeled icon button">
                             <i class="icon random"></i>
                             <?php echo e(__('recipes.suggest_code')); ?>
 
@@ -103,7 +103,7 @@
                 <div x-data="{categoryModal: <?php if ((object) ('categoryModal') instanceof \Livewire\WireDirective) : ?>window.Livewire.find('<?php echo e($__livewire->getId()); ?>').entangle('<?php echo e('categoryModal'->value()); ?>')<?php echo e('categoryModal'->hasModifier('live') ? '.live' : ''); ?><?php else : ?>window.Livewire.find('<?php echo e($__livewire->getId()); ?>').entangle('<?php echo e('categoryModal'); ?>')<?php endif; ?>}" class="equal width fields">
                     <?php if (isset($component)) { $__componentOriginal4a0aa0dbff261054ba83150e9d676aae = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal4a0aa0dbff261054ba83150e9d676aae = $attributes; } ?>
-<?php $component = App\View\Components\Dropdown::resolve(['model' => 'category_id','text' => 'ctg_name','dataSourceFunction' => 'getCategoriesProperty','value' => 'id','sId' => 'categories','sClass' => 'search','triggerOnEvent' => 'categoryUpdated','label' => ''.e(__('modelnames.category')).'','placeholder' => ''.e(__('categories.select_a_category')).'','transition' => 'slide down'] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component = App\View\Components\Dropdown::resolve(['model' => 'category_id','dataSourceFunction' => 'getCategoriesProperty','value' => 'id','text' => 'ctg_name','sId' => 'categories','sClass' => 'search','triggerOnEvent' => 'categoryUpdated','label' => ''.e(__('modelnames.category')).'','placeholder' => ''.e(__('categories.select_a_category')).'','transition' => 'slide down'] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('dropdown'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
@@ -207,7 +207,7 @@
              <?php $__env->slot('right', null, []); ?> 
                 <?php if (isset($component)) { $__componentOriginal4a0aa0dbff261054ba83150e9d676aae = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal4a0aa0dbff261054ba83150e9d676aae = $attributes; } ?>
-<?php $component = App\View\Components\Dropdown::resolve(['model' => 'unit_id','text' => 'name','collection' => $this->units,'value' => 'id','sId' => 'units','label' => 'units.unit','placeholder' => 'units.unit','transition' => 'slide down'] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component = App\View\Components\Dropdown::resolve(['model' => 'unit_id','collection' => $this->units,'value' => 'id','text' => 'name','sId' => 'units','label' => 'units.unit','placeholder' => 'units.unit','transition' => 'slide down'] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('dropdown'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>

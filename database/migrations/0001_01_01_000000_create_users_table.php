@@ -20,6 +20,8 @@ return new class extends Migration
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
+            $table->dateTime('last_login_at')->nullable()->index();
+
             $table->timestamps();
         });
 
@@ -36,6 +38,7 @@ return new class extends Migration
             $table->text('user_agent')->nullable();
             $table->longText('payload');
             $table->integer('last_activity')->index();
+
         });
     }
 

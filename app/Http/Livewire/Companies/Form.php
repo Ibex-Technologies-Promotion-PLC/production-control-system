@@ -50,7 +50,7 @@ class Form extends Component
 
         if($this->editMode && $this->company) {
             $this->company->update($validatedData);
-            // $this->emit('toast','', __('companies.company_info_updated'), 'success');
+            // $this->dispatch('toast','', __('companies.company_info_updated'), 'success');
             session()->flash('success', __('companies.company_info_updated'));
             return redirect()->route('companies.index');
         } else {

@@ -54,7 +54,7 @@ class Index extends Component
     {
         if($this->selectedUser->isLastAdmin() || $this->selectedUser->isSystemAdmin()) {
             $this->roleIds = $this->selectedUser->roles->pluck('id')->toArray();
-            $this->emit('toast', '', __('roles.there_must_be_at_least_one_admin_in_the_system'), 'warning');
+            $this->dispatch('toast', '', __('roles.there_must_be_at_least_one_admin_in_the_system'), 'warning');
         }
     }
 
