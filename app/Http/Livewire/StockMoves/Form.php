@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\StockMove;
 use App\Common\Facades\Conversions;
 use App\Stocks\Moves;
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 
 class Form extends Component
@@ -108,6 +109,7 @@ class Form extends Component
 
     public function getProductsProperty()
     {
+        Log::info('im here faya');
         return Product::all();
     }
 

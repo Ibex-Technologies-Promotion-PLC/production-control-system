@@ -3,9 +3,11 @@
         <label>{{ __($label) }}</label>
 
         @if ($iModel)
-        <div x-data="dropdownComponent({{ json_encode($collection ?? []) }}, '{{ $model }}', '{{ $text }}', '{{ $dataSourceFunction }}', '{{ $placeholder }}')" 
-        class="ui right labeled input" wire:loading.class="disabler">
-        <input type="{{ $iType }}" step="any" placeholder="{{ $iPlaceholder }}" wire:model.debounce.500ms="{{ $iModel }}">
+
+        <div x-data="dropdownComponent({{ json_encode($collection ?? []) }}, '{{ $model }}', '{{ $text }}', '{{ $dataSourceFunction }}', '{{ $placeholder }}', '{{ $triggerOn }}', '{{ $triggerOnEvent }}', '{{ json_encode($dataSource ?? '') }}')"
+            class="ui right labeled input" wire:loading.class="disabler">
+            <input type="{{ $iType }}" step="any" placeholder="{{ $iPlaceholder }}" wire:model.debounce.500ms="{{ $iModel }}">
+
             <div wire:ignore class="{{ $sClass }} ui @if( ! $basic) label scrolling @endif dropdown" id="{{ $sId }}">
                 <input type="hidden" name="{{ $model }}" wire:model.lazy="{{ $model }}">
                 <div class="text default">{{ $placeholder }}</div>
@@ -14,12 +16,12 @@
             </div>
         </div>
         @else
-        <div x-data="dropdownComponent({{ json_encode($collection ?? []) }}, '{{ $model }}', '{{ $text }}', '{{ $dataSourceFunction }}', '{{ $placeholder }}')" 
-        wire:ignore 
-             class="{{ $sClass }} ui @if( ! $basic) selection scrolling @endif dropdown" 
-             id="{{ $sId }}" 
-             wire:loading.class="double loading disabled" 
-             wire:target="{{ $triggerOn }}, {{ $triggerOnEvent }}">
+        <div x-data="dropdownComponent({{ json_encode($collection ?? []) }}, '{{ $model }}', '{{ $text }}', '{{ $dataSourceFunction }}', '{{ $placeholder }}', '{{ $triggerOn }}', '{{ $triggerOnEvent }}', '{{ json_encode($dataSource ?? '') }}')"
+            wire:ignore
+            class="{{ $sClass }} ui @if( ! $basic) selection scrolling @endif dropdown"
+            id="{{ $sId }}"
+            wire:loading.class="double loading disabled"
+            wire:target="{{ $triggerOn }}, {{ $triggerOnEvent }}">
             <input type="hidden" name="{{ $model }}" wire:model.lazy="{{ $model }}">
             <div class="text default">{{ $placeholder }}</div>
             <i class="dropdown icon"></i>
@@ -32,47 +34,79 @@
 
 <script>
     document.addEventListener('alpine:init', () => {
-        Alpine.data('dropdownComponent', (initialData = [], modelName, text, dataSourceFunction, placeholder) => ({
+        Alpine.data('dropdownComponent', (initialData = [], modelName, text, dataSourceFunction, placeholder, triggerOn, triggerOnEvent, dataSource) => ({
             values: [],
             selectedValue: null,
             currentPlaceholder: placeholder,
             text: text,
             dataSourceFunction: dataSourceFunction,
+            dataSource: dataSource,
 
             init() {
-                // Debug the placeholder and text
                 console.log('Initial Text Fields:', this.text);
 
+                // Trigger fetch values depending on initial data
                 if (initialData.length > 0) {
                     this.populate(initialData);
                 } else {
                     this.fetchValues();
                 }
 
-                // Listen for Livewire events to refresh the dropdown options
-                Livewire.on('woProductChanged', () => {
-                    this.fetchValues();
-                });
+                // Dynamically listen for Livewire events (triggerOn and triggerOnEvent)
+                if (triggerOnEvent) {
+                    Livewire.on(triggerOnEvent, () => {
+                        console.log(`Event ${triggerOnEvent} triggered, fetching values`);
+                        this.fetchValues();
+                    });
+                }
 
+                if (triggerOn) {
+                    Livewire.on(triggerOn, () => {
+                        console.log(`Event ${triggerOn} triggered, fetching values`);
+                        this.fetchValues();
+                    });
+                }
             },
-
-          
             fetchValues() {
                 if (this.dataSourceFunction && this.dataSourceFunction !== '') {
+                    // Call a Livewire method to fetch data
                     console.log('Fetching data using function:', this.dataSourceFunction);
 
-                    this.$wire.call(this.dataSourceFunction).then(data => {
-                        console.log('Data fetched:', data);
-                        this.populate(data);
-                    }).catch(error => {
-                        console.error('Error fetching data:', error);
-                    });
+                    const result = this.$wire.call(this.dataSourceFunction);
+                    console.log(result,'result')
+
+                    // Check if the result is a promise (has a 'then' method)
+                    if (result && typeof result.then === 'function') {
+                        result.then(data => {
+                            console.log('Data fetched from function:', data);
+                            this.populate(data);
+                        }).catch(error => {
+                            console.error('Error fetching data:', error);
+                        });
+                    } else {
+                        console.error('Error: Data source function did not return a promise:', result);
+                    }
+                } else if (this.dataSource && typeof this.dataSource === 'string') {
+                    // If dataSource is a Livewire property, use $wire.get to retrieve its value
+                    console.log('Fetching data from Livewire property:', this.dataSource);
+
+                    let data = @this.get('{{ $dataSource }}');
+                    const originalArray = Array.from(data);  // Clone the array
+                    console.log('here it is',originalArray); // This will give you a readable output if it's an object or array
+                    this.populate(originalArray);
+
+
                 } else {
-                    console.warn('No data source function provided.');
+                    console.warn('No data source function or valid Livewire property provided.');
                 }
             },
 
             populate(data) {
+                if (!Array.isArray(data)) {
+                    console.error('Data passed to populate is not an array:', data);
+                    return;
+                }
+
                 const textProperty = this.text;
                 const valueProperty = 'id';
 
@@ -106,7 +140,10 @@
                     fullTextSearch: 'exact',
                     forceSelection: false,
                     onChange: (value, text, $choice) => {
-                        console.log('Dropdown changed:', { value, text });
+                        console.log('Dropdown changed:', {
+                            value,
+                            text
+                        });
                         // Update Livewire model when the user selects an item
                         _this.$wire.set(modelName, value);
 
@@ -124,11 +161,6 @@
         }));
     });
 </script>
-
-
-
-
-
 
 
 <style>
