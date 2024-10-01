@@ -109,7 +109,6 @@ class Form extends Component
 
     public function getProductsProperty()
     {
-        Log::info('im here faya');
         return Product::all();
     }
 
@@ -139,8 +138,10 @@ class Form extends Component
             $this->selectedProduct = $this->getProductsProperty()->find($id);
             $this->units[$index] = $this->selectedProduct->units;
             $this->lotNumbers[$index] = $this->lotNumbers($id);
+            if($this->selectedProduct->baseUnit !== null){
+                $this->cards[$index]['unit_id'] = $this->selectedProduct->baseUnit->id;
 
-            $this->cards[$index]['unit_id'] = $this->selectedProduct->baseUnit->id;
+            }
             $this->dispatch('sm_product_selected'.$index);
         }
     }

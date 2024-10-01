@@ -24,7 +24,6 @@ class LotNumberService
         $availableAmount = array_sum(array_column($this->allWithAmounts(), 'available_amount'));
         $reservedAmount = array_sum(array_column($this->allWithAmounts(), 'reserved_amount'));
         $unit = $this->product->baseUnit;
-        Log::info("message ::: ".$unit);
         return [
             'amount' => $amount,
             'available_amount' => $availableAmount,
