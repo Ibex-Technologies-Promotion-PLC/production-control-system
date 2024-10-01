@@ -18,7 +18,6 @@ class DetailsComponent extends Component
     {
         $this->product = $product;
         if($tab) $this->currentTab = $tab;
-        Log::info('product in construct '.$this->product);
     }
 
     private function setTab($tab)
