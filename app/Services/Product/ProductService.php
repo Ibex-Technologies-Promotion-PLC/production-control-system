@@ -18,7 +18,8 @@ class ProductService
             ->select(['id', 'prd_code', 'prd_name'])
             ->orderBy('prd_name', 'asc')
             ->get();
-    }
+    }                // console.log('Initial data:', '{{$collection}}');
+
     public static function getAllProducts()
     {
         return Product::select(['id', 'prd_code', 'prd_name'])

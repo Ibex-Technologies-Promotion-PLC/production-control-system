@@ -34,7 +34,6 @@ class Datatable extends Component implements ExportsContract
     {
         $this->detailsModal = true;
         $this->selectedProduct = Product::find($productId);
-        Log::info('selected product'. $this->selectedProduct );
     }
 
 

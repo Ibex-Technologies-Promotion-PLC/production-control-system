@@ -57,7 +57,7 @@ class Toaster extends Component
             $this->showMethod = $showMethod;
         }
 
-        $this->dispatchBrowserEvent('stamp-toast', [
+        $this->dispatch('stamp-toast', [
             'title' => ucfirst(__($title)), 
             'message' => ucfirst(__($message)), 
             'showImage' => $showImage,

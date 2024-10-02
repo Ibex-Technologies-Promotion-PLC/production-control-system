@@ -102,7 +102,7 @@ class Dropdown extends Component
         $this->basic = $basic;
         $this->initnone = $initnone;
         $this->noErrors = $noErrors;
-        Log::warning('', ['text' => $this->text]);
+        Log::warning('', ['collection' => $this->collection]);
     }
 
     /**

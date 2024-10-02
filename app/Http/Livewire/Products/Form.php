@@ -124,7 +124,6 @@ class Form extends Component
 
     
         $data = $this->validate();
-        Log::info('after  is here',context: ['category id'=>$this->category_id]);
 
 
 

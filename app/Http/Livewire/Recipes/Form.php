@@ -10,6 +10,7 @@ use App\Models\Product;
 use App\Models\Recipe;
 use App\Models\Unit;
 use App\Services\Product\ProductService;
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 
 
@@ -65,6 +66,8 @@ class Form extends Component
             $this->updatingProductId($recipe->product->id);
             $this->locked = $locked;
         }
+        $result = $this->getProduciblesProperty(); 
+
     }
 
 
@@ -93,6 +96,7 @@ class Form extends Component
         
         // set selectedProduct property
         $this->selectedProduct = $this->getProduciblesProperty()->find($productId);
+        Log::info('recipe'.$this->selectedProduct);
 
         // if selected product has no recipe then exit
         if( ! $recipe = $this->selectedProduct->recipe)
@@ -103,7 +107,7 @@ class Form extends Component
 
         // equalize code field with recipe code which comes from database 
         $this->rcp_code = $recipe->rcp_code;
-        
+
         // if recipe not have any ingredients, return 
         if($recipe->ingredients->isEmpty()) return;
 
@@ -369,7 +373,6 @@ class Form extends Component
     {
         return ProductService::getProducibleProducts();
     }
-
 
     /**
      * Fetch categories

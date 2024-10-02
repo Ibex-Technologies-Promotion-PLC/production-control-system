@@ -39,6 +39,7 @@
             text: text,
             dataSourceFunction: dataSourceFunction,
             dataSource: dataSource,
+            collection: initialData,
 
             init() {
                 console.log('Initial Text Fields:', this.text);
@@ -65,19 +66,22 @@
                     });
                 }
             },
+
             fetchValues() {
                 if (this.dataSourceFunction && this.dataSourceFunction !== '') {
                     // Call a Livewire method to fetch data
                     console.log('Fetching data using function:', this.dataSourceFunction);
 
                     const result = this.$wire.call(this.dataSourceFunction);
-                    console.log(result,'result')
 
-                    // Check if the result is a promise (has a 'then' method)
                     if (result && typeof result.then === 'function') {
                         result.then(data => {
                             console.log('Data fetched from function:', data);
-                            this.populate(data);
+                            if (Array.isArray(data)) {
+                                this.populate(data);
+                            } else {
+                                console.error('Expected an array, but got:', data);
+                            }
                         }).catch(error => {
                             console.error('Error fetching data:', error);
                         });
@@ -88,14 +92,17 @@
                     // If dataSource is a Livewire property, use $wire.get to retrieve its value
                     console.log('Fetching data from Livewire property:', this.dataSource);
 
-                    let data = @this.get('{{ $dataSource }}');
-                    const originalArray = Array.from(data);  // Clone the array
-                    console.log('here it is',originalArray); // This will give you a readable output if it's an object or array
-                    this.populate(originalArray);
-
-
+                    let data = this.$wire.get(this.dataSource);
+                    if (Array.isArray(data)) {
+                        this.populate(data);
+                    } else {
+                        console.error('Expected an array from dataSource, but got:', data);
+                    }
+                } else if (this.collection && Array.isArray(this.collection)) {
+                    console.log('Using collection data directly.');
+                    this.populate(this.collection);  // Use collection if provided directly
                 } else {
-                    console.warn('No data source function or valid Livewire property provided.');
+                    console.warn('No valid data source or collection found.');
                 }
             },
 
@@ -138,10 +145,7 @@
                     fullTextSearch: 'exact',
                     forceSelection: false,
                     onChange: (value, text, $choice) => {
-                        console.log('Dropdown changed:', {
-                            value,
-                            text
-                        });
+                        console.log('Dropdown changed:', { value, text });
                         // Update Livewire model when the user selects an item
                         _this.$wire.set(modelName, value);
 
@@ -159,7 +163,6 @@
         }));
     });
 </script>
-
 
 <style>
     .disabler {
