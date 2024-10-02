@@ -1,0 +1,2 @@
+<?php echo $__env->make('web.sections.categories.ctg-baseform', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php /**PATH C:\Users\Muluye\Documents\production-control-system\resources\views/livewire/categories/form.blade.php ENDPATH**/ ?>

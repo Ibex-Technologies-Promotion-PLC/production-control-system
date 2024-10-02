@@ -3,9 +3,11 @@
         <label><?php echo e(__($label)); ?></label>
 
         <!--[if BLOCK]><![endif]--><?php if($iModel): ?>
+
         <div x-data="dropdownComponent(<?php echo e(json_encode($collection ?? [])); ?>, '<?php echo e($model); ?>', '<?php echo e($text); ?>', '<?php echo e($dataSourceFunction); ?>', '<?php echo e($placeholder); ?>', '<?php echo e($triggerOn); ?>', '<?php echo e($triggerOnEvent); ?>', '<?php echo e(json_encode($dataSource ?? '')); ?>')"
             class="ui right labeled input" wire:loading.class="disabler">
             <input type="<?php echo e($iType); ?>" step="any" placeholder="<?php echo e($iPlaceholder); ?>" wire:model.debounce.500ms="<?php echo e($iModel); ?>">
+
             <div wire:ignore class="<?php echo e($sClass); ?> ui <?php if( ! $basic): ?> label scrolling <?php endif; ?> dropdown" id="<?php echo e($sId); ?>">
                 <input type="hidden" name="<?php echo e($model); ?>" wire:model.lazy="<?php echo e($model); ?>">
                 <div class="text default"><?php echo e($placeholder); ?></div>

@@ -8,11 +8,13 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Support\Facades\Log;
 use Livewire\Component;
+use App\Http\Livewire\FormHelpers;
 
 
 class Form extends Component
 {
     use CategoriesFormTrait;
+    use FormHelpers;
 
     public $previous;
 

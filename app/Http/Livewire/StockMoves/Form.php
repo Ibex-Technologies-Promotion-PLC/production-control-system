@@ -137,10 +137,14 @@ class Form extends Component
         if(strpos($location, 'product_id')) {
             $index = strtok($location, '.');
             $this->selectedProduct = $this->getProductsProperty()->find($id);
+            if ($this->selectedProduct && $this->selectedProduct->baseUnit) {
             $this->units[$index] = $this->selectedProduct->units;
             $this->lotNumbers[$index] = $this->lotNumbers($id);
-
             $this->cards[$index]['unit_id'] = $this->selectedProduct->baseUnit->id;
+            }
+            else{
+                $this->cards[$index]['unit_id'] = null;
+            }
             $this->dispatch('sm_product_selected'.$index);
         }
     }

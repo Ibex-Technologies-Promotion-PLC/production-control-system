@@ -3,9 +3,11 @@
         <label>{{ __($label) }}</label>
 
         @if ($iModel)
+
         <div x-data="dropdownComponent({{ json_encode($collection ?? []) }}, '{{ $model }}', '{{ $text }}', '{{ $dataSourceFunction }}', '{{ $placeholder }}', '{{ $triggerOn }}', '{{ $triggerOnEvent }}', '{{ json_encode($dataSource ?? '') }}')"
             class="ui right labeled input" wire:loading.class="disabler">
             <input type="{{ $iType }}" step="any" placeholder="{{ $iPlaceholder }}" wire:model.debounce.500ms="{{ $iModel }}">
+
             <div wire:ignore class="{{ $sClass }} ui @if( ! $basic) label scrolling @endif dropdown" id="{{ $sId }}">
                 <input type="hidden" name="{{ $model }}" wire:model.lazy="{{ $model }}">
                 <div class="text default">{{ $placeholder }}</div>
