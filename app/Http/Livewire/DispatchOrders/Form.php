@@ -9,6 +9,7 @@ use App\Models\Company;
 use App\Models\DispatchOrder;
 use App\Models\SalesType;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 
 class Form extends Component
@@ -87,7 +88,7 @@ class Form extends Component
         $this->selectedCompany = Company::findOrFail($id);
         $this->companyAddresses = $this->selectedCompany->addresses->toArray();
 
-        $this->emi('do_company_selected');
+        $this->dispatch('do_company_selected');
     }
 
  

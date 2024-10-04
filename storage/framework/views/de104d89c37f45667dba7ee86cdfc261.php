@@ -274,7 +274,7 @@
 <?php unset($__componentOriginal786b6632e4e03cdf0a10e8880993f28a); ?>
 <?php endif; ?>
                  <?php $__env->endSlot(); ?>
-    
+
 
                  <?php $__env->slot('right', null, []); ?> 
                     <!--[if BLOCK]><![endif]--><?php if($this->productSelected()): ?>

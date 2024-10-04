@@ -197,6 +197,26 @@
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
 <?php $attributes = $attributes->except(\App\View\Components\TheadItem::ignoredParameterNames()); ?>
 <?php endif; ?>
+<?php $component->withAttributes(['class' => 'center aligned']); ?><?php echo e(__('validation.attributes.prd_sales')); ?> <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginald2bda8ba956bbb8c07433dc54c5ccbf0)): ?>
+<?php $attributes = $__attributesOriginald2bda8ba956bbb8c07433dc54c5ccbf0; ?>
+<?php unset($__attributesOriginald2bda8ba956bbb8c07433dc54c5ccbf0); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginald2bda8ba956bbb8c07433dc54c5ccbf0)): ?>
+<?php $component = $__componentOriginald2bda8ba956bbb8c07433dc54c5ccbf0; ?>
+<?php unset($__componentOriginald2bda8ba956bbb8c07433dc54c5ccbf0); ?>
+<?php endif; ?>
+
+                <?php if (isset($component)) { $__componentOriginald2bda8ba956bbb8c07433dc54c5ccbf0 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginald2bda8ba956bbb8c07433dc54c5ccbf0 = $attributes; } ?>
+<?php $component = App\View\Components\TheadItem::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('thead-item'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\App\View\Components\TheadItem::ignoredParameterNames()); ?>
+<?php endif; ?>
 <?php $component->withAttributes(['class' => 'center aligned']); ?><?php echo e(__('inventory.in_stock')); ?> <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginald2bda8ba956bbb8c07433dc54c5ccbf0)): ?>
@@ -404,6 +424,26 @@
 <?php $component = $__componentOriginald5e2d2372dae52eecd6090146e43dba5; ?>
 <?php unset($__componentOriginald5e2d2372dae52eecd6090146e43dba5); ?>
 <?php endif; ?>
+                <?php if (isset($component)) { $__componentOriginald5e2d2372dae52eecd6090146e43dba5 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginald5e2d2372dae52eecd6090146e43dba5 = $attributes; } ?>
+<?php $component = App\View\Components\TbodyItem::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('tbody-item'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\App\View\Components\TbodyItem::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['class' => 'center aligned']); ?><?php echo e($product->prd_sales); ?> Br <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginald5e2d2372dae52eecd6090146e43dba5)): ?>
+<?php $attributes = $__attributesOriginald5e2d2372dae52eecd6090146e43dba5; ?>
+<?php unset($__attributesOriginald5e2d2372dae52eecd6090146e43dba5); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginald5e2d2372dae52eecd6090146e43dba5)): ?>
+<?php $component = $__componentOriginald5e2d2372dae52eecd6090146e43dba5; ?>
+<?php unset($__componentOriginald5e2d2372dae52eecd6090146e43dba5); ?>
+<?php endif; ?>
+
                 <?php if (isset($component)) { $__componentOriginald5e2d2372dae52eecd6090146e43dba5 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginald5e2d2372dae52eecd6090146e43dba5 = $attributes; } ?>
 <?php $component = App\View\Components\TbodyItem::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>

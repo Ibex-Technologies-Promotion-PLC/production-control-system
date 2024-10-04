@@ -96,7 +96,6 @@ class Form extends Component
         
         // set selectedProduct property
         $this->selectedProduct = $this->getProduciblesProperty()->find($productId);
-        Log::info('recipe'.$this->selectedProduct);
 
         // if selected product has no recipe then exit
         if( ! $recipe = $this->selectedProduct->recipe)
@@ -110,6 +109,7 @@ class Form extends Component
 
         // if recipe not have any ingredients, return 
         if($recipe->ingredients->isEmpty()) return;
+        Log::info('recipe'.$recipe->ingredients);
 
         // if recipe has ingredients, fill in in the cards
         foreach($recipe->ingredients as $ingredient) {

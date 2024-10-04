@@ -110,7 +110,7 @@
 <?php unset($__componentOriginal4a0aa0dbff261054ba83150e9d676aae); ?>
 <?php endif; ?>
 
-                    <?php if (isset($component)) { $__componentOriginal4a0aa0dbff261054ba83150e9d676aae = $component; } ?>
+                        <?php if (isset($component)) { $__componentOriginal4a0aa0dbff261054ba83150e9d676aae = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal4a0aa0dbff261054ba83150e9d676aae = $attributes; } ?>
 <?php $component = App\View\Components\Dropdown::resolve(['model' => 'address_id','dataSource' => 'companyAddresses','value' => 'id','text' => 'adr_name,adr_province,adr_phone','triggerOnEvent' => 'do_company_selected','sClass' => 'search','label' => ''.e(__('dispatchorders.dispatch_address')).'','placeholder' => ''.e(__('dispatchorders.dispatch_address')).'','sId' => 'do_address','noErrors' => true] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('dropdown'); ?>

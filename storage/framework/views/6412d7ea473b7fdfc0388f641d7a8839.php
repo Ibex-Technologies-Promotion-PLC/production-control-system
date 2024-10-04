@@ -3,16 +3,17 @@
         <label><?php echo e(__($label)); ?></label>
 
         <!--[if BLOCK]><![endif]--><?php if($iModel): ?>
-        <div x-data="dropdownComponent(<?php echo e(json_encode($collection ?? [])); ?>, '<?php echo e($model); ?>', '<?php echo e($text); ?>', '<?php echo e($dataSourceFunction); ?>', '<?php echo e($placeholder); ?>', '<?php echo e($triggerOn); ?>', '<?php echo e($triggerOnEvent); ?>', '<?php echo e(json_encode($dataSource ?? '')); ?>')"
-            class="ui right labeled input" wire:loading.class="disabler">
+        <div class="ui right labeled input" wire:loading.class="disabler" x-data="dropdownComponent(<?php echo e(json_encode($collection ?? [])); ?>, '<?php echo e($model); ?>', '<?php echo e($text); ?>', '<?php echo e($dataSourceFunction); ?>', '<?php echo e($placeholder); ?>', '<?php echo e($triggerOn); ?>', '<?php echo e($triggerOnEvent); ?>', '<?php echo e(json_encode($dataSource ?? '')); ?>')">
             <input type="<?php echo e($iType); ?>" step="any" placeholder="<?php echo e($iPlaceholder); ?>" wire:model.debounce.500ms="<?php echo e($iModel); ?>">
             <div wire:ignore class="<?php echo e($sClass); ?> ui <?php if( ! $basic): ?> label scrolling <?php endif; ?> dropdown" id="<?php echo e($sId); ?>">
                 <input type="hidden" name="<?php echo e($model); ?>" wire:model.lazy="<?php echo e($model); ?>">
-                <div class="text default"><?php echo e($placeholder); ?></div>
+                <div class="text"><?php echo e($placeholder); ?></div>
                 <i class="dropdown icon"></i>
                 <div class="menu"></div>
             </div>
         </div>
+
+
         <?php else: ?>
         <div x-data="dropdownComponent(<?php echo e(json_encode($collection ?? [])); ?>, '<?php echo e($model); ?>', '<?php echo e($text); ?>', '<?php echo e($dataSourceFunction); ?>', '<?php echo e($placeholder); ?>', '<?php echo e($triggerOn); ?>', '<?php echo e($triggerOnEvent); ?>', '<?php echo e(json_encode($dataSource ?? '')); ?>')"
             wire:ignore
@@ -88,19 +89,30 @@
                     } else {
                         console.error('Error: Data source function did not return a promise:', result);
                     }
-                } else if (this.dataSource && typeof this.dataSource === 'string') {
-                    // If dataSource is a Livewire property, use $wire.get to retrieve its value
-                    console.log('Fetching data from Livewire property:', this.dataSource);
+                } else if (this.dataSource) {
 
-                    let data = this.$wire.get(this.dataSource);
-                    if (Array.isArray(data)) {
-                        this.populate(data);
+                    // If dataSource is a Livewire property, use $wire.get to retrieve its value
+                    let sourceDataSource = '<?php echo e($dataSource); ?>'
+                    if (this.dataSource === 'cards.0.units') {
+                        const result = this.$wire.call("getSpecificUnitsProperty");
+                        result.then(data => {
+                            this.populate(data);
+
+                            console.log(data, 'my data')
+                        })
                     } else {
-                        console.error('Expected an array from dataSource, but got:', data);
+                        console.log(this.dataSource,'variable name')
+                        const data = this.$wire.get(this.dataSource);
+                        console.log(data, 'another datasource')
+                        this.populate(data);
+
                     }
+                    console.log(this.dataSource == 'cards.0.units','truth value')
+
+
                 } else if (this.collection && Array.isArray(this.collection)) {
                     console.log('Using collection data directly.');
-                    this.populate(this.collection);  // Use collection if provided directly
+                    this.populate(this.collection); // Use collection if provided directly
                 } else {
                     console.warn('No valid data source or collection found.');
                 }
@@ -145,7 +157,10 @@
                     fullTextSearch: 'exact',
                     forceSelection: false,
                     onChange: (value, text, $choice) => {
-                        console.log('Dropdown changed:', { value, text });
+                        console.log('Dropdown changed:', {
+                            value,
+                            text
+                        });
                         // Update Livewire model when the user selects an item
                         _this.$wire.set(modelName, value);
 
@@ -168,5 +183,4 @@
     .disabler {
         pointer-events: none;
     }
-</style>
-<?php /**PATH /var/www/html/resources/views/components/dropdown.blade.php ENDPATH**/ ?>
+</style><?php /**PATH /var/www/html/resources/views/components/dropdown.blade.php ENDPATH**/ ?>

@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Traits\DispatchOrders;
 
 use App\Common\Facades\Conversions;
 use App\Models\Product;
+use Illuminate\Support\Facades\Log;
 
 trait SpecifyProducts
 {
@@ -13,6 +14,7 @@ trait SpecifyProducts
 
     // model cards
     public $cards;
+    public $specificUnits = []; 
 
     protected $spRules = [
         'cards' => 'array',
@@ -50,6 +52,7 @@ trait SpecifyProducts
     
     public function addCard()
     {
+        Log::info('in the add card ');
         $this->cards[] = [
             'product_id' => null,
             'dp_amount' => null,
@@ -74,12 +77,19 @@ trait SpecifyProducts
         if(strpos($location, 'product_id')) {
             $index = strtok($location, '.');
             $product = $this->getProductsProperty()->find($id);
-            $this->cards[$index]['units'] = $product->units;
+                    $this->cards[$index]['units'] = $product->units;
+                    $this->specificUnits = $this->cards[$index]['units'];
             $this->dispatch('sp_product_selected'.$index);
             
-            // set base unit as default unit, also user will be able to change unit in dropdown
-            $this->cards[$index]['unit_id'] = $product->baseUnit->id;
+            $baseUnit = $product->units->firstWhere('is_base', 1); 
+            $this->cards[$index]['unit_id'] = $baseUnit->id;
+
+            Log::info('base unit id  '.$baseUnit->id);
+
         }
+    }
+    public function getSpecificUnitsProperty(){
+        return $this->specificUnits;
     }
 
 

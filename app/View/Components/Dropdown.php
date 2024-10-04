@@ -73,7 +73,6 @@ class Dropdown extends Component
         $initnone = false,
         
         $noErrors = false,
-        $trigger = null // Add this to the constructor parameters
 
     ) {
         $this->label = $label;
@@ -102,7 +101,6 @@ class Dropdown extends Component
         $this->basic = $basic;
         $this->initnone = $initnone;
         $this->noErrors = $noErrors;
-        Log::warning('', ['collection' => $this->collection]);
     }
 
     /**
@@ -114,8 +112,5 @@ class Dropdown extends Component
     {
         return view('components.dropdown');
     }
-    public function getProductsProperty()
-    {
-        return ProductService::getProducibleOnes();
-    }
+    
 }

@@ -88,8 +88,10 @@ class Form extends Component
         $this->units = $this->selectedProduct->units->toArray();
 
         $this->guessFields($this->selectedProduct); // !! kullanıcı ayarlarına kaydedilecek, tahmin istenmeyebilir
+        $baseUnit = $this->selectedProduct->units->firstWhere('is_base', 1); 
 
-        $this->unit_id = $this->selectedProduct->baseUnit->id; // !! bununla if else ilişkisine girecek
+
+        $this->unit_id = $baseUnit->id; // !! bununla if else ilişkisine girecek
 
         $this->fillInputs();
         $this->dispatch('woProductChanged'); // fill the units
