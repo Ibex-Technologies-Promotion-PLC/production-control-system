@@ -40,7 +40,8 @@ trait DispatchLotPicker
      */
     public function openDoLotModal($id)
     {
-        $this->selectedDispatchProduct = DispatchProduct::find($id);
+        $this->selectedDispatchProduct = DispatchProduct::with('reservedStocks')->find($id);
+        dd($this->selectedDispatchProduct->reservedStocks);
 
         $this->reset('rows');
 
@@ -72,6 +73,8 @@ trait DispatchLotPicker
     public function openReservationViewModal($id)
     {
         $this->selectedDispatchProduct = DispatchProduct::find($id);
+        dd($this->selectedDispatchProduct);
+
         $this->reservationViewModal = true;
     }
 

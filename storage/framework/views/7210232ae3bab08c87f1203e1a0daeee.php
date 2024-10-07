@@ -40,25 +40,25 @@
         <div class="p-6 bg-cool-gray-50 rounded-t-md shadow-lg">
             <form class="ui tiny form flex flex-col gap-6">
                 <!--[if BLOCK]><![endif]--><?php $__empty_1 = true; $__currentLoopData = $cards; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $card): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-                    <div wire:key="<?php echo e($key); ?>" class="shadow-md rounded-md bg-white">
-                        <div class="flex flex-col md:flex-row rounded-md relative">
-                            <div wire:click.prevent="toggleDirection(<?php echo e($key); ?>)"
-                                class="shadow md:rounded-l-md p-8 md:p-5 cursor-pointer <?php echo e($card['direction'] ? 'bg-teal-100' : 'bg-red-100'); ?>">
-                                <!--[if BLOCK]><![endif]--><?php if($card['direction']): ?>
-                                    <span class="" data-tooltip="<?php echo e(__('stockmoves.stock_in')); ?>"
-                                        data-variation="mini">
-                                        <i class="link green big plus icon"></i>
-                                    </span>
-                                <?php else: ?>
-                                    <span class="" data-tooltip="<?php echo e(__('stockmoves.stock_out')); ?>"
-                                        data-variation="mini">
-                                        <i class="link red big minus icon"></i>
-                                    </span>
-                                <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
-                            </div>
-                            <div class="flex-1 pt-3 px-5">
-                                <div class="four fields">
-                                    <?php if (isset($component)) { $__componentOriginal4a0aa0dbff261054ba83150e9d676aae = $component; } ?>
+                <div wire:key="<?php echo e($key); ?>" class="shadow-md rounded-md bg-white">
+                    <div class="flex flex-col md:flex-row rounded-md relative">
+                        <div wire:click.prevent="toggleDirection(<?php echo e($key); ?>)"
+                            class="shadow md:rounded-l-md p-8 md:p-5 cursor-pointer <?php echo e($card['direction'] ? 'bg-teal-100' : 'bg-red-100'); ?>">
+                            <!--[if BLOCK]><![endif]--><?php if($card['direction']): ?>
+                            <span class="" data-tooltip="<?php echo e(__('stockmoves.stock_in')); ?>"
+                                data-variation="mini">
+                                <i class="link green big plus icon"></i>
+                            </span>
+                            <?php else: ?>
+                            <span class="" data-tooltip="<?php echo e(__('stockmoves.stock_out')); ?>"
+                                data-variation="mini">
+                                <i class="link red big minus icon"></i>
+                            </span>
+                            <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
+                        </div>
+                        <div class="flex-1 pt-3 px-5">
+                            <div class="four fields">
+                                <?php if (isset($component)) { $__componentOriginal4a0aa0dbff261054ba83150e9d676aae = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal4a0aa0dbff261054ba83150e9d676aae = $attributes; } ?>
 <?php $component = App\View\Components\Dropdown::resolve(['placeholder' => ''.e(__('modelnames.product')).'','sClass' => 'search','noErrors' => true,'model' => 'cards.'.e($key).'.product_id','collection' => $this->products,'value' => 'id','text' => 'prd_code,prd_name','key' => 'selectProduct' . $key] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('dropdown'); ?>
@@ -68,7 +68,7 @@
 <?php $attributes = $attributes->except(\App\View\Components\Dropdown::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
-                                     <?php echo $__env->renderComponent(); ?>
+                                 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal4a0aa0dbff261054ba83150e9d676aae)): ?>
 <?php $attributes = $__attributesOriginal4a0aa0dbff261054ba83150e9d676aae; ?>
@@ -78,10 +78,10 @@
 <?php $component = $__componentOriginal4a0aa0dbff261054ba83150e9d676aae; ?>
 <?php unset($__componentOriginal4a0aa0dbff261054ba83150e9d676aae); ?>
 <?php endif; ?>
-                                    
-                                    <?php if (isset($component)) { $__componentOriginal4a0aa0dbff261054ba83150e9d676aae = $component; } ?>
+
+                                <?php if (isset($component)) { $__componentOriginal4a0aa0dbff261054ba83150e9d676aae = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal4a0aa0dbff261054ba83150e9d676aae = $attributes; } ?>
-<?php $component = App\View\Components\Dropdown::resolve(['iModel' => 'cards.'.e($key).'.amount','iPlaceholder' => ''.e(__('stockmoves.amount')).'','iType' => 'number','sClass' => 'basic','initnone' => true,'triggerOnEvent' => 'sm_product_selected'.e($key).'','model' => 'cards.'.e($key).'.unit_id','dataSource' => 'units.'.e($key).'','key' => 'units' . $key,'value' => 'id','text' => 'name','placeholder' => ''.e(__('modelnames.unit')).'','noErrors' => true] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component = App\View\Components\Dropdown::resolve(['iModel' => 'cards.'.e($key).'.amount','dataType' => 'variable','iPlaceholder' => ''.e(__('stockmoves.amount')).'','iType' => 'number','sClass' => 'basic','initnone' => true,'triggerOnEvent' => 'sm_product_selected'.e($key).'','model' => 'cards.'.e($key).'.unit_id','dataSource' => 'units.'.e($key).'','key' => 'units' . $key,'value' => 'id','text' => 'name','placeholder' => ''.e(__('modelnames.unit')).'','noErrors' => true] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('dropdown'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
@@ -89,7 +89,7 @@
 <?php $attributes = $attributes->except(\App\View\Components\Dropdown::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
-                                     <?php echo $__env->renderComponent(); ?>
+                                 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal4a0aa0dbff261054ba83150e9d676aae)): ?>
 <?php $attributes = $__attributesOriginal4a0aa0dbff261054ba83150e9d676aae; ?>
@@ -99,9 +99,9 @@
 <?php $component = $__componentOriginal4a0aa0dbff261054ba83150e9d676aae; ?>
 <?php unset($__componentOriginal4a0aa0dbff261054ba83150e9d676aae); ?>
 <?php endif; ?>
-                                    
-                                    <!--[if BLOCK]><![endif]--><?php if($card['lotNumberAreaType'] === 'input'): ?>
-                                        <?php if (isset($component)) { $__componentOriginal786b6632e4e03cdf0a10e8880993f28a = $component; } ?>
+
+                                <!--[if BLOCK]><![endif]--><?php if($card['lotNumberAreaType'] === 'input'): ?>
+                                <?php if (isset($component)) { $__componentOriginal786b6632e4e03cdf0a10e8880993f28a = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal786b6632e4e03cdf0a10e8880993f28a = $attributes; } ?>
 <?php $component = App\View\Components\Input::resolve(['model' => 'cards.'.e($key).'.lot_number','placeholder' => ''.e(__('stockmoves.lot_number')).'','noErrors' => true] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('input'); ?>
@@ -121,9 +121,9 @@
 <?php $component = $__componentOriginal786b6632e4e03cdf0a10e8880993f28a; ?>
 <?php unset($__componentOriginal786b6632e4e03cdf0a10e8880993f28a); ?>
 <?php endif; ?>
-                                    <?php elseif($card['lotNumberAreaType'] === 'dropdown'): ?>
-                                        <div class="field pt-1">
-                                            <?php if (isset($component)) { $__componentOriginalbf566fc26595b9cc6779e170beef8a5a = $component; } ?>
+                                <?php elseif($card['lotNumberAreaType'] === 'dropdown'): ?>
+                                <div class="field pt-1">
+                                    <?php if (isset($component)) { $__componentOriginalbf566fc26595b9cc6779e170beef8a5a = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalbf566fc26595b9cc6779e170beef8a5a = $attributes; } ?>
 <?php $component = App\View\Components\Select::resolve(['model' => 'cards.'.e($key).'.lot_number','collection' => $lotNumbers,'collectionKey' => $key] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('select'); ?>
@@ -143,10 +143,10 @@
 <?php $component = $__componentOriginalbf566fc26595b9cc6779e170beef8a5a; ?>
 <?php unset($__componentOriginalbf566fc26595b9cc6779e170beef8a5a); ?>
 <?php endif; ?>
-                                        </div>
-                                    <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
-                                    
-                                    <?php if (isset($component)) { $__componentOriginalef9a8bac6e25ee60184eacd3a683aaa4 = $component; } ?>
+                                </div>
+                                <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
+
+                                <?php if (isset($component)) { $__componentOriginalef9a8bac6e25ee60184eacd3a683aaa4 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalef9a8bac6e25ee60184eacd3a683aaa4 = $attributes; } ?>
 <?php $component = App\View\Components\Datepicker::resolve(['model' => 'cards.' . $key . '.datetime','type' => 'date','uniqueKey' => $key,'initialDate' => isset($cards[$key]['datetime']) ? $cards[$key]['datetime'] : null] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('datepicker'); ?>
@@ -166,16 +166,16 @@
 <?php $component = $__componentOriginalef9a8bac6e25ee60184eacd3a683aaa4; ?>
 <?php unset($__componentOriginalef9a8bac6e25ee60184eacd3a683aaa4); ?>
 <?php endif; ?>
-                                </div>
                             </div>
-                            <button wire:click.prevent="removeCard(<?php echo e($key); ?>)"
-                                class="focus:outline-none absolute top-0 right-0 -mt-2 -mr-3 hover:opacity-100 opacity-50">
-                                <i class="red shadow rounded-full cancel icon"></i>
-                            </button>
                         </div>
+                        <button wire:click.prevent="removeCard(<?php echo e($key); ?>)"
+                            class="focus:outline-none absolute top-0 right-0 -mt-2 -mr-3 hover:opacity-100 opacity-50">
+                            <i class="red shadow rounded-full cancel icon"></i>
+                        </button>
                     </div>
+                </div>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-                    <?php if (isset($component)) { $__componentOriginal031f7343d586feb3a69898f559e89477 = $component; } ?>
+                <?php if (isset($component)) { $__componentOriginal031f7343d586feb3a69898f559e89477 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal031f7343d586feb3a69898f559e89477 = $attributes; } ?>
 <?php $component = App\View\Components\Placeholder::resolve(['icon' => 'blue truck packing'] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('placeholder'); ?>
@@ -185,8 +185,8 @@
 <?php $attributes = $attributes->except(\App\View\Components\Placeholder::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
-                        <span><?php echo e(__('stockmoves.use_add_button_to_make_stock_move')); ?></span>
-                     <?php echo $__env->renderComponent(); ?>
+                    <span><?php echo e(__('stockmoves.use_add_button_to_make_stock_move')); ?></span>
+                 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal031f7343d586feb3a69898f559e89477)): ?>
 <?php $attributes = $__attributesOriginal031f7343d586feb3a69898f559e89477; ?>
@@ -249,5 +249,4 @@
 <?php $component = $__componentOriginald033566f468fc7bb3a8d0f946fdab616; ?>
 <?php unset($__componentOriginald033566f468fc7bb3a8d0f946fdab616); ?>
 <?php endif; ?>
-</div>
-<?php /**PATH /var/www/html/resources/views/livewire/stock-moves/form.blade.php ENDPATH**/ ?>
+</div><?php /**PATH /var/www/html/resources/views/livewire/stock-moves/form.blade.php ENDPATH**/ ?>

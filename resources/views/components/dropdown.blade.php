@@ -93,14 +93,15 @@
 
                     // If dataSource is a Livewire property, use $wire.get to retrieve its value
                     let sourceDataSource = '{{ $dataSource }}'
-                    if (this.dataSource === 'cards.0.units') {
+                    console.log('{{$dataType}}','here is data type')
+                    if ('{{$dataType}}' === 'variable') {
                         const result = this.$wire.call("getSpecificUnitsProperty");
                         result.then(data => {
                             this.populate(data);
 
                             console.log(data, 'my data')
                         })
-                    } else {
+                    } else if('{{$dataType}}'=== 'pointer') {
                         console.log(this.dataSource,'variable name')
                         const data = this.$wire.get(this.dataSource);
                         console.log(data, 'another datasource')

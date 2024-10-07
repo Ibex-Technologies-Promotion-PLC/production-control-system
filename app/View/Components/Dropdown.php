@@ -43,6 +43,7 @@ class Dropdown extends Component
 
     public $noErrors;
     public $trigger;
+    public $dataType;
 
     /**
      * Create a new component instance.
@@ -50,6 +51,7 @@ class Dropdown extends Component
      * @return void
      */
     public function __construct(
+        $dataType = null,
         $label = null,
         $key = null,
         $iModel = null,
@@ -75,6 +77,7 @@ class Dropdown extends Component
         $noErrors = false,
 
     ) {
+        $this->dataType = $dataType;
         $this->label = $label;
         $this->key = $key;
 

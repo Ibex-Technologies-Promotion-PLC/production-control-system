@@ -18,7 +18,7 @@
                         sClass="search" class="required" noErrors label="{{ __('dispatchorders.customer') }}"
                         placeholder="{{ __('dispatchorders.customer') }}" sId="do_company" />
 
-                        <x-dropdown model="address_id" dataSource="companyAddresses" value="id"
+                        <x-dropdown dataType="pointer" model="address_id" dataSource="companyAddresses" value="id"
                         text="adr_name,adr_province,adr_phone" triggerOnEvent="do_company_selected" sClass="search"
                         class="required" label="{{ __('dispatchorders.dispatch_address') }}"
                         placeholder="{{ __('dispatchorders.dispatch_address') }}" sId="do_address" noErrors />

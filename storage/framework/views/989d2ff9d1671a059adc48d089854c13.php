@@ -34,7 +34,7 @@
                         <option wire:key="default" value="" selected><?php echo e(__('common.all')); ?></option>
                         <!--[if BLOCK]><![endif]--><?php if($selectedCompany): ?>
                             <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $selectedCompany->addresses; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $address): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <option value="<?php echo e($address->id); ?>">
+                                <option value="<?php echo e($address->iddispatchOrder); ?>">
                                     <?php echo e($address->adr_name); ?>
 
                                 </option>
@@ -297,6 +297,7 @@
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
                 <!--[if BLOCK]><![endif]--><?php $__empty_1 = true; $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $dispatchOrder): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                
                     <?php if (isset($component)) { $__componentOriginal0c0a4e942f49621d4b5ccecff4a57aa3 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal0c0a4e942f49621d4b5ccecff4a57aa3 = $attributes; } ?>
 <?php $component = App\View\Components\TableRow::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
@@ -469,7 +470,7 @@
 <?php endif; ?>
 <?php $component->withAttributes(['class' => 'text-sm center aligned']); ?>
                             <span data-tooltip="<?php echo e(__("dispatchorders.{$dispatchOrder->do_status}")); ?>" data-variation="mini" data-position="left center">
-                                <i class="<?php echo e($dispatchOrder->statusLookup['icon']); ?>"></i>
+                                <i class="<?php echo e($dispatchOrder->statusLookup ? $dispatchOrder->statusLookup['icon']: ''); ?>"></i>
                             </span>
                          <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
