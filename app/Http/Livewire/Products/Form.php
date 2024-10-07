@@ -37,6 +37,7 @@ class Form extends Component
     public $prd_is_active = true;
     public $prd_producible = false;
     public $categories;
+    public $prd_sales;
 
     public $unit_id; // unit tablosuna yazılacak static
 
@@ -56,6 +57,9 @@ class Form extends Component
             'prd_is_active' => 'sometimes|nullable|boolean',
             'prd_min_threshold' => 'nullable|numeric',
             'prd_cost' => 'required|numeric',
+            'prd_sales' => 'required|numeric',
+
+
             'prd_note' => 'nullable',
         ];
     }
@@ -133,6 +137,7 @@ class Form extends Component
             session()->flash('success', __('products.code_product_updated', ['code' => $this->product->prd_code]));
         } else {
             $product = Product::create($data);
+
             $this->createUnit($product->id, $this->unit_id);
             $this->reset();
             session()->flash('success', __('products.product_created'));
@@ -150,6 +155,7 @@ class Form extends Component
 
     private function setEditMode($product)
     {
+        Log::info($product);
         $this->setCtgEditMode($product->category);
         $this->editMode = true;
 
@@ -160,6 +166,8 @@ class Form extends Component
         $this->prd_min_threshold = $product->prd_min_threshold;
         $this->prd_shelf_life = $product->prd_shelf_life;
         $this->prd_cost = $product->prd_cost;
+        $this->prd_sales = $product->prd_sales;
+
         $this->prd_note = $product->prd_note;
         $this->unit_id = optional($product->unit)->id;
         $this->prd_is_active = (bool)$product->prd_is_active;

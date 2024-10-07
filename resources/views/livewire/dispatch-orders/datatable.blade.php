@@ -24,7 +24,7 @@
                         <option wire:key="default" value="" selected>{{ __('common.all') }}</option>
                         @if ($selectedCompany)
                             @foreach ($selectedCompany->addresses as $address)
-                                <option value="{{ $address->id }}">
+                                <option value="{{ $address->iddispatchOrder}}">
                                     {{ $address->adr_name }}
                                 </option>
                             @endforeach
@@ -77,6 +77,7 @@
             </x-thead>
             <x-tbody>
                 @forelse ($data as $dispatchOrder)
+                
                     <x-table-row wire:key="{{ $loop->index }}" class="font-semibold">
                         <x-tbody-item class="collapsing center aligned font-bold">{{ $dispatchOrder->do_number }}</x-tbody-item>
 
@@ -102,7 +103,7 @@
                         <x-tbody-item class="text-xs collapsing">{{ $dispatchOrder->do_actual_datetime }}</x-tbody-item>
                         <x-tbody-item class="text-sm center aligned">
                             <span data-tooltip="{{ __("dispatchorders.{$dispatchOrder->do_status}") }}" data-variation="mini" data-position="left center">
-                                <i class="{{ $dispatchOrder->statusLookup['icon'] }}"></i>
+                                <i class="{{ $dispatchOrder->statusLookup ? $dispatchOrder->statusLookup['icon']: '' }}"></i>
                             </span>
                         </x-tbody-item>
                         <x-tbody-item class="collapsing">

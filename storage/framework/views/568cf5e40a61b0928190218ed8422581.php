@@ -48,7 +48,7 @@
                                         
                                             <?php if (isset($component)) { $__componentOriginal4a0aa0dbff261054ba83150e9d676aae = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal4a0aa0dbff261054ba83150e9d676aae = $attributes; } ?>
-<?php $component = App\View\Components\Dropdown::resolve(['iType' => 'number','iModel' => 'cards.'.e($key).'.dp_amount','iPlaceholder' => ''.e(__('common.amount')).'','placeholder' => ''.e(__('units.unit')).'','sClass' => 'basic','noErrors' => true,'model' => 'cards.'.e($key).'.unit_id','triggerOnEvent' => 'sp_product_selected'.e($key).'','dataSource' => 'cards.'.e($key).'.units','value' => 'id','text' => 'name','sId' => 'sp_unit_id_'.e($key).''] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component = App\View\Components\Dropdown::resolve(['dataType' => 'variable','iType' => 'number','iModel' => 'cards.'.e($key).'.dp_amount','iPlaceholder' => ''.e(__('common.amount')).'','placeholder' => ''.e(__('units.unit')).'','sClass' => 'basic','noErrors' => true,'model' => 'cards.'.e($key).'.unit_id','triggerOnEvent' => 'sp_product_selected'.e($key).'','dataSource' => 'cards.'.e($key).'.units','value' => 'id','text' => 'name','sId' => 'sp_unit_id_'.e($key).''] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('dropdown'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>

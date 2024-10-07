@@ -13,7 +13,7 @@
                                 </x-slot>
                                 <div class="px-4 flex-1 ui form mini">
                                     <div class="pt-2 equal width fields">
-                                        <x-dropdown model="cards.{{ $key }}.product_id" :collection="$this->products" value="id" text="prd_code,prd_name" sClass="search" noErrors
+                                        <x-dropdown  model="cards.{{ $key }}.product_id" :collection="$this->products" value="id" text="prd_code,prd_name" sClass="search" noErrors
                                             placeholder="{{ __('products.product') }}" sId="dp_product_{{$key}}" />
                                                
                                         {{-- <x-input defer model="cards.{{ $key }}.reserved_amount" placeholder="{{ __('common.amount') }}" /> --}}
@@ -25,7 +25,7 @@
                                                 </x-slot>
                                             </x-input>
                                         @else --}}
-                                            <x-dropdown iType="number" iModel="cards.{{ $key }}.dp_amount" iPlaceholder="{{ __('common.amount') }}" placeholder="{{ __('units.unit') }}" sClass="basic" noErrors
+                                            <x-dropdown dataType="variable" iType="number" iModel="cards.{{ $key }}.dp_amount" iPlaceholder="{{ __('common.amount') }}" placeholder="{{ __('units.unit') }}" sClass="basic" noErrors
                                                 model="cards.{{ $key }}.unit_id" triggerOnEvent="sp_product_selected{{ $key }}" dataSource="cards.{{ $key }}.units" value="id" text="name" 
                                                 sId="sp_unit_id_{{$key}}" />
                                         {{-- @endif --}}

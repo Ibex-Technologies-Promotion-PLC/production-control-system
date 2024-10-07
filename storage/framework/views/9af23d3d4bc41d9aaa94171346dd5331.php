@@ -201,6 +201,27 @@
 <?php unset($__componentOriginal5a9e9e6a7ea5a264be2f9d9ebffacd46); ?>
 <?php endif; ?>
                 </div>
+                <?php if (isset($component)) { $__componentOriginal786b6632e4e03cdf0a10e8880993f28a = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal786b6632e4e03cdf0a10e8880993f28a = $attributes; } ?>
+<?php $component = App\View\Components\Input::resolve(['noErrors' => true,'model' => 'prd_shelf_life','label' => ''.e(__('validation.attributes.prd_shelf_life')).'','placeholder' => ''.e(__('validation.attributes.prd_shelf_life')).''] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('input'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\App\View\Components\Input::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['class' => 'required field']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal786b6632e4e03cdf0a10e8880993f28a)): ?>
+<?php $attributes = $__attributesOriginal786b6632e4e03cdf0a10e8880993f28a; ?>
+<?php unset($__attributesOriginal786b6632e4e03cdf0a10e8880993f28a); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal786b6632e4e03cdf0a10e8880993f28a)): ?>
+<?php $component = $__componentOriginal786b6632e4e03cdf0a10e8880993f28a; ?>
+<?php unset($__componentOriginal786b6632e4e03cdf0a10e8880993f28a); ?>
+<?php endif; ?>
+
              <?php $__env->endSlot(); ?>
 
 
@@ -224,26 +245,6 @@
 <?php if (isset($__componentOriginal4a0aa0dbff261054ba83150e9d676aae)): ?>
 <?php $component = $__componentOriginal4a0aa0dbff261054ba83150e9d676aae; ?>
 <?php unset($__componentOriginal4a0aa0dbff261054ba83150e9d676aae); ?>
-<?php endif; ?>
-                <?php if (isset($component)) { $__componentOriginal786b6632e4e03cdf0a10e8880993f28a = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginal786b6632e4e03cdf0a10e8880993f28a = $attributes; } ?>
-<?php $component = App\View\Components\Input::resolve(['noErrors' => true,'model' => 'prd_shelf_life','label' => ''.e(__('validation.attributes.prd_shelf_life')).'','placeholder' => ''.e(__('validation.attributes.prd_shelf_life')).''] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('input'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\App\View\Components\Input::ignoredParameterNames()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['class' => 'required field']); ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginal786b6632e4e03cdf0a10e8880993f28a)): ?>
-<?php $attributes = $__attributesOriginal786b6632e4e03cdf0a10e8880993f28a; ?>
-<?php unset($__attributesOriginal786b6632e4e03cdf0a10e8880993f28a); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginal786b6632e4e03cdf0a10e8880993f28a)): ?>
-<?php $component = $__componentOriginal786b6632e4e03cdf0a10e8880993f28a; ?>
-<?php unset($__componentOriginal786b6632e4e03cdf0a10e8880993f28a); ?>
 <?php endif; ?>
                 <?php if (isset($component)) { $__componentOriginal786b6632e4e03cdf0a10e8880993f28a = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal786b6632e4e03cdf0a10e8880993f28a = $attributes; } ?>
@@ -285,6 +286,27 @@
 <?php $component = $__componentOriginal786b6632e4e03cdf0a10e8880993f28a; ?>
 <?php unset($__componentOriginal786b6632e4e03cdf0a10e8880993f28a); ?>
 <?php endif; ?>
+                <?php if (isset($component)) { $__componentOriginal786b6632e4e03cdf0a10e8880993f28a = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal786b6632e4e03cdf0a10e8880993f28a = $attributes; } ?>
+<?php $component = App\View\Components\Input::resolve(['noErrors' => true,'model' => 'prd_sales','label' => ''.e(__('validation.attributes.prd_sales')).'','placeholder' => ''.e(__('validation.attributes.prd_sales')).''] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('input'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\App\View\Components\Input::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['class' => 'field']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal786b6632e4e03cdf0a10e8880993f28a)): ?>
+<?php $attributes = $__attributesOriginal786b6632e4e03cdf0a10e8880993f28a; ?>
+<?php unset($__attributesOriginal786b6632e4e03cdf0a10e8880993f28a); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal786b6632e4e03cdf0a10e8880993f28a)): ?>
+<?php $component = $__componentOriginal786b6632e4e03cdf0a10e8880993f28a; ?>
+<?php unset($__componentOriginal786b6632e4e03cdf0a10e8880993f28a); ?>
+<?php endif; ?>
+
 
                 <div class="pt-4">
                     <div class="px-2 py-1 border border-dashed">

@@ -3,16 +3,17 @@
         <label>{{ __($label) }}</label>
 
         @if ($iModel)
-        <div x-data="dropdownComponent({{ json_encode($collection ?? []) }}, '{{ $model }}', '{{ $text }}', '{{ $dataSourceFunction }}', '{{ $placeholder }}', '{{ $triggerOn }}', '{{ $triggerOnEvent }}', '{{ json_encode($dataSource ?? '') }}')"
-            class="ui right labeled input" wire:loading.class="disabler">
+        <div class="ui right labeled input" wire:loading.class="disabler" x-data="dropdownComponent({{ json_encode($collection ?? []) }}, '{{ $model }}', '{{ $text }}', '{{ $dataSourceFunction }}', '{{ $placeholder }}', '{{ $triggerOn }}', '{{ $triggerOnEvent }}', '{{ json_encode($dataSource ?? '') }}')">
             <input type="{{ $iType }}" step="any" placeholder="{{ $iPlaceholder }}" wire:model.debounce.500ms="{{ $iModel }}">
             <div wire:ignore class="{{ $sClass }} ui @if( ! $basic) label scrolling @endif dropdown" id="{{ $sId }}">
                 <input type="hidden" name="{{ $model }}" wire:model.lazy="{{ $model }}">
-                <div class="text default">{{ $placeholder }}</div>
+                <div class="text">{{ $placeholder }}</div>
                 <i class="dropdown icon"></i>
                 <div class="menu"></div>
             </div>
         </div>
+
+
         @else
         <div x-data="dropdownComponent({{ json_encode($collection ?? []) }}, '{{ $model }}', '{{ $text }}', '{{ $dataSourceFunction }}', '{{ $placeholder }}', '{{ $triggerOn }}', '{{ $triggerOnEvent }}', '{{ json_encode($dataSource ?? '') }}')"
             wire:ignore
@@ -88,19 +89,31 @@
                     } else {
                         console.error('Error: Data source function did not return a promise:', result);
                     }
-                } else if (this.dataSource && typeof this.dataSource === 'string') {
-                    // If dataSource is a Livewire property, use $wire.get to retrieve its value
-                    console.log('Fetching data from Livewire property:', this.dataSource);
+                } else if (this.dataSource) {
 
-                    let data = this.$wire.get(this.dataSource);
-                    if (Array.isArray(data)) {
+                    // If dataSource is a Livewire property, use $wire.get to retrieve its value
+                    let sourceDataSource = '{{ $dataSource }}'
+                    console.log('{{$dataType}}','here is data type')
+                    if ('{{$dataType}}' === 'variable') {
+                        const result = this.$wire.call("getSpecificUnitsProperty");
+                        result.then(data => {
+                            this.populate(data);
+
+                            console.log(data, 'my data')
+                        })
+                    } else if('{{$dataType}}'=== 'pointer') {
+                        console.log(this.dataSource,'variable name')
+                        const data = this.$wire.get(this.dataSource);
+                        console.log(data, 'another datasource')
                         this.populate(data);
-                    } else {
-                        console.error('Expected an array from dataSource, but got:', data);
+
                     }
+                    console.log(this.dataSource == 'cards.0.units','truth value')
+
+
                 } else if (this.collection && Array.isArray(this.collection)) {
                     console.log('Using collection data directly.');
-                    this.populate(this.collection);  // Use collection if provided directly
+                    this.populate(this.collection); // Use collection if provided directly
                 } else {
                     console.warn('No valid data source or collection found.');
                 }
@@ -145,7 +158,10 @@
                     fullTextSearch: 'exact',
                     forceSelection: false,
                     onChange: (value, text, $choice) => {
-                        console.log('Dropdown changed:', { value, text });
+                        console.log('Dropdown changed:', {
+                            value,
+                            text
+                        });
                         // Update Livewire model when the user selects an item
                         _this.$wire.set(modelName, value);
 
