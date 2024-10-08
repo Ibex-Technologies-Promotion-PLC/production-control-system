@@ -14,6 +14,7 @@ trait DispatchLotPicker
     public $selectedDispatchProduct;
 
     public $reservationViewModal = false;
+    public $baseUnit;
 
 
     protected function rules()
@@ -40,8 +41,9 @@ trait DispatchLotPicker
      */
     public function openDoLotModal($id)
     {
-        $this->selectedDispatchProduct = DispatchProduct::with('reservedStocks')->find($id);
-        dd($this->selectedDispatchProduct->reservedStocks);
+        $this->selectedDispatchProduct = DispatchProduct::with('reservedStocks','product')->find($id);
+        $this->baseUnit = $this->selectedDispatchProduct->unit->where('is_base',1)->first();
+        // dd($this->selectedDispatchProduct->product);
 
         $this->reset('rows');
 
@@ -73,7 +75,6 @@ trait DispatchLotPicker
     public function openReservationViewModal($id)
     {
         $this->selectedDispatchProduct = DispatchProduct::find($id);
-        dd($this->selectedDispatchProduct);
 
         $this->reservationViewModal = true;
     }

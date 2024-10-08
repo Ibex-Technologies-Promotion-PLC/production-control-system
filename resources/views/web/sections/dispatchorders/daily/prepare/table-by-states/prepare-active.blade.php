@@ -5,7 +5,6 @@
             {{ __('dispatchorders.there_are_number_of_products_that_need_to_be_prepared', ['number' => $dispatchOrder->dispatchProducts->count()]) }}
         </span>
     </div>
-
     <x-table class="single line selectable">
         @foreach($dispatchOrder->dispatchProducts as $key => $dp)
             <tr wire:key="dp_tablerow_{{ $key }}" class="@if($dp->isReady()) positive @else negative @endif">

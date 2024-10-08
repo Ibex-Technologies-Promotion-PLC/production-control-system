@@ -67,8 +67,7 @@ class DispatchProduct extends Model implements CanReserveStocks
      */
     public function reservedStocks()
     {
-        return $this->dispatchOrder->reservedStocks()
-            ->where('product_id', $this->product_id);
+        return $this->belongsTo(ReservedStock::class);
     }
 
 

@@ -3,7 +3,7 @@
         <label>{{ __($label) }}</label>
 
         @if ($iModel)
-        <div class="ui right labeled input" wire:loading.class="disabler" x-data="dropdownComponent({{ json_encode($collection ?? []) }}, '{{ $model }}', '{{ $text }}', '{{ $dataSourceFunction }}', '{{ $placeholder }}', '{{ $triggerOn }}', '{{ $triggerOnEvent }}', '{{ json_encode($dataSource ?? '') }}')">
+        <div class="ui right labeled input" wire:loading.class="disabler" x-data="dropdownComponent({{ json_encode($collection ?? []) }}, '{{$dataType}}','{{ $model }}', '{{ $text }}', '{{ $dataSourceFunction }}', '{{ $placeholder }}', '{{ $triggerOn }}', '{{ $triggerOnEvent }}', '{{ json_encode($dataSource ?? '') }}')">
             <input type="{{ $iType }}" step="any" placeholder="{{ $iPlaceholder }}" wire:model.debounce.500ms="{{ $iModel }}">
             <div wire:ignore class="{{ $sClass }} ui @if( ! $basic) label scrolling @endif dropdown" id="{{ $sId }}">
                 <input type="hidden" name="{{ $model }}" wire:model.lazy="{{ $model }}">
@@ -15,7 +15,7 @@
 
 
         @else
-        <div x-data="dropdownComponent({{ json_encode($collection ?? []) }}, '{{ $model }}', '{{ $text }}', '{{ $dataSourceFunction }}', '{{ $placeholder }}', '{{ $triggerOn }}', '{{ $triggerOnEvent }}', '{{ json_encode($dataSource ?? '') }}')"
+        <div x-data="dropdownComponent({{ json_encode($collection ?? []) }},'{{$dataType}}', '{{ $model }}', '{{ $text }}', '{{ $dataSourceFunction }}', '{{ $placeholder }}', '{{ $triggerOn }}', '{{ $triggerOnEvent }}', '{{ json_encode($dataSource ?? '') }}')"
             wire:ignore
             class="{{ $sClass }} ui @if( ! $basic) selection scrolling @endif dropdown"
             id="{{ $sId }}"
@@ -33,17 +33,17 @@
 
 <script>
     document.addEventListener('alpine:init', () => {
-        Alpine.data('dropdownComponent', (initialData = [], modelName, text, dataSourceFunction, placeholder, triggerOn, triggerOnEvent, dataSource) => ({
+        Alpine.data('dropdownComponent', (initialData = [], dataType,modelName, text, dataSourceFunction, placeholder, triggerOn, triggerOnEvent, dataSource) => ({
             values: [],
             selectedValue: null,
             currentPlaceholder: placeholder,
             text: text,
             dataSourceFunction: dataSourceFunction,
             dataSource: dataSource,
+            dataType:dataType,
             collection: initialData,
 
             init() {
-                console.log('Initial Text Fields:', this.text);
 
                 // Trigger fetch values depending on initial data
                 if (initialData.length > 0) {
@@ -69,6 +69,8 @@
             },
 
             fetchValues() {
+                console.log('dataType',this.dataType);
+
                 if (this.dataSourceFunction && this.dataSourceFunction !== '') {
                     // Call a Livewire method to fetch data
                     console.log('Fetching data using function:', this.dataSourceFunction);
@@ -92,18 +94,16 @@
                 } else if (this.dataSource) {
 
                     // If dataSource is a Livewire property, use $wire.get to retrieve its value
-                    let sourceDataSource = '{{ $dataSource }}'
-                    console.log('{{$dataType}}','here is data type')
-                    if ('{{$dataType}}' === 'variable') {
+                    if (this.dataType === 'variable') {
                         const result = this.$wire.call("getSpecificUnitsProperty");
                         result.then(data => {
                             this.populate(data);
 
                             console.log(data, 'my data')
                         })
-                    } else if('{{$dataType}}'=== 'pointer') {
+                    } else if(this.dataType === 'pointer') {
                         console.log(this.dataSource,'variable name')
-                        const data = this.$wire.get(this.dataSource);
+                        const data = this.$wire.get('companyAddresses');
                         console.log(data, 'another datasource')
                         this.populate(data);
 
