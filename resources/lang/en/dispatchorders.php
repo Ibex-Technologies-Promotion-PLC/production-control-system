@@ -39,6 +39,11 @@ return [
 
     'dispatch' => 'Shipment',
     'total_covered' => 'Amount covered',
+    'prd_cost' => 'Product Cost',
+    'total' => 'Total',
+    'prd_sales'=> 'Selling Price',
+
+
     'needed_amount' => 'Required amount',
 
     'lot_number' => 'Lot number',

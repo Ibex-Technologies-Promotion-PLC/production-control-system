@@ -81,10 +81,10 @@ trait SpecifyProducts
                     $this->specificUnits = $this->cards[$index]['units'];
             $this->dispatch('sp_product_selected'.$index);
             
-            $baseUnit = $product->units->firstWhere('is_base', 1); 
+            $baseUnit = $product->units->firstWhere('is_base', 1);
+            if($baseUnit) 
             $this->cards[$index]['unit_id'] = $baseUnit->id;
 
-            Log::info('base unit id  '.$baseUnit->id);
 
         }
     }

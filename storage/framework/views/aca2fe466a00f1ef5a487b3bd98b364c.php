@@ -16,8 +16,6 @@
          <?php $__env->slot('header', null, []); ?> 
 
             <div>
-                <?php echo e($selectedDispatchProduct->product->prd_code); ?>
-
                 <span class="text-sm">(<?php echo e($selectedDispatchProduct->product->prd_name); ?>)</span>
             </div>
          <?php $__env->endSlot(); ?>
@@ -41,6 +39,7 @@
                         </span>
                     </span>
                 </div>
+
                 <div>
                     <!--[if BLOCK]><![endif]--><?php if($this->necessaryAmount() == 0): ?>
                     <span class="text-sm text-green-600">
@@ -65,12 +64,13 @@
 
             <div class="p-6 shadow-md flex flex-col gap-8 md:gap-4">
                 <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $rows; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                </h1>
                 <div wire:key="row_<?php echo e($key); ?>" class="flex flex-col md:flex-row gap-3 border border-dashed p-3 rounded-lg hover:border-orange-400 ease-in-out duration-200">
                     
-                    <select class="form-select text-sm flex-1" wire:model="rows.<?php echo e($key); ?>.lot_number">
+                    <select class="form-select text-sm flex-1" wire:model="rows.<?php echo e($key); ?>.lot_number" wire:key="lot_number_<?php echo e($key); ?>">
                         <option value="" selected><?php echo e(__('dispatchorders.select_lot_number')); ?></option>
-                        <!--[if BLOCK]><![endif]--><?php if($selectedDispatchProduct->product->lots): ?>
-                        <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $selectedDispatchProduct->product->lots; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $lot): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <!--[if BLOCK]><![endif]--><?php if($lotsData): ?>
+                        <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $lotsData; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $lot): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($lot['lot_number']); ?>" class="text-red-700 font-bold">
                             <span><?php echo e($lot['lot_number']); ?></span> |
                             <span class="text-xs"><?php echo e(__('common.available' )); ?>: <?php echo e($lot['available_amount_string']); ?></span>
@@ -79,6 +79,8 @@
 
                             <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
                         </option>
+                            <h1><?php echo e($index); ?></h1>
+
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><!--[if ENDBLOCK]><![endif]-->
                         <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
 
@@ -137,6 +139,10 @@
                     </div>
                 </div>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><!--[if ENDBLOCK]><![endif]-->
+                <div class="ui input focus" style="max-width: 550px;">
+                    <input wire:model.lazy="selling_prices.<?php echo e($selectedDispatchProduct->product->prd_code); ?>" type="text" placeholder="Selling Price">
+                </div>
+
             </div>
 
             <div class="flex p-3">

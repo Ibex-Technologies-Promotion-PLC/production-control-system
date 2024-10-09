@@ -4,6 +4,9 @@ namespace App\Http\Livewire\Traits\DispatchOrders;
 
 use App\Common\Facades\Conversions;
 use App\Models\DispatchProduct;
+use App\Models\ReservedStock;
+use App\Models\StockMove;
+use Illuminate\Support\Facades\Log;
 
 trait DispatchLotPicker
 {
@@ -15,6 +18,9 @@ trait DispatchLotPicker
 
     public $reservationViewModal = false;
     public $baseUnit;
+    public $product_id;
+    public $lotsData;
+    public $selling_prices = [];
 
 
     protected function rules()
@@ -35,43 +41,134 @@ trait DispatchLotPicker
 
 
 
-
     /**
      * Open modal for specifying lot sources to dispatch
      */
     public function openDoLotModal($id)
     {
-        $this->selectedDispatchProduct = DispatchProduct::with('reservedStocks','product')->find($id);
-        $this->baseUnit = $this->selectedDispatchProduct->unit->where('is_base',1)->first();
+        $this->product_id = $id;
+        $this->selectedDispatchProduct = DispatchProduct::find($id);
+        $this->baseUnit = $this->selectedDispatchProduct->unit->where('is_base', 1)->first();
+        $this->lotsData = $this->allWithAmounts();
         // dd($this->selectedDispatchProduct->product);
 
         $this->reset('rows');
 
-        if($this->isInEditMode()) {
+        if ($this->isInEditMode()) {
             return $this->setEditMode();
         }
 
         $this->doLotModal = true;
         $this->addRow();
     }
+    public function updatedSellingPrices($value, $name)
+    {
+        if (strpos($name, 'PROD_') === 0) {
 
-    
+            $this->selling_prices[$name] = $value;
+        } else {
+            // Handle the case where name doesn't match expected format
+            Log::info('Error: Invalid input received in updatedSellingPrices', $name);
+        }
+    }
 
+    private function uniqueLots()
+    {
+        return StockMove::where(['product_id' => $this->product_id])
+            ->select('lot_number')
+            ->distinct()
+            ->get()->pluck('lot_number');
+    }
+
+
+    public function only($lot)
+    {
+        return $this->positive($lot) - $this->negative($lot);
+    }
+
+    private function positive($lot)
+    {
+        return StockMove::where([
+            'product_id' => $this->product_id,
+            'lot_number' => $lot,
+            'approved' => true,
+            'direction' => true,
+        ])->sum('base_amount');
+    }
+
+    private function negative($lot)
+    {
+        return StockMove::where([
+            'product_id' => $this->product_id,
+            'lot_number' => $lot,
+            'approved' => true,
+            'direction' => false,
+        ])->sum('base_amount');
+    }
+
+
+
+
+    /**
+     * @return array lot numbers and amounts
+     */
+    public function allWithAmounts()
+    {
+        // $arr = [];
+        foreach ($this->uniqueLots() as $lot) {
+            $amount = $this->only($lot);
+            if ($amount == 0) continue;
+
+            $reservedAmount = $this->reservedAmount($lot);
+
+            // dd($amount, $reservedAmount);
+            $availableAmount = $amount - $reservedAmount;
+
+            $unit = $this->baseUnit;
+            $arr[] = [
+                'lot_number' => $lot,
+                'amount' => $amount,
+                'available_amount' => $availableAmount,
+                'reserved_amount' => (float)$reservedAmount,
+                'amount_string' => $this->nFormat($amount) . ' ' . ($unit ? $unit->name : 'Kg'),
+                'available_amount_string' => $this->nFormat($availableAmount) . ' ' . ($unit ? $unit->name : 'Kg'),
+                'reserved_amount_string' => $this->nFormat($reservedAmount) . ' ' . ($unit ? $unit->name : 'Kg'),
+
+                'unit' => $unit,
+            ];
+        }
+        return isset($arr) ? $arr : [];
+    }
+
+    public function reservedAmount($lot)
+    {
+        return ReservedStock::where(
+            [
+                'reserved_lot' => $lot,
+                'product_id' => $this->product_id,
+                'reserved_is_archived' => false,
+            ]
+        )->sum('reserved_amount') + 0;
+    }
     public function closeDoLotModal()
     {
         $this->reset('rows', 'doLotModal', 'selectedDispatchProduct');
     }
 
-
-    
-
-    public function updatedDoLotModal($bool)
+    private function nFormat($number)
     {
-        if(!$bool) $this->closeDoLotModal();
+        return number_format((float)$number, 2);
     }
 
 
-    
+
+    public function updatedDoLotModal($bool)
+    {
+        if (!$bool) $this->closeDoLotModal();
+    }
+
+
+
     public function openReservationViewModal($id)
     {
         $this->selectedDispatchProduct = DispatchProduct::find($id);
@@ -81,30 +178,30 @@ trait DispatchLotPicker
 
     public function updatedReservationViewModal($bool)
     {
-        if(!$bool) $this->reset('selectedDispatchProduct');
+        if (!$bool) $this->reset('selectedDispatchProduct');
     }
 
-    
+
 
     /**
      * Add a brand new row into the row
      */
     public function addRow()
     {
-        if($this->cannotAddRow()) return;
+        if ($this->cannotAddRow()) return;
         $this->rows[] = [
             'lot_number' => null,
             'reserved_amount' => null,
         ];
     }
 
-    
+
     /**
      * Removes row of index
      */
     public function removeRow($index)
     {
-        if($this->cannotRemoveRow()) return;
+        if ($this->cannotRemoveRow()) return;
         unset($this->rows[$index]);
     }
 
@@ -118,11 +215,11 @@ trait DispatchLotPicker
     public function updatedLotNumber($index, $lotNumber)
     {
         // don't let selected lot numbers to be same in all rows
-        if(in_array($lotNumber, array_column($this->siblings($index), 'lot_number'))) {
+        if (in_array($lotNumber, array_column($this->siblings($index), 'lot_number'))) {
             $this->rows[$index]['lot_number'] = null;
             $this->dispatch('toast', '', __('dispatchorders.this_lot_selected_already'), 'error');
         }
-        
+
         $this->updatedReservedAmount($index);
     }
 
@@ -137,24 +234,23 @@ trait DispatchLotPicker
         $row = $this->rows[$index];
         $inputAmount = $row['reserved_amount'];
         $lotMax = $this->lotMax($row['lot_number']);
-        
-        if(! $row['lot_number'] || ! $row['reserved_amount'])
+
+        if (! $row['lot_number'] || ! $row['reserved_amount'])
             return $this->rows[$index]['reserved_amount'] = null;
-        
+
         $need = $this->getToBase()['amount'] - $this->siblingsCovered($index);
 
-        if($inputAmount <= $lotMax) {
-            if($inputAmount >= $need) {
+        if ($inputAmount <= $lotMax) {
+            if ($inputAmount >= $need) {
                 $this->rows[$index]['reserved_amount'] = $need;
             }
         } else {
-            if($need <= $lotMax) {
+            if ($need <= $lotMax) {
                 $this->rows[$index]['reserved_amount'] = $need;
             } else {
                 $this->rows[$index]['reserved_amount'] = $lotMax;
             }
         }
-
     }
 
 
@@ -165,13 +261,13 @@ trait DispatchLotPicker
     public function updatedRows($value, $location)
     {
         // prepare-inprogress eye ikonuna tıkladığımda bu fonksiyon alakasız bir şekilde tetik alıyor, önüne böyle geçtim..
-        if(! $this->doLotModal) return;
+        if (! $this->doLotModal) return;
 
         $array = explode('.', $location);
         $index = $array[0];
         $field = $array[1];
 
-        if($field == 'lot_number') {
+        if ($field == 'lot_number') {
             return $this->updatedLotNumber($index, $value);
         } else {
             return $this->updatedReservedAmount($index, $value);
@@ -185,15 +281,15 @@ trait DispatchLotPicker
      */
     public function submitLots()
     {
-        if(! $this->selectedDispatchProduct) return;
-        if($this->cannotSubmit()) return;
+        if (! $this->selectedDispatchProduct) return;
+        if ($this->cannotSubmit()) return;
 
         $this->validate();
 
-        if($this->isInEditMode()) 
+        if ($this->isInEditMode())
             $this->selectedDispatchProduct->reservedStocks()->delete();
-        
-        foreach($this->rows as $row) {
+
+        foreach ($this->rows as $row) {
             $this->dispatchOrder->reservedStocks()->create([
                 'product_id' => $this->selectedDispatchProduct->product_id,
                 'reserved_lot' => $row['lot_number'],
@@ -217,10 +313,10 @@ trait DispatchLotPicker
     private function setEditMode()
     {
         // just a protection 
-        if($this->selectedDispatchProduct->reservedStocks->isEmpty()) return; 
+        if ($this->selectedDispatchProduct->reservedStocks->isEmpty()) return;
 
         // fill in the rows with incoming data
-        foreach($this->selectedDispatchProduct->reservedStocks as $reservation) {
+        foreach ($this->selectedDispatchProduct->reservedStocks as $reservation) {
             $this->rows[] = [
                 'lot_number' => $reservation->reserved_lot,
                 'reserved_amount' => $reservation->reserved_amount,
@@ -240,7 +336,7 @@ trait DispatchLotPicker
     public function emptyDpReserveds($id)
     {
         $dispatchProduct = DispatchProduct::find($id);
-        if($dispatchProduct->dispatchOrder->isInProgress()) {
+        if ($dispatchProduct->dispatchOrder->isInProgress()) {
             $dispatchProduct->undoReady();
             $this->refresh();
         }
@@ -255,8 +351,9 @@ trait DispatchLotPicker
     /**
      * Gives all rows except itself(index)
      */
-    public function siblings($index) : array
+    public function siblings($index): array
     {
+        // dd($this->rows);
         $rows = $this->rows;
         unset($rows[$index]);
         return $rows;
@@ -312,7 +409,7 @@ trait DispatchLotPicker
     }
 
 
-    
+
 
 
     /************ Rules ********************************************** */
@@ -321,7 +418,7 @@ trait DispatchLotPicker
     /**
      * Limit addable rows by count of existing lot sources
      */
-    public function cannotAddRow() : bool
+    public function cannotAddRow(): bool
     {
         return $this->rows && $this->selectedDispatchProduct->product->lotCount() <= count($this->rows);
     }
@@ -330,15 +427,16 @@ trait DispatchLotPicker
     /**
      * Limit deletion of rows when it has only one
      */
-    public function cannotRemoveRow() : bool
+    public function cannotRemoveRow(): bool
     {
         return count($this->rows) === 1;
     }
 
 
 
-    public function inputDisabled($index) : bool
+    public function inputDisabled($index): bool
     {
+        // dd($this->rows[$index]);
         return $this->rows[$index]['lot_number'] == null;
     }
 
@@ -347,12 +445,11 @@ trait DispatchLotPicker
     /**
      * Custom validations just before the submit
      */
-    public function cannotSubmit() : bool
+    public function cannotSubmit(): bool
     {
         // Needs for order must be covered and lots must be different from one another
         return $this->getToBase()['amount'] != $this->coveredAmount()
-               || count(array_unique(array_column($this->rows, 'lot_number'))) !== count($this->rows)
-               || ! $this->selectedDispatchProduct->dispatchOrder->isNotFinalized();
+            || count(array_unique(array_column($this->rows, 'lot_number'))) !== count($this->rows)
+            || ! $this->selectedDispatchProduct->dispatchOrder->isNotFinalized();
     }
-
 }

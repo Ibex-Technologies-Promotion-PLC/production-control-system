@@ -6,7 +6,6 @@
         <x-slot name="header">
 
             <div>
-                {{ $selectedDispatchProduct->product->prd_code}}
                 <span class="text-sm">({{ $selectedDispatchProduct->product->prd_name}})</span>
             </div>
         </x-slot>
@@ -27,6 +26,7 @@
                         </span>
                     </span>
                 </div>
+
                 <div>
                     @if ($this->necessaryAmount() == 0)
                     <span class="text-sm text-green-600">
@@ -48,13 +48,14 @@
 
             <div class="p-6 shadow-md flex flex-col gap-8 md:gap-4">
                 @foreach ($rows as $key => $row)
+                </h1>
                 <div wire:key="row_{{ $key }}" class="flex flex-col md:flex-row gap-3 border border-dashed p-3 rounded-lg hover:border-orange-400 ease-in-out duration-200">
                     {{-- <x-dropdown model="rows.{{$key}}.lot_number" :collection="$selectedDispatchProduct->product->lots" value="lot_number" text="lot_number,available_amount_string" sClass="search"
                     placeholder="{{ __('dispatchorders.lot_number') }}" sId="do_lot{{ $key }}" noErrors /> --}}
-                    <select class="form-select text-sm flex-1" wire:model="rows.{{$key}}.lot_number">
+                    <select class="form-select text-sm flex-1" wire:model="rows.{{$key}}.lot_number" wire:key="lot_number_{{$key}}">
                         <option value="" selected>{{ __('dispatchorders.select_lot_number') }}</option>
-                        @if ($selectedDispatchProduct->product->lots)
-                        @foreach ($selectedDispatchProduct->product->lots as $index => $lot)
+                        @if ($lotsData)
+                        @foreach ($lotsData as $index => $lot)
                         <option value="{{ $lot['lot_number'] }}" class="text-red-700 font-bold">
                             <span>{{ $lot['lot_number'] }}</span> |
                             <span class="text-xs">{{ __('common.available' )}}: {{ $lot['available_amount_string'] }}</span>
@@ -62,6 +63,8 @@
                             | {{ __('workorders.reserved') }}: {{ $lot['reserved_amount_string'] }}
                             @endif
                         </option>
+                            <h1>{{$index}}</h1>
+
                         @endforeach
                         @endif
 
@@ -82,6 +85,10 @@
                     </div>
                 </div>
                 @endforeach
+                <div class="ui input focus" style="max-width: 550px;">
+                    <input wire:model.lazy="selling_prices.{{$selectedDispatchProduct->product->prd_code}}" type="text" placeholder="Selling Price">
+                </div>
+
             </div>
 
             <div class="flex p-3">

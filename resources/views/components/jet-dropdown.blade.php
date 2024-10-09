@@ -1,34 +1,34 @@
 <div class="field">
-    <div <?php echo e($attributes->merge(['class' => 'field'])); ?>>
-        <label><?php echo e(__($label)); ?></label>
+    <div {{ $attributes->merge(['class' => 'field']) }}>
+        <label>{{ __($label) }}</label>
 
-        <!--[if BLOCK]><![endif]--><?php if($iModel): ?>
-        <div class="ui right labeled input" wire:loading.class="disabler" x-data="dropdownComponent(<?php echo e(json_encode($collection ?? [])); ?>, '<?php echo e($dataType); ?>','<?php echo e($model); ?>', '<?php echo e($text); ?>', '<?php echo e($dataSourceFunction); ?>', '<?php echo e($placeholder); ?>', '<?php echo e($triggerOn); ?>', '<?php echo e($triggerOnEvent); ?>', '<?php echo e(json_encode($dataSource ?? '')); ?>')">
-            <input type="<?php echo e($iType); ?>" step="any" placeholder="<?php echo e($iPlaceholder); ?>" wire:model.debounce.500ms="<?php echo e($iModel); ?>">
-            <div wire:ignore class="<?php echo e($sClass); ?> ui <?php if( ! $basic): ?> label scrolling <?php endif; ?> dropdown" id="<?php echo e($sId); ?>">
-                <input type="hidden" name="<?php echo e($model); ?>" wire:model.lazy="<?php echo e($model); ?>">
-                <div class="text"><?php echo e($placeholder); ?></div>
+        @if ($iModel)
+        <div class="ui right labeled input" wire:loading.class="disabler" x-data="dropdownComponent({{ json_encode($collection ?? []) }}, '{{$dataType}}','{{ $model }}', '{{ $text }}', '{{ $dataSourceFunction }}', '{{ $placeholder }}', '{{ $triggerOn }}', '{{ $triggerOnEvent }}', '{{ json_encode($dataSource ?? '') }}')">
+            <input type="{{ $iType }}" step="any" placeholder="{{ $iPlaceholder }}" wire:model.debounce.500ms="{{ $iModel }}">
+            <div wire:ignore class="{{ $sClass }} ui @if( ! $basic) label scrolling @endif dropdown" id="{{ $sId }}">
+                <input type="hidden" name="{{ $model }}" wire:model.lazy="{{ $model }}">
+                <div class="text">{{ $placeholder }}</div>
                 <i class="dropdown icon"></i>
                 <div class="menu"></div>
             </div>
         </div>
 
 
-        <?php else: ?>
-        <div x-data="dropdownComponent(<?php echo e(json_encode($collection ?? [])); ?>,'<?php echo e($dataType); ?>', '<?php echo e($model); ?>', '<?php echo e($text); ?>', '<?php echo e($dataSourceFunction); ?>', '<?php echo e($placeholder); ?>', '<?php echo e($triggerOn); ?>', '<?php echo e($triggerOnEvent); ?>', '<?php echo e(json_encode($dataSource ?? '')); ?>')"
+        @else
+        <div x-data="dropdownComponent({{ json_encode($collection ?? []) }},'{{$dataType}}', '{{ $model }}', '{{ $text }}', '{{ $dataSourceFunction }}', '{{ $placeholder }}', '{{ $triggerOn }}', '{{ $triggerOnEvent }}', '{{ json_encode($dataSource ?? '') }}')"
             wire:ignore
-            class="<?php echo e($sClass); ?> ui <?php if( ! $basic): ?> selection scrolling <?php endif; ?> dropdown"
-            id="<?php echo e($sId); ?>"
+            class="{{ $sClass }} ui @if( ! $basic) selection scrolling @endif dropdown"
+            id="{{ $sId }}"
             wire:loading.class="double loading disabled"
-            wire:target="<?php echo e($triggerOn); ?>, <?php echo e($triggerOnEvent); ?>">
-            <input type="hidden" name="<?php echo e($model); ?>" wire:model.lazy="<?php echo e($model); ?>">
-            <div class="text default"><?php echo e($placeholder); ?></div>
+            wire:target="{{ $triggerOn }}, {{ $triggerOnEvent }}">
+            <input type="hidden" name="{{ $model }}" wire:model.lazy="{{ $model }}">
+            <div class="text default">{{ $placeholder }}</div>
             <i class="dropdown icon"></i>
             <div class="menu"></div>
         </div>
-        <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
+        @endif
     </div>
-    <div><?php echo e($right); ?></div>
+    <div>{{ $right }}</div>
 </div>
 
 <script>
@@ -184,4 +184,4 @@
     .disabler {
         pointer-events: none;
     }
-</style><?php /**PATH /var/www/html/resources/views/components/dropdown.blade.php ENDPATH**/ ?>
+</style>

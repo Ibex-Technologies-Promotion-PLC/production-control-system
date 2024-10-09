@@ -14,6 +14,8 @@ class Product extends Model
     use HasInventory;
 
     protected $guarded = [];
+    protected $appends = ['lots'];
+
 
     /**
      * Eagerload relationships when retrieving the model

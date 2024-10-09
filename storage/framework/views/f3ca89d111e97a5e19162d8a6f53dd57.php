@@ -17,11 +17,11 @@
 <?php endif; ?>
 <?php $component->withAttributes(['class' => 'single line selectable']); ?>
         <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $dispatchOrder->dispatchProducts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $dp): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <tr wire:key="dp_tablerow_<?php echo e($key); ?>" class="<?php if($dp->isReady()): ?> positive <?php else: ?> negative <?php endif; ?>">
-                    
-                <?php echo $__env->make('web.sections.dispatchorders.daily.prepare.table-by-states.common.prepare-table-rows', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+        <tr wire:key="dp_tablerow_<?php echo e($key); ?>" class="<?php if($dp->isReady()): ?> positive <?php else: ?> negative <?php endif; ?>">
 
-                <?php if (isset($component)) { $__componentOriginald5e2d2372dae52eecd6090146e43dba5 = $component; } ?>
+            <?php echo $__env->make('web.sections.dispatchorders.daily.prepare.table-by-states.common.prepare-table-rows', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+
+            <?php if (isset($component)) { $__componentOriginald5e2d2372dae52eecd6090146e43dba5 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginald5e2d2372dae52eecd6090146e43dba5 = $attributes; } ?>
 <?php $component = App\View\Components\TbodyItem::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('tbody-item'); ?>
@@ -31,14 +31,15 @@
 <?php $attributes = $attributes->except(\App\View\Components\TbodyItem::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes(['class' => 'right aligned']); ?>
-                    <div class="ui mini buttons">
-                        <button wire:click.prevent="openDoLotModal(<?php echo e($dp->id); ?>)" class="ui mini red button ">
-                            <i class="dolly icon"></i>
-                            <?php echo e(__('dispatchorders.select_products')); ?>
+                <div class="ui mini buttons">
+                    <button wire:click.prevent="openDoLotModal(<?php echo e($dp->id); ?>)" class="ui mini red button ">
+                        <i class="dolly icon"></i>
+                        <?php echo e(__('dispatchorders.select_products')); ?>
 
-                        </button>
-                    </div>
-                 <?php echo $__env->renderComponent(); ?>
+                    </button>
+                </div>
+                
+             <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginald5e2d2372dae52eecd6090146e43dba5)): ?>
 <?php $attributes = $__attributesOriginald5e2d2372dae52eecd6090146e43dba5; ?>
@@ -49,7 +50,9 @@
 <?php unset($__componentOriginald5e2d2372dae52eecd6090146e43dba5); ?>
 <?php endif; ?>
 
-            </tr>    
+
+        </tr>
+  
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><!--[if ENDBLOCK]><![endif]-->
      <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
@@ -61,7 +64,7 @@
 <?php $component = $__componentOriginal7d9f6e0b9001f5841f72577781b2d17f; ?>
 <?php unset($__componentOriginal7d9f6e0b9001f5841f72577781b2d17f); ?>
 <?php endif; ?>
-    
+
 
     
      <?php $__env->slot('bottom', null, []); ?> 
@@ -73,5 +76,4 @@
             </div>
         </div>
      <?php $__env->endSlot(); ?>
-</div>
-<?php /**PATH /var/www/html/resources/views/web/sections/dispatchorders/daily/prepare/table-by-states/prepare-active.blade.php ENDPATH**/ ?>
+</div><?php /**PATH /var/www/html/resources/views/web/sections/dispatchorders/daily/prepare/table-by-states/prepare-active.blade.php ENDPATH**/ ?>

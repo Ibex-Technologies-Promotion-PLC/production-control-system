@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Services\Stock;
 
@@ -6,10 +6,11 @@ use App\Models\Product;
 use App\Models\ReservedStock;
 use App\Models\StockMove;
 use Illuminate\Support\Facades\Log;
+
 class LotNumberService
 {
     private  $product;
-    
+
 
     public function __construct(Product $product)
     {
@@ -40,7 +41,7 @@ class LotNumberService
     {
         return number_format($number, 2);
     }
-    
+
 
     /**
      * Get total amount of updirection stockmoves
@@ -48,7 +49,7 @@ class LotNumberService
     private function positive($lot)
     {
         return StockMove::where([
-            'product_id' => $this->product->id, 
+            'product_id' => $this->product->id,
             'lot_number' => $lot,
             'approved' => true,
             'direction' => true,
@@ -64,7 +65,7 @@ class LotNumberService
     private function negative($lot)
     {
         return StockMove::where([
-            'product_id' => $this->product->id, 
+            'product_id' => $this->product->id,
             'lot_number' => $lot,
             'approved' => true,
             'direction' => false,
@@ -116,22 +117,23 @@ class LotNumberService
     public function allWithAmounts()
     {
         // $arr = [];
-        foreach($this->uniqueLots() as $lot) {
+        foreach ($this->uniqueLots() as $lot) {
             $amount = $this->only($lot);
-            if($amount == 0) continue;
+            if ($amount == 0) continue;
 
             $reservedAmount = $this->reservedAmount($lot);
             $availableAmount = $amount - $reservedAmount;
-            
+
             $unit = $this->product->baseUnit;
             $arr[] = [
-                'lot_number' => $lot, 
+                'lot_number' => $lot,
                 'amount' => $amount,
                 'available_amount' => $availableAmount,
                 'reserved_amount' => (float)$reservedAmount,
-                'amount_string' => $this->nFormat($amount) . ' ' . $unit->name, // presentation is much easy now (:
-                'available_amount_string' => $this->nFormat($availableAmount) . ' ' . $unit->name,
-                'reserved_amount_string' => $this->nFormat($reservedAmount) . ' ' . $unit->name,
+                'amount_string' => $this->nFormat($amount) . ' ' . ($unit ? $unit->name : 'Kg'),
+                'available_amount_string' => $this->nFormat($availableAmount) . ' ' . ($unit ? $unit->name : 'Kg'),
+                'reserved_amount_string' => $this->nFormat($reservedAmount) . ' ' . ($unit ? $unit->name : 'Kg'),
+
                 'unit' => $unit,
             ];
         }
@@ -145,11 +147,10 @@ class LotNumberService
     {
         return ReservedStock::where(
             [
-                'reserved_lot' => $lot, 
+                'reserved_lot' => $lot,
                 'product_id' => $this->product->id,
                 'reserved_is_archived' => false,
             ]
         )->sum('reserved_amount') + 0;
     }
-
 }

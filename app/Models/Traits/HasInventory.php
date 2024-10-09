@@ -16,7 +16,7 @@ trait HasInventory
     public function getLotsAttribute()
     {
         Log::info("in the lots");
-        return (new LotNumberService($this))->allWithAmounts();
+        return (new LotNumberService(product: $this))->allWithAmounts();
     }
 
     public function onlyLot($lotNumber)

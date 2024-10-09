@@ -7,23 +7,26 @@
     </div>
     <x-table class="single line selectable">
         @foreach($dispatchOrder->dispatchProducts as $key => $dp)
-            <tr wire:key="dp_tablerow_{{ $key }}" class="@if($dp->isReady()) positive @else negative @endif">
-                    
-                @include('web.sections.dispatchorders.daily.prepare.table-by-states.common.prepare-table-rows')
+        <tr wire:key="dp_tablerow_{{ $key }}" class="@if($dp->isReady()) positive @else negative @endif">
 
-                <x-tbody-item class="right aligned">
-                    <div class="ui mini buttons">
-                        <button wire:click.prevent="openDoLotModal({{ $dp->id }})" class="ui mini red button ">
-                            <i class="dolly icon"></i>
-                            {{ __('dispatchorders.select_products') }}
-                        </button>
-                    </div>
-                </x-tbody-item>
+            @include('web.sections.dispatchorders.daily.prepare.table-by-states.common.prepare-table-rows')
 
-            </tr>    
+            <x-tbody-item class="right aligned">
+                <div class="ui mini buttons">
+                    <button wire:click.prevent="openDoLotModal({{ $dp->id }})" class="ui mini red button ">
+                        <i class="dolly icon"></i>
+                        {{ __('dispatchorders.select_products') }}
+                    </button>
+                </div>
+                
+            </x-tbody-item>
+
+
+        </tr>
+  
         @endforeach
     </x-table>
-    
+
 
     {{-- Slot of x-content component --}}
     <x-slot name="bottom">
