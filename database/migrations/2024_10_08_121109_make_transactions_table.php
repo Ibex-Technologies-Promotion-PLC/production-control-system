@@ -13,9 +13,12 @@ return new class extends Migration
     {
         //
         Schema::create('transactions', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger(column: 'company_id');
             $table->unsignedBigInteger(column: 'product_id');
             $table->decimal('total')->nullable();
+            $table->timestamps();
+
         });
     }
 

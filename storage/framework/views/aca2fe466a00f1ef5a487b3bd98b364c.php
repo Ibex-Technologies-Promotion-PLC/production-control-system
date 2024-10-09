@@ -79,7 +79,6 @@
 
                             <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
                         </option>
-                            <h1><?php echo e($index); ?></h1>
 
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><!--[if ENDBLOCK]><![endif]-->
                         <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
@@ -88,28 +87,7 @@
 
                     <div class="flex gap-4">
                         <!--[if BLOCK]><![endif]--><?php if($baseUnit): ?>
-                        <!--[if BLOCK]><![endif]--><?php if($this->inputDisabled($key)): ?>
-                        <?php if (isset($component)) { $__componentOriginal786b6632e4e03cdf0a10e8880993f28a = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginal786b6632e4e03cdf0a10e8880993f28a = $attributes; } ?>
-<?php $component = App\View\Components\Input::resolve(['type' => 'number','model' => 'rows.'.e($key).'.reserved_amount','placeholder' => ''.e(__('common.amount')).'','innerLabel' => ''.e($baseUnit->name).'','iClass' => 'disabled','noErrors' => true] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('input'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\App\View\Components\Input::ignoredParameterNames()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['wire:key' => 'reservedamountinput_'.e($key).'','class' => 'ui tiny input flex-1']); ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginal786b6632e4e03cdf0a10e8880993f28a)): ?>
-<?php $attributes = $__attributesOriginal786b6632e4e03cdf0a10e8880993f28a; ?>
-<?php unset($__attributesOriginal786b6632e4e03cdf0a10e8880993f28a); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginal786b6632e4e03cdf0a10e8880993f28a)): ?>
-<?php $component = $__componentOriginal786b6632e4e03cdf0a10e8880993f28a; ?>
-<?php unset($__componentOriginal786b6632e4e03cdf0a10e8880993f28a); ?>
-<?php endif; ?>
-                        <?php else: ?>
+                        
                         <?php if (isset($component)) { $__componentOriginal786b6632e4e03cdf0a10e8880993f28a = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal786b6632e4e03cdf0a10e8880993f28a = $attributes; } ?>
 <?php $component = App\View\Components\Input::resolve(['type' => 'number','model' => 'rows.'.e($key).'.reserved_amount','placeholder' => ''.e(__('common.amount')).'','innerLabel' => ''.e($baseUnit->name).'','noErrors' => true] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
@@ -131,7 +109,6 @@
 <?php unset($__componentOriginal786b6632e4e03cdf0a10e8880993f28a); ?>
 <?php endif; ?>
                         <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
-                        <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
 
                         <div class="flex items-center w-1/12 justify-center">
                             <i wire:click="removeRow(<?php echo e($key); ?>)" class=" cancel red icon <?php if($this->cannotRemoveRow()): ?> disabled <?php else: ?> cursor-pointer link <?php endif; ?>"></i>
@@ -140,7 +117,7 @@
                 </div>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><!--[if ENDBLOCK]><![endif]-->
                 <div class="ui input focus" style="max-width: 550px;">
-                    <input wire:model.lazy="selling_prices.<?php echo e($selectedDispatchProduct->product->prd_code); ?>" type="text" placeholder="Selling Price">
+                    <input wire:model.lazy="selling_prices.<?php echo e($selectedDispatchProduct->product->id); ?>" type="text" placeholder="Selling Price">
                 </div>
 
             </div>

@@ -16,7 +16,6 @@
                 <x-table-row class="text-ease hover:bg-cool-gray-100">
                     @if (!$noProduct)
                         <x-tbody-item>
-                            {{ $reservation->product->prd_code }}
                             <span class="text-sm">({{ $reservation->product->prd_name }})</span>
                         </x-tbody-item>
                     @endif

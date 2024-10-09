@@ -63,7 +63,6 @@
                             | {{ __('workorders.reserved') }}: {{ $lot['reserved_amount_string'] }}
                             @endif
                         </option>
-                            <h1>{{$index}}</h1>
 
                         @endforeach
                         @endif
@@ -72,11 +71,8 @@
 
                     <div class="flex gap-4">
                         @if ($baseUnit)
-                        @if ($this->inputDisabled($key))
-                        <x-input wire:key="reservedamountinput_{{$key}}" type="number" model="rows.{{$key}}.reserved_amount" placeholder="{{ __('common.amount') }}" innerLabel="{{ $baseUnit->name }}" iClass="disabled" noErrors class="ui tiny input flex-1" />
-                        @else
+                        
                         <x-input wire:key="reservedamountinput_{{$key}}" type="number" model="rows.{{$key}}.reserved_amount" placeholder="{{ __('common.amount') }}" innerLabel="{{ $baseUnit->name }}" noErrors class="ui tiny input flex-1" />
-                        @endif
                         @endif
 
                         <div class="flex items-center w-1/12 justify-center">
@@ -86,7 +82,7 @@
                 </div>
                 @endforeach
                 <div class="ui input focus" style="max-width: 550px;">
-                    <input wire:model.lazy="selling_prices.{{$selectedDispatchProduct->product->prd_code}}" type="text" placeholder="Selling Price">
+                    <input wire:model.lazy="selling_prices.{{$selectedDispatchProduct->product->id}}" type="text" placeholder="Selling Price">
                 </div>
 
             </div>

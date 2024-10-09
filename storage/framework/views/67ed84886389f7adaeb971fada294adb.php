@@ -73,6 +73,8 @@
 <?php $component = $__componentOriginald5e2d2372dae52eecd6090146e43dba5; ?>
 <?php unset($__componentOriginald5e2d2372dae52eecd6090146e43dba5); ?>
 <?php endif; ?>
+<!--[if BLOCK]><![endif]--><?php if(!$dispatchOrder->isAllReady()): ?>
+
 <?php if (isset($component)) { $__componentOriginald5e2d2372dae52eecd6090146e43dba5 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginald5e2d2372dae52eecd6090146e43dba5 = $attributes; } ?>
 <?php $component = App\View\Components\TbodyItem::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
@@ -88,7 +90,7 @@
         <div>
             <span><?php echo e(__('dispatchorders.prd_sales')); ?>:</span>
             <span class="text-green-600">
-                <?php echo e($selling_prices[$dp->product->prd_code] ?? $dp->product->prd_cost); ?> Br
+                <?php echo e($selling_prices[$dp->product->id] ?? $dp->product->prd_sales); ?> Br
             </span>
         </div>
         <div class="mx-5">
@@ -97,11 +99,11 @@
                 <?php echo e($dp->product->prd_cost); ?> Br
 
             </span>
-        </div>  
+        </div>
         <div>
             <span><?php echo e(__('dispatchorders.total')); ?>:</span>
             <span class="text-green-600">
-                <?php echo e(($selling_prices[$dp->product->prd_code] ?? $dp->product->prd_cost) * (float)$dp->dp_amount); ?> Br
+                <?php echo e(($selling_prices[$dp->product->id] ?? $dp->product->prd_sales) * (float)$dp->dp_amount); ?> Br
 
             </span>
         </div>
@@ -115,4 +117,5 @@
 <?php if (isset($__componentOriginald5e2d2372dae52eecd6090146e43dba5)): ?>
 <?php $component = $__componentOriginald5e2d2372dae52eecd6090146e43dba5; ?>
 <?php unset($__componentOriginald5e2d2372dae52eecd6090146e43dba5); ?>
-<?php endif; ?><?php /**PATH /var/www/html/resources/views/web/sections/dispatchorders/daily/prepare/table-by-states/common/prepare-table-rows.blade.php ENDPATH**/ ?>
+<?php endif; ?>
+<?php endif; ?><!--[if ENDBLOCK]><![endif]--><?php /**PATH /var/www/html/resources/views/web/sections/dispatchorders/daily/prepare/table-by-states/common/prepare-table-rows.blade.php ENDPATH**/ ?>

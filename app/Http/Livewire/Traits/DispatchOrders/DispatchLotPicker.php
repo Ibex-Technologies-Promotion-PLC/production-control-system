@@ -3,9 +3,11 @@
 namespace App\Http\Livewire\Traits\DispatchOrders;
 
 use App\Common\Facades\Conversions;
+use App\Models\DispatchOrder;
 use App\Models\DispatchProduct;
 use App\Models\ReservedStock;
 use App\Models\StockMove;
+use App\Models\Transaction;
 use Illuminate\Support\Facades\Log;
 
 trait DispatchLotPicker
@@ -20,6 +22,7 @@ trait DispatchLotPicker
     public $baseUnit;
     public $product_id;
     public $lotsData;
+    public $dispachOrderId;
     public $selling_prices = [];
 
 
@@ -48,6 +51,7 @@ trait DispatchLotPicker
     {
         $this->product_id = $id;
         $this->selectedDispatchProduct = DispatchProduct::find($id);
+        $this->dispachOrderId = DispatchOrder::find($this->selectedDispatchProduct->dispatch_order_id);
         $this->baseUnit = $this->selectedDispatchProduct->unit->where('is_base', 1)->first();
         $this->lotsData = $this->allWithAmounts();
         // dd($this->selectedDispatchProduct->product);
@@ -61,14 +65,13 @@ trait DispatchLotPicker
         $this->doLotModal = true;
         $this->addRow();
     }
-    public function updatedSellingPrices($value, $name)
+    public function updatedSellingPrices($value, $location)
     {
-        if (strpos($name, 'PROD_') === 0) {
+        if ($location !== 0) {
 
-            $this->selling_prices[$name] = $value;
+            $this->selling_prices[$location] = $value;
         } else {
-            // Handle the case where name doesn't match expected format
-            Log::info('Error: Invalid input received in updatedSellingPrices', $name);
+            Log::info('Error: Invalid input received in updatedSellingPrices' );
         }
     }
 
@@ -296,6 +299,16 @@ trait DispatchLotPicker
                 'reserved_amount' => $row['reserved_amount'],
             ]);
         }
+        if (count($this->selling_prices) > 0) {
+            foreach ($this->selling_prices as $productId => $price) {
+                $totalPrice = $this->selectedDispatchProduct->dp_amount * $price;
+                $transaction = new Transaction();
+                $transaction->product_id = $productId; 
+                $transaction->total = $totalPrice; 
+                $transaction->company_id = $this->dispachOrderId->company_id; 
+                $transaction->save(); 
+            }
+        }
 
         $this->selectedDispatchProduct->setReady();
 
@@ -436,7 +449,7 @@ trait DispatchLotPicker
 
     public function inputDisabled($index): bool
     {
-        // dd($this->rows[$index]);
+        // dd($index);
         return $this->rows[$index]['lot_number'] == null;
     }
 

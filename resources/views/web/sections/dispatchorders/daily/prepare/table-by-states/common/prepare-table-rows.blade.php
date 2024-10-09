@@ -19,13 +19,15 @@
     <span class="font-bold">{{ (float)$dp->dp_amount }} </span>
     <span class="text-sm">{{ $dp->unit->name }}</span>
 </x-tbody-item>
+@if (!$dispatchOrder->isAllReady())
+
 <x-tbody-item>
 
     <div class="py-3  px-4 shadow font-bold text-sm flex justify-start">
         <div>
             <span>{{ __('dispatchorders.prd_sales') }}:</span>
             <span class="text-green-600">
-                {{ $selling_prices[$dp->product->prd_code] ?? $dp->product->prd_cost }} Br
+                {{ $selling_prices[$dp->product->id] ?? $dp->product->prd_sales }} Br
             </span>
         </div>
         <div class="mx-5">
@@ -34,13 +36,14 @@
                 {{ $dp->product->prd_cost }} Br
 
             </span>
-        </div>  
+        </div>
         <div>
             <span>{{ __('dispatchorders.total') }}:</span>
             <span class="text-green-600">
-                {{ ($selling_prices[$dp->product->prd_code] ?? $dp->product->prd_cost) * (float)$dp->dp_amount }} Br
+                {{ ($selling_prices[$dp->product->id] ?? $dp->product->prd_sales) * (float)$dp->dp_amount }} Br
 
             </span>
         </div>
     </div>
 </x-tbody-item>
+@endif
