@@ -32,7 +32,7 @@ class DoPrepare extends Component
     
     public function refresh()
     {
-        $this->emitSelf('refresh');
+        $this->dispatch('refresh')->self();
     }
 
 

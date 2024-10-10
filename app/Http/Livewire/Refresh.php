@@ -6,7 +6,7 @@ trait Refresh
 {
     protected function refresh()
     {
-        $this->emitSelf('refresh');
+        $this->dispatch('refresh')->self();
     }
     
 }

@@ -44,14 +44,17 @@
                         </x-custom-modal>
                     </x-custom-modal>
                 </div>
+                <x-input noErrors model="prd_shelf_life" label="{{ __('validation.attributes.prd_shelf_life') }}" placeholder="{{ __('validation.attributes.prd_shelf_life') }}" class="required field" />
+
             </x-slot>
 
 
             <x-slot name="right">
                 <x-dropdown model="unit_id" :collection="$this->units" value="id" text="name" sId="units" label="units.unit" placeholder="units.unit" transition="slide down" class="required field" />
-                <x-input noErrors model="prd_shelf_life" label="{{ __('validation.attributes.prd_shelf_life') }}" placeholder="{{ __('validation.attributes.prd_shelf_life') }}" class="required field" />
                 <x-input noErrors model="prd_min_threshold" label="{{ __('validation.attributes.prd_min_threshold') }}" placeholder="{{ __('validation.attributes.prd_min_threshold') }}" class="field" />
                 <x-input noErrors model="prd_cost" label="{{ __('validation.attributes.prd_cost') }}" placeholder="{{ __('validation.attributes.prd_cost') }}" class="field" />
+                <x-input noErrors model="prd_sales" label="{{ __('validation.attributes.prd_sales') }}" placeholder="{{ __('validation.attributes.prd_sales') }}" class="field" />
+
 
                 <div class="pt-4">
                     <div class="px-2 py-1 border border-dashed">

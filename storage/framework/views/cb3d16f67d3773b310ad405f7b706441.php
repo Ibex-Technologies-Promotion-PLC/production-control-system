@@ -55,6 +55,7 @@
 
             <table class="ui table basic">
                 <thead>
+
                     <tr>
                         <?php if (isset($component)) { $__componentOriginald2bda8ba956bbb8c07433dc54c5ccbf0 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginald2bda8ba956bbb8c07433dc54c5ccbf0 = $attributes; } ?>

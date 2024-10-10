@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Services\DatetimeService;
 use App\Services\SearchService;
+use Illuminate\Support\Facades\Log;
 use Livewire\WithPagination;
 
 trait SmartTable

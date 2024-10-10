@@ -43,6 +43,7 @@ class Dropdown extends Component
 
     public $noErrors;
     public $trigger;
+    public $dataType;
 
     /**
      * Create a new component instance.
@@ -50,6 +51,7 @@ class Dropdown extends Component
      * @return void
      */
     public function __construct(
+        $dataType = null,
         $label = null,
         $key = null,
         $iModel = null,
@@ -73,9 +75,9 @@ class Dropdown extends Component
         $initnone = false,
         
         $noErrors = false,
-        $trigger = null // Add this to the constructor parameters
 
     ) {
+        $this->dataType = $dataType;
         $this->label = $label;
         $this->key = $key;
 
@@ -102,7 +104,6 @@ class Dropdown extends Component
         $this->basic = $basic;
         $this->initnone = $initnone;
         $this->noErrors = $noErrors;
-        Log::warning('', ['collection' => $this->collection]);
     }
 
     /**
@@ -114,8 +115,5 @@ class Dropdown extends Component
     {
         return view('components.dropdown');
     }
-    public function getProductsProperty()
-    {
-        return ProductService::getProducibleOnes();
-    }
+    
 }

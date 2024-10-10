@@ -1,5 +1,6 @@
 <div>
 
+
     <x-table-toolbar :perPage="$perPage">
         <x-slot name="filters">
             <div class="responsive-grid-3-4">
@@ -35,6 +36,8 @@
                 <x-thead-item sortBy="prd_barcode">{{ __('validation.attributes.prd_barcode') }}</x-thead-item>
                 <x-thead-item sortBy="prd_shelf_life" class="collapsing">{{ __('validation.attributes.prd_shelf_life') }}</x-thead-item>
                 <x-thead-item class="center aligned">{{ __('validation.attributes.prd_cost') }}</x-thead-item>
+                <x-thead-item class="center aligned">{{ __('validation.attributes.prd_sales') }}</x-thead-item>
+
                 <x-thead-item class="center aligned">{{ __('inventory.in_stock') }}</x-thead-item>
                 <x-thead-item></x-thead-item>
             </x-table-row>
@@ -53,6 +56,8 @@
                 <x-tbody-item>{{ $product->prd_barcode }}</x-tbody-item>
                 <x-tbody-item class="center aligned">{{ $product->prd_shelf_life }}</x-tbody-item>
                 <x-tbody-item class="center aligned">{{ $product->prd_cost }} Br</x-tbody-item>
+                <x-tbody-item class="center aligned">{{ $product->prd_sales }} Br</x-tbody-item>
+
                 <x-tbody-item class="center aligned collapsing">
                     @if ($product->isInStock)
                     <span class="text-ease-green text-sm">

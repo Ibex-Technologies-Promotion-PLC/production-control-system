@@ -7,7 +7,7 @@
 
             <div class="ui tiny icon input" >
                 <i class="search icon"></i>
-                <input wire:model.debounce.150ms="searchQuery" type="text" placeholder="{{ __('common.search_in_database') }}">
+                <input wire:model.live="searchQuery" type="text" placeholder="{{ __('common.search_in_database') }}">
             </div>
             <div @click="dateRange = ! dateRange" class="text-xs @if($this->showDateFilters) text-ease-red @else text-ease-green @endif cursor-pointer">
                 <x-span tooltip="{{ __('common.date_range') }}">
