@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\View\Components\Layouts\Partials;
 
@@ -12,7 +12,7 @@ class Sidebar extends Component
     public $activeMenuGroupKey;
 
 
-    
+
 
     public function __construct()
     {
@@ -21,18 +21,18 @@ class Sidebar extends Component
     }
 
 
-    
+
     public function decideOpenedDropdown()
     {
-        foreach($this->menuItems() as $index => $menuItem) {
-            if(array_key_exists('submenus', $menuItem) && is_array($menuItem['submenus'])) {
-                foreach($menuItem['submenus'] as $submenu) {
-                    if(route($submenu['name']) === url()->current()) 
+        foreach ($this->menuItems() as $index => $menuItem) {
+            if (array_key_exists('submenus', $menuItem) && is_array($menuItem['submenus'])) {
+                foreach ($menuItem['submenus'] as $submenu) {
+                    if (route($submenu['name']) === url()->current())
                         $this->activeMenuGroupKey = $index;
                 }
             } else {
-                if(route($menuItem['name']) === url()->current()) 
-                        $this->activeMenuGroupKey = $index;
+                if (route($menuItem['name']) === url()->current())
+                    $this->activeMenuGroupKey = $index;
             }
         }
     }
@@ -49,137 +49,143 @@ class Sidebar extends Component
     {
         return [
             [
-                'name' => 'dashboard', 
+                'name' => 'dashboard',
                 'label' => 'common.dashboard',
-                'icon' => 'icon dashboard', 
+                'icon' => 'icon dashboard',
             ],
             [
-                'name' => 'products.index', 
-                'label' => 'common.products', 
-                'icon' => 'icon box', 
+                'name' => 'products.index',
+                'label' => 'common.products',
+                'icon' => 'icon box',
                 'submenus' => [
                     [
-                        'name' => 'products.create', 
-                        'label' => 'common.define_product', 
+                        'name' => 'products.create',
+                        'label' => 'common.define_product',
                         'icon' => 'plus icon',
                     ],
                     [
-                        'name' => 'products.index', 
-                        'label' => 'common.products_list', 
+                        'name' => 'products.index',
+                        'label' => 'common.products_list',
                         'icon' => 'th list icon',
                     ],
                     [
-                        'name' => 'categories.create', 
-                        'label' => 'common.create_category', 
+                        'name' => 'categories.create',
+                        'label' => 'common.create_category',
                         'icon' => 'group layer icon',
                     ],
                     [
-                        'name' => 'units.create', 
+                        'name' => 'units.create',
                         'label' => 'common.units',
-                        'icon' => 'icon balance scale', 
+                        'icon' => 'icon balance scale',
                     ],
                 ]
             ],
             [
-                'name' => 'work-orders.index', 
-                'label' => 'common.work-orders', 
-                'icon' => 'icon project diagram', 
+                'name' => 'work-orders.index',
+                'label' => 'common.work-orders',
+                'icon' => 'icon project diagram',
                 'submenus' => [
                     [
-                        'name' => 'work-orders.create', 
-                        'label' => 'common.create', 
+                        'name' => 'work-orders.create',
+                        'label' => 'common.create',
                         'icon' => 'plus icon',
                     ],
                     [
-                        'name' => 'work-orders.index', 
-                        'label' => 'common.all_workorders', 
+                        'name' => 'work-orders.index',
+                        'label' => 'common.all_workorders',
                         'icon' => 'th list icon',
                     ],
                     [
-                        'name' => 'work-orders.daily', 
-                        'label' => 'common.work-orders-daily', 
+                        'name' => 'work-orders.daily',
+                        'label' => 'common.work-orders-daily',
                         'icon' => 'icon settings',
                     ],
                 ]
             ],
             [
-                'name' => 'recipes.index', 
-                'label' => 'common.recipes', 
-                'icon' => 'icon mortar pestle', 
+                'name' => 'recipes.index',
+                'label' => 'common.recipes',
+                'icon' => 'icon mortar pestle',
                 'submenus' => [
                     [
-                        'name' => 'recipes.create', 
-                        'label' => 'common.recipes-create', 
+                        'name' => 'recipes.create',
+                        'label' => 'common.recipes-create',
                         'icon' => 'plus icon',
                     ],
                     [
-                        'name' => 'recipes.index', 
-                        'label' => 'common.recipes', 
+                        'name' => 'recipes.index',
+                        'label' => 'common.recipes',
                         'icon' => 'th list icon',
                     ],
                 ]
             ],
-            
+
             [
-                'name' => 'inventory.index', 
-                'label' => 'common.stock', 
-                'icon' => 'warehouse icon', 
+                'name' => 'inventory.index',
+                'label' => 'common.stock',
+                'icon' => 'warehouse icon',
                 'submenus' => [
                     [
-                        'name' => 'stock-moves.create', 
-                        'label' => 'stockmoves.stock_moves_create', 
+                        'name' => 'stock-moves.create',
+                        'label' => 'stockmoves.stock_moves_create',
                         'icon' => 'sign dolly flatbed icon',
                     ],
                     [
-                        'name' => 'stock-moves.index', 
-                        'label' => 'common.stock_moves', 
+                        'name' => 'stock-moves.index',
+                        'label' => 'common.stock_moves',
                         'icon' => 'exchange icon',
                     ],
                     [
-                        'name' => 'inventory.index', 
-                        'label' => 'common.inventory', 
+                        'name' => 'inventory.index',
+                        'label' => 'common.inventory',
                         'icon' => 'warehouse icon',
                     ],
                 ]
             ],
             [
-                'name' => 'companies.index', 
-                'label' => 'companies.companies', 
+                'name' => 'companies.index',
+                'label' => 'companies.companies',
                 'icon' => 'building icon',
                 'submenus' => [
                     [
-                        'name' => 'companies.create', 
-                        'label' => 'companies.create_company', 
+                        'name' => 'companies.create',
+                        'label' => 'companies.create_company',
                         'icon' => 'plus icon',
                     ],
                     [
-                        'name' => 'companies.index', 
-                        'label' => 'companies.companies', 
+                        'name' => 'companies.index',
+                        'label' => 'companies.companies',
                         'icon' => 'list icon',
                     ],
                 ],
             ],
             [
-                'name' => 'dispatchorders.index', 
-                'label' => 'dispatchorders.dispatch', 
+                'name' => 'dispatchorders.index',
+                'label' => 'dispatchorders.dispatch',
                 'icon' => 'truck icon',
                 'submenus' => [
                     [
-                        'name' => 'dispatchorders.create', 
-                        'label' => 'dispatchorders.create_dispatchorder', 
+                        'name' => 'dispatchorders.create',
+                        'label' => 'dispatchorders.create_dispatchorder',
                         'icon' => 'plus icon',
                     ],
                     [
-                        'name' => 'dispatchorders.index', 
-                        'label' => 'dispatchorders.dispatchorders', 
+                        'name' => 'dispatchorders.index',
+                        'label' => 'dispatchorders.dispatchorders',
                         'icon' => 'list icon',
                     ],
                     [
-                        'name' => 'dispatchorders.daily', 
-                        'label' => 'dispatchorders.do_daily', 
+                        'name' => 'dispatchorders.daily',
+                        'label' => 'dispatchorders.do_daily',
                         'icon' => 'angle shipping fast icon',
                     ],
                 ],
+            ],
+            [
+                'name' => 'transaction',
+                'label' => 'transaction.transaction',
+                'icon' => 'money bill alternate icon'
+
             ],
             // [
             //     'name' => 'addresses.index', 

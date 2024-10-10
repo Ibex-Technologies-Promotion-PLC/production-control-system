@@ -4,6 +4,7 @@ namespace App\Models\Traits;
 
 use App\Common\Facades\StockCalculations;
 use App\Services\Stock\LotNumberService;
+use Illuminate\Support\Facades\Log;
 
 trait HasInventory
 {
@@ -14,7 +15,8 @@ trait HasInventory
 
     public function getLotsAttribute()
     {
-        return (new LotNumberService($this))->allWithAmounts();
+        Log::info("in the lots");
+        return (new LotNumberService(product: $this))->allWithAmounts();
     }
 
     public function onlyLot($lotNumber)

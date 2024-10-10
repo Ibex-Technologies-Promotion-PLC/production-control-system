@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\TransactionController;
+use App\Http\Livewire\TransactionComponent;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,6 +44,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/users', 'UserController@index')->name('users.index');
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+    Route::get('/transaction', [TransactionController::class, 'index'])->name('transaction');
+
 
 
 });

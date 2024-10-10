@@ -29,7 +29,7 @@ class DispatchProduct extends Model implements CanReserveStocks
         return $this->belongsTo(Unit::class);
     }
 
-    
+
 
     public function setReady()
     {
@@ -37,13 +37,13 @@ class DispatchProduct extends Model implements CanReserveStocks
         return $this->update(['dp_is_ready' => true]);
     }
 
-    
+
     public function undoReady()
     {
         $this->reservedStocks()->delete();
 
         $this->update(['dp_is_ready' => false]);
-        
+
         // whenever emptied prepared lots, we must detect and set dispatchorder's progress status as in_progress or active in case of if any other product/products are ready
         $this->dispatchOrder->detectIsInProgress();
     }
@@ -55,7 +55,7 @@ class DispatchProduct extends Model implements CanReserveStocks
     }
 
 
-    
+
     public function stockMoves()
     {
         // faking it, for able to use reserved stocks table component
@@ -67,6 +67,7 @@ class DispatchProduct extends Model implements CanReserveStocks
      */
     public function reservedStocks()
     {
+
         return $this->dispatchOrder->reservedStocks()
             ->where('product_id', $this->product_id);
     }
@@ -79,5 +80,4 @@ class DispatchProduct extends Model implements CanReserveStocks
     {
         return $this->reservedStocks()->get();
     }
-
 }

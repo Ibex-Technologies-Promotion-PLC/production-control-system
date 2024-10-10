@@ -22,6 +22,10 @@ class Company extends Model
     {
         return $this->morphMany(Address::class, 'addressable');
     }
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 
     public function dispatchorders()
     {

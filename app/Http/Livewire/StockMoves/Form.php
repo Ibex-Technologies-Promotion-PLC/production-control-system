@@ -11,7 +11,7 @@ use Livewire\Component;
 
 class Form extends Component
 {
-    
+
 
     public $model = StockMove::class;
     public $view = 'livewire.stock-moves.form';
@@ -25,6 +25,8 @@ class Form extends Component
 
     public $units = []; // for dropdown 
     public $lotNumbers = []; // for dropdown 
+    public $specificUnits = []; 
+
 
     protected $rules = [
         'cards.*' => 'array',
@@ -35,17 +37,17 @@ class Form extends Component
         'cards.*.lot_number' => 'required',
         'cards.*.unit_id' => 'required|integer',
     ];
-    
+
 
     protected function validationAttributes()
     {
         return [
             'cards.*.product_id' => 'Product',
-             'cards.*.direction' => 'Direction',
-             'cards.*.amount' => 'Amount',
-             'cards.*.datetime' => 'Date',
-             'cards.*.unit_id' => 'Unit',
-             'cards.*.lot_number' => 'Lot number',
+            'cards.*.direction' => 'Direction',
+            'cards.*.amount' => 'Amount',
+            'cards.*.datetime' => 'Date',
+            'cards.*.unit_id' => 'Unit',
+            'cards.*.lot_number' => 'Lot number',
         ];
     }
 
@@ -53,7 +55,7 @@ class Form extends Component
     {
         return [
             'cards.*.product_id' => 'Title is required.',
-             'cards.*.direction' => 'Status not selected', // ?? deney
+            'cards.*.direction' => 'Status not selected', // ?? deney
         ];
     }
 
@@ -77,8 +79,8 @@ class Form extends Component
             'amount' => null,
             'lot_number' => random_int(100000, 999999),
             'datetime' => now(),
-            'unit_id' => null,       
-            
+            'unit_id' => null,
+
             'lotNumberAreaType' => 'input',
         ];
     }
@@ -94,7 +96,7 @@ class Form extends Component
 
     public function removeCard($key)
     {
-        if($this->isLastCard()) $this->reset();
+        if ($this->isLastCard()) $this->reset();
         unset($this->cards[$key]);
     }
 
@@ -104,7 +106,7 @@ class Form extends Component
     {
         return count($this->cards) <= 1;
     }
-    
+
 
 
     public function getProductsProperty()
@@ -120,47 +122,51 @@ class Form extends Component
         $this->cards[$key]['direction'] = ! $currentDirection;
 
         $this->cards[$key]['lotNumberAreaType'] = $currentDirection
-                                ? 'dropdown' // ??? 
-                                : 'input';
+            ? 'dropdown' // ??? 
+            : 'input';
         $this->cards[$key]['lot_number'] = null; // empty lot number 
     }
 
 
-    
+
     /**
      * Nested product_id on updated event 
      * Fill out the units dropdown based on selected product 
      */
     public function updatedCards($id, $location)
     {
-        if(strpos($location, 'product_id')) {
+        if (strpos($location, 'product_id')) {
             $index = strtok($location, '.');
             $this->selectedProduct = $this->getProductsProperty()->find($id);
             $this->units[$index] = $this->selectedProduct->units;
             $this->lotNumbers[$index] = $this->lotNumbers($id);
-            if($this->selectedProduct->baseUnit !== null){
-                $this->cards[$index]['unit_id'] = $this->selectedProduct->baseUnit->id;
+            $baseUnit = $this->selectedProduct->units->firstWhere('is_base', 1);
 
-            }
-            $this->dispatch('sm_product_selected'.$index);
+            $this->cards[$index]['unit_id'] = $baseUnit->id;
+            $this->specificUnits = $this->cards[$index]['unit_id'];
+
+
+            $this->dispatch('sm_product_selected' . $index);
         }
     }
-
+    public function getSpecificUnitsProperty(){
+        return $this->specificUnits;
+    }
 
 
     public function submit()
     {
         $this->validate();
-        foreach($this->cards as $card) {
+        foreach ($this->cards as $card) {
             $amount = Conversions::toBase($card['unit_id'], $card['amount'])['amount']; // stockMove, birimi kullanıcının kaydettiği şekilde göstermiyor, eklemedim. Base'e döndürüyoruz. Haberin olsun
             // Moves::newMove($card['product_id'], $amount, $card['direction'], $card['datetime'], $card['lot_number']);
             (new Moves())->setProductId($card['product_id'])
-                         ->setAmount($amount)
-                         ->setDirection($card['direction'])
-                         ->setDatetime($card['datetime'])
-                         ->setLotNumber($card['lot_number'])
-                         ->setApproved(true)
-                         ->save();
+                ->setAmount($amount)
+                ->setDirection($card['direction'])
+                ->setDatetime($card['datetime'])
+                ->setLotNumber($card['lot_number'])
+                ->setApproved(true)
+                ->save();
         }
         $this->dispatch('toast', __('common.saved.title'), __('common.saved.standard'), 'success');
         $this->reset();
@@ -171,5 +177,4 @@ class Form extends Component
     {
         return view('livewire.stock-moves.form');
     }
-
 }
