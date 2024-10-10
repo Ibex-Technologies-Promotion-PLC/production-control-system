@@ -19,5 +19,14 @@ class Transaction extends Model
         return $this->belongsTo(Company::class);
     }
 
+    public function scopeSearch($query, $searchQuery)
+    {
+        return $query->whereHas('product', function ($q) use ($searchQuery) {
+            $q->where('prd_name', 'like', '%' . $searchQuery . '%');
+        })->orWhereHas('company', function ($q) use ($searchQuery) {
+            $q->where('cmp_name', 'like', '%' . $searchQuery . '%');
+        });
+    }
+
 
 }

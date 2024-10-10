@@ -22,6 +22,7 @@ class Datatable extends Component
 
     public function mount()
     {
+        // dd($this->searchQuery);
         $this->perPage = $this->getDatatablePerpage();
         $this->transactionData = Transaction::with(relations: ['product.dispatchProducts','company'])->get();
         // dd($this->transactionData);
@@ -34,16 +35,7 @@ class Datatable extends Component
             ? (int)abs($result->value)
             : $default;
     }
-    public function getDirectionClass($column)
-    {
-        if($this->orderByColumn === $column && $this->direction === 'asc') {
-            return 'small green sort up';
-        } elseif($this->orderByColumn === $column && $this->direction === 'desc') {
-            return 'small red sort down';
-        } else {
-            return 'small orange sort';
-        }
-    }
+  
     
     public function render()
     {
