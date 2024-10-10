@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'index' => 'Transactions',
     'transaction' => 'Transaction',
+    'create_address' => 'Address Record',
     'add_address' => 'Add Address',
     'found_count_addresses' => ':count addresses registered',
     'saved_addresses' => 'Saved addresses',

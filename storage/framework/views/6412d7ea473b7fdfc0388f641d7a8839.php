@@ -3,7 +3,7 @@
         <label><?php echo e(__($label)); ?></label>
 
         <!--[if BLOCK]><![endif]--><?php if($iModel): ?>
-        <div class="ui right labeled input" wire:loading.class="disabler" x-data="dropdownComponent(<?php echo e(json_encode($collection ?? [])); ?>, '<?php echo e($model); ?>', '<?php echo e($text); ?>', '<?php echo e($dataSourceFunction); ?>', '<?php echo e($placeholder); ?>', '<?php echo e($triggerOn); ?>', '<?php echo e($triggerOnEvent); ?>', '<?php echo e(json_encode($dataSource ?? '')); ?>')">
+        <div class="ui right labeled input" wire:loading.class="disabler" x-data="dropdownComponent(<?php echo e(json_encode($collection ?? [])); ?>, '<?php echo e($dataType); ?>','<?php echo e($model); ?>', '<?php echo e($text); ?>', '<?php echo e($dataSourceFunction); ?>', '<?php echo e($placeholder); ?>', '<?php echo e($triggerOn); ?>', '<?php echo e($triggerOnEvent); ?>', '<?php echo e(json_encode($dataSource ?? '')); ?>')">
             <input type="<?php echo e($iType); ?>" step="any" placeholder="<?php echo e($iPlaceholder); ?>" wire:model.debounce.500ms="<?php echo e($iModel); ?>">
             <div wire:ignore class="<?php echo e($sClass); ?> ui <?php if( ! $basic): ?> label scrolling <?php endif; ?> dropdown" id="<?php echo e($sId); ?>">
                 <input type="hidden" name="<?php echo e($model); ?>" wire:model.lazy="<?php echo e($model); ?>">
@@ -15,7 +15,7 @@
 
 
         <?php else: ?>
-        <div x-data="dropdownComponent(<?php echo e(json_encode($collection ?? [])); ?>, '<?php echo e($model); ?>', '<?php echo e($text); ?>', '<?php echo e($dataSourceFunction); ?>', '<?php echo e($placeholder); ?>', '<?php echo e($triggerOn); ?>', '<?php echo e($triggerOnEvent); ?>', '<?php echo e(json_encode($dataSource ?? '')); ?>')"
+        <div x-data="dropdownComponent(<?php echo e(json_encode($collection ?? [])); ?>,'<?php echo e($dataType); ?>', '<?php echo e($model); ?>', '<?php echo e($text); ?>', '<?php echo e($dataSourceFunction); ?>', '<?php echo e($placeholder); ?>', '<?php echo e($triggerOn); ?>', '<?php echo e($triggerOnEvent); ?>', '<?php echo e(json_encode($dataSource ?? '')); ?>')"
             wire:ignore
             class="<?php echo e($sClass); ?> ui <?php if( ! $basic): ?> selection scrolling <?php endif; ?> dropdown"
             id="<?php echo e($sId); ?>"
@@ -33,17 +33,17 @@
 
 <script>
     document.addEventListener('alpine:init', () => {
-        Alpine.data('dropdownComponent', (initialData = [], modelName, text, dataSourceFunction, placeholder, triggerOn, triggerOnEvent, dataSource) => ({
+        Alpine.data('dropdownComponent', (initialData = [], dataType,modelName, text, dataSourceFunction, placeholder, triggerOn, triggerOnEvent, dataSource) => ({
             values: [],
             selectedValue: null,
             currentPlaceholder: placeholder,
             text: text,
             dataSourceFunction: dataSourceFunction,
             dataSource: dataSource,
+            dataType:dataType,
             collection: initialData,
 
             init() {
-                console.log('Initial Text Fields:', this.text);
 
                 // Trigger fetch values depending on initial data
                 if (initialData.length > 0) {
@@ -69,6 +69,8 @@
             },
 
             fetchValues() {
+                console.log('dataType',this.dataType);
+
                 if (this.dataSourceFunction && this.dataSourceFunction !== '') {
                     // Call a Livewire method to fetch data
                     console.log('Fetching data using function:', this.dataSourceFunction);
@@ -92,18 +94,16 @@
                 } else if (this.dataSource) {
 
                     // If dataSource is a Livewire property, use $wire.get to retrieve its value
-                    let sourceDataSource = '<?php echo e($dataSource); ?>'
-                    console.log('<?php echo e($dataType); ?>','here is data type')
-                    if ('<?php echo e($dataType); ?>' === 'variable') {
+                    if (this.dataType === 'variable') {
                         const result = this.$wire.call("getSpecificUnitsProperty");
                         result.then(data => {
                             this.populate(data);
 
                             console.log(data, 'my data')
                         })
-                    } else if('<?php echo e($dataType); ?>'=== 'pointer') {
+                    } else if(this.dataType === 'pointer') {
                         console.log(this.dataSource,'variable name')
-                        const data = this.$wire.get(this.dataSource);
+                        const data = this.$wire.get('companyAddresses');
                         console.log(data, 'another datasource')
                         this.populate(data);
 

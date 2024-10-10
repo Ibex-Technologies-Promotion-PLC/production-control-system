@@ -7,7 +7,7 @@
 
             <div class="ui tiny icon input" >
                 <i class="search icon"></i>
-                <input wire:model.debounce.150ms="searchQuery" type="text" placeholder="<?php echo e(__('common.search_in_database')); ?>">
+                <input wire:model.live="searchQuery" type="text" placeholder="<?php echo e(__('common.search_in_database')); ?>">
             </div>
             <div @click="dateRange = ! dateRange" class="text-xs <?php if($this->showDateFilters): ?> text-ease-red <?php else: ?> text-ease-green <?php endif; ?> cursor-pointer">
                 <?php if (isset($component)) { $__componentOriginaleec1da765ed3218d03288cbfb54cb4e5 = $component; } ?>

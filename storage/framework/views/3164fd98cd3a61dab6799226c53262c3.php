@@ -92,7 +92,7 @@
 <?php $component->withAttributes(['header' => 'test']); ?>
                 <?php if (isset($component)) { $__componentOriginalb78862282687d60cbc65d5a37715399f = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalb78862282687d60cbc65d5a37715399f = $attributes; } ?>
-<?php $component = App\View\Components\ReservedStocksTable::resolve(['reservations' => $selectedDispatchProduct->reservedStocks] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component = App\View\Components\ReservedStocksTable::resolve(['reservations' => $selectedDispatchProduct] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('reserved-stocks-table'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
