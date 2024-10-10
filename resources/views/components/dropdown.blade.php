@@ -99,7 +99,7 @@
                         result.then(data => {
                             this.populate(data);
 
-                            console.log(data, 'my data')
+                            console.log(data, 'my data of variable')
                         })
                     } else if(this.dataType === 'pointer') {
                         console.log(this.dataSource,'variable name')

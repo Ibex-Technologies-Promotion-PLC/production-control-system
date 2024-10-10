@@ -373,8 +373,8 @@
 <?php $attributes = $attributes->except(\App\View\Components\TbodyItem::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes(['class' => 'center aligned collapsing']); ?>
-                        <span data-tooltip="<?php echo e($workOrder->statusLookup['explanation']); ?>" data-variation="mini" data-position="left center">
-                            <i class="<?php echo e($workOrder->statusLookup['icon']); ?>"></i>
+                        <span data-tooltip="<?php echo e($workOrder->statusLookup ? $workOrder->statusLookup['explanation'] : ""); ?>" data-variation="mini" data-position="left center">
+                            <i class="<?php echo e($workOrder->statusLookup ? $workOrder->statusLookup['icon'] : ""); ?>"></i>
                         </span>
                      <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
