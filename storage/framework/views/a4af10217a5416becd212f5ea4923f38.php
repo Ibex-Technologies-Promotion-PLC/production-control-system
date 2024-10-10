@@ -15,12 +15,12 @@
             <div class="p-2 flex justify-between hover:bg-gray-100 hover:shadow-md">
                 <div>
                     <!--[if BLOCK]><![endif]--><?php if( !$report['status']): ?>
-                    <i class="<?php echo e($report['status']['icon']); ?>"></i>
+                    <i class="<?php echo e($report['status'] ? $report['status']['icon'] : ""); ?>"></i>
 
                     <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
                     <span class="font-semibold"><?php echo e($report['dispatchOrder']->company->cmp_name); ?></span>
                     <span class="text-xs text-ease">(<?php echo e($report['dispatchOrder']->address->adr_name); ?>)</span>
-                    <span class="text-sm font-semibold <?php echo e($report['status']['textColor']); ?>"><?php echo e($report['status']['explanation']); ?></span>
+                    <span class="text-sm font-semibold <?php echo e($report['status'] ? $report['status']['textColor'] : ""); ?>"><?php echo e($report['status'] ? $report['status']['explanation'] : ""); ?></span>
                 </div>
                 <div wire:click="openDoDetailsModal(<?php echo e($report['dispatchOrder']->id); ?>)" class="cursor-pointer hover:text-blue-600">
                     <span class="font-bold text-sm"><?php echo e($report['dispatchOrder']->do_number); ?></span>
