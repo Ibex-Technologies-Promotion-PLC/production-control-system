@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Transaction;
 
+use App\Http\Livewire\SmartTable;
 use App\Models\Setting;
 use App\Models\Transaction;
 use Livewire\Component;
@@ -10,6 +11,7 @@ use Livewire\WithPagination;
 class Datatable extends Component
 {
     use WithPagination;
+    use SmartTable;
 
     public $perPage;
     public $showDateFilters = false;
@@ -21,7 +23,7 @@ class Datatable extends Component
     public function mount()
     {
         $this->perPage = $this->getDatatablePerpage();
-        $this->transactionData = Transaction::with(['product','company'])->get();
+        $this->transactionData = Transaction::with(relations: ['product.dispatchProducts','company'])->get();
         // dd($this->transactionData);
     }
     public function getDatatablePerpage($default = 30): int
@@ -42,6 +44,7 @@ class Datatable extends Component
             return 'small orange sort';
         }
     }
+    
     public function render()
     {
         return view('livewire.transaction.datatable');

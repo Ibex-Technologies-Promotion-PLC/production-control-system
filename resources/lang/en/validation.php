@@ -120,6 +120,8 @@ return [
          'code' => 'Code',
          'type' => 'Type',
          'total' => 'Total',
+         'quantity' => 'Quantity',
+
          'status' => 'Status',
          'created_at' => 'Creation Date',
          'updated_at' => 'Updated date',
@@ -131,7 +133,7 @@ return [
          'prd_min_threshold' => 'Critical stock',
          'prd_shelf_life' => 'Shelf Life',
          'prd_cost' => 'Price',
-         'prd_sales'=> 'Sale Price',
+         'prd_sales'=> 'Sales Price',
          'prd_note' => 'Description',
          'prd_is_active' => 'Active',
          'prd_producible' => 'Producible',

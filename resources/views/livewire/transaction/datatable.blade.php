@@ -24,14 +24,12 @@
     <x-table class="sortable">
         <thead>
             <x-table-row>
-                <x-thead-item class="collapsing"> {{ __('validation.attributes.prd_name') }} </x-thead-item>
-                <x-thead-item sortBy="prd_code" class="center aligned">{{ __('validation.attributes.prd_code') }}</x-thead-item>
+                <x-thead-item class="center aligned"> {{ __('validation.attributes.prd_name') }} </x-thead-item>
 
-                <x-thead-item>{{ __('validation.attributes.cmp_name') }}</x-thead-item>
-                <x-thead-item class="center aligned">{{ __('validation.attributes.prd_cost') }}</x-thead-item>
-                <x-thead-item class="center aligned">{{ __('validation.attributes.prd_sales') }}</x-thead-item>
-
+                <x-thead-item class="center aligned">{{ __('validation.attributes.cmp_name') }}</x-thead-item>
                 <x-thead-item class="center aligned">{{ __('validation.attributes.total') }}</x-thead-item>
+
+                <x-thead-item class="center aligned">{{ __('validation.attributes.quantity') }}</x-thead-item>
                 <x-thead-item class="center aligned">Transaction Date</x-thead-item>
 
                 <x-thead-item></x-thead-item>
@@ -42,11 +40,10 @@
             <x-table-row wire:key="{{ $key }}">
 
                 <x-tbody-item class="center aligned font-bold collapsing">{{ $transaction->product->prd_name }}</x-tbody-item>
-                <x-tbody-item>{{ $transaction->product->prd_code}}</x-tbody-item>
-                <x-tbody-item>{{ $transaction->company->cmp_name }}</x-tbody-item>
-                <x-tbody-item class="center aligned">{{ $transaction->product->prd_cost }} Br</x-tbody-item>
-                <x-tbody-item class="center aligned">{{ $transaction->product->prd_sales }} Br</x-tbody-item>
+                <x-tbody-item class="center aligned">{{ $transaction->company->cmp_name }}</x-tbody-item>
                 <x-tbody-item class="center aligned">{{ $transaction->total }} Br</x-tbody-item>
+                <x-tbody-item class="center aligned">{{ $transaction->product->dispatchProducts->first()->dp_amount }} {{$transaction->product->units->first()->abbreviation}}</x-tbody-item>
+
                 <x-tbody-item class="center aligned"> {{ $transaction->created_at->format('d M Y, h:i A') }}
                 </x-tbody-item>
 
@@ -61,6 +58,20 @@
             </tr>
             @endforelse
         </tbody>
+        <tfoot class="mt-5">
+            <tr>
+                <td></td>
+
+                <td colspan="3" class="right aligned -pr-10">
+                    <strong>{{ __('Total:') }} {{ number_format($transactionData->sum('total'), 2) }} Br</strong>
+                </td>
+              
+
+                <td></td>
+            </tr>
+        </tfoot>
+
+
     </x-table>
 
 </div>

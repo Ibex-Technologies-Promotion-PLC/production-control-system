@@ -64,66 +64,69 @@
     <div class="h-full bg-white overflow-x-hidden shadow-md border-t">
         <div class="flex flex-col ">
             <?php $__currentLoopData = $menuItems; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $menu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <div x-data="{ submenu: false, submenuConfirm: false }" class="border-b border-dotted">
+            <div x-data="{ submenu: false, submenuConfirm: false }" class="border-b border-dotted">
 
-                    <div
-                        class="pl-4 flex ease-in-out duration-200 <?php if($key === $activeMenuGroupKey): ?> bg-orange-500 <?php else: ?> hover:bg-indigo-50 <?php endif; ?>">
-                        <a href="<?php echo e(route($menu['name'])); ?>"
-                            class="py-1 <?php if(!array_key_exists('submenus', $menu)): ?> flex-1 <?php endif; ?>  <?php if($key === $activeMenuGroupKey): ?> text-white <?php endif; ?>">
-                            <div class="h-8 flex items-center">
-                                <div><i
-                                        class="<?php echo e($menu['icon']); ?> <?php if($key === $activeMenuGroupKey): ?> text-white <?php else: ?> text-gray-600 <?php endif; ?>"></i>
-                                </div>
-                                <div class="pl-2">
-                                    <p
-                                        class="font-extrabold <?php if($key === $activeMenuGroupKey): ?> text-white <?php else: ?> text-gray-600 <?php endif; ?>">
-                                        <?php echo e(__($menu['label'])); ?></p>
-                                </div>
+                <div
+                    class="pl-4 flex ease-in-out duration-200 <?php if($key === $activeMenuGroupKey): ?> bg-orange-500 <?php else: ?> hover:bg-indigo-50 <?php endif; ?>">
+                    <a href="<?php echo e(route($menu['name'])); ?>"
+                        class="py-1 <?php if(!array_key_exists('submenus', $menu)): ?> flex-1 <?php endif; ?>  <?php if($key === $activeMenuGroupKey): ?> text-white <?php endif; ?>">
+                        <div class="h-8 flex items-center">
+                            <div><i
+                                    class="<?php echo e($menu['icon']); ?> <?php if($key === $activeMenuGroupKey): ?> text-white <?php else: ?> text-gray-600 <?php endif; ?>"></i>
                             </div>
-                        </a>
-                        <?php if(array_key_exists('submenus', $menu)): ?>
-                            <div @click="submenu = ! submenu; submenuConfirm = true;"
-                                class="flex justify-end items-center cursor-pointer flex-1 text-right">
-                                <div class="pr-2">
-                                    <i
-                                        class="caret down icon <?php if($key === $activeMenuGroupKey): ?> text-white <?php else: ?> text-gray-600 <?php endif; ?>"></i>
-                                </div>
-                            </div>
-                        <?php endif; ?>
-                    </div>
-                    <?php if(array_key_exists('submenus', $menu)): ?>
-                        <div x-show="submenu || ('<?php echo e($key); ?>' === '<?php echo e($activeMenuGroupKey); ?>') && ! submenuConfirm"
-                            class="shadow-inner bg-cool-gray-50 flex">
-                            <div class="border-r border-orange-300 pr-6"></div>
-                            <div class="flex-1">
-                                <?php $__currentLoopData = $menu['submenus']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $submenu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <div
-                                        class="flex justify-between border-b border-dashed last:border-b-0 hover:bg-blue-100">
-                                        <div class="flex-1 px-4 font-bold cursor-pointer">
-                                            <a href="<?php echo e(route($submenu['name'])); ?>">
-                                                <div
-                                                    class="flex items-center py-2 <?php if(route($submenu['name']) == request()->url()): ?> text-orange-500 <?php else: ?> text-gray-600 <?php endif; ?>">
-                                                    <div><i class="<?php echo e($submenu['icon']); ?> "></i></div>
-                                                    <div class="pl-2">
-                                                        <p class="font-extrabold"><?php echo e(__($submenu['label'])); ?></p>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <?php if(route($submenu['name']) == request()->url()): ?>
-                                            <div class="flex items-center justify-center pr-3">
-                                                <div class="p-2 rounded-full bg-orange-500 shadow"></div>
-                                            </div>
-                                        <?php endif; ?>
-                                    </div>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            <div class="pl-2">
+                                <p
+                                    class="font-extrabold <?php if($key === $activeMenuGroupKey): ?> text-white <?php else: ?> text-gray-600 <?php endif; ?>">
+                                    <?php echo e(__($menu['label'])); ?>
+
+                                </p>
                             </div>
                         </div>
+                    </a>
+                    <?php if(array_key_exists('submenus', $menu)): ?>
+                    <div @click="submenu = ! submenu; submenuConfirm = true;"
+                        class="flex justify-end items-center cursor-pointer flex-1 text-right">
+                        <div class="pr-2">
+                            <i
+                                class="caret down icon <?php if($key === $activeMenuGroupKey): ?> text-white <?php else: ?> text-gray-600 <?php endif; ?>"></i>
+                        </div>
+                    </div>
                     <?php endif; ?>
-
                 </div>
+                <?php if(array_key_exists('submenus', $menu)): ?>
+                <div x-show="submenu || ('<?php echo e($key); ?>' === '<?php echo e($activeMenuGroupKey); ?>') && ! submenuConfirm"
+                    class="shadow-inner bg-cool-gray-50 flex">
+                    <div class="border-r border-orange-300 pr-6"></div>
+                    <div class="flex-1">
+                        <?php $__currentLoopData = $menu['submenus']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $submenu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <div
+                            class="flex justify-between border-b border-dashed last:border-b-0 hover:bg-blue-100">
+                            <div class="flex-1 px-4 font-bold cursor-pointer">
+                                <a href="<?php echo e(route($submenu['name'])); ?>">
+                                    <div
+                                        class="flex items-center py-2 <?php if(route($submenu['name']) == request()->url()): ?> text-orange-500 <?php else: ?> text-gray-600 <?php endif; ?>">
+                                        <div><i class="<?php echo e($submenu['icon']); ?> "></i></div>
+                                        <div class="pl-2">
+                                            <p class="font-extrabold"><?php echo e(__($submenu['label'])); ?></p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <?php if(route($submenu['name']) == request()->url()): ?>
+                            <div class="flex items-center justify-center pr-3">
+                                <div class="p-2 rounded-full bg-orange-500 shadow"></div>
+                            </div>
+                            <?php endif; ?>
+                        </div>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </div>
+                </div>
+                <?php endif; ?>
+
+            </div>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
+    
     </div>
 
 
@@ -150,5 +153,4 @@
     $('document').ready(function() {
         $('.sidebardrop').dropdown();
     })
-</script>
-<?php /**PATH /var/www/html/resources/views/web/layouts/partials/sidebar.blade.php ENDPATH**/ ?>
+</script><?php /**PATH /var/www/html/resources/views/web/layouts/partials/sidebar.blade.php ENDPATH**/ ?>

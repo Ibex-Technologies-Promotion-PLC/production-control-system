@@ -1,5 +1,6 @@
 <div>
 
+
     <x-table-toolbar :perPage="$perPage">
         <x-slot name="filters">
             <div class="responsive-grid-3-4">
