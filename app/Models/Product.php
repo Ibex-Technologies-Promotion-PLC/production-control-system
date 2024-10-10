@@ -27,7 +27,10 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
-
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
     public function recipe()
     {
         return $this->hasOne(Recipe::class);

@@ -22,9 +22,9 @@
 $__split = function ($name, $params = []) {
     return [$name, $params];
 };
-[$__name, $__params] = $__split('work-orders.datatable', []);
+[$__name, $__params] = $__split('transaction.datatable', []);
 
-$__html = app('livewire')->mount($__name, $__params, 'lw-1533073314-0', $__slots ?? [], get_defined_vars());
+$__html = app('livewire')->mount($__name, $__params, 'lw-3502517358-0', $__slots ?? [], get_defined_vars());
 
 echo $__html;
 
@@ -53,4 +53,4 @@ if (isset($__slots)) unset($__slots);
 <?php if (isset($__componentOriginal9ac128a9029c0e4701924bd2d73d7f54)): ?>
 <?php $component = $__componentOriginal9ac128a9029c0e4701924bd2d73d7f54; ?>
 <?php unset($__componentOriginal9ac128a9029c0e4701924bd2d73d7f54); ?>
-<?php endif; ?><?php /**PATH /var/www/html/resources/views/web/sections/workorders/index.blade.php ENDPATH**/ ?>
+<?php endif; ?><?php /**PATH /var/www/html/resources/views/web/sections/transactions/index.blade.php ENDPATH**/ ?>
