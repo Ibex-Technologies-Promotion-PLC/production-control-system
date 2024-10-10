@@ -68,7 +68,7 @@ class Datatable extends Component implements ExportsContract
 
     public function getProductsProperty()
     {
-        return ProductService::getProducibleOnes();
+         return Product::where('prd_producible', true)->get();;
     }
 
     public function getStatesProperty()

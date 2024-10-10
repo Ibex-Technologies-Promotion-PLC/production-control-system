@@ -134,6 +134,7 @@
                                                 <x-dropdown iModel="cards.{{ $key }}.amount"
                                                     iPlaceholder="{{ __('validation.attributes.amount') }}"
                                                     iType="number" model="cards.{{ $key }}.unit_id"
+                                                    dataType="variable"
                                                     dataSource="cards.{{ $key }}.units" :sId="'unit' . $key"
                                                     sClass="basic" value="id" text="name"
                                                     placeholder="{{ __('units.unit') }}">

@@ -81,8 +81,8 @@
                         </span>
                     </x-tbody-item>
                     <x-tbody-item class="center aligned collapsing">
-                        <span data-tooltip="{{ $workOrder->statusLookup['explanation'] }}" data-variation="mini" data-position="left center">
-                            <i class="{{ $workOrder->statusLookup['icon'] }}"></i>
+                        <span data-tooltip="{{ $workOrder->statusLookup ? $workOrder->statusLookup['explanation'] : "" }}" data-variation="mini" data-position="left center">
+                            <i class="{{ $workOrder->statusLookup ? $workOrder->statusLookup['icon'] : "" }}"></i>
                         </span>
                     </x-tbody-item>
 

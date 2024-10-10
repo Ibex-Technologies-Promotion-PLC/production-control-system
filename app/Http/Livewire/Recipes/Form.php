@@ -40,6 +40,7 @@ class Form extends Component
     public $formChangedModal = false;
 
     public $cards = [];
+    public $specificUnits = [];
     public $backupCards = [];
 
     protected $rules = [
@@ -109,7 +110,6 @@ class Form extends Component
 
         // if recipe not have any ingredients, return 
         if($recipe->ingredients->isEmpty()) return;
-        Log::info('recipe'.$recipe->ingredients);
 
         // if recipe has ingredients, fill in in the cards
         foreach($recipe->ingredients as $ingredient) {
@@ -122,9 +122,12 @@ class Form extends Component
                 'units' => $ingredient->units,
             ];
         }
-        // dd($this->cards[0]);
+        $this->specificUnits = $this->cards[0]['units'];
+      
     }
-
+       public function getSpecificUnitsProperty(){
+        return $this->cards[0]['units'];
+       }
 
     /**
      * Detects if something changed on the form by the user
