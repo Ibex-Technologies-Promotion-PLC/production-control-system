@@ -73,14 +73,22 @@ trait SmartTable
 
     public function render()
     {
-        $data = $this->filteredQuery()->paginate($this->perPage);
-        return view($this->view, ['data' => $data]);
+     
+        try {
+            $data = $this->filteredQuery()->paginate($this->perPage);
+            return view($this->view, ['data' => $data]);
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            dd($e);
+        }
     }
+    
 
 
 
     private function filteredQuery()
-    {
+    {  
+        dd('here i user');
         $query = $this->model::query();
 
         if($this->filterFromDate) {
@@ -112,6 +120,7 @@ trait SmartTable
 
     public function updatedSearchQuery()
     {
+
         $this->setPage(1);
     }
 

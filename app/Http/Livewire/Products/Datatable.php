@@ -36,11 +36,6 @@ class Datatable extends Component implements ExportsContract
         $this->selectedProduct = Product::find($productId);
     }
 
-
-
-
-
-
     public function statusIcon($product)
     {
         return $product->prd_is_active

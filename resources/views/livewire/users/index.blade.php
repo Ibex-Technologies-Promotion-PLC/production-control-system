@@ -1,4 +1,24 @@
 <x-content>
+
+    <x-table-toolbar :perPage="$perPage">
+        <x-slot name="filters">
+            <div class="responsive-grid-3-4">
+
+                {{-- <div>
+                    <label for="wofilterselect-wo-code">{{ __('validation.attributes.wo_code') }}: </label>
+                <select wire:model="filterWoCode" id="wofilterselect-wo-code" class="basic-select text-xs">
+                    <option value="" selected>{{ __('common.all') }}</option>
+                    @foreach ($this->woCodes as $wo_code)
+                    <option value="{{ $wo_code }}">
+                        {{ $wo_code }}
+                    </option>
+                    @endforeach
+                </select>
+            </div> --}}
+
+            </div>
+        </x-slot>
+    </x-table-toolbar>
     <x-slot name="header">
         <x-page-header icon="dna" header="{{ __('users.user_list') }}">
             <x-slot name="buttons">

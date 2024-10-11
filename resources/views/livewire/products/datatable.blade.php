@@ -63,7 +63,8 @@
                     <span class="text-ease-green text-sm">
                         {{ $product->totalStock['amount'] }} {{ $product->totalStock['unit']->abbreviation }}
                     </span>
-                    @else <span class="text-sm text-ease-red">{{ __('common.NA') }}</span>
+                    @else 
+                    <span class="text-sm text-ease-red">{{ __('common.NA') }}</span>
                     @endif
                 </x-tbody-item>
                 <x-tbody-item class="collapsing">

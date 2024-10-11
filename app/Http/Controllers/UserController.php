@@ -16,6 +16,6 @@ class UserController extends Controller
     {
         if(auth()->user()->cannot('manage users')) abort(403);
 
-        return view('web.users.index');
+        return view('web.sections.users.index');
     }
 }

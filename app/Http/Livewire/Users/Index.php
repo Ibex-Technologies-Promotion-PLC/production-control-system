@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Users;
 
 use App\Http\Livewire\Deletable;
+use App\Http\Livewire\SmartTable;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
@@ -12,8 +13,10 @@ use Str;
 
 class Index extends Component
 {
+    use SmartTable;
     use Deletable;
     public $model = User::class;
+    protected $view = "livewire.users.index";
 
     public $rolesModal = false;
     public $selectedUser;
@@ -24,6 +27,7 @@ class Index extends Component
     public $email;
     public $password;
     public $role;
+    // public $perPage = 20;
     public $AppModelsUser;
 
 
@@ -61,7 +65,7 @@ class Index extends Component
     }
     public function getUsersProperty()
     {
-        return User::allExceptSU();
+        return User::all();
     }
     public function getRolesListProperty()
     {

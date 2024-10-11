@@ -8,6 +8,34 @@
 <?php $attributes = $attributes->except(\App\View\Components\Content::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
+
+    <?php if (isset($component)) { $__componentOriginal4a63ad0d167ab3819822720b5e2e9bc4 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal4a63ad0d167ab3819822720b5e2e9bc4 = $attributes; } ?>
+<?php $component = App\View\Components\TableToolbar::resolve(['perPage' => $perPage] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('table-toolbar'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\App\View\Components\TableToolbar::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+         <?php $__env->slot('filters', null, []); ?> 
+            <div class="responsive-grid-3-4">
+
+                
+
+            </div>
+         <?php $__env->endSlot(); ?>
+     <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal4a63ad0d167ab3819822720b5e2e9bc4)): ?>
+<?php $attributes = $__attributesOriginal4a63ad0d167ab3819822720b5e2e9bc4; ?>
+<?php unset($__attributesOriginal4a63ad0d167ab3819822720b5e2e9bc4); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal4a63ad0d167ab3819822720b5e2e9bc4)): ?>
+<?php $component = $__componentOriginal4a63ad0d167ab3819822720b5e2e9bc4; ?>
+<?php unset($__componentOriginal4a63ad0d167ab3819822720b5e2e9bc4); ?>
+<?php endif; ?>
      <?php $__env->slot('header', null, []); ?> 
         <?php if (isset($component)) { $__componentOriginal522a3c8aadb4ccbcc229d59265244da1 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal522a3c8aadb4ccbcc229d59265244da1 = $attributes; } ?>
