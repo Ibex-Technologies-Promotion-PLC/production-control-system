@@ -24,34 +24,35 @@ class Index extends Component
     public $email;
     public $password;
     public $role;
+    public $AppModelsUser;
 
 
     public function createUser()
     {
-
+            // dd($this->name,$this->email, $this->password, $this->role);
         $this->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
-            'role' => 'required|exists:roles,name',
-            'password' => 'null|string|min:6',
+            'email' => 'required|email',
+            'role' => 'required',
 
 
         ]);
+        Log::info(message: 'here it is ');
 
-        // $password = $this->password ? $this->password : Str::random(10);
+        $password = $this->password ? $this->password : Str::random(10);
 
         // Create the new user
+         $roles = Role::find($this->role);
         $user = new User();
         $user->name = $this->name;
         $user->email = $this->email;
-        $user->password = bcrypt($this->password);
+        $user->password = bcrypt($password);
         $user->save();
-
-        $user->assignRole($this->role);
+        $user->assignRole($roles->name);
 
 
         $this->closeCreateUserModal();
-        session()->flash('message', 'User created successfully!');
+        $this->dispatch('toast', '', __('common.user'), 'info');
     }
     public function closeCreateUserModal()
     {

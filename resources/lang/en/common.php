@@ -7,6 +7,7 @@ return [
 
     'date' => 'Date',
     'datetime' => 'Date',
+    'user'=> 'User Created',
     'caution' => 'Caution',
     'add_new' => 'Add new',
     'add_note' => 'Add note',

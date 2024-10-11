@@ -145,7 +145,7 @@
                 <div class="ui mini form border p-2 rounded">
                     <?php if (isset($component)) { $__componentOriginal4a0aa0dbff261054ba83150e9d676aae = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal4a0aa0dbff261054ba83150e9d676aae = $attributes; } ?>
-<?php $component = App\View\Components\Dropdown::resolve(['model' => $model ?? 'role','label' => $label ?? 'users.user_role','sId' => $sId ?? 'selectRole','sClass' => $sClass ?? 'search','collection' => $this->rolesList ?? [],'value' => $value ?? 'id','text' => $text ?? 'name','key' => $key ?? null] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component = App\View\Components\Dropdown::resolve(['model' => 'role','label' => $label ?? 'users.user_role','sId' => $sId ?? 'selectRole','sClass' => $sClass ?? 'search','collection' => $this->rolesList ?? [],'value' => $value ?? 'id','text' => $text ?? 'name','key' => $key ?? null] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('dropdown'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
