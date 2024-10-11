@@ -182,6 +182,24 @@ class Sidebar extends Component
                 ],
             ],
             [
+                'name' => 'users.index',
+                'label' => 'users.user',
+                'icon' => 'users icon',
+                'submenus' => [
+                  
+                    [
+                        'name' => 'users.index',
+                        'label' => 'users.users',
+                        'icon' => 'list icon',
+                    ],
+                    [
+                        'name' => 'roles.index',
+                        'label' => 'roles.roles',
+                        'icon' => 'id badge icon',
+                    ],
+                ],
+            ],
+            [
                 'name' => 'transaction',
                 'label' => 'transaction.transaction',
                 'icon' => 'money bill alternate icon'

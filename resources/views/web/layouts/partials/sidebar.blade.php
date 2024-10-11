@@ -73,6 +73,7 @@
                     </div>
                     @endif
                 </div>
+                
                 @if (array_key_exists('submenus', $menu))
                 <div x-show="submenu || ('{{ $key }}' === '{{ $activeMenuGroupKey }}') && ! submenuConfirm"
                     class="shadow-inner bg-cool-gray-50 flex">

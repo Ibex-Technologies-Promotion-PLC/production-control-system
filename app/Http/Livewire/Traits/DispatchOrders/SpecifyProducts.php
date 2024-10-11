@@ -52,7 +52,6 @@ trait SpecifyProducts
     
     public function addCard()
     {
-        Log::info('in the add card ');
         $this->cards[] = [
             'product_id' => null,
             'dp_amount' => null,
