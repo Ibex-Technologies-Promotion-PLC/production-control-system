@@ -38,13 +38,13 @@ class Index extends Component
 
         ]);
 
-        $password = $this->password ? $this->password : Str::random(10);
+        // $password = $this->password ? $this->password : Str::random(10);
 
         // Create the new user
         $user = new User();
         $user->name = $this->name;
         $user->email = $this->email;
-        $user->password = bcrypt($password);
+        $user->password = bcrypt($this->password);
         $user->save();
 
         $user->assignRole($this->role);
