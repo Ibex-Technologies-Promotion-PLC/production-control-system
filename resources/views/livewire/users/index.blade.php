@@ -30,7 +30,7 @@
                     <x-input model="password" label="{{ __('users.user_password') }}" placeholder="{{ __('users.user_password') }}" />
                 </div>
                 <div class="ui mini form border p-2 rounded">
-                    <x-dropdown :model="$model ?? 'role'" :label="$label ?? 'users.user_role'" :sId="$sId ?? 'selectRole'" :sClass="$sClass ?? 'search'" class="required"
+                    <x-dropdown model="role" :label="$label ?? 'users.user_role'" :sId="$sId ?? 'selectRole'" :sClass="$sClass ?? 'search'" class="required"
                         :collection="$this->rolesList ?? []" :value="$value ?? 'id'" :text="$text ?? 'name'" :key="$key ?? null" />
                 </div>
                 <div class="pt-4">
