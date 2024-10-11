@@ -43,6 +43,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('/roles', 'RoleController');
 
     Route::get('/users', 'UserController@index')->name('users.index');
+
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
     Route::get('/transaction', [TransactionController::class, 'index'])->name('transaction');
 

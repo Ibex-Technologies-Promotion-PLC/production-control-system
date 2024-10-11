@@ -12,9 +12,9 @@
 $__split = function ($name, $params = []) {
     return [$name, $params];
 };
-[$__name, $__params] = $__split('work-orders.daily.wo-prepare', ['workOrder' => $workOrder]);
+[$__name, $__params] = $__split('roles.roles', []);
 
-$__html = app('livewire')->mount($__name, $__params, 'lw-3494255524-0', $__slots ?? [], get_defined_vars());
+$__html = app('livewire')->mount($__name, $__params, 'lw-1961486042-0', $__slots ?? [], get_defined_vars());
 
 echo $__html;
 
@@ -33,4 +33,4 @@ if (isset($__slots)) unset($__slots);
 <?php if (isset($__componentOriginal9ac128a9029c0e4701924bd2d73d7f54)): ?>
 <?php $component = $__componentOriginal9ac128a9029c0e4701924bd2d73d7f54; ?>
 <?php unset($__componentOriginal9ac128a9029c0e4701924bd2d73d7f54); ?>
-<?php endif; ?><?php /**PATH /var/www/html/resources/views/web/sections/workorders/daily/prepare/prepare.blade.php ENDPATH**/ ?>
+<?php endif; ?><?php /**PATH /var/www/html/resources/views/web/roles/index.blade.php ENDPATH**/ ?>

@@ -155,7 +155,6 @@ class Form extends Component
 
     private function setEditMode($product)
     {
-        Log::info($product);
         $this->setCtgEditMode($product->category);
         $this->editMode = true;
 

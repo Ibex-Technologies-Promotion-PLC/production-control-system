@@ -2,6 +2,7 @@
 
 return [
     'manage_users' => 'Manage users',
+    'roles'=> 'Roles',
     'define_roles' => 'Role definitions',
     'name' => 'Role name',
     'there_is_no_any_role' => 'No roles defined...',

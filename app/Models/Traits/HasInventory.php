@@ -15,7 +15,6 @@ trait HasInventory
 
     public function getLotsAttribute()
     {
-        Log::info("in the lots");
         return (new LotNumberService(product: $this))->allWithAmounts();
     }
 

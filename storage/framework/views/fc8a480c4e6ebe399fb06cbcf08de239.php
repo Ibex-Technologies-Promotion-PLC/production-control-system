@@ -93,6 +93,7 @@
                     </div>
                     <?php endif; ?>
                 </div>
+                
                 <?php if(array_key_exists('submenus', $menu)): ?>
                 <div x-show="submenu || ('<?php echo e($key); ?>' === '<?php echo e($activeMenuGroupKey); ?>') && ! submenuConfirm"
                     class="shadow-inner bg-cool-gray-50 flex">
