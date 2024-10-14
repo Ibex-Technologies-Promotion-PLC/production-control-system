@@ -12,9 +12,9 @@
 $__split = function ($name, $params = []) {
     return [$name, $params];
 };
-[$__name, $__params] = $__split('users.index', []);
+[$__name, $__params] = $__split('recipes.form', []);
 
-$__html = app('livewire')->mount($__name, $__params, 'lw-1060126189-0', $__slots ?? [], get_defined_vars());
+$__html = app('livewire')->mount($__name, $__params, 'lw-2038208486-0', $__slots ?? [], get_defined_vars());
 
 echo $__html;
 
@@ -33,4 +33,4 @@ if (isset($__slots)) unset($__slots);
 <?php if (isset($__componentOriginal9ac128a9029c0e4701924bd2d73d7f54)): ?>
 <?php $component = $__componentOriginal9ac128a9029c0e4701924bd2d73d7f54; ?>
 <?php unset($__componentOriginal9ac128a9029c0e4701924bd2d73d7f54); ?>
-<?php endif; ?><?php /**PATH /var/www/html/resources/views/web/users/index.blade.php ENDPATH**/ ?>
+<?php endif; ?><?php /**PATH /var/www/html/resources/views/web/sections/recipes/create/create.blade.php ENDPATH**/ ?>

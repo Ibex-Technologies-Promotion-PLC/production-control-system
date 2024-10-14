@@ -26,7 +26,7 @@
                                             </x-input>
                                         @else --}}
                                             <x-dropdown dataType="variable" iType="number" iModel="cards.{{ $key }}.dp_amount" iPlaceholder="{{ __('common.amount') }}" placeholder="{{ __('units.unit') }}" sClass="basic" noErrors
-                                                model="cards.{{ $key }}.unit_id" triggerOnEvent="sp_product_selected{{ $key }}" dataSource="cards.{{ $key }}.units" value="id" text="name" 
+                                                model="cards.{{ $key }}.unit_id" triggerOnEvent="sp_product_selected{{ $key }}" dataSource="cards.{{ $key }}.units.{{$key}}" value="id" text="abbreviation" 
                                                 sId="sp_unit_id_{{$key}}" />
                                         {{-- @endif --}}
 

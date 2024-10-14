@@ -78,6 +78,8 @@ trait SpecifyProducts
             $product = $this->getProductsProperty()->find($id);
                     $this->cards[$index]['units'] = $product->units;
                     $this->specificUnits = $this->cards[$index]['units'];
+                    // dd($this->cards[0]['units'][0]);
+                        Log::info($this->cards[$index]['units']);
             $this->dispatch('sp_product_selected'.$index);
             
             $baseUnit = $product->units->firstWhere('is_base', 1);
@@ -88,7 +90,7 @@ trait SpecifyProducts
         }
     }
     public function getSpecificUnitsProperty(){
-        return $this->specificUnits;
+        return $this->cards;
     }
 
 

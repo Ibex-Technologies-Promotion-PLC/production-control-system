@@ -2,9 +2,10 @@
     <div {{ $attributes->merge(['class' => 'field']) }}>
         <label>{{ __($label) }}</label>
 
-        @if ($iModel)
-        <div class="ui right labeled input" wire:loading.class="disabler" x-data="dropdownComponent({{ json_encode($collection ?? []) }}, '{{$dataType}}','{{ $model }}', '{{ $text }}', '{{ $dataSourceFunction }}', '{{ $placeholder }}', '{{ $triggerOn }}', '{{ $triggerOnEvent }}', '{{ json_encode($dataSource ?? '') }}')">
+        @if ($iModel )
+        <div class="ui right labeled input" wire:loading.class="disabler" x-data="dropdownComponent({{ json_encode($collection ?? []) }}, '{{$dataType}}','{{ $model }}', '{{ $text }}', '{{ $dataSourceFunction }}', '{{ $placeholder }}', '{{ $triggerOn }}', '{{ $triggerOnEvent }}', '{{ json_encode($dataSource ?? '') }}','{{$sId}}')">
             <input type="{{ $iType }}" step="any" placeholder="{{ $iPlaceholder }}" wire:model.debounce.500ms="{{ $iModel }}">
+
             <div wire:ignore class="{{ $sClass }} ui @if( ! $basic) label scrolling @endif dropdown" id="{{ $sId }}">
                 <input type="hidden" name="{{ $model }}" wire:model.lazy="{{ $model }}">
                 <div class="text">{{ $placeholder }}</div>
@@ -15,7 +16,7 @@
 
 
         @else
-        <div x-data="dropdownComponent({{ json_encode($collection ?? []) }},'{{$dataType}}', '{{ $model }}', '{{ $text }}', '{{ $dataSourceFunction }}', '{{ $placeholder }}', '{{ $triggerOn }}', '{{ $triggerOnEvent }}', '{{ json_encode($dataSource ?? '') }}')"
+        <div x-data="dropdownComponent({{ json_encode($collection ?? []) }},'{{$dataType}}', '{{ $model }}', '{{ $text }}', '{{ $dataSourceFunction }}', '{{ $placeholder }}', '{{ $triggerOn }}', '{{ $triggerOnEvent }}', '{{ json_encode($dataSource ?? '') }}','{{$sId}}')"
             wire:ignore
             class="{{ $sClass }} ui @if( ! $basic) selection scrolling @endif dropdown"
             id="{{ $sId }}"
@@ -33,18 +34,18 @@
 
 <script>
     document.addEventListener('alpine:init', () => {
-        Alpine.data('dropdownComponent', (initialData = [], dataType,modelName, text, dataSourceFunction, placeholder, triggerOn, triggerOnEvent, dataSource) => ({
+        Alpine.data('dropdownComponent', (initialData = [], dataType, modelName, text, dataSourceFunction, placeholder, triggerOn, triggerOnEvent, dataSource, sId) => ({
             values: [],
             selectedValue: null,
             currentPlaceholder: placeholder,
             text: text,
             dataSourceFunction: dataSourceFunction,
             dataSource: dataSource,
-            dataType:dataType,
+            dataType: dataType,
             collection: initialData,
+            sId: sId,
 
             init() {
-
                 // Trigger fetch values depending on initial data
                 if (initialData.length > 0) {
                     this.populate(initialData);
@@ -69,7 +70,9 @@
             },
 
             fetchValues() {
-                console.log('dataType',this.dataType);
+                let iModels = this.$wire.get('{{ $iModel }}');
+
+                console.log('data of imodel and another one ', iModels);
 
                 if (this.dataSourceFunction && this.dataSourceFunction !== '') {
                     // Call a Livewire method to fetch data
@@ -101,14 +104,14 @@
 
                             console.log(data, 'my data of variable')
                         })
-                    } else if(this.dataType === 'pointer') {
-                        console.log(this.dataSource,'variable name')
+                    } else if (this.dataType === 'pointer') {
+                        console.log(this.dataSource, 'variable name')
                         const data = this.$wire.get('companyAddresses');
                         console.log(data, 'another datasource')
                         this.populate(data);
 
                     }
-                    console.log(this.dataSource == 'cards.0.units','truth value')
+                    console.log(this.dataSource == 'cards.0.units', 'truth value')
 
 
                 } else if (this.collection && Array.isArray(this.collection)) {
@@ -124,11 +127,11 @@
                     console.error('Data passed to populate is not an array:', data);
                     return;
                 }
-
                 const textProperty = this.text;
                 const valueProperty = 'id';
 
                 const textFields = textProperty.split(',').map(field => field.trim());
+
 
                 this.values = data.map(item => {
                     let displayText = textFields.map(field => item[field] ?? '').join(' - ');
@@ -149,6 +152,11 @@
 
             initializeDropdown() {
                 const _this = this;
+                console.log(this.sId, 'the sid ')
+                console.log(this.$el, 'the el')
+
+               this.$el = this.sId;
+
 
                 $(this.$el).dropdown({
                     values: this.values,
@@ -167,6 +175,7 @@
 
                         // Debug: Ensure the selected value is updated
                         _this.selectedValue = value;
+                        console.log(_this.selectedValue, 'selectedValue')
                     },
                     message: {
                         addResult: '<b>{term}</b> common.add_result',
