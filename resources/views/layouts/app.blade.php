@@ -13,6 +13,8 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/semantic.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@foal/semantic-ui-toast/dist/semantic-ui-toast.min.css">
+
         @stack('styles')
 
 
@@ -23,6 +25,8 @@
         <!-- Scripts -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="{{ asset('js/semantic.min.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@foal/semantic-ui-toast/dist/semantic-ui-toast.min.js"></script>
+
         
         
 

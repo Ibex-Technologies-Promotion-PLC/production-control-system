@@ -1,501 +1,386 @@
-[2024-10-13 22:49:59] local.INFO: selectProduct here is id     
-[2024-10-13 22:50:05] local.INFO: selectProduct here is id     
-[2024-10-13 22:50:07] local.INFO: selectProduct here is id     
-[2024-10-13 22:50:12] local.INFO: selectProduct here is id     
-[2024-10-13 22:50:12] local.INFO: unit0 here is id     
-[2024-10-13 22:50:12] local.INFO: selectProduct here is id     
-[2024-10-13 22:50:12] local.INFO: unit0 here is id     
-[2024-10-13 23:01:31] local.INFO: selectProduct here is id     
-[2024-10-13 23:01:45] local.INFO: selectProduct here is id     
-[2024-10-13 23:01:49] local.INFO: selectProduct here is id     
-[2024-10-13 23:02:22] local.INFO: selectProduct here is id     
-[2024-10-13 23:02:22] local.INFO: unit0 here is id     
-[2024-10-13 23:02:23] local.INFO: selectProduct here is id     
-[2024-10-13 23:02:23] local.INFO: unit0 here is id     
-[2024-10-13 23:02:39] local.INFO: selectProduct here is id     
-[2024-10-13 23:02:39] local.INFO: unit0 here is id     
-[2024-10-13 23:02:39] local.INFO: unit1 here is id     
-[2024-10-13 23:02:39] local.INFO: selectProduct here is id     
-[2024-10-13 23:02:39] local.INFO: unit0 here is id     
-[2024-10-13 23:02:39] local.INFO: unit1 here is id     
-[2024-10-13 23:02:46] local.INFO: selectProduct here is id     
-[2024-10-13 23:02:46] local.INFO: unit0 here is id     
-[2024-10-13 23:02:46] local.INFO: unit1 here is id     
-[2024-10-13 23:02:46] local.INFO: unit2 here is id     
-[2024-10-13 23:02:47] local.INFO: selectProduct here is id     
-[2024-10-13 23:02:47] local.INFO: unit0 here is id     
-[2024-10-13 23:02:47] local.INFO: unit1 here is id     
-[2024-10-13 23:02:47] local.INFO: unit2 here is id     
-[2024-10-14 06:38:12] local.INFO: selectProduct here is id     
-[2024-10-14 06:38:46] local.INFO: selectProduct here is id     
-[2024-10-14 06:39:11] local.INFO: selectProduct here is id     
-[2024-10-14 06:39:15] local.INFO: selectProduct here is id     
-[2024-10-14 06:39:18] local.INFO: selectProduct here is id     
-[2024-10-14 06:39:18] local.INFO: unit0 here is id     
-[2024-10-14 06:39:18] local.INFO: unit1 here is id     
-[2024-10-14 06:39:18] local.INFO: selectProduct here is id     
-[2024-10-14 06:39:19] local.INFO: unit0 here is id     
-[2024-10-14 06:39:19] local.INFO: unit1 here is id     
-[2024-10-14 06:39:34] local.INFO: selectProduct here is id     
-[2024-10-14 06:39:35] local.INFO: unit0 here is id     
-[2024-10-14 06:39:35] local.INFO: unit1 here is id     
-[2024-10-14 06:39:35] local.INFO: unit2 here is id     
-[2024-10-14 06:39:35] local.INFO: selectProduct here is id     
-[2024-10-14 06:39:35] local.INFO: unit0 here is id     
-[2024-10-14 06:39:35] local.INFO: unit1 here is id     
-[2024-10-14 06:39:35] local.INFO: unit2 here is id     
-[2024-10-14 06:41:04] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:04] local.INFO: unit0 here is id     
-[2024-10-14 06:41:04] local.INFO: unit1 here is id     
-[2024-10-14 06:41:04] local.INFO: unit2 here is id     
-[2024-10-14 06:41:04] local.INFO: unit3 here is id     
-[2024-10-14 06:41:07] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:07] local.INFO: unit0 here is id     
-[2024-10-14 06:41:07] local.INFO: unit1 here is id     
-[2024-10-14 06:41:07] local.INFO: unit2 here is id     
-[2024-10-14 06:41:07] local.INFO: unit3 here is id     
-[2024-10-14 06:41:07] local.INFO: unit4 here is id     
-[2024-10-14 06:41:08] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:08] local.INFO: unit0 here is id     
-[2024-10-14 06:41:08] local.INFO: unit1 here is id     
-[2024-10-14 06:41:08] local.INFO: unit2 here is id     
-[2024-10-14 06:41:08] local.INFO: unit3 here is id     
-[2024-10-14 06:41:08] local.INFO: unit4 here is id     
-[2024-10-14 06:41:08] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:08] local.INFO: unit0 here is id     
-[2024-10-14 06:41:08] local.INFO: unit1 here is id     
-[2024-10-14 06:41:08] local.INFO: unit2 here is id     
-[2024-10-14 06:41:08] local.INFO: unit3 here is id     
-[2024-10-14 06:41:08] local.INFO: unit4 here is id     
-[2024-10-14 06:41:09] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:09] local.INFO: unit0 here is id     
-[2024-10-14 06:41:09] local.INFO: unit1 here is id     
-[2024-10-14 06:41:09] local.INFO: unit2 here is id     
-[2024-10-14 06:41:09] local.INFO: unit3 here is id     
-[2024-10-14 06:41:09] local.INFO: unit4 here is id     
-[2024-10-14 06:41:10] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:10] local.INFO: unit0 here is id     
-[2024-10-14 06:41:10] local.INFO: unit1 here is id     
-[2024-10-14 06:41:10] local.INFO: unit2 here is id     
-[2024-10-14 06:41:10] local.INFO: unit3 here is id     
-[2024-10-14 06:41:10] local.INFO: unit4 here is id     
-[2024-10-14 06:41:11] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:11] local.INFO: unit0 here is id     
-[2024-10-14 06:41:11] local.INFO: unit1 here is id     
-[2024-10-14 06:41:11] local.INFO: unit2 here is id     
-[2024-10-14 06:41:11] local.INFO: unit3 here is id     
-[2024-10-14 06:41:11] local.INFO: unit4 here is id     
-[2024-10-14 06:41:11] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:11] local.INFO: unit0 here is id     
-[2024-10-14 06:41:11] local.INFO: unit1 here is id     
-[2024-10-14 06:41:11] local.INFO: unit2 here is id     
-[2024-10-14 06:41:11] local.INFO: unit3 here is id     
-[2024-10-14 06:41:11] local.INFO: unit4 here is id     
-[2024-10-14 06:41:12] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:12] local.INFO: unit0 here is id     
-[2024-10-14 06:41:12] local.INFO: unit1 here is id     
-[2024-10-14 06:41:12] local.INFO: unit2 here is id     
-[2024-10-14 06:41:12] local.INFO: unit3 here is id     
-[2024-10-14 06:41:12] local.INFO: unit4 here is id     
-[2024-10-14 06:41:13] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:13] local.INFO: unit0 here is id     
-[2024-10-14 06:41:13] local.INFO: unit1 here is id     
-[2024-10-14 06:41:13] local.INFO: unit2 here is id     
-[2024-10-14 06:41:13] local.INFO: unit3 here is id     
-[2024-10-14 06:41:13] local.INFO: unit4 here is id     
-[2024-10-14 06:41:14] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:14] local.INFO: unit0 here is id     
-[2024-10-14 06:41:14] local.INFO: unit1 here is id     
-[2024-10-14 06:41:14] local.INFO: unit2 here is id     
-[2024-10-14 06:41:14] local.INFO: unit3 here is id     
-[2024-10-14 06:41:14] local.INFO: unit4 here is id     
-[2024-10-14 06:41:14] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:15] local.INFO: unit0 here is id     
-[2024-10-14 06:41:15] local.INFO: unit1 here is id     
-[2024-10-14 06:41:15] local.INFO: unit2 here is id     
-[2024-10-14 06:41:15] local.INFO: unit3 here is id     
-[2024-10-14 06:41:15] local.INFO: unit4 here is id     
-[2024-10-14 06:41:15] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:15] local.INFO: unit0 here is id     
-[2024-10-14 06:41:15] local.INFO: unit1 here is id     
-[2024-10-14 06:41:15] local.INFO: unit2 here is id     
-[2024-10-14 06:41:15] local.INFO: unit3 here is id     
-[2024-10-14 06:41:15] local.INFO: unit4 here is id     
-[2024-10-14 06:41:16] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:16] local.INFO: unit0 here is id     
-[2024-10-14 06:41:16] local.INFO: unit1 here is id     
-[2024-10-14 06:41:16] local.INFO: unit2 here is id     
-[2024-10-14 06:41:16] local.INFO: unit3 here is id     
-[2024-10-14 06:41:16] local.INFO: unit4 here is id     
-[2024-10-14 06:41:17] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:17] local.INFO: unit0 here is id     
-[2024-10-14 06:41:17] local.INFO: unit1 here is id     
-[2024-10-14 06:41:17] local.INFO: unit2 here is id     
-[2024-10-14 06:41:17] local.INFO: unit3 here is id     
-[2024-10-14 06:41:17] local.INFO: unit4 here is id     
-[2024-10-14 06:41:18] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:18] local.INFO: unit0 here is id     
-[2024-10-14 06:41:18] local.INFO: unit1 here is id     
-[2024-10-14 06:41:18] local.INFO: unit2 here is id     
-[2024-10-14 06:41:18] local.INFO: unit3 here is id     
-[2024-10-14 06:41:18] local.INFO: unit4 here is id     
-[2024-10-14 06:41:18] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:18] local.INFO: unit0 here is id     
-[2024-10-14 06:41:18] local.INFO: unit1 here is id     
-[2024-10-14 06:41:18] local.INFO: unit2 here is id     
-[2024-10-14 06:41:18] local.INFO: unit3 here is id     
-[2024-10-14 06:41:18] local.INFO: unit4 here is id     
-[2024-10-14 06:41:19] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:19] local.INFO: unit0 here is id     
-[2024-10-14 06:41:19] local.INFO: unit1 here is id     
-[2024-10-14 06:41:19] local.INFO: unit2 here is id     
-[2024-10-14 06:41:19] local.INFO: unit3 here is id     
-[2024-10-14 06:41:19] local.INFO: unit4 here is id     
-[2024-10-14 06:41:20] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:20] local.INFO: unit0 here is id     
-[2024-10-14 06:41:20] local.INFO: unit1 here is id     
-[2024-10-14 06:41:20] local.INFO: unit2 here is id     
-[2024-10-14 06:41:20] local.INFO: unit3 here is id     
-[2024-10-14 06:41:20] local.INFO: unit4 here is id     
-[2024-10-14 06:41:21] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:21] local.INFO: unit0 here is id     
-[2024-10-14 06:41:21] local.INFO: unit1 here is id     
-[2024-10-14 06:41:21] local.INFO: unit2 here is id     
-[2024-10-14 06:41:21] local.INFO: unit3 here is id     
-[2024-10-14 06:41:21] local.INFO: unit4 here is id     
-[2024-10-14 06:41:21] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:21] local.INFO: unit0 here is id     
-[2024-10-14 06:41:21] local.INFO: unit1 here is id     
-[2024-10-14 06:41:21] local.INFO: unit2 here is id     
-[2024-10-14 06:41:21] local.INFO: unit3 here is id     
-[2024-10-14 06:41:21] local.INFO: unit4 here is id     
-[2024-10-14 06:41:22] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:22] local.INFO: unit0 here is id     
-[2024-10-14 06:41:22] local.INFO: unit1 here is id     
-[2024-10-14 06:41:22] local.INFO: unit2 here is id     
-[2024-10-14 06:41:22] local.INFO: unit3 here is id     
-[2024-10-14 06:41:22] local.INFO: unit4 here is id     
-[2024-10-14 06:41:22] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:22] local.INFO: unit0 here is id     
-[2024-10-14 06:41:22] local.INFO: unit1 here is id     
-[2024-10-14 06:41:22] local.INFO: unit2 here is id     
-[2024-10-14 06:41:22] local.INFO: unit3 here is id     
-[2024-10-14 06:41:22] local.INFO: unit4 here is id     
-[2024-10-14 06:41:23] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:23] local.INFO: unit0 here is id     
-[2024-10-14 06:41:23] local.INFO: unit1 here is id     
-[2024-10-14 06:41:23] local.INFO: unit2 here is id     
-[2024-10-14 06:41:23] local.INFO: unit3 here is id     
-[2024-10-14 06:41:23] local.INFO: unit4 here is id     
-[2024-10-14 06:41:23] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:24] local.INFO: unit0 here is id     
-[2024-10-14 06:41:24] local.INFO: unit1 here is id     
-[2024-10-14 06:41:24] local.INFO: unit2 here is id     
-[2024-10-14 06:41:24] local.INFO: unit3 here is id     
-[2024-10-14 06:41:24] local.INFO: unit4 here is id     
-[2024-10-14 06:41:24] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:24] local.INFO: unit0 here is id     
-[2024-10-14 06:41:24] local.INFO: unit1 here is id     
-[2024-10-14 06:41:24] local.INFO: unit2 here is id     
-[2024-10-14 06:41:24] local.INFO: unit3 here is id     
-[2024-10-14 06:41:24] local.INFO: unit4 here is id     
-[2024-10-14 06:41:24] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:25] local.INFO: unit0 here is id     
-[2024-10-14 06:41:25] local.INFO: unit1 here is id     
-[2024-10-14 06:41:25] local.INFO: unit2 here is id     
-[2024-10-14 06:41:25] local.INFO: unit3 here is id     
-[2024-10-14 06:41:25] local.INFO: unit4 here is id     
-[2024-10-14 06:41:25] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:25] local.INFO: unit0 here is id     
-[2024-10-14 06:41:25] local.INFO: unit1 here is id     
-[2024-10-14 06:41:25] local.INFO: unit2 here is id     
-[2024-10-14 06:41:25] local.INFO: unit3 here is id     
-[2024-10-14 06:41:25] local.INFO: unit4 here is id     
-[2024-10-14 06:41:26] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:26] local.INFO: unit0 here is id     
-[2024-10-14 06:41:26] local.INFO: unit1 here is id     
-[2024-10-14 06:41:26] local.INFO: unit2 here is id     
-[2024-10-14 06:41:26] local.INFO: unit3 here is id     
-[2024-10-14 06:41:26] local.INFO: unit4 here is id     
-[2024-10-14 06:41:26] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:26] local.INFO: unit0 here is id     
-[2024-10-14 06:41:26] local.INFO: unit1 here is id     
-[2024-10-14 06:41:26] local.INFO: unit2 here is id     
-[2024-10-14 06:41:26] local.INFO: unit3 here is id     
-[2024-10-14 06:41:26] local.INFO: unit4 here is id     
-[2024-10-14 06:41:27] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:27] local.INFO: unit0 here is id     
-[2024-10-14 06:41:27] local.INFO: unit1 here is id     
-[2024-10-14 06:41:27] local.INFO: unit2 here is id     
-[2024-10-14 06:41:27] local.INFO: unit3 here is id     
-[2024-10-14 06:41:27] local.INFO: unit4 here is id     
-[2024-10-14 06:41:27] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:27] local.INFO: unit0 here is id     
-[2024-10-14 06:41:27] local.INFO: unit1 here is id     
-[2024-10-14 06:41:27] local.INFO: unit2 here is id     
-[2024-10-14 06:41:27] local.INFO: unit3 here is id     
-[2024-10-14 06:41:27] local.INFO: unit4 here is id     
-[2024-10-14 06:41:28] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:28] local.INFO: unit0 here is id     
-[2024-10-14 06:41:28] local.INFO: unit1 here is id     
-[2024-10-14 06:41:28] local.INFO: unit2 here is id     
-[2024-10-14 06:41:28] local.INFO: unit3 here is id     
-[2024-10-14 06:41:28] local.INFO: unit4 here is id     
-[2024-10-14 06:41:29] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:29] local.INFO: unit0 here is id     
-[2024-10-14 06:41:29] local.INFO: unit1 here is id     
-[2024-10-14 06:41:29] local.INFO: unit2 here is id     
-[2024-10-14 06:41:29] local.INFO: unit3 here is id     
-[2024-10-14 06:41:29] local.INFO: unit4 here is id     
-[2024-10-14 06:41:29] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:29] local.INFO: unit0 here is id     
-[2024-10-14 06:41:29] local.INFO: unit1 here is id     
-[2024-10-14 06:41:29] local.INFO: unit2 here is id     
-[2024-10-14 06:41:29] local.INFO: unit3 here is id     
-[2024-10-14 06:41:29] local.INFO: unit4 here is id     
-[2024-10-14 06:41:30] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:30] local.INFO: unit0 here is id     
-[2024-10-14 06:41:30] local.INFO: unit1 here is id     
-[2024-10-14 06:41:30] local.INFO: unit2 here is id     
-[2024-10-14 06:41:30] local.INFO: unit3 here is id     
-[2024-10-14 06:41:30] local.INFO: unit4 here is id     
-[2024-10-14 06:41:30] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:31] local.INFO: unit0 here is id     
-[2024-10-14 06:41:31] local.INFO: unit1 here is id     
-[2024-10-14 06:41:31] local.INFO: unit2 here is id     
-[2024-10-14 06:41:31] local.INFO: unit3 here is id     
-[2024-10-14 06:41:31] local.INFO: unit4 here is id     
-[2024-10-14 06:41:31] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:31] local.INFO: unit0 here is id     
-[2024-10-14 06:41:31] local.INFO: unit1 here is id     
-[2024-10-14 06:41:31] local.INFO: unit2 here is id     
-[2024-10-14 06:41:31] local.INFO: unit3 here is id     
-[2024-10-14 06:41:31] local.INFO: unit4 here is id     
-[2024-10-14 06:41:32] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:32] local.INFO: unit0 here is id     
-[2024-10-14 06:41:32] local.INFO: unit1 here is id     
-[2024-10-14 06:41:32] local.INFO: unit2 here is id     
-[2024-10-14 06:41:32] local.INFO: unit3 here is id     
-[2024-10-14 06:41:32] local.INFO: unit4 here is id     
-[2024-10-14 06:41:32] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:32] local.INFO: unit0 here is id     
-[2024-10-14 06:41:32] local.INFO: unit1 here is id     
-[2024-10-14 06:41:32] local.INFO: unit2 here is id     
-[2024-10-14 06:41:32] local.INFO: unit3 here is id     
-[2024-10-14 06:41:32] local.INFO: unit4 here is id     
-[2024-10-14 06:41:33] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:33] local.INFO: unit0 here is id     
-[2024-10-14 06:41:33] local.INFO: unit1 here is id     
-[2024-10-14 06:41:33] local.INFO: unit2 here is id     
-[2024-10-14 06:41:33] local.INFO: unit3 here is id     
-[2024-10-14 06:41:33] local.INFO: unit4 here is id     
-[2024-10-14 06:41:34] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:34] local.INFO: unit0 here is id     
-[2024-10-14 06:41:34] local.INFO: unit1 here is id     
-[2024-10-14 06:41:34] local.INFO: unit2 here is id     
-[2024-10-14 06:41:34] local.INFO: unit3 here is id     
-[2024-10-14 06:41:34] local.INFO: unit4 here is id     
-[2024-10-14 06:41:35] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:35] local.INFO: unit0 here is id     
-[2024-10-14 06:41:35] local.INFO: unit1 here is id     
-[2024-10-14 06:41:35] local.INFO: unit2 here is id     
-[2024-10-14 06:41:35] local.INFO: unit3 here is id     
-[2024-10-14 06:41:35] local.INFO: unit4 here is id     
-[2024-10-14 06:41:35] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:35] local.INFO: unit0 here is id     
-[2024-10-14 06:41:35] local.INFO: unit1 here is id     
-[2024-10-14 06:41:35] local.INFO: unit2 here is id     
-[2024-10-14 06:41:35] local.INFO: unit3 here is id     
-[2024-10-14 06:41:35] local.INFO: unit4 here is id     
-[2024-10-14 06:41:36] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:36] local.INFO: unit0 here is id     
-[2024-10-14 06:41:36] local.INFO: unit1 here is id     
-[2024-10-14 06:41:36] local.INFO: unit2 here is id     
-[2024-10-14 06:41:36] local.INFO: unit3 here is id     
-[2024-10-14 06:41:36] local.INFO: unit4 here is id     
-[2024-10-14 06:41:36] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:36] local.INFO: unit0 here is id     
-[2024-10-14 06:41:36] local.INFO: unit1 here is id     
-[2024-10-14 06:41:36] local.INFO: unit2 here is id     
-[2024-10-14 06:41:36] local.INFO: unit3 here is id     
-[2024-10-14 06:41:36] local.INFO: unit4 here is id     
-[2024-10-14 06:41:37] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:37] local.INFO: unit0 here is id     
-[2024-10-14 06:41:37] local.INFO: unit1 here is id     
-[2024-10-14 06:41:37] local.INFO: unit2 here is id     
-[2024-10-14 06:41:37] local.INFO: unit3 here is id     
-[2024-10-14 06:41:37] local.INFO: unit4 here is id     
-[2024-10-14 06:41:38] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:38] local.INFO: unit0 here is id     
-[2024-10-14 06:41:38] local.INFO: unit1 here is id     
-[2024-10-14 06:41:38] local.INFO: unit2 here is id     
-[2024-10-14 06:41:38] local.INFO: unit3 here is id     
-[2024-10-14 06:41:38] local.INFO: unit4 here is id     
-[2024-10-14 06:41:38] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:38] local.INFO: unit0 here is id     
-[2024-10-14 06:41:38] local.INFO: unit1 here is id     
-[2024-10-14 06:41:38] local.INFO: unit2 here is id     
-[2024-10-14 06:41:38] local.INFO: unit3 here is id     
-[2024-10-14 06:41:38] local.INFO: unit4 here is id     
-[2024-10-14 06:41:38] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:39] local.INFO: unit0 here is id     
-[2024-10-14 06:41:39] local.INFO: unit1 here is id     
-[2024-10-14 06:41:39] local.INFO: unit2 here is id     
-[2024-10-14 06:41:39] local.INFO: unit3 here is id     
-[2024-10-14 06:41:39] local.INFO: unit4 here is id     
-[2024-10-14 06:41:39] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:39] local.INFO: unit0 here is id     
-[2024-10-14 06:41:39] local.INFO: unit1 here is id     
-[2024-10-14 06:41:39] local.INFO: unit2 here is id     
-[2024-10-14 06:41:39] local.INFO: unit3 here is id     
-[2024-10-14 06:41:39] local.INFO: unit4 here is id     
-[2024-10-14 06:41:40] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:40] local.INFO: unit0 here is id     
-[2024-10-14 06:41:40] local.INFO: unit1 here is id     
-[2024-10-14 06:41:40] local.INFO: unit2 here is id     
-[2024-10-14 06:41:40] local.INFO: unit3 here is id     
-[2024-10-14 06:41:40] local.INFO: unit4 here is id     
-[2024-10-14 06:41:40] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:40] local.INFO: unit0 here is id     
-[2024-10-14 06:41:40] local.INFO: unit1 here is id     
-[2024-10-14 06:41:40] local.INFO: unit2 here is id     
-[2024-10-14 06:41:40] local.INFO: unit3 here is id     
-[2024-10-14 06:41:40] local.INFO: unit4 here is id     
-[2024-10-14 06:41:41] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:41] local.INFO: unit0 here is id     
-[2024-10-14 06:41:41] local.INFO: unit1 here is id     
-[2024-10-14 06:41:41] local.INFO: unit2 here is id     
-[2024-10-14 06:41:41] local.INFO: unit3 here is id     
-[2024-10-14 06:41:41] local.INFO: unit4 here is id     
-[2024-10-14 06:41:41] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:41] local.INFO: unit0 here is id     
-[2024-10-14 06:41:41] local.INFO: unit1 here is id     
-[2024-10-14 06:41:41] local.INFO: unit2 here is id     
-[2024-10-14 06:41:41] local.INFO: unit3 here is id     
-[2024-10-14 06:41:41] local.INFO: unit4 here is id     
-[2024-10-14 06:41:42] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:42] local.INFO: unit0 here is id     
-[2024-10-14 06:41:42] local.INFO: unit1 here is id     
-[2024-10-14 06:41:42] local.INFO: unit2 here is id     
-[2024-10-14 06:41:42] local.INFO: unit3 here is id     
-[2024-10-14 06:41:42] local.INFO: unit4 here is id     
-[2024-10-14 06:41:43] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:43] local.INFO: unit0 here is id     
-[2024-10-14 06:41:43] local.INFO: unit1 here is id     
-[2024-10-14 06:41:43] local.INFO: unit2 here is id     
-[2024-10-14 06:41:43] local.INFO: unit3 here is id     
-[2024-10-14 06:41:43] local.INFO: unit4 here is id     
-[2024-10-14 06:41:43] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:43] local.INFO: unit0 here is id     
-[2024-10-14 06:41:43] local.INFO: unit1 here is id     
-[2024-10-14 06:41:43] local.INFO: unit2 here is id     
-[2024-10-14 06:41:43] local.INFO: unit3 here is id     
-[2024-10-14 06:41:43] local.INFO: unit4 here is id     
-[2024-10-14 06:41:44] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:44] local.INFO: unit0 here is id     
-[2024-10-14 06:41:44] local.INFO: unit1 here is id     
-[2024-10-14 06:41:44] local.INFO: unit2 here is id     
-[2024-10-14 06:41:44] local.INFO: unit3 here is id     
-[2024-10-14 06:41:44] local.INFO: unit4 here is id     
-[2024-10-14 06:41:44] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:44] local.INFO: unit0 here is id     
-[2024-10-14 06:41:44] local.INFO: unit1 here is id     
-[2024-10-14 06:41:44] local.INFO: unit2 here is id     
-[2024-10-14 06:41:44] local.INFO: unit3 here is id     
-[2024-10-14 06:41:44] local.INFO: unit4 here is id     
-[2024-10-14 06:41:45] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:45] local.INFO: unit0 here is id     
-[2024-10-14 06:41:45] local.INFO: unit1 here is id     
-[2024-10-14 06:41:45] local.INFO: unit2 here is id     
-[2024-10-14 06:41:45] local.INFO: unit3 here is id     
-[2024-10-14 06:41:45] local.INFO: unit4 here is id     
-[2024-10-14 06:41:45] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:45] local.INFO: unit0 here is id     
-[2024-10-14 06:41:45] local.INFO: unit1 here is id     
-[2024-10-14 06:41:45] local.INFO: unit2 here is id     
-[2024-10-14 06:41:45] local.INFO: unit3 here is id     
-[2024-10-14 06:41:45] local.INFO: unit4 here is id     
-[2024-10-14 06:41:46] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:46] local.INFO: unit0 here is id     
-[2024-10-14 06:41:46] local.INFO: unit1 here is id     
-[2024-10-14 06:41:46] local.INFO: unit2 here is id     
-[2024-10-14 06:41:46] local.INFO: unit3 here is id     
-[2024-10-14 06:41:46] local.INFO: unit4 here is id     
-[2024-10-14 06:41:47] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:47] local.INFO: unit0 here is id     
-[2024-10-14 06:41:47] local.INFO: unit1 here is id     
-[2024-10-14 06:41:47] local.INFO: unit2 here is id     
-[2024-10-14 06:41:47] local.INFO: unit3 here is id     
-[2024-10-14 06:41:47] local.INFO: unit4 here is id     
-[2024-10-14 06:41:47] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:47] local.INFO: selectProduct here is id     
-[2024-10-14 06:41:48] local.INFO: unit0 here is id     
-[2024-10-14 06:41:48] local.INFO: unit1 here is id     
-[2024-10-14 06:41:48] local.INFO: unit2 here is id     
-[2024-10-14 06:41:48] local.INFO: unit3 here is id     
-[2024-10-14 06:41:48] local.INFO: unit4 here is id     
-[2024-10-14 06:42:45] local.INFO: selectProduct here is id     
-[2024-10-14 06:42:57] local.INFO: selectProduct here is id     
-[2024-10-14 06:43:00] local.INFO: selectProduct here is id     
-[2024-10-14 06:43:04] local.INFO: selectProduct here is id     
-[2024-10-14 06:43:05] local.INFO: unit0 here is id     
-[2024-10-14 06:43:05] local.INFO: selectProduct here is id     
-[2024-10-14 06:43:05] local.INFO: unit0 here is id     
-[2024-10-14 06:47:43] local.INFO: selectProduct here is id     
-[2024-10-14 06:47:51] local.INFO: selectProduct here is id     
-[2024-10-14 06:47:54] local.INFO: selectProduct here is id     
-[2024-10-14 06:47:59] local.INFO: selectProduct here is id     
-[2024-10-14 06:47:59] local.INFO: unit0 here is id     
-[2024-10-14 06:48:00] local.INFO: selectProduct here is id     
-[2024-10-14 06:48:00] local.INFO: unit0 here is id     
-[2024-10-14 06:52:24] local.INFO: selectProduct here is id     
-[2024-10-14 06:52:39] local.INFO: selectProduct here is id     
-[2024-10-14 06:52:41] local.INFO: selectProduct here is id     
-[2024-10-14 06:52:47] local.INFO: selectProduct here is id     
-[2024-10-14 06:52:47] local.INFO: unit0 here is id     
-[2024-10-14 06:52:47] local.INFO: selectProduct here is id     
-[2024-10-14 06:52:48] local.INFO: unit0 here is id     
-[2024-10-14 06:56:35] local.INFO: selectProduct here is id     
-[2024-10-14 06:56:46] local.INFO: selectProduct here is id     
-[2024-10-14 06:57:38] local.INFO: selectProduct here is id     
-[2024-10-14 06:58:54] local.INFO: selectProduct here is id     
-[2024-10-14 07:04:18] local.INFO: selectProduct here is id     
-[2024-10-14 07:04:46] local.INFO: selectProduct here is id     
-[2024-10-14 07:04:50] local.INFO: selectProduct here is id     
-[2024-10-14 07:04:58] local.INFO: selectProduct here is id     
-[2024-10-14 07:04:58] local.INFO: unit0 here is id     
-[2024-10-14 07:04:58] local.INFO: selectProduct here is id     
-[2024-10-14 07:04:58] local.INFO: unit0 here is id     
-[2024-10-14 07:08:16] local.INFO: selectProduct here is id     
-[2024-10-14 07:08:23] local.INFO: selectProduct here is id     
-[2024-10-14 07:08:27] local.INFO: selectProduct here is id     
-[2024-10-14 07:08:34] local.INFO: selectProduct here is id     
-[2024-10-14 07:08:35] local.INFO: unit0 here is id     
-[2024-10-14 07:08:35] local.INFO: selectProduct here is id     
-[2024-10-14 07:08:35] local.INFO: unit0 here is id     
-[2024-10-14 09:07:17] local.INFO: selectProduct here is id     
-[2024-10-14 09:07:17] local.INFO: unit0 here is id     
-[2024-10-14 09:08:40] local.INFO: selectProduct here is id     
-[2024-10-14 09:08:40] local.INFO: unit0 here is id     
-[2024-10-14 09:08:40] local.INFO: unit1 here is id     
-[2024-10-14 09:08:40] local.INFO: selectProduct here is id     
-[2024-10-14 09:08:40] local.INFO: unit0 here is id     
-[2024-10-14 09:08:40] local.INFO: unit1 here is id     
-[2024-10-14 09:17:29] local.INFO: selectProduct here is id     
-[2024-10-14 09:20:52] local.INFO: selectProduct here is id     
-[2024-10-14 09:22:14] local.INFO: uniqueIdselectProduct0 here is id     
-[2024-10-14 09:22:14] local.INFO: uniqueIdunits0 here is id     
-[2024-10-14 09:22:15] local.INFO: selectProduct here is id     
-[2024-10-14 09:22:15] local.INFO: workOrderUnits here is id     
-[2024-10-14 09:22:18] local.INFO: uniqueIdselectProduct0 here is id     
-[2024-10-14 09:22:18] local.INFO: uniqueIdunits0 here is id     
-[2024-10-14 09:22:25] local.INFO: selectProduct here is id     
-[2024-10-14 09:22:25] local.INFO: workOrderUnits here is id     
-[2024-10-14 09:22:26] local.INFO: selectProduct here is id     
-[2024-10-14 09:22:26] local.INFO: workOrderUnits here is id     
-[2024-10-14 09:23:07] local.INFO: categories here is id     
-[2024-10-14 09:23:07] local.INFO: units here is id     
-[2024-10-14 09:23:10] local.INFO: selectProduct here is id     
-[2024-10-14 09:23:13] local.INFO: selectProduct here is id     
-[2024-10-14 09:23:13] local.INFO: workOrderUnits here is id     
-[2024-10-14 09:23:18] local.INFO: selectProduct here is id     
+[2024-10-14 11:41:35] local.ERROR: file_put_contents(/var/www/html/storage/framework/views/ff0287b16b1537d62a0074d5fbe09d11.php): Failed to open stream: Permission denied {"exception":"[object] (ErrorException(code: 0): file_put_contents(/var/www/html/storage/framework/views/ff0287b16b1537d62a0074d5fbe09d11.php): Failed to open stream: Permission denied at /var/www/html/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php:204)
+[stacktrace]
+#0 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError()
+#1 [internal function]: Illuminate\\Foundation\\Bootstrap\\HandleExceptions->Illuminate\\Foundation\\Bootstrap\\{closure}()
+#2 /var/www/html/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(204): file_put_contents()
+#3 /var/www/html/vendor/laravel/framework/src/Illuminate/View/Compilers/BladeCompiler.php(194): Illuminate\\Filesystem\\Filesystem->put()
+#4 /var/www/html/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(66): Illuminate\\View\\Compilers\\BladeCompiler->compile()
+#5 /var/www/html/vendor/livewire/livewire/src/Mechanisms/ExtendBlade/ExtendedCompilerEngine.php(10): Illuminate\\View\\Engines\\CompilerEngine->get()
+#6 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(208): Livewire\\Mechanisms\\ExtendBlade\\ExtendedCompilerEngine->get()
+#7 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(191): Illuminate\\View\\View->getContents()
+#8 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(160): Illuminate\\View\\View->renderContents()
+#9 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Response.php(70): Illuminate\\View\\View->render()
+#10 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Response.php(35): Illuminate\\Http\\Response->setContent()
+#11 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(920): Illuminate\\Http\\Response->__construct()
+#12 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(887): Illuminate\\Routing\\Router::toResponse()
+#13 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(807): Illuminate\\Routing\\Router->prepareResponse()
+#14 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(144): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#15 /var/www/html/app/Http/Middleware/RedirectIfAuthenticated.php(29): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#16 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): App\\Http\\Middleware\\RedirectIfAuthenticated->handle()
+#17 /var/www/html/app/Http/Middleware/Localization.php(23): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#18 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): App\\Http\\Middleware\\Localization->handle()
+#19 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(51): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#20 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#21 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/VerifyCsrfToken.php(88): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#22 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken->handle()
+#23 /var/www/html/vendor/laravel/framework/src/Illuminate/Session/Middleware/AuthenticateSession.php(48): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#24 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Session\\Middleware\\AuthenticateSession->handle()
+#25 /var/www/html/vendor/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#26 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle()
+#27 /var/www/html/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(121): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#28 /var/www/html/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(64): Illuminate\\Session\\Middleware\\StartSession->handleStatefulRequest()
+#29 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Session\\Middleware\\StartSession->handle()
+#30 /var/www/html/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#31 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle()
+#32 /var/www/html/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(75): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#33 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle()
+#34 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#35 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(807): Illuminate\\Pipeline\\Pipeline->then()
+#36 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(786): Illuminate\\Routing\\Router->runRouteWithinStack()
+#37 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(750): Illuminate\\Routing\\Router->runRoute()
+#38 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(739): Illuminate\\Routing\\Router->dispatchToRoute()
+#39 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(201): Illuminate\\Routing\\Router->dispatch()
+#40 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(144): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#41 /var/www/html/vendor/livewire/livewire/src/Features/SupportDisablingBackButtonCache/DisableBackButtonCacheMiddleware.php(19): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#42 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Livewire\\Features\\SupportDisablingBackButtonCache\\DisableBackButtonCacheMiddleware->handle()
+#43 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#44 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#45 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#46 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#47 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(51): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#48 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#49 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#50 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Http\\Middleware\\ValidatePostSize->handle()
+#51 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(110): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#52 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#53 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(58): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#54 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#55 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#56 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(176): Illuminate\\Pipeline\\Pipeline->then()
+#57 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(145): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#58 /var/www/html/public/index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle()
+#59 /var/www/html/server.php(21): require_once('...')
+#60 {main}
+"} 
+[2024-10-14 11:42:09] local.ERROR: fopen(/var/www/html/storage/framework/cache/data/43/14/4314c27e6d2b88f9c165268a908e425019efbc69): Failed to open stream: No such file or directory {"exception":"[object] (ErrorException(code: 0): fopen(/var/www/html/storage/framework/cache/data/43/14/4314c27e6d2b88f9c165268a908e425019efbc69): Failed to open stream: No such file or directory at /var/www/html/vendor/laravel/framework/src/Illuminate/Filesystem/LockableFile.php:69)
+[stacktrace]
+#0 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError()
+#1 [internal function]: Illuminate\\Foundation\\Bootstrap\\HandleExceptions->Illuminate\\Foundation\\Bootstrap\\{closure}()
+#2 /var/www/html/vendor/laravel/framework/src/Illuminate/Filesystem/LockableFile.php(69): fopen()
+#3 /var/www/html/vendor/laravel/framework/src/Illuminate/Filesystem/LockableFile.php(42): Illuminate\\Filesystem\\LockableFile->createResource()
+#4 /var/www/html/vendor/laravel/framework/src/Illuminate/Cache/FileStore.php(108): Illuminate\\Filesystem\\LockableFile->__construct()
+#5 /var/www/html/vendor/laravel/framework/src/Illuminate/Cache/Repository.php(345): Illuminate\\Cache\\FileStore->add()
+#6 /var/www/html/vendor/laravel/framework/src/Illuminate/Cache/RateLimiter.php(131): Illuminate\\Cache\\Repository->add()
+#7 /var/www/html/vendor/laravel/framework/src/Illuminate/Cache/RateLimiter.php(116): Illuminate\\Cache\\RateLimiter->increment()
+#8 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(158): Illuminate\\Cache\\RateLimiter->hit()
+#9 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(127): Illuminate\\Routing\\Middleware\\ThrottleRequests->handleRequest()
+#10 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(89): Illuminate\\Routing\\Middleware\\ThrottleRequests->handleRequestUsingNamedLimiter()
+#11 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle()
+#12 /var/www/html/vendor/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#13 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle()
+#14 /var/www/html/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(121): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#15 /var/www/html/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(64): Illuminate\\Session\\Middleware\\StartSession->handleStatefulRequest()
+#16 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Session\\Middleware\\StartSession->handle()
+#17 /var/www/html/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#18 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle()
+#19 /var/www/html/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(75): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#20 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle()
+#21 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#22 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(807): Illuminate\\Pipeline\\Pipeline->then()
+#23 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(786): Illuminate\\Routing\\Router->runRouteWithinStack()
+#24 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(750): Illuminate\\Routing\\Router->runRoute()
+#25 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(739): Illuminate\\Routing\\Router->dispatchToRoute()
+#26 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(201): Illuminate\\Routing\\Router->dispatch()
+#27 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(144): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#28 /var/www/html/vendor/livewire/livewire/src/Features/SupportDisablingBackButtonCache/DisableBackButtonCacheMiddleware.php(19): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#29 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Livewire\\Features\\SupportDisablingBackButtonCache\\DisableBackButtonCacheMiddleware->handle()
+#30 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#31 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#32 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#33 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#34 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(51): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#35 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#36 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#37 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Http\\Middleware\\ValidatePostSize->handle()
+#38 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(110): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#39 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#40 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(58): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#41 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#42 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#43 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(176): Illuminate\\Pipeline\\Pipeline->then()
+#44 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(145): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#45 /var/www/html/public/index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle()
+#46 /var/www/html/server.php(21): require_once('...')
+#47 {main}
+"} 
+[2024-10-14 11:42:43] local.INFO: categories here is id     
+[2024-10-14 11:42:43] local.INFO: units here is id     
+[2024-10-14 11:42:55] local.INFO: selectProduct here is id     
+[2024-10-14 11:42:57] local.INFO: selectProduct here is id     
+[2024-10-14 11:42:57] local.INFO: workOrderUnits here is id     
+[2024-10-14 12:04:45] local.INFO: categories here is id     
+[2024-10-14 12:04:45] local.INFO: units here is id     
+[2024-10-14 12:05:01] local.ERROR: foreach() argument must be of type array|object, null given {"view":{"view":"/var/www/html/resources/views/components/product-lots.blade.php","data":[]},"userId":2,"exception":"[object] (Spatie\\LaravelIgnition\\Exceptions\\ViewException(code: 0): foreach() argument must be of type array|object, null given at /var/www/html/resources/views/components/product-lots.blade.php:4)
+[stacktrace]
+#0 /var/www/html/vendor/livewire/livewire/src/Mechanisms/ExtendBlade/ExtendedCompilerEngine.php(37): include('...')
+#1 /var/www/html/vendor/livewire/livewire/src/Mechanisms/ExtendBlade/ExtendedCompilerEngine.php(38): App\\Http\\Livewire\\Products\\DetailsComponent->Livewire\\Mechanisms\\ExtendBlade\\{closure}()
+#2 /var/www/html/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(74): Livewire\\Mechanisms\\ExtendBlade\\ExtendedCompilerEngine->evaluatePath()
+#3 /var/www/html/vendor/livewire/livewire/src/Mechanisms/ExtendBlade/ExtendedCompilerEngine.php(16): Illuminate\\View\\Engines\\CompilerEngine->get()
+#4 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(208): Livewire\\Mechanisms\\ExtendBlade\\ExtendedCompilerEngine->get()
+#5 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(191): Illuminate\\View\\View->getContents()
+#6 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(160): Illuminate\\View\\View->renderContents()
+#7 /var/www/html/vendor/laravel/framework/src/Illuminate/View/Concerns/ManagesComponents.php(99): Illuminate\\View\\View->render()
+#8 /var/www/html/resources/views/livewire/products/details-component.blade.php(126): Illuminate\\View\\Factory->renderComponent()
+#9 /var/www/html/vendor/livewire/livewire/src/Mechanisms/ExtendBlade/ExtendedCompilerEngine.php(37): include('...')
+#10 /var/www/html/vendor/livewire/livewire/src/Mechanisms/ExtendBlade/ExtendedCompilerEngine.php(38): App\\Http\\Livewire\\Products\\DetailsComponent->Livewire\\Mechanisms\\ExtendBlade\\{closure}()
+#11 /var/www/html/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(74): Livewire\\Mechanisms\\ExtendBlade\\ExtendedCompilerEngine->evaluatePath()
+#12 /var/www/html/vendor/livewire/livewire/src/Mechanisms/ExtendBlade/ExtendedCompilerEngine.php(16): Illuminate\\View\\Engines\\CompilerEngine->get()
+#13 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(208): Livewire\\Mechanisms\\ExtendBlade\\ExtendedCompilerEngine->get()
+#14 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(191): Illuminate\\View\\View->getContents()
+#15 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(160): Illuminate\\View\\View->renderContents()
+#16 /var/www/html/vendor/livewire/livewire/src/Mechanisms/HandleComponents/HandleComponents.php(241): Illuminate\\View\\View->render()
+#17 /var/www/html/vendor/livewire/livewire/src/Mechanisms/HandleComponents/HandleComponents.php(285): Livewire\\Mechanisms\\HandleComponents\\HandleComponents->Livewire\\Mechanisms\\HandleComponents\\{closure}()
+#18 /var/www/html/vendor/livewire/livewire/src/Mechanisms/HandleComponents/HandleComponents.php(233): Livewire\\Mechanisms\\HandleComponents\\HandleComponents->trackInRenderStack()
+#19 /var/www/html/vendor/livewire/livewire/src/Mechanisms/HandleComponents/HandleComponents.php(104): Livewire\\Mechanisms\\HandleComponents\\HandleComponents->render()
+#20 /var/www/html/vendor/livewire/livewire/src/LivewireManager.php(97): Livewire\\Mechanisms\\HandleComponents\\HandleComponents->update()
+#21 /var/www/html/vendor/livewire/livewire/src/Mechanisms/HandleRequests/HandleRequests.php(94): Livewire\\LivewireManager->update()
+#22 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(46): Livewire\\Mechanisms\\HandleRequests\\HandleRequests->handleUpdate()
+#23 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Route.php(262): Illuminate\\Routing\\ControllerDispatcher->dispatch()
+#24 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Route.php(208): Illuminate\\Routing\\Route->runController()
+#25 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(808): Illuminate\\Routing\\Route->run()
+#26 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(144): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#27 /var/www/html/app/Http/Middleware/Localization.php(23): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#28 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): App\\Http\\Middleware\\Localization->handle()
+#29 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(51): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#30 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#31 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/VerifyCsrfToken.php(88): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#32 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken->handle()
+#33 /var/www/html/vendor/laravel/framework/src/Illuminate/Session/Middleware/AuthenticateSession.php(67): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#34 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Session\\Middleware\\AuthenticateSession->handle()
+#35 /var/www/html/vendor/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#36 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle()
+#37 /var/www/html/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(121): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#38 /var/www/html/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(64): Illuminate\\Session\\Middleware\\StartSession->handleStatefulRequest()
+#39 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Session\\Middleware\\StartSession->handle()
+#40 /var/www/html/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#41 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle()
+#42 /var/www/html/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(75): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#43 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle()
+#44 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#45 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(807): Illuminate\\Pipeline\\Pipeline->then()
+#46 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(786): Illuminate\\Routing\\Router->runRouteWithinStack()
+#47 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(750): Illuminate\\Routing\\Router->runRoute()
+#48 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(739): Illuminate\\Routing\\Router->dispatchToRoute()
+#49 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(201): Illuminate\\Routing\\Router->dispatch()
+#50 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(144): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#51 /var/www/html/vendor/livewire/livewire/src/Features/SupportDisablingBackButtonCache/DisableBackButtonCacheMiddleware.php(19): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#52 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Livewire\\Features\\SupportDisablingBackButtonCache\\DisableBackButtonCacheMiddleware->handle()
+#53 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#54 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#55 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(47): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#56 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#57 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#58 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Http\\Middleware\\ValidatePostSize->handle()
+#59 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(110): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#60 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#61 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(58): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#62 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#63 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#64 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(176): Illuminate\\Pipeline\\Pipeline->then()
+#65 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(145): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#66 /var/www/html/public/index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle()
+#67 /var/www/html/server.php(21): require_once('...')
+#68 {main}
+
+[previous exception] [object] (ErrorException(code: 0): foreach() argument must be of type array|object, null given at /var/www/html/storage/framework/views/5cef2da5ab5c0af9c7505336cf499809.php:4)
+[stacktrace]
+#0 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError()
+#1 /var/www/html/storage/framework/views/5cef2da5ab5c0af9c7505336cf499809.php(4): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->Illuminate\\Foundation\\Bootstrap\\{closure}()
+#2 /var/www/html/vendor/livewire/livewire/src/Mechanisms/ExtendBlade/ExtendedCompilerEngine.php(37): include('...')
+#3 /var/www/html/vendor/livewire/livewire/src/Mechanisms/ExtendBlade/ExtendedCompilerEngine.php(38): App\\Http\\Livewire\\Products\\DetailsComponent->Livewire\\Mechanisms\\ExtendBlade\\{closure}()
+#4 /var/www/html/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(74): Livewire\\Mechanisms\\ExtendBlade\\ExtendedCompilerEngine->evaluatePath()
+#5 /var/www/html/vendor/livewire/livewire/src/Mechanisms/ExtendBlade/ExtendedCompilerEngine.php(16): Illuminate\\View\\Engines\\CompilerEngine->get()
+#6 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(208): Livewire\\Mechanisms\\ExtendBlade\\ExtendedCompilerEngine->get()
+#7 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(191): Illuminate\\View\\View->getContents()
+#8 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(160): Illuminate\\View\\View->renderContents()
+#9 /var/www/html/vendor/laravel/framework/src/Illuminate/View/Concerns/ManagesComponents.php(99): Illuminate\\View\\View->render()
+#10 /var/www/html/storage/framework/views/7f6b056a360a94973fd7202946173a4a.php(155): Illuminate\\View\\Factory->renderComponent()
+#11 /var/www/html/vendor/livewire/livewire/src/Mechanisms/ExtendBlade/ExtendedCompilerEngine.php(37): include('...')
+#12 /var/www/html/vendor/livewire/livewire/src/Mechanisms/ExtendBlade/ExtendedCompilerEngine.php(38): App\\Http\\Livewire\\Products\\DetailsComponent->Livewire\\Mechanisms\\ExtendBlade\\{closure}()
+#13 /var/www/html/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(74): Livewire\\Mechanisms\\ExtendBlade\\ExtendedCompilerEngine->evaluatePath()
+#14 /var/www/html/vendor/livewire/livewire/src/Mechanisms/ExtendBlade/ExtendedCompilerEngine.php(16): Illuminate\\View\\Engines\\CompilerEngine->get()
+#15 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(208): Livewire\\Mechanisms\\ExtendBlade\\ExtendedCompilerEngine->get()
+#16 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(191): Illuminate\\View\\View->getContents()
+#17 /var/www/html/vendor/laravel/framework/src/Illuminate/View/View.php(160): Illuminate\\View\\View->renderContents()
+#18 /var/www/html/vendor/livewire/livewire/src/Mechanisms/HandleComponents/HandleComponents.php(241): Illuminate\\View\\View->render()
+#19 /var/www/html/vendor/livewire/livewire/src/Mechanisms/HandleComponents/HandleComponents.php(285): Livewire\\Mechanisms\\HandleComponents\\HandleComponents->Livewire\\Mechanisms\\HandleComponents\\{closure}()
+#20 /var/www/html/vendor/livewire/livewire/src/Mechanisms/HandleComponents/HandleComponents.php(233): Livewire\\Mechanisms\\HandleComponents\\HandleComponents->trackInRenderStack()
+#21 /var/www/html/vendor/livewire/livewire/src/Mechanisms/HandleComponents/HandleComponents.php(104): Livewire\\Mechanisms\\HandleComponents\\HandleComponents->render()
+#22 /var/www/html/vendor/livewire/livewire/src/LivewireManager.php(97): Livewire\\Mechanisms\\HandleComponents\\HandleComponents->update()
+#23 /var/www/html/vendor/livewire/livewire/src/Mechanisms/HandleRequests/HandleRequests.php(94): Livewire\\LivewireManager->update()
+#24 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(46): Livewire\\Mechanisms\\HandleRequests\\HandleRequests->handleUpdate()
+#25 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Route.php(262): Illuminate\\Routing\\ControllerDispatcher->dispatch()
+#26 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Route.php(208): Illuminate\\Routing\\Route->runController()
+#27 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(808): Illuminate\\Routing\\Route->run()
+#28 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(144): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#29 /var/www/html/app/Http/Middleware/Localization.php(23): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#30 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): App\\Http\\Middleware\\Localization->handle()
+#31 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(51): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#32 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#33 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/VerifyCsrfToken.php(88): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#34 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken->handle()
+#35 /var/www/html/vendor/laravel/framework/src/Illuminate/Session/Middleware/AuthenticateSession.php(67): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#36 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Session\\Middleware\\AuthenticateSession->handle()
+#37 /var/www/html/vendor/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#38 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle()
+#39 /var/www/html/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(121): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#40 /var/www/html/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(64): Illuminate\\Session\\Middleware\\StartSession->handleStatefulRequest()
+#41 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Session\\Middleware\\StartSession->handle()
+#42 /var/www/html/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#43 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle()
+#44 /var/www/html/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(75): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#45 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle()
+#46 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#47 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(807): Illuminate\\Pipeline\\Pipeline->then()
+#48 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(786): Illuminate\\Routing\\Router->runRouteWithinStack()
+#49 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(750): Illuminate\\Routing\\Router->runRoute()
+#50 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(739): Illuminate\\Routing\\Router->dispatchToRoute()
+#51 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(201): Illuminate\\Routing\\Router->dispatch()
+#52 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(144): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#53 /var/www/html/vendor/livewire/livewire/src/Features/SupportDisablingBackButtonCache/DisableBackButtonCacheMiddleware.php(19): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#54 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Livewire\\Features\\SupportDisablingBackButtonCache\\DisableBackButtonCacheMiddleware->handle()
+#55 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#56 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#57 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(47): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#58 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#59 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#60 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Http\\Middleware\\ValidatePostSize->handle()
+#61 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(110): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#62 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#63 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(58): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#64 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#65 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#66 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(176): Illuminate\\Pipeline\\Pipeline->then()
+#67 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(145): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#68 /var/www/html/public/index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle()
+#69 /var/www/html/server.php(21): require_once('...')
+#70 {main}
+"} 
+[2024-10-14 12:09:13] local.INFO: categories here is id     
+[2024-10-14 12:09:13] local.INFO: units here is id     
+[2024-10-14 12:09:25] local.INFO: selectProduct here is id     
+[2024-10-14 12:09:28] local.INFO: selectProduct here is id     
+[2024-10-14 12:09:28] local.INFO: workOrderUnits here is id     
+[2024-10-14 12:10:01] local.INFO: selectProduct here is id     
+[2024-10-14 12:10:04] local.INFO: selectProduct here is id     
+[2024-10-14 12:10:04] local.INFO: workOrderUnits here is id     
+[2024-10-14 12:10:06] local.INFO: selectProduct here is id     
+[2024-10-14 12:10:06] local.INFO: workOrderUnits here is id     
+[2024-10-14 12:10:11] local.INFO: selectProduct here is id     
+[2024-10-14 12:10:14] local.INFO: do_company here is id     
+[2024-10-14 12:10:14] local.INFO: do_address here is id     
+[2024-10-14 12:10:14] local.INFO: sales_type_id here is id     
+[2024-10-14 12:10:14] local.INFO: dp_product_0 here is id     
+[2024-10-14 12:10:14] local.INFO: sp_unit_id_0 here is id     
+[2024-10-14 12:15:05] local.INFO: selectProduct here is id     
+[2024-10-14 12:15:11] local.INFO: selectProduct here is id     
+[2024-10-14 12:15:18] local.INFO: selectProduct here is id     
+[2024-10-14 12:15:23] local.INFO: selectProduct here is id     
+[2024-10-14 12:15:25] local.INFO: selectProduct here is id     
+[2024-10-14 12:20:36] local.INFO: selectProduct here is id     
+[2024-10-14 12:20:43] local.INFO: categories here is id     
+[2024-10-14 12:20:43] local.INFO: units here is id     
+[2024-10-14 12:20:43] local.INFO: categories here is id     
+[2024-10-14 12:20:43] local.INFO: units here is id     
+[2024-10-14 12:20:51] local.INFO: categories here is id     
+[2024-10-14 12:20:51] local.INFO: units here is id     
+[2024-10-14 12:20:51] local.INFO: categories here is id     
+[2024-10-14 12:20:51] local.INFO: units here is id     
+[2024-10-14 12:20:55] local.INFO: uniqueIdselectProduct0 here is id     
+[2024-10-14 12:20:55] local.INFO: uniqueIdunits0 here is id     
+[2024-10-14 12:20:55] local.INFO: uniqueIdselectProduct0 here is id     
+[2024-10-14 12:20:55] local.INFO: uniqueIdunits0 here is id     
+[2024-10-14 12:23:06] local.INFO: uniqueIdselectProduct0 here is id     
+[2024-10-14 12:23:06] local.INFO: uniqueIdunits0 here is id     
+[2024-10-14 12:23:06] local.INFO: uniqueIdselectProduct0 here is id     
+[2024-10-14 12:23:06] local.INFO: uniqueIdunits0 here is id     
+[2024-10-14 12:23:16] local.INFO: uniqueIdselectProduct0 here is id     
+[2024-10-14 12:23:16] local.INFO: uniqueIdunits0 here is id     
+[2024-10-14 12:23:20] local.INFO: uniqueIdselectProduct0 here is id     
+[2024-10-14 12:23:20] local.INFO: uniqueIdunits0 here is id     
+[2024-10-14 12:23:31] local.INFO: uniqueIdselectProduct0 here is id     
+[2024-10-14 12:23:31] local.INFO: uniqueIdunits0 here is id     
+[2024-10-14 12:23:32] local.INFO: uniqueIdselectProduct0 here is id     
+[2024-10-14 12:23:32] local.INFO: uniqueIdunits0 here is id     
+[2024-10-14 12:23:39] local.INFO: uniqueIdselectProduct0 here is id     
+[2024-10-14 12:23:39] local.INFO: uniqueIdunits0 here is id     
+[2024-10-14 12:24:56] local.INFO: uniqueIdselectProduct0 here is id     
+[2024-10-14 12:24:56] local.INFO: uniqueIdunits0 here is id     
+[2024-10-14 12:24:59] local.INFO: uniqueIdselectProduct0 here is id     
+[2024-10-14 12:25:00] local.INFO: uniqueIdunits0 here is id     
+[2024-10-14 12:25:02] local.INFO: uniqueIdselectProduct0 here is id     
+[2024-10-14 12:25:02] local.INFO: uniqueIdunits0 here is id     
+[2024-10-14 12:25:02] local.INFO: uniqueIdselectProduct0 here is id     
+[2024-10-14 12:25:02] local.INFO: uniqueIdunits0 here is id     
+[2024-10-14 12:25:11] local.INFO: uniqueIdselectProduct0 here is id     
+[2024-10-14 12:25:11] local.INFO: uniqueIdunits0 here is id     
+[2024-10-14 12:29:35] local.INFO: uniqueIdselectProduct0 here is id     
+[2024-10-14 12:29:35] local.INFO: uniqueIdunits0 here is id     
+[2024-10-14 12:29:36] local.INFO: uniqueIdselectProduct0 here is id     
+[2024-10-14 12:29:36] local.INFO: uniqueIdunits0 here is id     
+[2024-10-14 12:29:41] local.INFO: uniqueIdselectProduct0 here is id     
+[2024-10-14 12:29:41] local.INFO: uniqueIdunits0 here is id     
+[2024-10-14 12:29:41] local.INFO: uniqueIdselectProduct0 here is id     
+[2024-10-14 12:29:41] local.INFO: uniqueIdunits0 here is id     
+[2024-10-14 12:29:50] local.INFO: uniqueIdselectProduct0 here is id     
+[2024-10-14 12:29:50] local.INFO: uniqueIdunits0 here is id     
+[2024-10-14 12:30:08] local.INFO: uniqueIdselectProduct0 here is id     
+[2024-10-14 12:30:08] local.INFO: uniqueIdunits0 here is id     
+[2024-10-14 12:30:11] local.INFO: uniqueIdselectProduct0 here is id     
+[2024-10-14 12:30:11] local.INFO: uniqueIdunits0 here is id     
+[2024-10-14 12:30:14] local.INFO: uniqueIdselectProduct0 here is id     
+[2024-10-14 12:30:14] local.INFO: uniqueIdunits0 here is id     
+[2024-10-14 12:30:14] local.INFO: uniqueIdselectProduct0 here is id     
+[2024-10-14 12:30:14] local.INFO: uniqueIdunits0 here is id     
+[2024-10-14 12:30:20] local.INFO: uniqueIdselectProduct0 here is id     
+[2024-10-14 12:30:21] local.INFO: uniqueIdunits0 here is id     
+[2024-10-14 14:31:28] local.INFO: uniqueIdselectProduct0 here is id     
+[2024-10-14 14:31:28] local.INFO: uniqueIdunits0 here is id     
+[2024-10-14 14:31:30] local.INFO: uniqueIdselectProduct0 here is id     
+[2024-10-14 14:31:30] local.INFO: uniqueIdunits0 here is id     
+[2024-10-14 14:31:41] local.INFO: uniqueIdselectProduct0 here is id     
+[2024-10-14 14:31:41] local.INFO: uniqueIdunits0 here is id     
+[2024-10-14 14:31:41] local.INFO: uniqueIdselectProduct0 here is id     
+[2024-10-14 14:31:41] local.INFO: uniqueIdunits0 here is id     
+[2024-10-14 14:31:44] local.INFO: uniqueIdselectProduct0 here is id     
+[2024-10-14 14:31:44] local.INFO: uniqueIdunits0 here is id     
+[2024-10-14 14:31:48] local.INFO: uniqueIdselectProduct0 here is id     
+[2024-10-14 14:31:48] local.INFO: uniqueIdunits0 here is id     
+[2024-10-14 14:32:24] local.INFO: uniqueIdselectProduct0 here is id     
+[2024-10-14 14:32:24] local.INFO: uniqueIdunits0 here is id     
+[2024-10-14 14:32:25] local.INFO: uniqueIdselectProduct0 here is id     
+[2024-10-14 14:32:25] local.INFO: uniqueIdunits0 here is id     
+[2024-10-14 14:32:28] local.INFO: uniqueIdselectProduct0 here is id     
+[2024-10-14 14:32:28] local.INFO: uniqueIdunits0 here is id     
+[2024-10-14 14:32:28] local.INFO: uniqueIdselectProduct1 here is id     
+[2024-10-14 14:32:28] local.INFO: uniqueIdunits1 here is id     
+[2024-10-14 14:32:28] local.INFO: uniqueIdselectProduct0 here is id     
+[2024-10-14 14:32:28] local.INFO: uniqueIdunits0 here is id     
+[2024-10-14 14:32:28] local.INFO: uniqueIdselectProduct1 here is id     
+[2024-10-14 14:32:28] local.INFO: uniqueIdunits1 here is id     
+[2024-10-14 14:32:32] local.INFO: uniqueIdselectProduct0 here is id     
+[2024-10-14 14:32:32] local.INFO: uniqueIdunits0 here is id     
+[2024-10-14 14:32:32] local.INFO: uniqueIdselectProduct1 here is id     
+[2024-10-14 14:32:32] local.INFO: uniqueIdunits1 here is id     
+[2024-10-14 14:32:32] local.INFO: uniqueIdselectProduct0 here is id     
+[2024-10-14 14:32:32] local.INFO: uniqueIdunits0 here is id     
+[2024-10-14 14:32:32] local.INFO: uniqueIdselectProduct1 here is id     
+[2024-10-14 14:32:32] local.INFO: uniqueIdunits1 here is id     
+[2024-10-14 14:32:40] local.INFO: uniqueIdselectProduct0 here is id     
+[2024-10-14 14:32:40] local.INFO: uniqueIdunits0 here is id     
+[2024-10-14 14:32:40] local.INFO: uniqueIdselectProduct1 here is id     
+[2024-10-14 14:32:41] local.INFO: uniqueIdunits1 here is id     
+[2024-10-14 14:32:41] local.INFO: uniqueIdselectProduct0 here is id     
+[2024-10-14 14:32:41] local.INFO: uniqueIdunits0 here is id     
+[2024-10-14 14:32:41] local.INFO: uniqueIdselectProduct1 here is id     
+[2024-10-14 14:32:41] local.INFO: uniqueIdunits1 here is id     

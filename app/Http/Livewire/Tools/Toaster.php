@@ -44,7 +44,7 @@ class Toaster extends Component
 
 
     public function set($title, $message, $type = null, $icon = 'info', $class = 'white', $classProgress = 'red', $showImage = null, $position = 'bottom right', $closeIcon = false, $showMethod = 'scale')
-    {
+    { 
 
         if($type && array_key_exists($type, $this->types)) {
             foreach($this->types[$type] as $key => $value) {
