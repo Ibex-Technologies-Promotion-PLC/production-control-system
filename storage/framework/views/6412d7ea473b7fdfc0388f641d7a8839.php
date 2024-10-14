@@ -2,9 +2,10 @@
     <div <?php echo e($attributes->merge(['class' => 'field'])); ?>>
         <label><?php echo e(__($label)); ?></label>
 
-        <!--[if BLOCK]><![endif]--><?php if($iModel): ?>
-        <div class="ui right labeled input" wire:loading.class="disabler" x-data="dropdownComponent(<?php echo e(json_encode($collection ?? [])); ?>, '<?php echo e($dataType); ?>','<?php echo e($model); ?>', '<?php echo e($text); ?>', '<?php echo e($dataSourceFunction); ?>', '<?php echo e($placeholder); ?>', '<?php echo e($triggerOn); ?>', '<?php echo e($triggerOnEvent); ?>', '<?php echo e(json_encode($dataSource ?? '')); ?>')">
+        <!--[if BLOCK]><![endif]--><?php if($iModel ): ?>
+        <div class="ui right labeled input" wire:loading.class="disabler" x-data="dropdownComponent(<?php echo e(json_encode($collection ?? [])); ?>, '<?php echo e($dataType); ?>','<?php echo e($model); ?>', '<?php echo e($text); ?>', '<?php echo e($dataSourceFunction); ?>', '<?php echo e($placeholder); ?>', '<?php echo e($triggerOn); ?>', '<?php echo e($triggerOnEvent); ?>', '<?php echo e(json_encode($dataSource ?? '')); ?>','<?php echo e($sId); ?>')">
             <input type="<?php echo e($iType); ?>" step="any" placeholder="<?php echo e($iPlaceholder); ?>" wire:model.debounce.500ms="<?php echo e($iModel); ?>">
+
             <div wire:ignore class="<?php echo e($sClass); ?> ui <?php if( ! $basic): ?> label scrolling <?php endif; ?> dropdown" id="<?php echo e($sId); ?>">
                 <input type="hidden" name="<?php echo e($model); ?>" wire:model.lazy="<?php echo e($model); ?>">
                 <div class="text"><?php echo e($placeholder); ?></div>
@@ -15,7 +16,7 @@
 
 
         <?php else: ?>
-        <div x-data="dropdownComponent(<?php echo e(json_encode($collection ?? [])); ?>,'<?php echo e($dataType); ?>', '<?php echo e($model); ?>', '<?php echo e($text); ?>', '<?php echo e($dataSourceFunction); ?>', '<?php echo e($placeholder); ?>', '<?php echo e($triggerOn); ?>', '<?php echo e($triggerOnEvent); ?>', '<?php echo e(json_encode($dataSource ?? '')); ?>')"
+        <div x-data="dropdownComponent(<?php echo e(json_encode($collection ?? [])); ?>,'<?php echo e($dataType); ?>', '<?php echo e($model); ?>', '<?php echo e($text); ?>', '<?php echo e($dataSourceFunction); ?>', '<?php echo e($placeholder); ?>', '<?php echo e($triggerOn); ?>', '<?php echo e($triggerOnEvent); ?>', '<?php echo e(json_encode($dataSource ?? '')); ?>','<?php echo e($sId); ?>')"
             wire:ignore
             class="<?php echo e($sClass); ?> ui <?php if( ! $basic): ?> selection scrolling <?php endif; ?> dropdown"
             id="<?php echo e($sId); ?>"
@@ -33,18 +34,18 @@
 
 <script>
     document.addEventListener('alpine:init', () => {
-        Alpine.data('dropdownComponent', (initialData = [], dataType,modelName, text, dataSourceFunction, placeholder, triggerOn, triggerOnEvent, dataSource) => ({
+        Alpine.data('dropdownComponent', (initialData = [], dataType, modelName, text, dataSourceFunction, placeholder, triggerOn, triggerOnEvent, dataSource, sId) => ({
             values: [],
             selectedValue: null,
             currentPlaceholder: placeholder,
             text: text,
             dataSourceFunction: dataSourceFunction,
             dataSource: dataSource,
-            dataType:dataType,
+            dataType: dataType,
             collection: initialData,
+            sId: sId,
 
             init() {
-
                 // Trigger fetch values depending on initial data
                 if (initialData.length > 0) {
                     this.populate(initialData);
@@ -69,7 +70,9 @@
             },
 
             fetchValues() {
-                console.log('dataType',this.dataType);
+                let iModels = this.$wire.get('<?php echo e($iModel); ?>');
+
+                console.log('data of imodel and another one ', iModels);
 
                 if (this.dataSourceFunction && this.dataSourceFunction !== '') {
                     // Call a Livewire method to fetch data
@@ -101,14 +104,14 @@
 
                             console.log(data, 'my data of variable')
                         })
-                    } else if(this.dataType === 'pointer') {
-                        console.log(this.dataSource,'variable name')
+                    } else if (this.dataType === 'pointer') {
+                        console.log(this.dataSource, 'variable name')
                         const data = this.$wire.get('companyAddresses');
                         console.log(data, 'another datasource')
                         this.populate(data);
 
                     }
-                    console.log(this.dataSource == 'cards.0.units','truth value')
+                    console.log(this.dataSource == 'cards.0.units', 'truth value')
 
 
                 } else if (this.collection && Array.isArray(this.collection)) {
@@ -124,11 +127,11 @@
                     console.error('Data passed to populate is not an array:', data);
                     return;
                 }
-
                 const textProperty = this.text;
                 const valueProperty = 'id';
 
                 const textFields = textProperty.split(',').map(field => field.trim());
+
 
                 this.values = data.map(item => {
                     let displayText = textFields.map(field => item[field] ?? '').join(' - ');
@@ -149,6 +152,11 @@
 
             initializeDropdown() {
                 const _this = this;
+                console.log(this.sId, 'the sid ')
+                console.log(this.$el, 'the el')
+
+               this.$el = this.sId;
+
 
                 $(this.$el).dropdown({
                     values: this.values,
@@ -167,6 +175,7 @@
 
                         // Debug: Ensure the selected value is updated
                         _this.selectedValue = value;
+                        console.log(_this.selectedValue, 'selectedValue')
                     },
                     message: {
                         addResult: '<b>{term}</b> common.add_result',
