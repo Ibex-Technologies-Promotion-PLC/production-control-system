@@ -37,7 +37,6 @@ class Index extends Component
 
 
         ]);
-        Log::info(message: 'here it is ');
 
         $password = $this->password ? $this->password : Str::random(10);
 
@@ -62,7 +61,7 @@ class Index extends Component
     }
     public function getUsersProperty()
     {
-        return User::allExceptSU();
+        return User::all();
     }
     public function getRolesListProperty()
     {
@@ -71,7 +70,7 @@ class Index extends Component
 
     public function getRolesProperty()
     {
-        return Role::allExceptSU();
+        return Role::all();
     }
 
 
