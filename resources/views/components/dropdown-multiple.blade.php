@@ -1,38 +1,77 @@
-{{-- <div {{ $attributes->merge(['class' => 'ui multiple search selection fluid dropdown'])}} id="{{ $sId }}">
-    <input type="hidden" name="{{ $model }}" wire:model.lazy="{{ $model }}">
-    <i class="dropdown icon"></i>
-    <div class="default text">Select Country</div>
-    <div class="menu">
-        {{ $slot }}
-    </div>
-</div> --}}
-
-
-<div wire:ignore>
-    <label class="font-bold pb-2" for="">{{ $label }}</label>
-    <select name="" id="{{ $sId }}" multiple="" {{ $attributes->merge(['class' => 'ui search fluid dropdown'])}} wire:model="{{ $model }}">
-        {{ $slot }}
+<div x-data="dropdownComponent(@entangle('roleIds'))" wire:ignore>
+    <select id="role_select" multiple="" class="ui search fluid dropdown mini">
+        <option value="2">admin</option>
+        <option value="3">Super Super</option>
     </select>
 </div>
-
-
-
 <script>
-    $(document).ready(function(){
-        var a = [];
-        $('#{{ $sId }}').dropdown({
-            maxSelections: "{{ $maxSelections }}",
-            // sortSelect: false,
-            fullTextSearch: true,
-            // onAdd: function(addedValue, addedText, $addedChoice) {
-            //     a.push(addedValue);
-            //     @this.set("{{ $model }}", a);
-            // },
-            // onRemove: function(removedValue, removedText, $removedChoice) {
-            //     let index = a.indexOf(removedValue);
-            //     a.splice(index,1);
-            //     @this.set("{{ $model }}", a);
-            // }
-        });
-    })
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('dropdownComponent', (initialData, fetchUrl = '', triggerOn = '', triggerOnEvent = '') => ({
+            selectedValues: [],
+
+            init() {
+                if (Array.isArray(initialData) && initialData.length > 0) {
+                    // Only populate if the initial data is in the expected format
+                    this.populate(initialData);
+                } else {
+                    // Fetch values if initial data is not available or empty
+                    this.fetchValues();
+                }
+
+                // Listen for Livewire events dynamically
+                if (triggerOnEvent) {
+                    Livewire.on(triggerOnEvent, () => {
+                        console.log(`Event ${triggerOnEvent} triggered, fetching values`);
+                        this.fetchValues();
+                    });
+                }
+
+                if (triggerOn) {
+                    Livewire.on(triggerOn, () => {
+                        console.log(`Event ${triggerOn} triggered, fetching values`);
+                        this.fetchValues();
+                    });
+                }
+            },
+
+            populate(data) {
+                try {
+                    if (Array.isArray(data)) {
+                        // Set selected values based on the array of roles
+                        this.selectedValues = data.map(item => item.id);
+                        this.updateDropdown();
+                    } else {
+                        throw new Error("Data format is incorrect");
+                    }
+                } catch (error) {
+                    console.error("Error populating dropdown:", error);
+                }
+            },
+
+            fetchValues() {
+                // Placeholder for an API call or fetching values dynamically
+                console.log("Fetching values...");
+                // Implement your fetch logic here if needed
+            },
+
+            updateDropdown() {
+                this.$nextTick(() => {
+                    $('#role_select').dropdown('set selected', this.selectedValues);
+                });
+            },
+
+            addValue(value) {
+                if (!this.selectedValues.includes(value)) {
+                    this.selectedValues.push(value);
+                }
+            },
+
+            removeValue(value) {
+                const index = this.selectedValues.indexOf(value);
+                if (index !== -1) {
+                    this.selectedValues.splice(index, 1);
+                }
+            }
+        }));
+    });
 </script>
