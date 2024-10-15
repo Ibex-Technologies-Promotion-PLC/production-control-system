@@ -103,7 +103,9 @@ class Index extends Component
     public function submitRoles()
     {
         if (!$this->selectedUser) return;
-        $this->selectedUser->syncRoles($this->roleIds);
+        $roles =Role::whereIn('id', $this->roleIds)->pluck('name')->toArray();
+
+        $this->selectedUser->syncRoles($roles);
         $this->closeRolesModal();
     }
 
