@@ -1,35 +1,35 @@
 <div class="field">
-    <div {{ $attributes->merge(['class' => 'field']) }}>
-        <label>{{ __($label) }}</label>
+    <div <?php echo e($attributes->merge(['class' => 'field'])); ?>>
+        <label><?php echo e(__($label)); ?></label>
 
-        @if ($iModel )
-        <div class="ui right labeled input" wire:loading.class="disabler" x-data="dropdownComponent({{ json_encode($collection ?? []) }}, '{{$dataType}}','{{ $model }}', '{{ $text }}', '{{ $dataSourceFunction }}', '{{ $placeholder }}', '{{ $triggerOn }}', '{{ $triggerOnEvent }}', '{{ json_encode($dataSource ?? '') }}','{{$sId}}')">
-            <input type="{{ $iType }}" step="any" placeholder="{{ $iPlaceholder }}" wire:model.debounce.500ms="{{ $iModel }}">
+        <!--[if BLOCK]><![endif]--><?php if($iModel ): ?>
+        <div class="ui right labeled input" wire:loading.class="disabler" x-data="dropdownComponent(<?php echo e(json_encode($collection ?? [])); ?>, '<?php echo e($dataType); ?>','<?php echo e($model); ?>', '<?php echo e($text); ?>', '<?php echo e($dataSourceFunction); ?>', '<?php echo e($placeholder); ?>', '<?php echo e($triggerOn); ?>', '<?php echo e($triggerOnEvent); ?>', '<?php echo e(json_encode($dataSource ?? '')); ?>','<?php echo e($sId); ?>')">
+            <input type="<?php echo e($iType); ?>" step="any" placeholder="<?php echo e($iPlaceholder); ?>" wire:model.debounce.500ms="<?php echo e($iModel); ?>">
 
-            <div wire:ignore class="{{ $sClass }} ui @if( ! $basic) label scrolling @endif dropdown" id="{{ $sId }}">
-                <input type="hidden" name="{{ $model }}" wire:model.lazy="{{ $model }}">
-                <div class="text">{{ $placeholder }}</div>
+            <div wire:ignore class="<?php echo e($sClass); ?> ui <?php if( ! $basic): ?> label scrolling <?php endif; ?> dropdown" id="<?php echo e($sId); ?>">
+                <input type="hidden" name="<?php echo e($model); ?>" wire:model.lazy="<?php echo e($model); ?>">
+                <div class="text"><?php echo e($placeholder); ?></div>
                 <i class="dropdown icon"></i>
                 <div class="menu"></div>
             </div>
         </div>
 
 
-        @else
-        <div x-data="dropdownComponent({{ json_encode($collection ?? []) }},'{{$dataType}}', '{{ $model }}', '{{ $text }}', '{{ $dataSourceFunction }}', '{{ $placeholder }}', '{{ $triggerOn }}', '{{ $triggerOnEvent }}', '{{ json_encode($dataSource ?? '') }}','{{$sId}}')"
+        <?php else: ?>
+        <div x-data="dropdownComponent(<?php echo e(json_encode($collection ?? [])); ?>,'<?php echo e($dataType); ?>', '<?php echo e($model); ?>', '<?php echo e($text); ?>', '<?php echo e($dataSourceFunction); ?>', '<?php echo e($placeholder); ?>', '<?php echo e($triggerOn); ?>', '<?php echo e($triggerOnEvent); ?>', '<?php echo e(json_encode($dataSource ?? '')); ?>','<?php echo e($sId); ?>')"
             wire:ignore
-            class="{{ $sClass }} ui @if( ! $basic) selection scrolling @endif dropdown"
-            id="{{ $sId }}"
+            class="<?php echo e($sClass); ?> ui <?php if( ! $basic): ?> selection scrolling <?php endif; ?> dropdown"
+            id="<?php echo e($sId); ?>"
             wire:loading.class="double loading disabled"
-            wire:target="{{ $triggerOn }}, {{ $triggerOnEvent }}">
-            <input type="hidden" name="{{ $model }}" wire:model.lazy="{{ $model }}">
-            <div class="text default">{{ $placeholder }}</div>
+            wire:target="<?php echo e($triggerOn); ?>, <?php echo e($triggerOnEvent); ?>">
+            <input type="hidden" name="<?php echo e($model); ?>" wire:model.lazy="<?php echo e($model); ?>">
+            <div class="text default"><?php echo e($placeholder); ?></div>
             <i class="dropdown icon"></i>
             <div class="menu"></div>
         </div>
-        @endif
+        <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
     </div>
-    <div>{{ $right }}</div>
+    <div><?php echo e($right); ?></div>
 </div>
 
 <script>
@@ -70,7 +70,7 @@
             },
 
             fetchValues() {
-                let iModels = this.$wire.get('{{ $iModel }}');
+                let iModels = this.$wire.get('<?php echo e($iModel); ?>');
 
 
                 if (this.dataSourceFunction && this.dataSourceFunction !== '') {
@@ -191,4 +191,4 @@
     .disabler {
         pointer-events: none;
     }
-</style>
+</style><?php /**PATH /var/www/html/resources/views/components/dropdown.blade.php ENDPATH**/ ?>

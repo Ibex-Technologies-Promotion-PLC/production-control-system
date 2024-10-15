@@ -21,7 +21,7 @@ trait Deletable
         if(!$this->subjectId) return;
 
         if($this->model::findAndDelete($this->subjectId)) {
-            $this->dispatch('toast', '', __('common.context_deleted'), 'info');
+            $this->dispatch('toast', 'Context Deleted', __('common.context_deleted'), 'info');
         } else {
             $this->dispatch('toast', '', __('common.error.body'), 'error');
         }

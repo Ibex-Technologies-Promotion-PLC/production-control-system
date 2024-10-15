@@ -1,13 +1,11 @@
 <div>
-    {{-- <div x-data="{show:false}" @stamp-toast.window="show = true; setTimeout(() => show=false, 5000);"
-        class="bg-red-500"
-        x-show="show"
-        x-cloak>
-        içerik
-    </div> --}}
+    
 </div>
 
-@script
+    <?php
+        $__scriptKey = '3298839472-0';
+        ob_start();
+    ?>
 <script>
     window.addEventListener('stamp-toast', function (event) {
     // Check if event.detail is an array, and grab the first element
@@ -49,4 +47,9 @@
 });
 
 </script>
-@endscript
+    <?php
+        $__output = ob_get_clean();
+
+        \Livewire\store($this)->push('scripts', $__output, $__scriptKey)
+    ?>
+<?php /**PATH /var/www/html/resources/views/livewire/tools/toaster.blade.php ENDPATH**/ ?>
