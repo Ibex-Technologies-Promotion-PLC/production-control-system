@@ -52,7 +52,8 @@ class Index extends Component
 
 
         $this->closeCreateUserModal();
-        $this->dispatch('toast', '', __('common.user'), 'info');
+        $this->dispatch('toast', __('common.saved.title'), __('common.saved.standard'), 'success');
+
     }
     public function closeCreateUserModal()
     {

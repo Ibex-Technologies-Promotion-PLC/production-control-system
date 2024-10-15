@@ -72,7 +72,6 @@
             fetchValues() {
                 let iModels = this.$wire.get('{{ $iModel }}');
 
-                console.log('data of imodel and another one ', iModels);
 
                 if (this.dataSourceFunction && this.dataSourceFunction !== '') {
                     // Call a Livewire method to fetch data
@@ -152,8 +151,7 @@
 
             initializeDropdown() {
                 const _this = this;
-                console.log(this.sId, 'the sid ')
-                console.log(this.$el, 'the el')
+               
 
                this.$el = this.sId;
 
