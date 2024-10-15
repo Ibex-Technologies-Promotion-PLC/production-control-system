@@ -7,7 +7,7 @@
     </div> --}}
 </div>
 
-
+@script
 <script>
     window.addEventListener('stamp-toast', function (event) {
         $('body')
@@ -52,3 +52,4 @@
         });
     });        
 </script>
+@endscript
