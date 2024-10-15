@@ -151,12 +151,12 @@
 
             initializeDropdown() {
                 const _this = this;
-               
-
-               this.$el = this.sId;
 
 
-                $(this.$el).dropdown({
+                this.$el = this.sId;
+                console.log(this.sId, 'sidi')
+
+                $(`#${this.sId}`).dropdown({
                     values: this.values,
                     placeholder: this.currentPlaceholder, // Use dynamic placeholder
                     transition: 'slide',
