@@ -72,9 +72,10 @@ class Roles extends Component
     }
 
     public function submitPermissions()
-    {
+    { 
         if(!$this->selectedRole) return;
-        $this->selectedRole->syncPermissions($this->permissionIds);
+        $permissions = Permission::whereIn('id', $this->permissionIds)->pluck('name')->toArray();
+        $this->selectedRole->syncPermissions($permissions);
         $this->closePermissionsModal();
     }
 
