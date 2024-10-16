@@ -55,6 +55,8 @@ class Form extends Component
             return redirect()->route('companies.index');
         } else {
             Company::create($validatedData);
+            $this->dispatch('toast',__('common.saved.title'),  __('companies.company_defined'), 'success');
+
             session()->flash('success', __('companies.company_defined'));
             return redirect()->route('companies.index');
         }

@@ -5,6 +5,7 @@ namespace App\Http\Livewire\StockMoves;
 use App\Models\Product;
 use App\Models\StockMove;
 use App\Common\Facades\Conversions;
+use App\Models\Unit;
 use App\Stocks\Moves;
 use Illuminate\Support\Facades\Log;
 use Livewire\Component;
@@ -150,7 +151,8 @@ class Form extends Component
         }
     }
     public function getSpecificUnitsProperty(){
-        return $this->specificUnits;
+        $units = Unit::where('id',$this->specificUnits)->get();
+        return $units;
     }
 
 

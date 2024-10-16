@@ -70,7 +70,7 @@
                             </button>
                         </x-slot>
                     </x-input>
-                    <x-dropdown iModel="wo_amount" iPlaceholder="{{ __('validation.attributes.wo_amount') }}"
+                    <x-dropdown dataType="pointer" iModel="wo_amount" iPlaceholder="{{ __('validation.attributes.wo_amount') }}"
                         label="{{ __('validation.attributes.wo_amount') }}" class="required" model="unit_id"
                         triggerOnEvent="woProductChanged" dataSource="units" sId="workOrderUnits" sClass="basic"
                         value="id" text="name" placeholder="{{ __('units.unit') }}" />

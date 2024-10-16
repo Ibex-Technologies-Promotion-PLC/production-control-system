@@ -43,6 +43,7 @@
                                 </x-dropdown>
 
                                 <x-dropdown
+                                    dataType="variable"
                                     iModel="cards.{{ $key }}.amount"
                                     dataType="variable"
                                     iPlaceholder="{{ __('stockmoves.amount') }}"

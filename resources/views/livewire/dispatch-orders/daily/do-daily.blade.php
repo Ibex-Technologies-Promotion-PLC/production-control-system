@@ -81,7 +81,6 @@
     @if ($approveModal && $tobeApprovedDispatchOrder)
         <div x-data="{approveModal: @entangle('approveModal')}" x-cloak>
             <x-custom-modal active="approveModal" class="p-2 bg-gray-200">
-
                 <div class="shadow-md bg-white rounded relative">
 
                     <div class="p-4 flex flex-col gap-5 shadow-md">
@@ -102,7 +101,8 @@
                         @endforeach
                     </div>
                     {{-- <x-reserved-stocks-table :model="$tobeApprovedDispatchOrder" class="p-2" /> --}}
-                        
+                    <h1>hello</h1>
+
                     <div class="p-3">
                         <div class="ui mini buttons w-full">
                             <button wire:click.prevent @click="approveModal = false" class="ui mini button">

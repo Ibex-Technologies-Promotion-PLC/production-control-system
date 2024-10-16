@@ -22,7 +22,6 @@
 @if (!$dispatchOrder->isAllReady())
 
 <x-tbody-item>
-
     <div class="py-3  px-4 shadow font-bold text-sm flex justify-start">
         <div>
             <span>{{ __('dispatchorders.prd_sales') }}:</span>

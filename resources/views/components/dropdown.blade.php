@@ -105,12 +105,11 @@
                         })
                     } else if (this.dataType === 'pointer') {
                         console.log(this.dataSource, 'variable name')
-                        const data = this.$wire.get('companyAddresses');
+                        const data = this.$wire.get('{{$dataSource}}');
                         console.log(data, 'another datasource')
                         this.populate(data);
 
                     }
-                    console.log(this.dataSource == 'cards.0.units', 'truth value')
 
 
                 } else if (this.collection && Array.isArray(this.collection)) {
