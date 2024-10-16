@@ -14,7 +14,7 @@ class Product extends Model
     use HasInventory;
 
     protected $guarded = [];
-    protected $appends = ['lots'];
+    protected $appends = ['lots','baseUnit'];
 
 
     /**
@@ -79,6 +79,7 @@ class Product extends Model
     
     public function getBaseUnitAttribute()
     {
+
         return $this->units()->where('is_base', 1)->first();
     }
 

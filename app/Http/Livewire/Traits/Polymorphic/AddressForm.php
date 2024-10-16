@@ -42,7 +42,7 @@ trait AddressForm
 
         $model->addresses()->create($this->validate());
 
-        $this->dispatch('toast','', __('addresses.address_added'), 'success');
+        $this->dispatch('toast',__('common.saved.title'), __('addresses.address_added'), 'success');
         $this->reset();
     }
 

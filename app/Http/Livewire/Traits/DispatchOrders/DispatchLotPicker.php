@@ -238,8 +238,11 @@ trait DispatchLotPicker
         $inputAmount = $row['reserved_amount'];
         $lotMax = $this->lotMax($row['lot_number']);
 
-        if (! $row['lot_number'] || ! $row['reserved_amount'])
+        if (! $row['lot_number'] || ! $this->rows[$index]['reserved_amount']){
             return $this->rows[$index]['reserved_amount'] = null;
+
+        }
+          
 
         $need = $this->getToBase()['amount'] - $this->siblingsCovered($index);
 
