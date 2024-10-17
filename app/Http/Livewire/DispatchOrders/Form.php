@@ -91,6 +91,10 @@ class Form extends Component
         $this->dispatch('do_company_selected');
     }
 
+    public function getCompanyAddress(){
+        return $this->companyAddresses;
+    }
+
  
 
 

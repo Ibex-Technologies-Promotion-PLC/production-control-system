@@ -56,14 +56,12 @@
                 // Dynamically listen for Livewire events (triggerOn and triggerOnEvent)
                 if (triggerOnEvent) {
                     Livewire.on(triggerOnEvent, () => {
-                        console.log(`Event ${triggerOnEvent} triggered, fetching values`);
                         this.fetchValues();
                     });
                 }
 
                 if (triggerOn) {
                     Livewire.on(triggerOn, () => {
-                        console.log(`Event ${triggerOn} triggered, fetching values`);
                         this.fetchValues();
                     });
                 }
@@ -75,7 +73,6 @@
 
                 if (this.dataSourceFunction && this.dataSourceFunction !== '') {
                     // Call a Livewire method to fetch data
-                    console.log('Fetching data using function:', this.dataSourceFunction);
 
                     const result = this.$wire.call(this.dataSourceFunction);
 
@@ -109,6 +106,7 @@
                         console.log(data, 'another datasource')
                         this.populate(data);
 
+
                     }
 
 
@@ -134,7 +132,6 @@
                 this.values = data.map(item => {
                     let displayText = textFields.map(field => item[field] ?? '').join(' - ');
 
-                    console.log('Item text:', displayText);
 
                     return {
                         name: displayText,
@@ -153,7 +150,6 @@
 
 
                 this.$el = this.sId;
-                console.log(this.sId, 'sidi')
 
                 $(`#${this.sId}`).dropdown({
                     values: this.values,
