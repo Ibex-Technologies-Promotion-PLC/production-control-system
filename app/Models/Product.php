@@ -6,6 +6,7 @@ use App\Models\Traits\HasInventory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Traits\ModelHelpers;
+use App\Services\Stock\LotNumberService;
 
 class Product extends Model
 {
@@ -14,7 +15,7 @@ class Product extends Model
     use HasInventory;
 
     protected $guarded = [];
-    protected $appends = ['lots','baseUnit'];
+    protected $appends = ['totalStock', 'lots', 'baseUnit'];
 
 
     /**
@@ -22,7 +23,7 @@ class Product extends Model
      */
     // protected $with = ['units', 'recipe'];
 
-        
+   
     public function category()
     {
         return $this->belongsTo(Category::class);
