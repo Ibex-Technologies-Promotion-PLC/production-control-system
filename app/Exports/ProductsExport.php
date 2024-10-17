@@ -46,7 +46,7 @@ class ProductsExport extends BaseExport implements FromQuery, WithHeadings, With
             $product->prd_barcode, '',
             $product->prd_shelf_life, '',
             $product->prd_cost, '',
-            $product->totalStock['amount'], '',
+            $product->getTotalStockAttribute()['amount'], '',
             $product->prd_is_active ? 'Aktif' : 'Disaktif',
         ];
     }
