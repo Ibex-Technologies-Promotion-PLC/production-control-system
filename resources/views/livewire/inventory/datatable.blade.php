@@ -17,10 +17,10 @@
             </x-thead>
             <x-tbody>
                 @forelse ($data as $product)
-                <x-table-row wire:key="inventory_row_{{ $loop->index }}" wire:click="showLots({{ $product->id }})" class="{{ $product->stockStatus ? $product->stockStatus['tr'] : '' }}">
+                <x-table-row wire:key="inventory_row_{{ $loop->index }}" wire:click="showLots({{ $product->id }})" class="{{ $product->getStockStatusAttribute() ? $product->getStockStatusAttribute()['tr'] : '' }}">
                     <x-tbody-item class="center aligned collapsing">
-                        <span data-tooltip="{{ $product->stockStatus ? $stockStatus['explanation']: "" }}" data-variation="mini" data-position="top left">
-                            <i class="{{ $product->stockStatus ? $product->stockStatus['icon'] :"" }}"></i>
+                        <span data-tooltip="{{ $product->getStockStatusAttribute() ? $product->getStockStatusAttribute()['explanation']: "" }}" data-variation="mini" data-position="top left">
+                            <i class="{{ $product->getStockStatusAttribute() ? $product->getStockStatusAttribute()['icon'] :"" }}"></i>
                         </span>
                     </x-tbody-item>
                     <x-tbody-item class="font-bold">
@@ -28,21 +28,21 @@
                         <span class="text-xs text-ease">{{ $product->prd_name }}</span>
                     </x-tbody-item>
                     <x-tbody-item class="font-semibold">
-                        @if ($product->totalStock ? $product->totalStock['reserved_amount'] : "")
-                        {{ $product->totalStock['amount_string'] }}
+                        @if ($product->getTotalStockAttribute())
+                        {{ $product->getTotalStockAttribute()['amount_string'] }}
                         <x-span tooltip="{{ __('inventory.reserved') }}" class="text-xs text-ease-red">
-                            - {{ $product->totalStock ?$product->totalStock['reserved_amount_string'] : "" }}
+                            - {{ $product->getTotalStockAttribute() ? $product->getTotalStockAttribute()['reserved_amount_string'] : "" }}
                         </x-span>
                         @else
-                        {{ $product->totalStock ? $product->totalStock['amount_string']: 0 }}
+                        {{ $product->getTotalStockAttribute() ? $product->getTotalStockAttribute()['amount_string']: 0 }}
                         @endif
                     </x-tbody-item>
                     <x-tbody-item class="font-bold">
-                        {{ $product->totalStock ? $product->totalStock['available_amount_string'] : 0 }}
+                        {{ $product->getTotalStockAttribute() ? $product->getTotalStockAttribute()['available_amount_string'] : 0 }}
                     </x-tbody-item>
                     <x-tbody-item class=" text-sm collapsing">
                         <i class="{{ $product->lastMove ? $product->lastMove['direction'] : "" }}"></i>
-                        {{ $product->lastMove ? $product->lastMove['date'] : "" }}
+                        {{ $product->getLastMoveAttribute() ? $product->getLastMoveAttribute()['date'] : "" }}
                     </x-tbody-item>
                     <x-tbody-item class=" collapsing center aligned">
                         <div wire:click="showLots({{ $product->id }})"

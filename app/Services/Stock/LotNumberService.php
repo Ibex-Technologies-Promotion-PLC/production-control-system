@@ -29,9 +29,9 @@ class LotNumberService
             'amount' => $amount,
             'available_amount' => $availableAmount,
             'reserved_amount' => $reservedAmount,
-            'amount_string' => $this->nFormat($amount) . ' ' . $unit->name,
-            'available_amount_string' => $this->nFormat($availableAmount) . ' ' . $unit->name,
-            'reserved_amount_string' => $this->nFormat($reservedAmount) . ' ' . $unit->name,
+            'amount_string' => $this->nFormat($amount) . ' ' . $unit,
+            'available_amount_string' => $this->nFormat($availableAmount) . ' ' . $unit,
+            'reserved_amount_string' => $this->nFormat($reservedAmount) . ' ' . $unit,
             'unit' => $unit,
         ];
     }
