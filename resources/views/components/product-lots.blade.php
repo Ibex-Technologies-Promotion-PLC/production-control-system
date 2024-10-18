@@ -1,7 +1,7 @@
 <div {{ $attributes->merge(['class' => 'mb-6 p-4 rounded-sm flex-1 bg-white'])}}>
     <div class="font-bold pb-2">{{ __('inventory.lot_numbers_of_product', ['product' => $product->prd_name]) }}</div>
     <div class="flex flex-col gap-4 text-white border p-4 rounded-t">
-        @forelse ($product->lots as $lot)
+        @forelse ($product->getLotsAttribute() as $lot)
             <div class="text-sm px-2 py-2 font-bold bg-green-800 hover:bg-green-600 shadow-md rounded-md flex justify-between duration-200 ease-in-out">
                 <div>
                     <i class="box icon"></i>
@@ -32,17 +32,17 @@
     <div class=" p-4 bg-gray-700 text-white rounded-b flex justify-between font-bold shadow-md">
         <div>
             {{ __('common.total') }}
-            @if ($product->totalStock['reserved_amount'])
-                {{ number_format($product->totalStock['amount'], 6) }} 
+            @if ($product->getTotalStockAttribute()['reserved_amount'])
+                {{ number_format($product->getTotalStockAttribute()['amount'], 6) }} 
                 <x-span tooltip="{{ __('inventory.reserved') }}" class="text-xs text-ease-red">
-                    - {{ $product->totalStock['reserved_amount_string'] }}
+                    - {{ $product->getTotalStockAttribute()['reserved_amount_string'] }}
                 </x-span>
             @else
-                {{ $product->totalStock['amount_string'] }}
+                {{ $product->getTotalStockAttribute()['amount_string'] }}
             @endif
         </div>
         <div>
-            <span>{{ $product->totalStock['available_amount_string'] }} </span>
+            <span>{{ $product->getTotalStockAttribute()['available_amount_string'] }} </span>
             <span class="text-xs">{{ __('inventory.available') }}</span>
         </div>
     </div>

@@ -22,8 +22,8 @@
                         </div>
                         <p class="text-sm">
                             {{ __('inventory.total') }}
-                            <span class="text-red-700 font-bold">{{ $product->totalStock['amount_string'] }},</span>
-                            {{ __('products.at_least_needed_amount', ['amount' => "{$product->prd_min_threshold} {$product->totalStock['unit']->name}"]) }}
+                            <span class="text-red-700 font-bold">{{ $product->getTotalStockAttribute()['amount_string'] }},</span>
+                            {{ __('products.at_least_needed_amount', ['amount' => "{$product->prd_min_threshold} {$product->getTotalStockAttribute()['unit']->name}"]) }}
                         </p>
                     </div>
                 @endforeach

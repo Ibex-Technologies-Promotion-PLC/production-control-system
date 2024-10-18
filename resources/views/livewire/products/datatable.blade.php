@@ -59,9 +59,9 @@
                 <x-tbody-item class="center aligned">{{ $product->prd_sales }} Br</x-tbody-item>
 
                 <x-tbody-item class="center aligned collapsing">
-                    @if ($product->isInStock)
+                    @if ($product->getIsInStockAttribute())
                     <span class="text-ease-green text-sm">
-                        {{ $product->totalStock['amount'] }} {{ $product->totalStock['unit']->abbreviation }}
+                        {{ $product->getTotalStockAttribute()['amount'] }} {{ $product->getTotalStockAttribute()['unit'] ? $product->getTotalStockAttribute()['unit']->abbreviation : "" }}
                     </span>
                     @else <span class="text-sm text-ease-red">{{ __('common.NA') }}</span>
                     @endif
