@@ -15,7 +15,6 @@ class Product extends Model
     use HasInventory;
 
     protected $guarded = [];
-    protected $appends = ['totalStock', 'lots', 'baseUnit'];
 
 
     /**
