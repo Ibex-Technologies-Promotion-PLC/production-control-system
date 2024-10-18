@@ -30,7 +30,7 @@ trait HasInventory
 
     public function getIsInStockAttribute()
     {
-        return $this->totalStock['amount'] > 0;
+        return $this->getTotalStockAttribute()['amount'] > 0;
     }
 
     public function getLastMoveAttribute() // !! buna gerek olmayabilir
