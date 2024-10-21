@@ -34,7 +34,7 @@
                                 </x-tbody-item>
                                 <x-tbody-item class="">
                                     <span class="font-bold">{{ number_format($card['amount'], 3) }} </span>
-                                    @if (! $card['ingredient']['pivot']['literal'])
+                                    @if (! $card['ingredient']['pivot'])
                                         ± %{{ $workOrder->product->recipe->tolerance_factor }}
                                     @endif
                                     <span class="text-sm">{{ $card['unit']['name'] }}</span>
