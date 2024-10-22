@@ -18,18 +18,18 @@
 
         <div class="h-20 p-3 px-5 flex justify-between items-center bg-gradient-to-b from-white to-gray-100">
 
-            <a wire:navigate href="{{ route('work-orders.create') }}" data-tooltip="{{ __('workorders.create_work_order') }}"
+            <a  href="{{ route('work-orders.create') }}" data-tooltip="{{ __('workorders.create_work_order') }}"
                 data-position="top left" data-variation="mini">
                 <i class="large link project diagram icon"></i>
             </a>
-            <a wire:navigate href="{{ route('stock-moves.create') }}" data-tooltip="{{ __('stockmoves.stock_moves_create') }}"
+            <a  href="{{ route('stock-moves.create') }}" data-tooltip="{{ __('stockmoves.stock_moves_create') }}"
                 data-position="top left" data-variation="mini">
                 <i class="large link dolly flatbed icon"></i>
             </a>
-            <a wire:navigate href="{{ route('inventory.index') }}">
+            <a  href="{{ route('inventory.index') }}">
                 <i class="large link warehouse icon"></i>
             </a>
-            <a wire:navigate href="{{ route('work-orders.daily') }}">
+            <a  href="{{ route('work-orders.daily') }}">
                 <i class="large link setting icon"></i>
             </a>
 
@@ -49,7 +49,7 @@
 
                 <div
                     class="pl-4 flex ease-in-out duration-200 @if ($key === $activeMenuGroupKey) bg-orange-500 @else hover:bg-indigo-50 @endif">
-                    <a wire:navigate href="{{ route($menu['name']) }}"
+                    <a  href="{{ route($menu['name']) }}"
                         class="py-1 @if (!array_key_exists('submenus', $menu)) flex-1 @endif  @if ($key === $activeMenuGroupKey) text-white @endif">
                         <div class="h-8 flex items-center">
                             <div><i
@@ -83,7 +83,7 @@
                         <div
                             class="flex justify-between border-b border-dashed last:border-b-0 hover:bg-blue-100">
                             <div class="flex-1 px-4 font-bold cursor-pointer">
-                                <a wire:navigate href="{{ route($submenu['name']) }}">
+                                <a  href="{{ route($submenu['name']) }}">
                                     <div
                                         class="flex items-center py-2 @if (route($submenu['name']) == request()->url()) text-orange-500 @else text-gray-600 @endif">
                                         <div><i class="{{ $submenu['icon'] }} "></i></div>

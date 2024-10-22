@@ -103,7 +103,7 @@
                         <x-tbody-item class="text-xs collapsing">{{ $dispatchOrder->do_actual_datetime }}</x-tbody-item>
                         <x-tbody-item class="text-sm center aligned">
                             <span data-tooltip="{{ __("dispatchorders.{$dispatchOrder->do_status}") }}" data-variation="mini" data-position="left center">
-                                <i class="{{ $dispatchOrder->statusLookup ? $dispatchOrder->statusLookup['icon']: '' }}"></i>
+                                <i class="{{ $dispatchOrder->getStatusLookupAttribute() ? $dispatchOrder->getStatusLookupAttribute()['icon']: '' }}"></i>
                             </span>
                         </x-tbody-item>
                         <x-tbody-item class="collapsing">

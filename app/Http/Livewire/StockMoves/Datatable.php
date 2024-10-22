@@ -60,7 +60,7 @@ class Datatable extends Component implements ExportsContract
         $balance = 0;
         foreach ($stockMoves as $stockMove) {
             // Add or subtract based on the direction
-            $balance += $stockMove->direction ? $stockMove->total : -$stockMove->total;
+            $balance += $stockMove->direction ? $stockMove->getTotalAttribute() : -$stockMove->getTotalAttribute();
         }
         return $balance;
     }

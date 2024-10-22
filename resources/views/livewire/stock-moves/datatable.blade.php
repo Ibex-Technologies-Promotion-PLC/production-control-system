@@ -80,7 +80,7 @@
                                     {{ $stockMove->convertToBase()['unit']->name }})</span>
                             @endif --}}
                         </td>
-                        <td>{{ $stockMove->total }} Br</td>
+                        <td>{{ $stockMove->getTotalAttribute() }} Br</td>
                         <td>{{ $stockMove->lot_number }}</td>
                         <td class="text-sm">{{ $stockMove->datetime }}</td>
 
