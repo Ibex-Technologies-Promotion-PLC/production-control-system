@@ -32,7 +32,6 @@
                     <x-datepicker :model="'do_planned_datetime'" :initialDate="$do_planned_datetime" :label="__('validation.attributes.do_planned_datetime')" class="required field" />
 
 
-
                     <div x-data="{ salesTypeModal: false }" class="equal width fields">
                         <x-dropdown model="sales_type_id" triggerOnEvent="st_updated"
                             dataSourceFunction="getSalesTypesProperty" value="id" text="st_abbr,st_name"
