@@ -25,7 +25,7 @@
                         {{ $reservation->reserved_lot }}
                     </span>
                 </x-tbody-item>
-                <x-tbody-item class="font-bold right aligned text-blue-700">{{ number_format($reservation->reserved_amount, 2) }} {{$baseUnits[$index]->name }}</x-tbody-item>
+                <x-tbody-item class="font-bold right aligned text-blue-700">{{ number_format($reservation->reserved_amount, 2) }} {{$baseUnits[$index]? baseUnits[$index]->name: "" }}</x-tbody-item>
             </x-table-row>
             @empty$
             <tr class="p-5 bg-red-900 shadow-inner text-white">

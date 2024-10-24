@@ -58,7 +58,6 @@
 
         </x-slot>    
     </x-table-toolbar> 
-
     <div>
         
         <x-table class="sortable very compact">

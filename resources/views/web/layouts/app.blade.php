@@ -24,8 +24,6 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="{{ asset('js/semantic.min.js') }}"></script>
         
-        {{-- Datatable .. --}}
-        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
 
         {{-- // Copied -------------------------------------  --}}
         <script>
