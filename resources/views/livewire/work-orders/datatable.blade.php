@@ -85,7 +85,6 @@
                             <i class="{{ $workOrder->getStatusLookupAttribute() ? $workOrder->getStatusLookupAttribute()['icon'] : "" }}"></i>
                         </span>
                     </x-tbody-item>
-
                     <x-tbody-item class="collapsing">
                         <div class="crud-buttons">
                             @can('view workorders')
