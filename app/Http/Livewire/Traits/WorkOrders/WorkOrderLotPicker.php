@@ -48,7 +48,8 @@ trait WorkOrderLotPicker
         $this->reset('rows');
 
         $this->selectedIngredient = Product::find($this->ingredientCards[$index]['ingredient']['id']);
-        $this->ingredientPivot = $this->ingredientCards[$index]['ingredient']['pivot'];
+    //   dd($this->ingredientCards[$index]['ingredient']);
+        $this->ingredientPivot = $this->ingredientCards[$index]['ingredient'];
         
         $this->selectedIndex = $index;
         
@@ -301,7 +302,8 @@ trait WorkOrderLotPicker
 
     public function getToBase() // ?? dp farklı
     {
-        $baseAmount = round(Conversions::toBase($this->selectedIngredient->baseUnit, $this->ingredientCards[$this->selectedIndex]['amount'])['amount'], 6);
+        $baseAmount = round(Conversions::toBase($this->selectedIngredient->getBaseUnitAttribute(), $this->ingredientCards[$this->selectedIndex]['amount'])['amount'], 6);
+        // dd($this->ingredientPivot);
         return ! $this->ingredientPivot['literal'] ? ToleranceService::withTolerance($this->workOrder->product->recipe, $baseAmount) :  $baseAmount ;
     }
 
