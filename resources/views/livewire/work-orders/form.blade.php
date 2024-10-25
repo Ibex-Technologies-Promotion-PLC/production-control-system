@@ -71,7 +71,6 @@
                             </button>
                         </x-slot>
                     </x-input>
-                    <h1>hello man</h1>
 
                     <x-dropdown dataType="pointer" iModel="wo_amount"
                         iPlaceholder="{{ __('validation.attributes.wo_amount') }}"
