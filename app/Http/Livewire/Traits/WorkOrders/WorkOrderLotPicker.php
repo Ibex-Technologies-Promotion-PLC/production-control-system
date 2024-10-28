@@ -295,6 +295,7 @@ trait WorkOrderLotPicker
     public function necessaryAmount()
     {
         $amount = $this->getToBase();
+        // dd(round($amount - $this->coveredAmount(), 6) + 0 == 0);
         return round($amount - $this->coveredAmount(), 6) + 0;
     }
 
@@ -331,7 +332,9 @@ trait WorkOrderLotPicker
 
     public function inputDisabled($index) : bool
     {
-        return $this->rows[$index]['lot_number'] == null;
+        // dd($this->rows[$index]['lot_number']);
+        // return $this->rows[$index]['lot_number'] == null;
+        return false;
     }
 
 

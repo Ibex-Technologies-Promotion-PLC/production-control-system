@@ -8,7 +8,8 @@
                     {{ __("workorders.{$workOrder->getStatus()}") }}
                 </span>
             </div>
-            <x-table class="single line selectable">       
+            <x-table class="single line selectable">     
+                <h1>here it is</h1>  
                 <x-tbody>
                     @foreach($ingredientCards as $index => $card)
                         @if ($this->isRowReady($index))

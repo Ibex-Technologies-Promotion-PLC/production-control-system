@@ -126,7 +126,7 @@ class WoDaily extends Component
     {
         $this->reset('production_total', 'production_waste', 'unit_id', 'selectedUnit', 'finalizeModal');
         $this->closeApprovalModal();
-        $this->emitSelf('refreshTable');
+        $this->dispatch('refreshTable');
     }
 
 
