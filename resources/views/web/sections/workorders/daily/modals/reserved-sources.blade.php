@@ -18,7 +18,7 @@
                                         <span class="text-xs">({{ $reserved->product->prd_code }})</span>
                                     </x-tbody-item>
                                     <x-tbody-item>{{ $reserved->reserved_lot }}</x-tbody-item>
-                                    <x-tbody-item class="font-bold right aligned">{{ number_format($reserved->reserved_amount, 3, ',', '') }} {{ $reserved->product->baseUnit->name }}</x-tbody-item>
+                                    <x-tbody-item class="font-bold right aligned">{{ number_format($reserved->reserved_amount, 3, ',', '') }} {{ $reserved->product->getBaseUnitAttribute()->name }}</x-tbody-item>
                                 </x-table-row>
                             @endforeach
                         </x-tbody>

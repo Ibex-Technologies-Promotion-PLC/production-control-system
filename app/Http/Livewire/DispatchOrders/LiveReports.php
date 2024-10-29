@@ -22,13 +22,15 @@ class LiveReports extends Component
     public function getLiveReportsProperty()
     {
         $dispatchOrder = DispatchOrderReportsService::getLiveReports();
+        // dd($dispatchOrder);
         $arr = [];
-        foreach ($dispatchOrder as $dispatchOrder) {
+        foreach ($dispatchOrder as $dispatchOrders) {
             $arr[] = [
-                'dispatchOrder' => $dispatchOrder,
-                'status' => $dispatchOrder->statusLookup,
+                'dispatchOrder' => $dispatchOrders,
+                'status' => $dispatchOrders->getStatusLookupAttribute(),
                 // ['icon' => 'green double check icon', 'explanation' => __('common.approved')],
             ];
+
         }
         return $arr;
     }

@@ -25,7 +25,11 @@ class ReservedStocksTable extends Component
         $this->noHead = $noHead;
         $this->noProduct = $noProduct;
         $this->emptyMessage = $emptyMessage;
-        $this->baseUnits = $this->getBaseUnits($reservations['0']->product->units['0']->id); // Call get() to retrieve the collection
+        $this->baseUnits = $this->getBaseUnits(
+            (!empty($reservations) && isset($reservations[0]->product->units[0]))
+                ? $reservations[0]->product->units[0]->id
+                : 0
+        );
     }
     public function getBaseUnits($id)
     {

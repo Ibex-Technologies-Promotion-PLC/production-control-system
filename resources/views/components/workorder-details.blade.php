@@ -40,11 +40,11 @@
                 <div class="border rounded text-center">
 
                     <div class="shadow p-2">
-                        <span class="text-green-700">{{ $workOrder->productionResults['total'] }}</span> -
-                        <span class="text-red-700">{{ $workOrder->productionResults['waste'] }}</span> =
-                        <span class="text-green-700 font-bold">{{ $workOrder->productionResults['net'] }}</span>
+                        <span class="text-green-700">{{ $workOrder->getProductionResultsAttribute()['total'] }}</span> -
+                        <span class="text-red-700">{{ $workOrder->getProductionResultsAttribute()['waste'] }}</span> =
+                        <span class="text-green-700 font-bold">{{ $workOrder->getProductionResultsAttribute()['net'] }}</span>
                         <span> 
-                            {{ strtolower($workOrder->product->baseUnit->name) }} 
+                            {{ strtolower($workOrder->product->getBaseUnitAttribute()->name) }} 
                             <span class="font-bold">{{ $workOrder->product->prd_name }}</span> added to stock.
                         </span>
                     </div>
@@ -52,13 +52,13 @@
                     <div class="p-2 pt-4">
                         <div class="font-bold">{{__('common.materials_used_in_production') }}:</div>
                         <div class="pt-2">
-                            @foreach ($workOrder->ingredientMoves as $stockMove)
+                            @foreach ($workOrder->getIngredientMovesAttribute() as $stockMove)
                                 <x-list-item>
                                     <div>
                                         <span>{{ $stockMove->product->prd_code }}</span>
                                         <span class="text-xs">({{ $stockMove->lot_number }})</span>
                                     </div>
-                                    <span>{{ $stockMove->base_amount }} {{ $stockMove->product->baseUnit->name }}</span>
+                                    <span>{{ $stockMove->base_amount }} {{ $stockMove->product->getBaseUnitAttribute()->name }}</span>
                                 </x-list-item>
                             @endforeach
                         </div>
