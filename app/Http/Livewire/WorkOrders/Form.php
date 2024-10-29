@@ -114,12 +114,15 @@ class Form extends Component
             // $workOrder->reservedStocks()->delete();
             
             $this->dispatch('toast', '', __('common.saved.changes'), 'success');
+            $this->redirect('/work-orders/daily');
         } else {
             $workOrder = WorkOrder::create($data);
             $this->dispatch('toast', '', __('workorders.workorder_saved_successfully'), 'success');
             $this->dispatch('new_work_order_created');
             $this->reset();
         } 
+        $this->redirect('/work-orders/daily');
+
 
     }
 

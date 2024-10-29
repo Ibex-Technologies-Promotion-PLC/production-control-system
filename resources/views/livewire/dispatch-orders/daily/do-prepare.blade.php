@@ -33,7 +33,7 @@
                 </div>
             </div>
 
-
+           
             <div class="p-5">
                 @switch($dispatchOrder)
                     @case($dispatchOrder->isApproved())

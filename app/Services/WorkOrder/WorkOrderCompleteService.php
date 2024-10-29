@@ -69,13 +69,16 @@ class WorkOrderCompleteService
     private function necessaryIngredients() : array
     {
         foreach($this->workOrder->product->recipe->ingredients as $ingredient) {
+
             $ingredientBaseAmount = Conversions::toBase($ingredient->pivot->unit_id, $ingredient->pivot->amount)['amount'];
+            // dd($this->waste);
+
             $totalDecrase[] = [
                 'ingredient' => $ingredient,
                 'amount' => $ingredient->pivot->literal 
                     ? $this->plannedBaseAmount() * $ingredientBaseAmount
-                    : ($this->total + $this->waste) * $ingredientBaseAmount
-            ];
+                    : ((int)($this->total ?: 0) + (int)($this->waste ?: 0)) * $ingredientBaseAmount
+                ];
         }
         return $totalDecrase;
     }
@@ -85,7 +88,7 @@ class WorkOrderCompleteService
 
     public function efficiencyIsNotAcceptable() : bool
     {
-        $toleranceFactor = $this->workOrder->product->recipe->tolerance_factor; // !! reçete tablosuna ekle 
+        $toleranceFactor = $this->workOrder->product->recipe->getToleranceFactorAttribute(); // !! reçete tablosuna ekle 
 
         $tolerance = ($this->plannedBaseAmount() * $toleranceFactor) / 100;
 

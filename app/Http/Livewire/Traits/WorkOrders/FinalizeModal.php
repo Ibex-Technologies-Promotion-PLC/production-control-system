@@ -53,7 +53,7 @@ trait FinalizeModal
         $this->finalizeWorkOrder = $this->workOrders->find($id);
 
         // set base unit initially so user will probably select base unit
-        $this->unit_id = $this->finalizeWorkOrder->product->baseUnit->id;
+        $this->unit_id = $this->finalizeWorkOrder->product->getBaseUnitAttribute()->id;
         $this->updatedUnitId($this->unit_id);
     }
 

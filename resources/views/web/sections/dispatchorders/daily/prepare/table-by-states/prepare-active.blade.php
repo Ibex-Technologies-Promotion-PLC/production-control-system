@@ -27,7 +27,6 @@
         @endforeach
     </x-table>
 
-
     {{-- Slot of x-content component --}}
     <x-slot name="bottom">
         <div class="flex items-center justify-between shadow rounded p-2 bg-white">

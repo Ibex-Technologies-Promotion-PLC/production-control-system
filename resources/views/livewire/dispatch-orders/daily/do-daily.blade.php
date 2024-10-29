@@ -25,7 +25,6 @@
                     <span class="text-xs text-ease">{{ date('d.m.Y') }}</span>
                 </div>
             </div>
-
             <table class="ui table basic">
                 <thead>
 
