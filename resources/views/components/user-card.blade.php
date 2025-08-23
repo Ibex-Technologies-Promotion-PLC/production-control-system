@@ -24,11 +24,11 @@
                 <div class="font-bold">{{ __('auth.last_activity') }}</div>
                 <div class="text-sm">
                     @if ($lastActivity)
-                        <p>Last activity: {{ $lastActivity->description }} -
+                        <p>{{ __('users.last_activity') }}: {{ $lastActivity->description }} -
                             {{ $lastActivity->created_at->format('d M Y, h:i A') }}</p>
                         <span class="text-ease-red cursor-pointer">{{ __('common.see_all') }}</span>
                     @else
-                        <p>No activities found for this user.</p>
+                        <p>{{ __('users.no_activities_found') }}</p>
                     @endif
 
                 </div>
@@ -45,7 +45,7 @@
             <div wire:click.prevent="delete({{ $user->id }})"
                 class="w-full py-2 text-center hover:bg-smoke-dark hover:text-white cursor-pointer">
                 <i class="red trash icon"></i>
-                Sil
+                {{ __('common.delete') }}
             </div>
         @endif
     </div>

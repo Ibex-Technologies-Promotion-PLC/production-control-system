@@ -8,31 +8,107 @@
 
 /* Sidebar Icon Improvements */
 .sidebar-icon {
-    @apply transition-all duration-200 ease-in-out;
+    transition: all 0.2s ease-in-out;
 }
 
 .sidebar-icon:hover {
-    @apply transform scale-110;
+    transform: scale(1.1);
 }
 
 .sidebar-menu-icon {
-    @apply text-lg transition-colors duration-200;
+    font-size: 1.125rem;
+    transition: color 0.2s;
 }
 
 .sidebar-submenu-icon {
-    @apply text-base transition-colors duration-200;
+    font-size: 1rem;
+    transition: color 0.2s;
 }
 
 /* Quick Action Icons */
 .quick-action-icon {
-    @apply transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-lg;
+    transition: all 0.3s ease-in-out;
+}
+
+.quick-action-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 /* Active State Icons */
 .sidebar-active-icon {
-    @apply text-white;
+    color: white;
 }
 
 .sidebar-inactive-icon {
-    @apply text-gray-600 hover:text-indigo-600;
+    color: #4b5563;
+}
+
+.sidebar-inactive-icon:hover {
+    color: #4f46e5;
+}
+
+/* Mobile sidebar specific styles */
+@media (max-width: 1024px) {
+    .mobile-toggle-button {
+        display: block;
+        visibility: visible;
+        opacity: 1;
+        position: fixed;
+        bottom: 1rem;
+        left: 1rem;
+        z-index: 9999;
+    }
+    
+    .sidebar-container {
+        transition: transform 0.3s ease-out;
+    }
+    
+    .sidebar-overlay {
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+    }
+    
+    .sidebar-menu-icon,
+    .sidebar-submenu-icon {
+        font-size: 1.25rem;
+        min-width: 1.5rem;
+        min-height: 1.5rem;
+    }
+    
+    .quick-action-icon {
+        font-size: 1.5rem;
+    }
+    
+    .sidebar-link,
+    .sidebar-button {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    .sidebar-submenu-link {
+        min-height: 40px;
+    }
+    
+    .transform {
+        transition: transform 0.3s ease-out;
+    }
+}
+
+/* Custom scrollbar for webkit browsers */
+.overflow-y-auto::-webkit-scrollbar {
+    width: 4px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-track {
+    background-color: #f3f4f6;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb {
+    background-color: #9ca3af;
+    border-radius: 0.25rem;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+    background-color: #6b7280;
 }
