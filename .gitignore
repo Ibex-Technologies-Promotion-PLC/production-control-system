@@ -13,4 +13,20 @@ yarn-error.log
 *.log
 /storage/framework/views/*
 
+# Laravel Boost & Cursor IDE
+.cursor/
+.cursorrules
+.cursorrules.json
+.cursorrules.yaml
+.cursorrules.yml
+
+# Additional development files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
 
