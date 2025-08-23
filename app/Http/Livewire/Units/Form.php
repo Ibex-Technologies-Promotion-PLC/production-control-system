@@ -19,15 +19,15 @@ class Form extends Component
     public $backupCards = [];
 
     public $questionModal = false;
-    public $editingCardKey; // for modal to know which card is it 
+    public $editingCardKey; // for modal to know which card is it
 
     public $confirmModal = false;
     public $deletingCardKey;
 
-   
+
     public function mount()
     {
-        // $unit = Unit::find(1); 
+        // $unit = Unit::find(1);
         // dd($unit->hasDescendant(41));
     }
 
@@ -42,10 +42,9 @@ class Form extends Component
         $this->selectedProduct = Product::find($id);
 
         $this->cards = $this->selectedProduct->units->toArray();
-
     }
 
-    
+
     /**
      * Determining if the card is locked.
      * 'created_at' gives us a clue about where card filled from (fetch database)
@@ -57,12 +56,12 @@ class Form extends Component
 
 
     /**
-     * Unsetting 'created_at' element will unlock the card  
+     * Unsetting 'created_at' element will unlock the card
      */
     public function unlockCard($key)
     {
         // get a copy of card for comparison with original, in case if user try to lock the card after doing some changes
-        $this->backupCards["wire$key"] = $this->cards[$key]; 
+        $this->backupCards["wire$key"] = $this->cards[$key];
 
         // unlock the card
         unset($this->cards[$key]['created_at']);
@@ -70,17 +69,16 @@ class Form extends Component
 
 
     /**
-     * Lock the card so it will be non-editable 
+     * Lock the card so it will be non-editable
      */
     public function lockCard($key)
     {
         $this->equalizeCreatedAts($key);
 
         // if something changed in the card, ask user to save or discard changes
-        if($this->cards[$key] != $this->backupCards["wire$key"]) {
+        if ($this->cards[$key] != $this->backupCards["wire$key"]) {
             $this->askForSaveEditedFields($key);
-        } 
-        else {
+        } else {
             $this->unsetBackup($key); // expel the backup as no need it anymore
         }
     }
@@ -110,16 +108,16 @@ class Form extends Component
         // restore card
         $this->cards[$key] = $this->backupCards["wire$key"];
 
-        // toss backup 
+        // toss backup
         unset($this->backupCards["wire$key"]);
 
-        // close the modal 
+        // close the modal
         $this->questionModal = false;
     }
 
 
     /**
-     * If user choosed to save changes, push new data to database and close the modal 
+     * If user choosed to save changes, push new data to database and close the modal
      */
     public function modalSaveEdited()
     {
@@ -128,11 +126,11 @@ class Form extends Component
     }
 
     /**
-     * If modal closed in any way, behave user clicked at "cancel" 
+     * If modal closed in any way, behave user clicked at "cancel"
      */
     public function updatedQuestionModal($value)
     {
-        if($value === false) $this->modalCancel();
+        if ($value === false) $this->modalCancel();
     }
 
 
@@ -143,12 +141,12 @@ class Form extends Component
     {
         $this->cards[] = ['operator' => true, 'factor' => null, 'parent_id' => null, 'name' => null, 'abbreviation' => null];
     }
-    
+
 
     public function callDeleteModal($key)
     {
-        if($this->isSavedBefore($key)) {
-            $this->deletingCardKey = $key; 
+        if ($this->isSavedBefore($key)) {
+            $this->deletingCardKey = $key;
             $this->confirmModal = true;
         } else {
             unset($this->cards[$key]);
@@ -162,9 +160,9 @@ class Form extends Component
     public function confirmDelete()
     {
         $key = $this->deletingCardKey;
-        if(array_key_exists('id', $this->cards[$key])) {
+        if (array_key_exists('id', $this->cards[$key])) {
             $unit = $this->selectedProduct->units->find($this->cards[$key]['id']);
-            if($unit->delete()) {
+            if ($unit->delete()) {
                 unset($this->cards[$key]);
                 $this->dispatch('toast', '', __('common.context_deleted'), 'success');
             } else {
@@ -197,7 +195,7 @@ class Form extends Component
 
     public function updatedConfirmModal($value)
     {
-        if($value === false)
+        if ($value === false)
             $this->denyDelete();
     }
 
@@ -212,7 +210,7 @@ class Form extends Component
 
 
     /**
-     * Get all products for unit assigment 
+     * Get all products for unit assigment
      */
     public function getProductsProperty()
     {
@@ -221,18 +219,18 @@ class Form extends Component
 
 
     /**
-     * Get units to be parent which is not includes itself 
+     * Get units to be parent which is not includes itself
      * Will be used for dropdown
      */
     public function unitsOfSelectedProduct($key)
     {
-        // get units of selected product 
+        // get units of selected product
         $units = $this->selectedProduct->units;
         $currentUnit = $this->initiateUnit($key);
 
-        // discard the unit from collection so the unit will not be parent to itself or child to children 
-        if($this->isSavedBefore($key)) {
-            $units = $units->reject(function($unit) use ($currentUnit) {
+        // discard the unit from collection so the unit will not be parent to itself or child to children
+        if ($this->isSavedBefore($key)) {
+            $units = $units->reject(function ($unit) use ($currentUnit) {
                 return $unit->id == $currentUnit->id || $currentUnit->hasDescendant($unit);
             });
         }
@@ -256,22 +254,22 @@ class Form extends Component
 
     public function getParentName($key)
     {
-        if($this->cards[$key]['parent_id'] == 0) {
+        if ($this->cards[$key]['parent_id'] == 0) {
             return __('common.base');
         } else {
-            if($unit = $this->selectedProduct->units->find($this->cards[$key]['parent_id']));
-                 return $unit->name;
+            if ($unit = $this->selectedProduct->units->find($this->cards[$key]['parent_id']));
+            return $unit->name;
         }
     }
 
     public function initiateUnit($key)
     {
-        if($this->isSavedBefore($key)) {
+        if ($this->isSavedBefore($key)) {
             return $this->selectedProduct->units->find($this->cards[$key]['id']);
         }
     }
 
-    
+
     /**
      * Is a card has an id key. If it does, that means it saved before
      */
@@ -296,40 +294,39 @@ class Form extends Component
      */
     public function submit($key)
     {
-        // if nothing changed, do not push exact data to database | editing case 
-        if($this->backupExistsFor($key)) {
+        // if nothing changed, do not push exact data to database | editing case
+        if ($this->backupExistsFor($key)) {
             $this->equalizeCreatedAts($key);
-            if($this->backupCards["wire$key"] == $this->cards[$key]) 
+            if ($this->backupCards["wire$key"] == $this->cards[$key])
                 return $this->unsetBackup($key);
         }
 
         // validate first
         $data = $this->customValidate($key);
-        
+
 
         // If ID exists in the card, it means it should be updated
-        if($this->isSavedBefore($key)) {
+        if ($this->isSavedBefore($key)) {
 
             $unit = $this->initiateUnit($key);
 
-            // update unless unit is not base 
-            if(!$unit->isBase()) $unit->update($data);
+            // update unless unit is not base
+            if (!$unit->isBase()) $unit->update($data);
 
-            $this->dispatch('toast', 'güncellendi', 'başarılı falan', 'success');
-            
-        } 
-        // if no ID inside card create a new unit for selected product 
+            $this->dispatch('toast', __('common.saved.title'), __('common.saved.changes'), 'success');
+        }
+        // if no ID inside card create a new unit for selected product
         else {
             $unit = Unit::create(array_merge($data, ['product_id' => $this->product_id]));
-            $this->dispatch('toast', 'common.saved.title', __('common.context_created', ['model' => __('modelnames.unit')]), 'success');
+            $this->dispatch('toast', __('common.saved.title'), __('common.context_created', ['model' => __('modelnames.unit')]), 'success');
         }
 
-        // swap editable card with newly added unit entry 
+        // swap editable card with newly added unit entry
         unset($this->cards[$key]);
         $this->cards[$key] = $unit->toArray();
 
         // close the modal and toss out backup data
-        $this->askModal = false;
+        $this->questionModal = false;
         unset($this->backupCards["wire$key"]);
     }
 
@@ -348,15 +345,14 @@ class Form extends Component
             'operator' => 'required|boolean',
             'factor' => 'required|numeric'
         ]);
-        
-        // assist user to correct mistakes 
-        if($validator->fails()) {
+
+        // assist user to correct mistakes
+        if ($validator->fails()) {
             $this->questionModal = false;
-            $this->dispatch('toast', '', $validator->errors()->first(), 'warning'); // show errors 
+            $this->dispatch('toast', '', $validator->errors()->first(), 'warning'); // show errors
         }
 
-        // return validated data 
+        // return validated data
         return $validator->validate();
     }
-   
 }

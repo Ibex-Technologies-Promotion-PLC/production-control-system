@@ -20,17 +20,19 @@
 
             <a  href="{{ route('work-orders.create') }}" data-tooltip="{{ __('workorders.create_work_order') }}"
                 data-position="top left" data-variation="mini">
-                <i class="large link project diagram icon"></i>
+                <i class="large link industry icon quick-action-icon"></i>
             </a>
             <a  href="{{ route('stock-moves.create') }}" data-tooltip="{{ __('stockmoves.stock_moves_create') }}"
                 data-position="top left" data-variation="mini">
-                <i class="large link dolly flatbed icon"></i>
+                <i class="large link truck icon quick-action-icon"></i>
             </a>
-            <a  href="{{ route('inventory.index') }}">
-                <i class="large link warehouse icon"></i>
+            <a  href="{{ route('inventory.index') }}" data-tooltip="{{ __('common.inventory') }}"
+                data-position="top left" data-variation="mini">
+                <i class="large link warehouse icon quick-action-icon"></i>
             </a>
-            <a  href="{{ route('work-orders.daily') }}">
-                <i class="large link setting icon"></i>
+            <a  href="{{ route('work-orders.daily') }}" data-tooltip="{{ __('common.work-orders-daily') }}"
+                data-position="top left" data-variation="mini">
+                <i class="large link calendar alternate icon quick-action-icon"></i>
             </a>
 
 
@@ -45,69 +47,69 @@
     <div class="h-full bg-white overflow-x-hidden shadow-md border-t">
         <div class="flex flex-col ">
             @foreach ($menuItems as $key => $menu)
-            <div x-data="{ submenu: false, submenuConfirm: false }" class="border-b border-dotted">
+                <div x-data="{ submenu: false, submenuConfirm: false }" class="border-b border-dotted">
 
-                <div
-                    class="pl-4 flex ease-in-out duration-200 @if ($key === $activeMenuGroupKey) bg-orange-500 @else hover:bg-indigo-50 @endif">
-                    <a  href="{{ route($menu['name']) }}"
-                        class="py-1 @if (!array_key_exists('submenus', $menu)) flex-1 @endif  @if ($key === $activeMenuGroupKey) text-white @endif">
-                        <div class="h-8 flex items-center">
-                            <div><i
-                                    class="{{ $menu['icon'] }} @if ($key === $activeMenuGroupKey) text-white @else text-gray-600 @endif"></i>
+                    <div
+                        class="pl-4 flex ease-in-out duration-200 @if ($key === $activeMenuGroupKey) bg-orange-500 @else hover:bg-indigo-50 @endif">
+                        <a href="{{ route($menu['name']) }}"
+                            class="py-1 @if (!array_key_exists('submenus', $menu)) flex-1 @endif  @if ($key === $activeMenuGroupKey) text-white @endif">
+                            <div class="h-8 flex items-center">
+                                <div><i
+                                        class="{{ $menu['icon'] }} sidebar-menu-icon @if ($key === $activeMenuGroupKey) sidebar-active-icon @else sidebar-inactive-icon @endif"></i>
+                                </div>
+                                <div class="pl-2">
+                                    <p
+                                        class="font-extrabold @if ($key === $activeMenuGroupKey) text-white @else text-gray-600 @endif">
+                                        {{ __($menu['label']) }}
+                                    </p>
+                                </div>
                             </div>
-                            <div class="pl-2">
-                                <p
-                                    class="font-extrabold @if ($key === $activeMenuGroupKey) text-white @else text-gray-600 @endif">
-                                    {{ __($menu['label']) }}
-                                </p>
+                        </a>
+                        @if (array_key_exists('submenus', $menu))
+                            <div @click="submenu = ! submenu; submenuConfirm = true;"
+                                class="flex justify-end items-center cursor-pointer flex-1 text-right">
+                                <div class="pr-2">
+                                    <i
+                                        class="caret down icon @if ($key === $activeMenuGroupKey) text-white @else text-gray-600 @endif"></i>
+                                </div>
                             </div>
-                        </div>
-                    </a>
+                        @endif
+                    </div>
+
                     @if (array_key_exists('submenus', $menu))
-                    <div @click="submenu = ! submenu; submenuConfirm = true;"
-                        class="flex justify-end items-center cursor-pointer flex-1 text-right">
-                        <div class="pr-2">
-                            <i
-                                class="caret down icon @if ($key === $activeMenuGroupKey) text-white @else text-gray-600 @endif"></i>
-                        </div>
-                    </div>
-                    @endif
-                </div>
-                
-                @if (array_key_exists('submenus', $menu))
-                <div x-show="submenu || ('{{ $key }}' === '{{ $activeMenuGroupKey }}') && ! submenuConfirm"
-                    class="shadow-inner bg-cool-gray-50 flex">
-                    <div class="border-r border-orange-300 pr-6"></div>
-                    <div class="flex-1">
-                        @foreach ($menu['submenus'] as $submenu)
-                        <div
-                            class="flex justify-between border-b border-dashed last:border-b-0 hover:bg-blue-100">
-                            <div class="flex-1 px-4 font-bold cursor-pointer">
-                                <a  href="{{ route($submenu['name']) }}">
+                        <div x-show="submenu || ('{{ $key }}' === '{{ $activeMenuGroupKey }}') && ! submenuConfirm"
+                            class="shadow-inner bg-cool-gray-50 flex">
+                            <div class="border-r border-orange-300 pr-6"></div>
+                            <div class="flex-1">
+                                @foreach ($menu['submenus'] as $submenu)
                                     <div
-                                        class="flex items-center py-2 @if (route($submenu['name']) == request()->url()) text-orange-500 @else text-gray-600 @endif">
-                                        <div><i class="{{ $submenu['icon'] }} "></i></div>
-                                        <div class="pl-2">
-                                            <p class="font-extrabold">{{ __($submenu['label']) }}</p>
+                                        class="flex justify-between border-b border-dashed last:border-b-0 hover:bg-blue-100">
+                                        <div class="flex-1 px-4 font-bold cursor-pointer">
+                                            <a href="{{ route($submenu['name']) }}">
+                                                <div
+                                                    class="flex items-center py-2 @if (route($submenu['name']) == request()->url()) text-orange-500 @else text-gray-600 @endif">
+                                                    <div><i class="{{ $submenu['icon'] }} sidebar-submenu-icon"></i></div>
+                                                    <div class="pl-2">
+                                                        <p class="font-extrabold">{{ __($submenu['label']) }}</p>
+                                                    </div>
+                                                </div>
+                                            </a>
                                         </div>
+                                        @if (route($submenu['name']) == request()->url())
+                                            <div class="flex items-center justify-center pr-3">
+                                                <div class="p-2 rounded-full bg-orange-500 shadow"></div>
+                                            </div>
+                                        @endif
                                     </div>
-                                </a>
+                                @endforeach
                             </div>
-                            @if (route($submenu['name']) == request()->url())
-                            <div class="flex items-center justify-center pr-3">
-                                <div class="p-2 rounded-full bg-orange-500 shadow"></div>
-                            </div>
-                            @endif
                         </div>
-                        @endforeach
-                    </div>
-                </div>
-                @endif
+                    @endif
 
-            </div>
+                </div>
             @endforeach
         </div>
-    
+
     </div>
 
 
@@ -118,7 +120,7 @@
             <!-- <p>Ve bunun gibi loglar...</p> -->
         </div>
         <button class="focus:outline-none">
-            <i class="icon blue link circular large lock"></i>
+            <i class="icon blue link circular large sign out alternate"></i>
         </button>
     </div>
 

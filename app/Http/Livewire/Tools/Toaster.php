@@ -43,11 +43,11 @@ class Toaster extends Component
     ];
 
 
-    public function set($title, $message, $type = null, $icon = 'info', $class = 'white', $classProgress = 'red', $showImage = null, $position = 'bottom right', $closeIcon = false, $showMethod = 'scale')
-    { 
+    public function set($title, $message, $type = null, $icon = 'info', $class = 'white', $classProgress = 'red', $showImage = null, $position = 'top center', $closeIcon = false, $showMethod = 'scale')
+    {
 
-        if($type && array_key_exists($type, $this->types)) {
-            foreach($this->types[$type] as $key => $value) {
+        if ($type && array_key_exists($type, $this->types)) {
+            foreach ($this->types[$type] as $key => $value) {
                 $this->$key = $value;
             }
         } else {
@@ -58,21 +58,20 @@ class Toaster extends Component
         }
 
         $this->dispatch('stamp-toast', [
-            'title' => ucfirst(__($title)), 
-            'message' => ucfirst(__($message)), 
+            'title' => ucfirst(__($title)),
+            'message' => ucfirst(__($message)),
             'showImage' => $showImage,
-            
-            'icon' => $this->icon, 
-            'class' => $this->class, 
-            'classProgress' => $this->classProgress, 
-            'showMethod' => $this->showMethod,
-            
-            'position' => $position, 
-            'closeIcon' => $closeIcon, 
-        ]);
 
+            'icon' => $this->icon,
+            'class' => $this->class,
+            'classProgress' => $this->classProgress,
+            'showMethod' => $this->showMethod,
+
+            'position' => $position,
+            'closeIcon' => $closeIcon,
+        ]);
     }
-    
+
 
     public function render()
     {

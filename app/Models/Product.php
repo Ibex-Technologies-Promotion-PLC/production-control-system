@@ -22,7 +22,7 @@ class Product extends Model
      */
     // protected $with = ['units', 'recipe'];
 
-   
+
     public function category()
     {
         return $this->belongsTo(Category::class);
@@ -40,22 +40,22 @@ class Product extends Model
     {
         return $this->hasMany(WorkOrder::class);
     }
-    
+
     public function dispatchProducts()
     {
         return $this->hasMany(DispatchProduct::class);
     }
 
-    public function units() 
+    public function units()
     {
-        return $this->hasMany(Unit::class); 
+        return $this->hasMany(Unit::class);
     }
-    
+
     public function stockmoves()
     {
         return $this->hasMany(StockMove::class);
     }
-    
+
     public function scopeWithThreshold($query)
     {
         return $query->whereNotNull('prd_min_threshold');
@@ -66,7 +66,7 @@ class Product extends Model
         return $query->has('recipe');
     }
 
-    public function getIsActiveAttribute($value) 
+    public function getIsActiveAttribute($value)
     {
         return $value == 1 ? true : false;
     }
@@ -76,7 +76,7 @@ class Product extends Model
         return $value == 1 ? true : false;
     }
 
-    
+
     public function getBaseUnitAttribute()
     {
 
@@ -126,7 +126,7 @@ class Product extends Model
     {
         return strtoupper($prd_code);
     }
-    
+
 
     public function setPrdNameAttribute($prd_name)
     {
@@ -136,7 +136,4 @@ class Product extends Model
     {
         return ucwords($prd_name);
     }
-
-    
-    
 }

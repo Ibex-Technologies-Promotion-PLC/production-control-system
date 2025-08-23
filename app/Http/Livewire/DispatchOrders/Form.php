@@ -17,7 +17,7 @@ class Form extends Component
     use SpecifyProducts;
     use SalesTypeTrait;
     use DispatchExtrasForm;
-    
+
     // dispatchorders attributes
     public $company_id;
     public $address_id;
@@ -50,7 +50,7 @@ class Form extends Component
 
     public function salesTypeUpdated($salesTypeId = null)
     {
-        if($salesTypeId) {
+        if ($salesTypeId) {
             $this->sales_type_id = $salesTypeId;
         } else {
             $this->sales_type_id = null;
@@ -59,27 +59,27 @@ class Form extends Component
 
 
 
-    protected function validationAttributes() 
+    protected function validationAttributes()
     {
         $array = [];
         $array = array_merge($array, $this->spValidationAttributes());
         return $array;
     }
 
-    
 
-    
+
+
     public function mount($dispatchOrder = null)
     {
-        if($dispatchOrder) {
+        if ($dispatchOrder) {
             $this->setEditMode($dispatchOrder);
         } else {
             $this->do_planned_datetime = Carbon::today();
             $this->addCard();
-            $this->do_number='SHIP_'.random_int(100000, 999999);
+            $this->do_number = 'SHIP_' . random_int(100000, 999999);
         }
     }
-    
+
 
 
 
@@ -91,11 +91,12 @@ class Form extends Component
         $this->dispatch('do_company_selected');
     }
 
-    public function getCompanyAddress(){
+    public function getCompanyAddress()
+    {
         return $this->companyAddresses;
     }
 
- 
+
 
 
     public function getCompaniesProperty()
@@ -110,34 +111,34 @@ class Form extends Component
     }
 
 
-    
+
 
     public function submit()
     {
-        if(!$this->cards) return;
+        if (!$this->cards) return;
         $validatedDoData = $this->validate();
-        
+
         // spRules refers to SpecifyProduct trait's rules
         $this->validate($this->spRules);
-        
-        if($this->editMode === true) {
-            if( ! ($this->dispatchOrder->isSuspended() || $this->dispatchOrder->isActive())) abort(404);
+
+        if ($this->editMode === true) {
+            if (! ($this->dispatchOrder->isSuspended() || $this->dispatchOrder->isActive())) abort(404);
 
             $this->dispatchOrder->dispatchProducts()->delete();
             $this->dispatchOrder->update($validatedDoData);
-            
+
             $this->deUpdate($this->dispatchOrder->dispatchExtra); // dispatchextra
             $this->spSubmit($this->dispatchOrder);
 
+            $this->dispatch('toast', __('common.saved.title'), __('dispatchorders.do_number_dispatchorder_updated', ['do_number' => $this->dispatchOrder->do_number]), 'success');
             session()->flash('success', __('dispatchorders.do_number_dispatchorder_updated', ['do_number' => $this->dispatchOrder->do_number]));
-        } 
-        
-        else {
+        } else {
             $dispatchOrder = DispatchOrder::create($validatedDoData);
 
             $this->deSubmit($dispatchOrder); // dispatchextra
             $this->spSubmit($dispatchOrder); // dispatchproducts
-            
+
+            $this->dispatch('toast', __('common.saved.title'), __('dispatchorders.dispatchorder_created'), 'success');
             session()->flash('success', __('dispatchorders.dispatchorder_created'));
         }
 
@@ -151,17 +152,17 @@ class Form extends Component
     {
         $this->editMode = true;
         $this->dispatchOrder = $dispatchOrder;
-        
+
         $this->company_id = $dispatchOrder->company_id;
         $this->address_id = $dispatchOrder->address_id;
         $this->sales_type_id = $dispatchOrder->sales_type_id;
         $this->do_number = $dispatchOrder->do_number;
         $this->do_planned_datetime = Carbon::parse($dispatchOrder->do_planned_datetime)->format('Y-m-d H:i:s');
         $this->do_note = $dispatchOrder->do_note;
-        
+
         // fill in the address dropdown
         $this->updatedCompanyId($dispatchOrder->company_id);
-        
+
         $this->spProductsEditMode($dispatchOrder);
         $this->deSetEditMode($dispatchOrder->dispatchExtra);
     }

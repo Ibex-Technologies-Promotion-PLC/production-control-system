@@ -74,6 +74,10 @@ return [
         'saved_successfully' => 'Başarıyla kaydedildi!',
     ],
 
+    'deleted' => [
+        'title' => 'Silindi',
+    ],
+
     'error_occurred' => 'Bir hata oluştu',
     'error' => [
         'title' => 'Hata',
@@ -100,6 +104,8 @@ return [
     'products_list' => 'Ürün listesi',
     'define_product' => 'Ürün tanımla',
     'create_category' => 'Kategori oluştur',
+    'categories' => 'Kategoriler',
+    'categories_list' => 'Kategoriler listesi',
     'work-orders' => 'İş emirleri',
     'all_workorders' => 'Tüm iş emirleri',
     'workorder_create' => 'İş emri oluştur',

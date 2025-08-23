@@ -7,7 +7,7 @@ return [
 
     'date' => 'Date',
     'datetime' => 'Date',
-    'user'=> 'User Created',
+    'user' => 'User Created',
     'caution' => 'Caution',
     'add_new' => 'Add new',
     'add_note' => 'Add note',
@@ -69,6 +69,10 @@ return [
         'saved_successfully' => 'Saved successfully!',
     ],
 
+    'deleted' => [
+        'title' => 'Deleted',
+    ],
+
     'error_occurred' => 'An error occurred',
     'error' => [
         'title' => 'Error',
@@ -91,6 +95,8 @@ return [
     'products_list' => 'Product list',
     'define_product' => 'Create product',
     'create_category' => 'Create category',
+    'categories' => 'Categories',
+    'categories_list' => 'Categories list',
     'work-orders' => 'Work orders',
     'all_workorders' => 'All work orders',
     'workorder_create' => 'Create work order',

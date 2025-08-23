@@ -6,17 +6,17 @@ use Illuminate\View\Component;
 
 class Input extends Component
 {
-    
+
     public $model;
 
     public $placeholder;
-    
+
     public $label;
-    
+
     public $type;
 
     public $noErrors;
-    
+
     public $action;
     public $innerLabel;
 
@@ -29,7 +29,7 @@ class Input extends Component
      *
      * @return void
      */
-    public function __construct($model=null, $placeholder, $label = null, $type = 'text', $action = null, $innerLabel = null, $noErrors = false, $defer = false, $iClass = null)
+    public function __construct($model = null, $placeholder = null, $label = null, $type = 'text', $action = null, $innerLabel = null, $noErrors = false, $defer = false, $iClass = null)
     {
         $this->model = $model;
         $this->placeholder = $placeholder;
@@ -38,7 +38,6 @@ class Input extends Component
         $this->noErrors = $noErrors;
         $this->action = $action;
         $this->innerLabel = $innerLabel;
-
         $this->defer = $defer;
         $this->iClass = $iClass;
     }

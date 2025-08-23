@@ -70,7 +70,7 @@ class Form extends Component
         $this->suggestProdCode();
         $this->suggestProdBarCode();
         $this->categories = $this->getCategoriesProperty();
-        // fill the form fields if edit mode on 
+        // fill the form fields if edit mode on
         if ($product) {
             $this->setEditMode($product);
         }
@@ -84,14 +84,16 @@ class Form extends Component
 
     public function suggestProdCode()
     {
-
-        $this->prd_code = 'PROD_' . random_int(100000, 999999);
+        $lastProduct = Product::latest('id')->first();
+        $nextId = $lastProduct ? $lastProduct->id + 1 : 1;
+        $this->prd_code = 'PR-' . $nextId;
     }
 
     public function suggestProdBarCode()
     {
-
-        $this->prd_barcode = random_int(100000, 999999);
+        $lastProduct = Product::latest('id')->first();
+        $nextId = $lastProduct ? $lastProduct->id + 1 : 1;
+        $this->prd_barcode = $nextId;
     }
 
 
@@ -126,7 +128,7 @@ class Form extends Component
     public function submit()
     {
 
-    
+
         $data = $this->validate();
 
 
@@ -134,11 +136,13 @@ class Form extends Component
         if ($this->editMode) {
             $this->product->update($data);
             $this->createUnit($this->product->id, $this->unit_id); // ?? bu ne
+            $this->dispatch('toast', __('common.saved.title'), __('products.code_product_updated', ['code' => $this->product->prd_code]), 'success');
             session()->flash('success', __('products.code_product_updated', ['code' => $this->product->prd_code]));
         } else {
             $product = Product::create($data);
 
             $this->createUnit($product->id, $this->unit_id);
+            $this->dispatch('toast', __('common.saved.title'), __('products.product_created'), 'success');
             $this->reset();
             session()->flash('success', __('products.product_created'));
         }

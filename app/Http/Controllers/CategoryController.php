@@ -10,8 +10,8 @@ class CategoryController extends Controller
     use DefaultController;
 
     /**
-    * Repository instance 
-    */
+     * Repository instance
+     */
     protected $repository;
 
 
@@ -20,7 +20,7 @@ class CategoryController extends Controller
      * Create controller instance
      * Authorization has been set true, so there should be a Policy class.
      * Validation logic has been set for only 'store' and 'update'. It can be changed or completely deleted as needed
-     * There should be a static 'rules()' method that returns an array of validation rules within model class. 
+     * There should be a static 'rules()' method that returns an array of validation rules within model class.
      */
     public function __construct(CategoryContract $repository)
     {
@@ -29,13 +29,15 @@ class CategoryController extends Controller
         // $this->validateData(['store', 'update']);
     }
 
-    public function create()
+    public function index()
     {
-        if(auth()->user()->cannot('create update products')) abort(403);
-        
-        return view('web.sections.categories.create');
+        return view('web.sections.categories.index');
     }
 
+    public function create()
+    {
+        if (auth()->user()->cannot('create update products')) abort(403);
 
-
+        return view('web.sections.categories.create');
+    }
 }

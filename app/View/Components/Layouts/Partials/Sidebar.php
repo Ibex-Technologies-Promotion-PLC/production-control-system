@@ -51,12 +51,12 @@ class Sidebar extends Component
             [
                 'name' => 'dashboard',
                 'label' => 'common.dashboard',
-                'icon' => 'icon dashboard',
+                'icon' => 'icon chart line',
             ],
             [
                 'name' => 'products.index',
                 'label' => 'common.products',
-                'icon' => 'icon box',
+                'icon' => 'icon cube',
                 'submenus' => [
                     [
                         'name' => 'products.create',
@@ -69,11 +69,6 @@ class Sidebar extends Component
                         'icon' => 'th list icon',
                     ],
                     [
-                        'name' => 'categories.create',
-                        'label' => 'common.create_category',
-                        'icon' => 'group layer icon',
-                    ],
-                    [
                         'name' => 'units.create',
                         'label' => 'common.units',
                         'icon' => 'icon balance scale',
@@ -81,9 +76,26 @@ class Sidebar extends Component
                 ]
             ],
             [
+                'name' => 'categories.index',
+                'label' => 'common.categories',
+                'icon' => 'icon tags',
+                'submenus' => [
+                    [
+                        'name' => 'categories.create',
+                        'label' => 'common.create_category',
+                        'icon' => 'plus icon',
+                    ],
+                    [
+                        'name' => 'categories.index',
+                        'label' => 'common.categories_list',
+                        'icon' => 'th list icon',
+                    ],
+                ]
+            ],
+            [
                 'name' => 'work-orders.index',
                 'label' => 'common.work-orders',
-                'icon' => 'icon project diagram',
+                'icon' => 'icon industry',
                 'submenus' => [
                     [
                         'name' => 'work-orders.create',
@@ -98,14 +110,14 @@ class Sidebar extends Component
                     [
                         'name' => 'work-orders.daily',
                         'label' => 'common.work-orders-daily',
-                        'icon' => 'icon settings',
+                        'icon' => 'icon calendar alternate',
                     ],
                 ]
             ],
             [
                 'name' => 'recipes.index',
                 'label' => 'common.recipes',
-                'icon' => 'icon mortar pestle',
+                'icon' => 'icon flask',
                 'submenus' => [
                     [
                         'name' => 'recipes.create',
@@ -128,12 +140,12 @@ class Sidebar extends Component
                     [
                         'name' => 'stock-moves.create',
                         'label' => 'stockmoves.stock_moves_create',
-                        'icon' => 'sign dolly flatbed icon',
+                        'icon' => 'icon truck',
                     ],
                     [
                         'name' => 'stock-moves.index',
                         'label' => 'common.stock_moves',
-                        'icon' => 'exchange icon',
+                        'icon' => 'icon exchange alternate',
                     ],
                     [
                         'name' => 'inventory.index',
@@ -162,7 +174,7 @@ class Sidebar extends Component
             [
                 'name' => 'dispatchorders.index',
                 'label' => 'dispatchorders.dispatch',
-                'icon' => 'truck icon',
+                'icon' => 'shipping fast icon',
                 'submenus' => [
                     [
                         'name' => 'dispatchorders.create',
@@ -177,7 +189,7 @@ class Sidebar extends Component
                     [
                         'name' => 'dispatchorders.daily',
                         'label' => 'dispatchorders.do_daily',
-                        'icon' => 'angle shipping fast icon',
+                        'icon' => 'icon calendar check',
                     ],
                 ],
             ],
@@ -186,7 +198,7 @@ class Sidebar extends Component
                 'label' => 'users.user',
                 'icon' => 'users icon',
                 'submenus' => [
-                  
+
                     [
                         'name' => 'users.index',
                         'label' => 'users.users',
@@ -195,29 +207,29 @@ class Sidebar extends Component
                     [
                         'name' => 'roles.index',
                         'label' => 'roles.roles',
-                        'icon' => 'id badge icon',
+                        'icon' => 'icon shield alternate',
                     ],
                 ],
             ],
             [
                 'name' => 'transaction',
                 'label' => 'transaction.transaction',
-                'icon' => 'money bill alternate icon'
+                'icon' => 'icon credit card'
 
             ],
             // [
-            //     'name' => 'addresses.index', 
-            //     'label' => 'addresses.addresses', 
+            //     'name' => 'addresses.index',
+            //     'label' => 'addresses.addresses',
             //     'icon' => 'book icon',
             //     'submenus' => [
             //         [
-            //             'name' => 'addresses.create', 
+            //             'name' => 'addresses.create',
             //             'label' => 'addresses.create_address',
             //             'icon' => 'plus icon',
             //         ],
             //         [
-            //             'name' => 'addresses.index', 
-            //             'label' => 'addresses.addresses', 
+            //             'name' => 'addresses.index',
+            //             'label' => 'addresses.addresses',
             //             'icon' => 'list icon',
             //         ],
             //     ],
