@@ -23,29 +23,8 @@ jobs:
           extensions: mbstring, intl, pdo, bcmath, gd, zip, curl, xml, fileinfo
           coverage: none
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "18"
-          cache: "npm"
-
       - name: Install Composer Dependencies
         run: composer install --no-dev --optimize-autoloader
-
-      - name: Install NPM Dependencies
-        run: npm ci
-
-      - name: Build Frontend Assets
-        run: npm run production
-
-      - name: Generate Application Key
-        run: php artisan key:generate --force
-
-      - name: Optimize Application
-        run: |
-          php artisan config:cache
-          php artisan route:cache
-          php artisan view:cache
 
       - name: Deploy to Shared Hosting
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
