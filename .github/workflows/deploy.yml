@@ -23,8 +23,12 @@ jobs:
           extensions: mbstring, intl, pdo, bcmath, gd, zip, curl, xml, fileinfo
           coverage: none
 
-      - name: Create Bootstrap Cache Directory
-        run: mkdir -p bootstrap/cache
+      - name: Create Required Directories
+        run: |
+          mkdir -p bootstrap/cache
+          mkdir -p storage/framework/sessions
+          mkdir -p storage/framework/views
+          mkdir -p storage/framework/cache
 
       - name: Install Composer Dependencies
         run: composer install --no-dev --optimize-autoloader
