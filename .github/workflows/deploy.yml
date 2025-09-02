@@ -1,0 +1,81 @@
+name: Deploy to Heremu - Production Control System
+
+# Force fresh build - updated for pms.heremutrading.com
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: heremu
+    env:
+      SERVER_DIR: pms.heremutrading.com
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.3
+          extensions: mbstring, intl, pdo, bcmath, gd, zip, curl, xml, fileinfo
+          coverage: none
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache: "npm"
+
+      - name: Install Composer Dependencies
+        run: composer install --no-dev --optimize-autoloader
+
+      - name: Install NPM Dependencies
+        run: npm ci
+
+      - name: Build Frontend Assets
+        run: npm run production
+
+      - name: Generate Application Key
+        run: php artisan key:generate --force
+
+      - name: Optimize Application
+        run: |
+          php artisan config:cache
+          php artisan route:cache
+          php artisan view:cache
+
+      - name: Deploy to Shared Hosting
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ftp.heremutrading.com
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./
+          server-dir: ${{ env.SERVER_DIR }}/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/vendor/**
+            **/.github/**
+            **/.vscode/**
+            **/.cursor/**
+            **/tests/**
+            **/phpunit.xml
+            **/.editorconfig
+            **/.gitattributes
+            **/.gitignore
+            **/.styleci.yml
+            **/docker-compose.yml
+            **/README.md
+            **/MANUAL.md
+            **/totalStock
+            **/storage/logs/**
+            **/storage/framework/cache/**
+            **/storage/framework/sessions/**
+            **/storage/framework/views/**
+            **/.env
+            **/.env.example
