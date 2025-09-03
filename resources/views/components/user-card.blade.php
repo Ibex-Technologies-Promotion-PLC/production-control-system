@@ -36,6 +36,11 @@
         </div>
     </div>
     <div class="bg-smoke-lighter flex">
+        <div wire:click.prevent="openEditModal({{ $user->id }})"
+            class="w-full py-2 text-center hover:bg-smoke-dark hover:text-white cursor-pointer">
+            <i class="edit icon"></i>
+            {{ __('common.edit') }}
+        </div>
         <div wire:click.prevent="openRolesModal({{ $user->id }})"
             class="w-full py-2 text-center hover:bg-smoke-dark hover:text-white cursor-pointer">
             <i class="user icon"></i>

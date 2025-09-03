@@ -7,8 +7,8 @@ use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 use Livewire\Component;
-use Str;
 
 class Index extends Component
 {
@@ -20,10 +20,12 @@ class Index extends Component
     public $roleIds = [];
 
     public $newUserModal = false;
+    public $editUserModal = false;
     public $name;
     public $email;
     public $password;
     public $role;
+    public $editingUser;
     public $AppModelsUser;
 
 
@@ -58,6 +60,60 @@ class Index extends Component
     {
         $this->newUserModal = false;
         $this->reset(['name', 'email', 'password', 'role']);
+    }
+
+    public function openEditModal($userId)
+    {
+        $this->editingUser = User::find($userId);
+        if ($this->editingUser) {
+            $this->name = $this->editingUser->name;
+            $this->email = $this->editingUser->email;
+            $this->role = $this->editingUser->roles->first()?->id;
+            $this->password = ''; // Don't populate password for security
+            $this->editUserModal = true;
+        }
+    }
+
+    public function updateUser()
+    {
+        $rules = [
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $this->editingUser->id,
+            'role' => 'required',
+        ];
+
+        // Only validate password if it's provided
+        if (!empty($this->password)) {
+            $rules['password'] = 'min:8';
+        }
+
+        $this->validate($rules);
+
+        // Update user data
+        $this->editingUser->name = $this->name;
+        $this->editingUser->email = $this->email;
+        
+        // Only update password if provided
+        if (!empty($this->password)) {
+            $this->editingUser->password = bcrypt($this->password);
+        }
+        
+        $this->editingUser->save();
+
+        // Update role
+        $role = Role::find($this->role);
+        if ($role) {
+            $this->editingUser->syncRoles([$role->name]);
+        }
+
+        $this->closeEditUserModal();
+        $this->dispatch('toast', __('common.saved.title'), __('common.saved.changes'), 'success');
+    }
+
+    public function closeEditUserModal()
+    {
+        $this->editUserModal = false;
+        $this->reset(['name', 'email', 'password', 'role', 'editingUser']);
     }
     public function getUsersProperty()
     {

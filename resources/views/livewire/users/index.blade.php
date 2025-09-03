@@ -45,6 +45,39 @@
         </x-custom-modal>
     </div>
 
+    <!-- #edit user modal-->
+    <div x-data="{ editUserModal: @entangle('editUserModal') }">
+        <x-custom-modal active="editUserModal">
+            <div class="p-3">
+                <h1 class="flex justify-center font-semibold text-2xl my-5">{{ __('users.edit_user') }}</h1>
+                <div class="ui mini form border p-2 rounded">
+                    <x-input model="name" label="{{ __('users.user_name') }}"
+                        placeholder="{{ __('users.user_name') }}" />
+                </div>
+                <div class="ui mini form border p-2 rounded">
+                    <x-input model="email" label="{{ __('users.user_email') }}"
+                        placeholder="{{ __('users.user_email') }}" />
+                </div>
+                <div class="ui mini form border p-2 rounded">
+                    <x-input model="password" type="password" label="{{ __('users.user_password') }}"
+                        placeholder="{{ __('users.leave_empty_to_keep_current') }}" />
+                </div>
+                <div class="ui mini form border p-2 rounded">
+                    <x-dropdown model="role" :label="$label ?? __('users.user_role')" :sId="$sId ?? 'selectEditRole'" :sClass="$sClass ?? 'search'" class="required"
+                        :collection="$this->rolesList ?? []" :value="$value ?? 'id'" :text="$text ?? 'name'" :key="$key ?? null" />
+                </div>
+                <div class="pt-4">
+                    <button wire:click.prevent="updateUser()" class="ui mini blue button">
+                        {{ __('common.save') }}
+                    </button>
+                    <button wire:click.prevent="closeEditUserModal()" class="ui mini button">
+                        {{ __('common.cancel') }}
+                    </button>
+                </div>
+            </div>
+        </x-custom-modal>
+    </div>
+
 
 
     {{-- Roles MODAL --}}
